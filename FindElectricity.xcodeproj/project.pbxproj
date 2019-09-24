@@ -1,0 +1,806 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C95A1F921390CC36BB022E4 /* Pods_FindElectricityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */; };
+		4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D09233A104E00D6756A /* AppDelegate.m */; };
+		4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D0C233A104E00D6756A /* SceneDelegate.m */; };
+		4E063D15233A104F00D6756A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E063D14233A104F00D6756A /* Assets.xcassets */; };
+		4E063D18233A104F00D6756A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E063D16233A104F00D6756A /* LaunchScreen.storyboard */; };
+		4E063D1B233A104F00D6756A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D1A233A104F00D6756A /* main.m */; };
+		4E063D25233A104F00D6756A /* FindElectricityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D24233A104F00D6756A /* FindElectricityTests.m */; };
+		4E063D30233A104F00D6756A /* FindElectricityUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D2F233A104F00D6756A /* FindElectricityUITests.m */; };
+		4E063D54233A122900D6756A /* UIColor+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D40233A122900D6756A /* UIColor+Extend.m */; };
+		4E063D55233A122900D6756A /* NSString+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D41233A122900D6756A /* NSString+Extend.m */; };
+		4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D46233A122900D6756A /* DemonTabbarItem.m */; };
+		4E063D57233A122900D6756A /* FindTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D50233A122900D6756A /* FindTabBarController.m */; };
+		4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D51233A122900D6756A /* DemonNavigationController.m */; };
+		4E063D59233A122900D6756A /* DemonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D52233A122900D6756A /* DemonViewController.m */; };
+		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
+		D532EF3E72AEF38A889770FB /* Pods_FindElectricityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4E063D21233A104F00D6756A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E063CFD233A104E00D6756A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E063D04233A104E00D6756A;
+			remoteInfo = FindElectricity;
+		};
+		4E063D2C233A104F00D6756A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E063CFD233A104E00D6756A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E063D04233A104E00D6756A;
+			remoteInfo = FindElectricity;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.release.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.release.xcconfig"; sourceTree = "<group>"; };
+		481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.debug.xcconfig"; sourceTree = "<group>"; };
+		4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E063D05233A104E00D6756A /* FindElectricity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindElectricity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E063D08233A104E00D6756A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4E063D09233A104E00D6756A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4E063D0B233A104E00D6756A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		4E063D0C233A104E00D6756A /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		4E063D14233A104F00D6756A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E063D17233A104F00D6756A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4E063D19233A104F00D6756A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E063D1A233A104F00D6756A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4E063D20233A104F00D6756A /* FindElectricityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindElectricityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E063D24233A104F00D6756A /* FindElectricityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindElectricityTests.m; sourceTree = "<group>"; };
+		4E063D26233A104F00D6756A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E063D2B233A104F00D6756A /* FindElectricityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindElectricityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E063D2F233A104F00D6756A /* FindElectricityUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindElectricityUITests.m; sourceTree = "<group>"; };
+		4E063D31233A104F00D6756A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E063D3F233A122900D6756A /* NSString+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extend.h"; sourceTree = "<group>"; };
+		4E063D40233A122900D6756A /* UIColor+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extend.m"; sourceTree = "<group>"; };
+		4E063D41233A122900D6756A /* NSString+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extend.m"; sourceTree = "<group>"; };
+		4E063D42233A122900D6756A /* UIColor+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extend.h"; sourceTree = "<group>"; };
+		4E063D45233A122900D6756A /* DemonTabbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemonTabbarItem.h; sourceTree = "<group>"; };
+		4E063D46233A122900D6756A /* DemonTabbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemonTabbarItem.m; sourceTree = "<group>"; };
+		4E063D49233A122900D6756A /* DemonHeads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemonHeads.h; sourceTree = "<group>"; };
+		4E063D4A233A122900D6756A /* DemonMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemonMarco.h; sourceTree = "<group>"; };
+		4E063D4B233A122900D6756A /* DemonFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemonFont.h; sourceTree = "<group>"; };
+		4E063D4C233A122900D6756A /* CSColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSColor.h; sourceTree = "<group>"; };
+		4E063D4E233A122900D6756A /* DemonNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemonNavigationController.h; sourceTree = "<group>"; };
+		4E063D4F233A122900D6756A /* DemonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemonViewController.h; sourceTree = "<group>"; };
+		4E063D50233A122900D6756A /* FindTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindTabBarController.m; sourceTree = "<group>"; };
+		4E063D51233A122900D6756A /* DemonNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemonNavigationController.m; sourceTree = "<group>"; };
+		4E063D52233A122900D6756A /* DemonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemonViewController.m; sourceTree = "<group>"; };
+		4E063D53233A122900D6756A /* FindTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTabBarController.h; sourceTree = "<group>"; };
+		4E063D5D233A16F200D6756A /* FindElect-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FindElect-Prefix.pch"; sourceTree = "<group>"; };
+		69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.debug.xcconfig"; sourceTree = "<group>"; };
+		70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.release.xcconfig"; sourceTree = "<group>"; };
+		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89DC2668A0F80A8AA3A406CF /* Pods-FindElectricityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4E063D02233A104E00D6756A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E063D1D233A104F00D6756A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C95A1F921390CC36BB022E4 /* Pods_FindElectricityTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E063D28233A104F00D6756A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D532EF3E72AEF38A889770FB /* Pods_FindElectricityUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		383E6BAAF15AFE9632D9102E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */,
+				B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */,
+				822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DF30A7B263EC957D90DDF51 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */,
+				36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */,
+				69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */,
+				70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */,
+				4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */,
+				89DC2668A0F80A8AA3A406CF /* Pods-FindElectricityUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4E063CFC233A104E00D6756A = {
+			isa = PBXGroup;
+			children = (
+				4E063D07233A104E00D6756A /* FindElectricity */,
+				4E063D23233A104F00D6756A /* FindElectricityTests */,
+				4E063D2E233A104F00D6756A /* FindElectricityUITests */,
+				4E063D06233A104E00D6756A /* Products */,
+				4DF30A7B263EC957D90DDF51 /* Pods */,
+				383E6BAAF15AFE9632D9102E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4E063D06233A104E00D6756A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D05233A104E00D6756A /* FindElectricity.app */,
+				4E063D20233A104F00D6756A /* FindElectricityTests.xctest */,
+				4E063D2B233A104F00D6756A /* FindElectricityUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E063D07233A104E00D6756A /* FindElectricity */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D3D233A122900D6756A /* FindElectPubilc */,
+				4E063D08233A104E00D6756A /* AppDelegate.h */,
+				4E063D09233A104E00D6756A /* AppDelegate.m */,
+				4E063D0B233A104E00D6756A /* SceneDelegate.h */,
+				4E063D0C233A104E00D6756A /* SceneDelegate.m */,
+				4E063D14233A104F00D6756A /* Assets.xcassets */,
+				4E063D16233A104F00D6756A /* LaunchScreen.storyboard */,
+				4E063D19233A104F00D6756A /* Info.plist */,
+				4E063D1A233A104F00D6756A /* main.m */,
+			);
+			path = FindElectricity;
+			sourceTree = "<group>";
+		};
+		4E063D23233A104F00D6756A /* FindElectricityTests */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D24233A104F00D6756A /* FindElectricityTests.m */,
+				4E063D26233A104F00D6756A /* Info.plist */,
+			);
+			path = FindElectricityTests;
+			sourceTree = "<group>";
+		};
+		4E063D2E233A104F00D6756A /* FindElectricityUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D2F233A104F00D6756A /* FindElectricityUITests.m */,
+				4E063D31233A104F00D6756A /* Info.plist */,
+			);
+			path = FindElectricityUITests;
+			sourceTree = "<group>";
+		};
+		4E063D3D233A122900D6756A /* FindElectPubilc */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D5D233A16F200D6756A /* FindElect-Prefix.pch */,
+				4E063D3E233A122900D6756A /* category */,
+				4E063D43233A122900D6756A /* Model */,
+				4E063D44233A122900D6756A /* View */,
+				4E063D47233A122900D6756A /* Service */,
+				4E063D48233A122900D6756A /* Resource */,
+				4E063D4D233A122900D6756A /* ViewController */,
+			);
+			path = FindElectPubilc;
+			sourceTree = "<group>";
+		};
+		4E063D3E233A122900D6756A /* category */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D3F233A122900D6756A /* NSString+Extend.h */,
+				4E063D40233A122900D6756A /* UIColor+Extend.m */,
+				4E063D41233A122900D6756A /* NSString+Extend.m */,
+				4E063D42233A122900D6756A /* UIColor+Extend.h */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		4E063D43233A122900D6756A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E063D44233A122900D6756A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D45233A122900D6756A /* DemonTabbarItem.h */,
+				4E063D46233A122900D6756A /* DemonTabbarItem.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E063D47233A122900D6756A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4E063D48233A122900D6756A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D4C233A122900D6756A /* CSColor.h */,
+				4E063D4B233A122900D6756A /* DemonFont.h */,
+				4E063D49233A122900D6756A /* DemonHeads.h */,
+				4E063D4A233A122900D6756A /* DemonMarco.h */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4E063D4D233A122900D6756A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4E063D4E233A122900D6756A /* DemonNavigationController.h */,
+				4E063D51233A122900D6756A /* DemonNavigationController.m */,
+				4E063D4F233A122900D6756A /* DemonViewController.h */,
+				4E063D52233A122900D6756A /* DemonViewController.m */,
+				4E063D53233A122900D6756A /* FindTabBarController.h */,
+				4E063D50233A122900D6756A /* FindTabBarController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4E063D04233A104E00D6756A /* FindElectricity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E063D34233A104F00D6756A /* Build configuration list for PBXNativeTarget "FindElectricity" */;
+			buildPhases = (
+				402C7CE408F7525F487CCC19 /* [CP] Check Pods Manifest.lock */,
+				4E063D01233A104E00D6756A /* Sources */,
+				4E063D02233A104E00D6756A /* Frameworks */,
+				4E063D03233A104E00D6756A /* Resources */,
+				1550F5A546950EC02F972908 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FindElectricity;
+			productName = FindElectricity;
+			productReference = 4E063D05233A104E00D6756A /* FindElectricity.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4E063D1F233A104F00D6756A /* FindElectricityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E063D37233A104F00D6756A /* Build configuration list for PBXNativeTarget "FindElectricityTests" */;
+			buildPhases = (
+				CA8979D75E95979905F79EAC /* [CP] Check Pods Manifest.lock */,
+				4E063D1C233A104F00D6756A /* Sources */,
+				4E063D1D233A104F00D6756A /* Frameworks */,
+				4E063D1E233A104F00D6756A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E063D22233A104F00D6756A /* PBXTargetDependency */,
+			);
+			name = FindElectricityTests;
+			productName = FindElectricityTests;
+			productReference = 4E063D20233A104F00D6756A /* FindElectricityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4E063D2A233A104F00D6756A /* FindElectricityUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E063D3A233A104F00D6756A /* Build configuration list for PBXNativeTarget "FindElectricityUITests" */;
+			buildPhases = (
+				A61A68FD37B229FC5BDAC610 /* [CP] Check Pods Manifest.lock */,
+				4E063D27233A104F00D6756A /* Sources */,
+				4E063D28233A104F00D6756A /* Frameworks */,
+				4E063D29233A104F00D6756A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E063D2D233A104F00D6756A /* PBXTargetDependency */,
+			);
+			name = FindElectricityUITests;
+			productName = FindElectricityUITests;
+			productReference = 4E063D2B233A104F00D6756A /* FindElectricityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4E063CFD233A104E00D6756A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "豪锅锅";
+				TargetAttributes = {
+					4E063D04233A104E00D6756A = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					4E063D1F233A104F00D6756A = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 4E063D04233A104E00D6756A;
+					};
+					4E063D2A233A104F00D6756A = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 4E063D04233A104E00D6756A;
+					};
+				};
+			};
+			buildConfigurationList = 4E063D00233A104E00D6756A /* Build configuration list for PBXProject "FindElectricity" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4E063CFC233A104E00D6756A;
+			productRefGroup = 4E063D06233A104E00D6756A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4E063D04233A104E00D6756A /* FindElectricity */,
+				4E063D1F233A104F00D6756A /* FindElectricityTests */,
+				4E063D2A233A104F00D6756A /* FindElectricityUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4E063D03233A104E00D6756A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E063D18233A104F00D6756A /* LaunchScreen.storyboard in Resources */,
+				4E063D15233A104F00D6756A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E063D1E233A104F00D6756A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E063D29233A104F00D6756A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1550F5A546950EC02F972908 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FindElectricity/Pods-FindElectricity-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FindElectricity/Pods-FindElectricity-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FindElectricity/Pods-FindElectricity-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		402C7CE408F7525F487CCC19 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FindElectricity-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A61A68FD37B229FC5BDAC610 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FindElectricityUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA8979D75E95979905F79EAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FindElectricityTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4E063D01233A104E00D6756A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E063D54233A122900D6756A /* UIColor+Extend.m in Sources */,
+				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,
+				4E063D57233A122900D6756A /* FindTabBarController.m in Sources */,
+				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,
+				4E063D1B233A104F00D6756A /* main.m in Sources */,
+				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,
+				4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */,
+				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
+				4E063D55233A122900D6756A /* NSString+Extend.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E063D1C233A104F00D6756A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E063D25233A104F00D6756A /* FindElectricityTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E063D27233A104F00D6756A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E063D30233A104F00D6756A /* FindElectricityUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4E063D22233A104F00D6756A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E063D04233A104E00D6756A /* FindElectricity */;
+			targetProxy = 4E063D21233A104F00D6756A /* PBXContainerItemProxy */;
+		};
+		4E063D2D233A104F00D6756A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E063D04233A104E00D6756A /* FindElectricity */;
+			targetProxy = 4E063D2C233A104F00D6756A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4E063D16233A104F00D6756A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E063D17233A104F00D6756A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4E063D32233A104F00D6756A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4E063D33233A104F00D6756A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4E063D35233A104F00D6756A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
+				INFOPLIST_FILE = FindElectricity/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4E063D36233A104F00D6756A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
+				INFOPLIST_FILE = FindElectricity/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4E063D38233A104F00D6756A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FindElectricityTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindElectricity.app/FindElectricity";
+			};
+			name = Debug;
+		};
+		4E063D39233A104F00D6756A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FindElectricityTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindElectricity.app/FindElectricity";
+			};
+			name = Release;
+		};
+		4E063D3B233A104F00D6756A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FindElectricityUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FindElectricity;
+			};
+			name = Debug;
+		};
+		4E063D3C233A104F00D6756A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89DC2668A0F80A8AA3A406CF /* Pods-FindElectricityUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FindElectricityUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FindElectricity;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4E063D00233A104E00D6756A /* Build configuration list for PBXProject "FindElectricity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E063D32233A104F00D6756A /* Debug */,
+				4E063D33233A104F00D6756A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E063D34233A104F00D6756A /* Build configuration list for PBXNativeTarget "FindElectricity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E063D35233A104F00D6756A /* Debug */,
+				4E063D36233A104F00D6756A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E063D37233A104F00D6756A /* Build configuration list for PBXNativeTarget "FindElectricityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E063D38233A104F00D6756A /* Debug */,
+				4E063D39233A104F00D6756A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E063D3A233A104F00D6756A /* Build configuration list for PBXNativeTarget "FindElectricityUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E063D3B233A104F00D6756A /* Debug */,
+				4E063D3C233A104F00D6756A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4E063CFD233A104E00D6756A /* Project object */;
+}
