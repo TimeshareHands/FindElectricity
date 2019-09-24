@@ -22,5 +22,5 @@ target 'FindElectricity' do
    pod 'MJExtension'
    pod 'MJRefresh'
 
-   project 'FindElectricity/FindElectricity.xcodeproj'
+  
 end
