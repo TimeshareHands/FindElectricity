@@ -277,6 +277,7 @@
 				4E063D02233A104E00D6756A /* Frameworks */,
 				4E063D03233A104E00D6756A /* Resources */,
 				1550F5A546950EC02F972908 /* [CP] Embed Pods Frameworks */,
+				396F2001BCEE25E109571500 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -409,6 +410,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FindElectricity/Pods-FindElectricity-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		396F2001BCEE25E109571500 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FindElectricity/Pods-FindElectricity-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FindElectricity/Pods-FindElectricity-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FindElectricity/Pods-FindElectricity-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		402C7CE408F7525F487CCC19 /* [CP] Check Pods Manifest.lock */ = {
