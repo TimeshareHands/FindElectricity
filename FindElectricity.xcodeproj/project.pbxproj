@@ -22,6 +22,10 @@
 		4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D51233A122900D6756A /* DemonNavigationController.m */; };
 		4E063D59233A122900D6756A /* DemonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D52233A122900D6756A /* DemonViewController.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
+		CBE117CC233C901B003DA1C4 /* FEMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE117CA233C901B003DA1C4 /* FEMapViewController.m */; };
+		CBE117CD233C901B003DA1C4 /* FEMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE117CB233C901B003DA1C4 /* FEMapViewController.xib */; };
+		CBE117D1233CAEEE003DA1C4 /* FEMapNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE117CF233CAEEE003DA1C4 /* FEMapNaviViewController.m */; };
+		CBE117D2233CAEEE003DA1C4 /* FEMapNaviViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE117D0233CAEEE003DA1C4 /* FEMapNaviViewController.xib */; };
 		D532EF3E72AEF38A889770FB /* Pods_FindElectricityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +87,12 @@
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89DC2668A0F80A8AA3A406CF /* Pods-FindElectricityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBE117C9233C901B003DA1C4 /* FEMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapViewController.h; sourceTree = "<group>"; };
+		CBE117CA233C901B003DA1C4 /* FEMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapViewController.m; sourceTree = "<group>"; };
+		CBE117CB233C901B003DA1C4 /* FEMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMapViewController.xib; sourceTree = "<group>"; };
+		CBE117CE233CAEEE003DA1C4 /* FEMapNaviViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapNaviViewController.h; sourceTree = "<group>"; };
+		CBE117CF233CAEEE003DA1C4 /* FEMapNaviViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapNaviViewController.m; sourceTree = "<group>"; };
+		CBE117D0233CAEEE003DA1C4 /* FEMapNaviViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMapNaviViewController.xib; sourceTree = "<group>"; };
 		E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,6 +172,8 @@
 		4E063D07233A104E00D6756A /* FindElectricity */ = {
 			isa = PBXGroup;
 			children = (
+				CBE117C5233C68E8003DA1C4 /* FECycling */,
+				CBE117C1233C68E8003DA1C4 /* FEMap */,
 				4E063D3D233A122900D6756A /* FindElectPubilc */,
 				4E063D08233A104E00D6756A /* AppDelegate.h */,
 				4E063D09233A104E00D6756A /* AppDelegate.m */,
@@ -265,6 +277,74 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		CBE117C1233C68E8003DA1C4 /* FEMap */ = {
+			isa = PBXGroup;
+			children = (
+				CBE117C2233C68E8003DA1C4 /* Model */,
+				CBE117C3233C68E8003DA1C4 /* View */,
+				CBE117C4233C68E8003DA1C4 /* ViewController */,
+			);
+			path = FEMap;
+			sourceTree = "<group>";
+		};
+		CBE117C2233C68E8003DA1C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CBE117C3233C68E8003DA1C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBE117C4233C68E8003DA1C4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CBE117C5233C68E8003DA1C4 /* FECycling */ = {
+			isa = PBXGroup;
+			children = (
+				CBE117C6233C68E8003DA1C4 /* Model */,
+				CBE117C7233C68E8003DA1C4 /* View */,
+				CBE117C8233C68E8003DA1C4 /* ViewController */,
+			);
+			path = FECycling;
+			sourceTree = "<group>";
+		};
+		CBE117C6233C68E8003DA1C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CBE117C7233C68E8003DA1C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBE117C8233C68E8003DA1C4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBE117C9233C901B003DA1C4 /* FEMapViewController.h */,
+				CBE117CA233C901B003DA1C4 /* FEMapViewController.m */,
+				CBE117CB233C901B003DA1C4 /* FEMapViewController.xib */,
+				CBE117CE233CAEEE003DA1C4 /* FEMapNaviViewController.h */,
+				CBE117CF233CAEEE003DA1C4 /* FEMapNaviViewController.m */,
+				CBE117D0233CAEEE003DA1C4 /* FEMapNaviViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,8 +412,9 @@
 		4E063CFD233A104E00D6756A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = FE;
 				LastUpgradeCheck = 1100;
-				ORGANIZATIONNAME = "豪锅锅";
+				ORGANIZATIONNAME = LiDongQiang;
 				TargetAttributes = {
 					4E063D04233A104E00D6756A = {
 						CreatedOnToolsVersion = 11.0;
@@ -375,6 +456,8 @@
 			files = (
 				4E063D18233A104F00D6756A /* LaunchScreen.storyboard in Resources */,
 				4E063D15233A104F00D6756A /* Assets.xcassets in Resources */,
+				CBE117D2233CAEEE003DA1C4 /* FEMapNaviViewController.xib in Resources */,
+				CBE117CD233C901B003DA1C4 /* FEMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,11 +587,13 @@
 			files = (
 				4E063D54233A122900D6756A /* UIColor+Extend.m in Sources */,
 				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,
+				CBE117CC233C901B003DA1C4 /* FEMapViewController.m in Sources */,
 				4E063D57233A122900D6756A /* FindTabBarController.m in Sources */,
 				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,
 				4E063D1B233A104F00D6756A /* main.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,
 				4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */,
+				CBE117D1233CAEEE003DA1C4 /* FEMapNaviViewController.m in Sources */,
 				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
 				4E063D55233A122900D6756A /* NSString+Extend.m in Sources */,
 			);
@@ -607,7 +692,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -659,7 +744,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -672,6 +757,7 @@
 			baseConfigurationReference = 481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28QC567322;
 				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
@@ -683,6 +769,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
 				PRODUCT_NAME = "找电";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;

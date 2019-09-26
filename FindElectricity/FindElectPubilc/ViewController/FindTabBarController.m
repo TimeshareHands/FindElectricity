@@ -8,6 +8,8 @@
 
 #import "FindTabBarController.h"
 #import "DemonTabbarItem.h"
+#import "FEMapViewController.h"
+#import "FEMapNaviViewController.h"
 
 
 NSString *const kSwitchTabNotification = @"SwitchTabNotification";
@@ -221,7 +223,7 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 - (DemonViewController *)mapManageVC
 {
     if (!_mapManageVC) {
-        _mapManageVC = [[DemonViewController alloc] init];
+        _mapManageVC = [[FEMapViewController alloc] init];
         _mapManageVC.title = @"";
         [_mapManageVC.view setBackgroundColor:[UIColor blueColor]];
     }
@@ -239,9 +241,9 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 - (DemonViewController *)rideManageVC
 {
     if (!_rideManageVC) {
-        _rideManageVC = [[DemonViewController alloc] init];
+        _rideManageVC = [[FEMapNaviViewController alloc] init];
         [_rideManageVC.view setBackgroundColor:[UIColor blackColor]];
-        _rideManageVC.title = @"";
+        _rideManageVC.title = @"导航";
     }
     return _rideManageVC;
 }
