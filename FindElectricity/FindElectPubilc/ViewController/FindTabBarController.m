@@ -148,8 +148,8 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 - (void)createTabbar
 {
 
-    _normalImageArray = @[@"tabbar_home", @"tabbar_jinrong",@"tabbar_life", @"tabbar_me"];
-    _selectedImageArray = @[@"MoneyHouseRed.png", @"tabbar_jinrong_red",@"tabbar_life_red", @"tabbar_me_red"];
+    _normalImageArray = @[@"tabb_map_norm.png", @"tabb_cycling_norm.png",@"tabb_task_norm.png", @"tabb_me_norm.png"];
+    _selectedImageArray = @[@"tabb_map_select.png", @"tabb_cycling_select.png",@"tabb_task_select.png", @"tabb_me_select.png"];
    
     
 

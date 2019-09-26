@@ -21,6 +21,8 @@ target 'FindElectricity' do
    pod 'SDWebImage'
    pod 'MJExtension'
    pod 'MJRefresh'
-
+#   pod 'AMap3DMap-NO-IDFA'
+#   pod 'AMapLocation-NO-IDFA'
+#   pod 'AMapNavi-NO-IDFA'
   
 end

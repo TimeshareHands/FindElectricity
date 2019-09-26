@@ -46,7 +46,7 @@
 		36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.release.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.release.xcconfig"; sourceTree = "<group>"; };
 		481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.debug.xcconfig"; sourceTree = "<group>"; };
 		4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4E063D05233A104E00D6756A /* FindElectricity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindElectricity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E063D05233A104E00D6756A /* 找电.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "找电.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E063D08233A104E00D6756A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4E063D09233A104E00D6756A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4E063D0B233A104E00D6756A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		4E063D06233A104E00D6756A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4E063D05233A104E00D6756A /* FindElectricity.app */,
+				4E063D05233A104E00D6756A /* 找电.app */,
 				4E063D20233A104F00D6756A /* FindElectricityTests.xctest */,
 				4E063D2B233A104F00D6756A /* FindElectricityUITests.xctest */,
 			);
@@ -284,7 +284,7 @@
 			);
 			name = FindElectricity;
 			productName = FindElectricity;
-			productReference = 4E063D05233A104E00D6756A /* FindElectricity.app */;
+			productReference = 4E063D05233A104E00D6756A /* 找电.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4E063D1F233A104F00D6756A /* FindElectricityTests */ = {
@@ -655,15 +655,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28QC567322;
 				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
 				INFOPLIST_FILE = FindElectricity/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PRODUCT_NAME = "找电";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -673,15 +675,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28QC567322;
 				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
 				INFOPLIST_FILE = FindElectricity/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PRODUCT_NAME = "找电";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
