@@ -10,7 +10,7 @@
 #import "DemonTabbarItem.h"
 #import "FEMapViewController.h"
 #import "FEMapNaviViewController.h"
-
+#import "FEWorkMainVC.h"
 
 NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 
@@ -252,7 +252,7 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 - (DemonViewController *)workManageVC
 {
     if (!_workManageVC) {
-        _workManageVC = [[DemonViewController alloc]init];
+        _workManageVC = [[FEWorkMainVC alloc]init];
         _workManageVC.title = @"";
     }
     return _workManageVC;

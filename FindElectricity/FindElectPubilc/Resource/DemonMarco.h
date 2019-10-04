@@ -26,6 +26,9 @@
 /**<屏幕高度*/
 #define SCREEN_HEIGHT   [UIScreen mainScreen].bounds.size.height
 
+#define WIDTH_LY(x) SCREEN_WIDTH / 414.0 * (x)
+#define HEIGHT_LY(x) SCREEN_HEIGHT / 896.0 * (x)
+
 /**< 根据UI设计师给的UI图iPhone 6屏幕尺寸来做比例适配 */
 #define AUTO_SIZE_SCALE_X SCREEN_WIDTH / 375
 #define AUTO_SIZE_SCALE_Y SCREEN_HEIGHT / 667
