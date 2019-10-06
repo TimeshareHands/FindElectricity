@@ -28,6 +28,7 @@
 		4E02F20E2349798F00308D99 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E02F2032349798F00308D99 /* libSocialWeChat.a */; };
 		4E02F20F2349798F00308D99 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E02F2072349798F00308D99 /* libSocialQQ.a */; };
 		4E02F2102349798F00308D99 /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E02F20A2349798F00308D99 /* UMCommon.framework */; };
+		4E02F2122349FD7D00308D99 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E02F2112349FD7D00308D99 /* libsqlite3.tbd */; };
 		4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D09233A104E00D6756A /* AppDelegate.m */; };
 		4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D0C233A104E00D6756A /* SceneDelegate.m */; };
 		4E063D15233A104F00D6756A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E063D14233A104F00D6756A /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		4E02F2062349798F00308D99 /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
 		4E02F2072349798F00308D99 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		4E02F20A2349798F00308D99 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		4E02F2112349FD7D00308D99 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		4E063D05233A104E00D6756A /* 找电.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "找电.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E063D08233A104E00D6756A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4E063D09233A104E00D6756A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E02F2122349FD7D00308D99 /* libsqlite3.tbd in Frameworks */,
 				4E02F20F2349798F00308D99 /* libSocialQQ.a in Frameworks */,
 				4E02F20C2349798F00308D99 /* UShareUI.framework in Frameworks */,
 				4E02F20D2349798F00308D99 /* UMShare.framework in Frameworks */,
@@ -189,6 +192,7 @@
 		383E6BAAF15AFE9632D9102E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E02F2112349FD7D00308D99 /* libsqlite3.tbd */,
 				E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */,
 				B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */,
 				822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */,
