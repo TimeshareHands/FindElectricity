@@ -107,3 +107,7 @@
 
 /** 使用高德地图API，请注册Key，注册地址：http://lbs.amap.com/console/key */
 const static NSString *FEAMapKey = @"b38728b38131c13a24e8454f6a5dc233";
+
+//主题颜色、副主题颜色
+#define kThemeColor UIColorFromHex(0xeb4040)
+#define kSubTopicColor UIColorFromHex(0xf23030)

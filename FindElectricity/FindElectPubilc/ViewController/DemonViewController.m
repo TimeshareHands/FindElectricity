@@ -17,6 +17,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = CS_Color_BackGroundGray;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated

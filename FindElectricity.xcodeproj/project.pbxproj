@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1C95A1F921390CC36BB022E4 /* Pods_FindElectricityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */; };
+		20916A4D234789530045C7C8 /* FEMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A48234789530045C7C8 /* FEMapViewController.m */; };
+		20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A49234789530045C7C8 /* FEMapNaviViewController.xib */; };
+		20916A4F234789530045C7C8 /* FEMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A4A234789530045C7C8 /* FEMapViewController.xib */; };
+		20916A50234789530045C7C8 /* FEMapNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A4C234789530045C7C8 /* FEMapNaviViewController.m */; };
+		20916A5323478B1F0045C7C8 /* FEMapNavigiItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A5223478B1F0045C7C8 /* FEMapNavigiItem.m */; };
+		20916A5723478DDA0045C7C8 /* FECycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A5523478DDA0045C7C8 /* FECycleViewController.m */; };
+		20916A5823478DDA0045C7C8 /* FECycleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A5623478DDA0045C7C8 /* FECycleViewController.xib */; };
+		20916A5B2348CD1E0045C7C8 /* FELauchShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A5A2348CD1E0045C7C8 /* FELauchShow.m */; };
+		20916A5D2348CF650045C7C8 /* FELauchShow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A5C2348CF650045C7C8 /* FELauchShow.xib */; };
+		20916A602348D4760045C7C8 /* FEViewXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A5F2348D4760045C7C8 /* FEViewXib.m */; };
 		4E02F1932343913300308D99 /* FEWorkMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1922343913300308D99 /* FEWorkMainVC.m */; };
 		4E02F1A52344351300308D99 /* FEWorkMainHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1A42344351300308D99 /* FEWorkMainHeadView.m */; };
 		4E02F1A823449DF700308D99 /* FETWorkMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1A723449DF700308D99 /* FETWorkMainTableViewCell.m */; };
@@ -33,10 +43,6 @@
 		4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D51233A122900D6756A /* DemonNavigationController.m */; };
 		4E063D59233A122900D6756A /* DemonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D52233A122900D6756A /* DemonViewController.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
-		CBE117CC233C901B003DA1C4 /* FEMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE117CA233C901B003DA1C4 /* FEMapViewController.m */; };
-		CBE117CD233C901B003DA1C4 /* FEMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE117CB233C901B003DA1C4 /* FEMapViewController.xib */; };
-		CBE117D1233CAEEE003DA1C4 /* FEMapNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE117CF233CAEEE003DA1C4 /* FEMapNaviViewController.m */; };
-		CBE117D2233CAEEE003DA1C4 /* FEMapNaviViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE117D0233CAEEE003DA1C4 /* FEMapNaviViewController.xib */; };
 		D532EF3E72AEF38A889770FB /* Pods_FindElectricityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +64,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20916A47234789530045C7C8 /* FEMapNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMapNaviViewController.h; sourceTree = "<group>"; };
+		20916A48234789530045C7C8 /* FEMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMapViewController.m; sourceTree = "<group>"; };
+		20916A49234789530045C7C8 /* FEMapNaviViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FEMapNaviViewController.xib; sourceTree = "<group>"; };
+		20916A4A234789530045C7C8 /* FEMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FEMapViewController.xib; sourceTree = "<group>"; };
+		20916A4B234789530045C7C8 /* FEMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMapViewController.h; sourceTree = "<group>"; };
+		20916A4C234789530045C7C8 /* FEMapNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMapNaviViewController.m; sourceTree = "<group>"; };
+		20916A5123478B1F0045C7C8 /* FEMapNavigiItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapNavigiItem.h; sourceTree = "<group>"; };
+		20916A5223478B1F0045C7C8 /* FEMapNavigiItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapNavigiItem.m; sourceTree = "<group>"; };
+		20916A5423478DDA0045C7C8 /* FECycleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleViewController.h; sourceTree = "<group>"; };
+		20916A5523478DDA0045C7C8 /* FECycleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleViewController.m; sourceTree = "<group>"; };
+		20916A5623478DDA0045C7C8 /* FECycleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleViewController.xib; sourceTree = "<group>"; };
+		20916A592348CD1E0045C7C8 /* FELauchShow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FELauchShow.h; sourceTree = "<group>"; };
+		20916A5A2348CD1E0045C7C8 /* FELauchShow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FELauchShow.m; sourceTree = "<group>"; };
+		20916A5C2348CF650045C7C8 /* FELauchShow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FELauchShow.xib; sourceTree = "<group>"; };
+		20916A5E2348D4760045C7C8 /* FEViewXib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEViewXib.h; sourceTree = "<group>"; };
+		20916A5F2348D4760045C7C8 /* FEViewXib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEViewXib.m; sourceTree = "<group>"; };
 		36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.release.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.release.xcconfig"; sourceTree = "<group>"; };
 		481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.debug.xcconfig"; sourceTree = "<group>"; };
 		4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,12 +142,6 @@
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89DC2668A0F80A8AA3A406CF /* Pods-FindElectricityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBE117C9233C901B003DA1C4 /* FEMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapViewController.h; sourceTree = "<group>"; };
-		CBE117CA233C901B003DA1C4 /* FEMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapViewController.m; sourceTree = "<group>"; };
-		CBE117CB233C901B003DA1C4 /* FEMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMapViewController.xib; sourceTree = "<group>"; };
-		CBE117CE233CAEEE003DA1C4 /* FEMapNaviViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapNaviViewController.h; sourceTree = "<group>"; };
-		CBE117CF233CAEEE003DA1C4 /* FEMapNaviViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapNaviViewController.m; sourceTree = "<group>"; };
-		CBE117D0233CAEEE003DA1C4 /* FEMapNaviViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMapNaviViewController.xib; sourceTree = "<group>"; };
 		E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -157,6 +173,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20916A43234789530045C7C8 /* FEMap */ = {
+			isa = PBXGroup;
+			children = (
+				20916A44234789530045C7C8 /* Model */,
+				20916A45234789530045C7C8 /* View */,
+				20916A46234789530045C7C8 /* ViewController */,
+			);
+			path = FEMap;
+			sourceTree = "<group>";
+		};
+		20916A44234789530045C7C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		20916A45234789530045C7C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20916A5123478B1F0045C7C8 /* FEMapNavigiItem.h */,
+				20916A5223478B1F0045C7C8 /* FEMapNavigiItem.m */,
+				20916A5E2348D4760045C7C8 /* FEViewXib.h */,
+				20916A5F2348D4760045C7C8 /* FEViewXib.m */,
+				20916A592348CD1E0045C7C8 /* FELauchShow.h */,
+				20916A5A2348CD1E0045C7C8 /* FELauchShow.m */,
+				20916A5C2348CF650045C7C8 /* FELauchShow.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		20916A46234789530045C7C8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				20916A4B234789530045C7C8 /* FEMapViewController.h */,
+				20916A48234789530045C7C8 /* FEMapViewController.m */,
+				20916A4A234789530045C7C8 /* FEMapViewController.xib */,
+				20916A47234789530045C7C8 /* FEMapNaviViewController.h */,
+				20916A4C234789530045C7C8 /* FEMapNaviViewController.m */,
+				20916A49234789530045C7C8 /* FEMapNaviViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		383E6BAAF15AFE9632D9102E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,9 +318,9 @@
 		4E063D07233A104E00D6756A /* FindElectricity */ = {
 			isa = PBXGroup;
 			children = (
+				20916A43234789530045C7C8 /* FEMap */,
 				4E02F18C2343910000308D99 /* FEWork */,
 				CBE117C5233C68E8003DA1C4 /* FECycling */,
-				CBE117C1233C68E8003DA1C4 /* FEMap */,
 				4E063D3D233A122900D6756A /* FindElectPubilc */,
 				4E063D08233A104E00D6756A /* AppDelegate.h */,
 				4E063D09233A104E00D6756A /* AppDelegate.m */,
@@ -364,37 +424,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		CBE117C1233C68E8003DA1C4 /* FEMap */ = {
-			isa = PBXGroup;
-			children = (
-				CBE117C2233C68E8003DA1C4 /* Model */,
-				CBE117C3233C68E8003DA1C4 /* View */,
-				CBE117C4233C68E8003DA1C4 /* ViewController */,
-			);
-			path = FEMap;
-			sourceTree = "<group>";
-		};
-		CBE117C2233C68E8003DA1C4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CBE117C3233C68E8003DA1C4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		CBE117C4233C68E8003DA1C4 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		CBE117C5233C68E8003DA1C4 /* FECycling */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,12 +451,9 @@
 		CBE117C8233C68E8003DA1C4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CBE117C9233C901B003DA1C4 /* FEMapViewController.h */,
-				CBE117CA233C901B003DA1C4 /* FEMapViewController.m */,
-				CBE117CB233C901B003DA1C4 /* FEMapViewController.xib */,
-				CBE117CE233CAEEE003DA1C4 /* FEMapNaviViewController.h */,
-				CBE117CF233CAEEE003DA1C4 /* FEMapNaviViewController.m */,
-				CBE117D0233CAEEE003DA1C4 /* FEMapNaviViewController.xib */,
+				20916A5423478DDA0045C7C8 /* FECycleViewController.h */,
+				20916A5523478DDA0045C7C8 /* FECycleViewController.m */,
+				20916A5623478DDA0045C7C8 /* FECycleViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -542,9 +568,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E063D18233A104F00D6756A /* LaunchScreen.storyboard in Resources */,
+				20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */,
+				20916A5823478DDA0045C7C8 /* FECycleViewController.xib in Resources */,
+				20916A4F234789530045C7C8 /* FEMapViewController.xib in Resources */,
 				4E063D15233A104F00D6756A /* Assets.xcassets in Resources */,
-				CBE117D2233CAEEE003DA1C4 /* FEMapNaviViewController.xib in Resources */,
-				CBE117CD233C901B003DA1C4 /* FEMapViewController.xib in Resources */,
+				20916A5D2348CF650045C7C8 /* FELauchShow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,13 +704,18 @@
 				4E02F1B12345E9F300308D99 /* FEWorkEvalueCell.m in Sources */,
 				4E063D54233A122900D6756A /* UIColor+Extend.m in Sources */,
 				4E02F1932343913300308D99 /* FEWorkMainVC.m in Sources */,
+				20916A5B2348CD1E0045C7C8 /* FELauchShow.m in Sources */,
 				4E02F1AE2345E07800308D99 /* FEWorkEValueDetailVC.m in Sources */,
 				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,
 				4E02F1BD2346230100308D99 /* FEWorkEvalueGetPrizeChanceCell.m in Sources */,
-				CBE117CC233C901B003DA1C4 /* FEMapViewController.m in Sources */,
+				20916A4D234789530045C7C8 /* FEMapViewController.m in Sources */,
 				4E02F1A823449DF700308D99 /* FETWorkMainTableViewCell.m in Sources */,
+				20916A5323478B1F0045C7C8 /* FEMapNavigiItem.m in Sources */,
+				20916A50234789530045C7C8 /* FEMapNaviViewController.m in Sources */,
 				4E063D57233A122900D6756A /* FindTabBarController.m in Sources */,
+				20916A5723478DDA0045C7C8 /* FECycleViewController.m in Sources */,
 				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,
+				20916A602348D4760045C7C8 /* FEViewXib.m in Sources */,
 				4E02F1A52344351300308D99 /* FEWorkMainHeadView.m in Sources */,
 				4E063D1B233A104F00D6756A /* main.m in Sources */,
 				4E02F1BA23461F6000308D99 /* FEWorkEValueShopVC.m in Sources */,
@@ -691,7 +724,6 @@
 				4E02F1B42346161E00308D99 /* FEWorkGetGiftVC.m in Sources */,
 				4E02F1AB2345D88100308D99 /* FEWorkEValueDetailHeadView.m in Sources */,
 				4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */,
-				CBE117D1233CAEEE003DA1C4 /* FEMapNaviViewController.m in Sources */,
 				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
 				4E063D55233A122900D6756A /* NSString+Extend.m in Sources */,
 			);

@@ -56,7 +56,7 @@ DEPENDENCIES:
   - SDWebImage
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
     - AMap3DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
@@ -80,6 +80,6 @@ SPEC CHECKSUMS:
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
 
-PODFILE CHECKSUM: 793886b75a3b1db7d8f3f0eec2165a544c914cc6
+PODFILE CHECKSUM: 32416ef6d6158cf2ac4cdac81758974bd700fcd7
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.0

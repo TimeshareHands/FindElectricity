@@ -22,15 +22,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
-    self.mapView.delegate = self;
-    self.mapView.allowsAnnotationViewSorting = NO;
-    [self.view addSubview:self.mapView];
+    [self addView];
     
     [self initCompleteBlock];
     [self configLocationManager];
     
 //    [self locAction];
+}
+
+- (void)addView {
+    //导航栏
+    
+    self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView.delegate = self;
+    self.mapView.allowsAnnotationViewSorting = NO;
+    [self.view addSubview:self.mapView];
 }
 
 - (void)configLocationManager
