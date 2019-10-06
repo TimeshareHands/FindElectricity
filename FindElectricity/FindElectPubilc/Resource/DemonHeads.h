@@ -32,4 +32,5 @@
 #import "CSColor.h"
 #import "DemonViewController.h"
 #import "BlocksKit+UIKit.h"
+#import "NetUrlHeader.h"
 #endif

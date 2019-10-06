@@ -17,6 +17,7 @@
 #ifndef CSDirectBank_DemonMarco_h
 #define CSDirectBank_DemonMarco_h
 
+#define MyDefaults [NSUserDefaults standardUserDefaults]
 /**<获取类实例*/
 #define GetClassInstance(cls_name) [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:cls_name]
 
