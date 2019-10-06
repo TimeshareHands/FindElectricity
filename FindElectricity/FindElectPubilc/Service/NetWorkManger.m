@@ -9,6 +9,7 @@
 #import "NetWorkManger.h"
 #import <UIKit+AFNetworking.h>
 #import "QiniuSDK.h"
+#import "FEUserOperation.h"
 #define kTimeOut 60.0
 
 static NetWorkManger *manager = nil;
@@ -52,7 +53,7 @@ static AFHTTPSessionManager *afnManager = nil;
     afnManager.requestSerializer.timeoutInterval = timeoutInterval;
     afnManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     if (needToken == YES) {
-//         [afnManager.requestSerializer setValue:MyUser.token forHTTPHeaderField:@"token"];
+         [afnManager.requestSerializer setValue:[FEUserOperation manager].token forHTTPHeaderField:@"token"];
     }
     [afnManager POST:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject) {
