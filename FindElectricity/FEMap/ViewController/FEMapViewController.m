@@ -10,15 +10,28 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 #import "FELauchShow.h"
+#import "FEMapWeather.h"
+#import "FEMapNavigiItem.h"
+#import "FEMessageViewController.h"
+#import "AppDelegate.h"
+#import "FEPointAnnotation.h"
+#import "FEShopPopView.h"
+#import "FEShopDetailViewController.h"
+#import "FindTabBarController.h"
 @interface FEMapViewController ()<MAMapViewDelegate,AMapLocationManagerDelegate>
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) UIImageView *centerImg;
-@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (nonatomic, strong) UIButton *chouJBtn;
+@property (nonatomic, strong) UIButton *positionBtn;
+@property (nonatomic, strong) UIButton *shaiXuanBtn;
 @property (weak, nonatomic) FELauchShow *lauchShow;
+@property (strong, nonatomic) FEMapWeather *weatherView;
+@property (strong, nonatomic) FEMapNavigiItem *naviRightItem;
+@property (nonatomic, weak) FEShopPopView *shopPopView;
 @property (assign, nonatomic) BOOL didShow;
 @property (nonatomic, strong) AMapLocationManager *locationManager;
 @property (nonatomic, copy) AMapLocatingCompletionBlock completionBlock;
-@property (nonatomic, strong) MAPointAnnotation *pointAnnotaiton;
+@property (nonatomic, strong) FEPointAnnotation *pointAnnotaiton;
 @end
 
 @implementation FEMapViewController
@@ -35,12 +48,79 @@
 
 - (void)addView {
     //导航栏
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.weatherView];
+    UIView *rightItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    [rightItem addSubview:self.naviRightItem];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItem];
     [self.view addSubview:self.mapView];
-    [self.view addSubview:self.centerImg];
-    [self.view addSubview:self.topView];
-    
+    [self.mapView addSubview:self.centerImg];
+    [self.mapView addSubview:self.chouJBtn];
+    [self.mapView addSubview:self.positionBtn];
+    [self.mapView addSubview:self.shaiXuanBtn];
+    [self.mapView addSubview:self.shopPopView];
     [self makeUpconstraint];
+}
+
+#pragma mark -约束适配
+-(void)makeUpconstraint{
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.mas_equalTo(self.view);
+    }];
+    [self.centerImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(31);
+        make.width.mas_equalTo(20);
+        make.centerX.centerY.equalTo(self.mapView);
+    }];
+    [self.chouJBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(60);
+        make.width.mas_equalTo(51);
+        make.top.equalTo(self.mapView).offset(20);
+        make.right.equalTo(self.mapView).offset(-20);
+    }];
+    [self.positionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.width.mas_equalTo(48);
+        make.bottom.equalTo(self.mapView).offset(-20);
+        make.right.equalTo(self.mapView).offset(-20);
+    }];
+    [self.shaiXuanBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.width.mas_equalTo(48);
+        make.bottom.equalTo(self.positionBtn.mas_top).offset(-10);
+        make.right.equalTo(self.positionBtn);
+    }];
+//    [self.shopPopView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(175);
+//        make.bottom.equalTo(self.mapView).offset(-10);
+//        make.right.equalTo(self.mapView).offset(20);
+//        make.left.equalTo(self.mapView).offset(-20);
+//    }];
+}
+
+- (FEMapWeather *)weatherView {
+    if (!_weatherView) {
+        _weatherView = [[FEMapWeather alloc] initWithFrame:CGRectMake(0, 0,50, 30)];
+        _weatherView.backgroundColor = [UIColor redColor];
+    }
+    return _weatherView;
+}
+
+- (FEMapNavigiItem *)naviRightItem {
+    if (!_naviRightItem) {
+        _naviRightItem = [[FEMapNavigiItem alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        WEAKSELF;
+        _naviRightItem.didTap = ^void(NSInteger tag) {
+            if (tag==0) {
+                //任务
+                AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+                [app.tabBarController switchTab:indexPath];
+            }else{
+                //消息中心
+                FEMessageViewController *messageVC = [[FEMessageViewController alloc] init];
+                [weakSelf.navigationController pushViewController:messageVC animated:YES];
+            }
+        };
+    }
+    return _naviRightItem;
 }
 
 - (MAMapView *)mapView {
@@ -48,23 +128,10 @@
         _mapView = [[MAMapView alloc] init];
         _mapView.delegate = self;
         _mapView.allowsAnnotationViewSorting = NO;
+        _mapView.showsUserLocation = YES;
+        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
-}
-
-#pragma mark -约束适配
--(void)makeUpconstraint{
-    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view);
-        make.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.view);
-    }];
-    [self.centerImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(31);
-        make.width.mas_equalTo(20);
-        make.centerX.centerY.equalTo(self.mapView);
-    }];
 }
 
 - (UIImageView *)centerImg {
@@ -73,6 +140,47 @@
         _centerImg.image = [UIImage imageNamed:@"map_position.png"];
     }
     return _centerImg;
+}
+
+- (UIButton *)chouJBtn {
+    if (!_chouJBtn) {
+        _chouJBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_chouJBtn setImage:[UIImage imageNamed:@"map_redbag"] forState:UIControlStateNormal];
+        [_chouJBtn bk_addEventHandler:^(UIButton *sender) {
+            //抽奖
+            [self goChouJiang];
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _chouJBtn;
+}
+
+#pragma 抽奖
+- (void)goChouJiang {
+    
+}
+
+- (UIButton *)positionBtn {
+    if (!_positionBtn) {
+        _positionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_positionBtn setImage:[UIImage imageNamed:@"map_location"] forState:UIControlStateNormal];
+        [_positionBtn bk_addEventHandler:^(UIButton *sender) {
+            //地位
+            
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _positionBtn;
+}
+
+- (UIButton *)shaiXuanBtn {
+    if (!_shaiXuanBtn) {
+        _shaiXuanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_shaiXuanBtn setImage:[UIImage imageNamed:@"map_categ"] forState:UIControlStateNormal];
+        [_shaiXuanBtn bk_addEventHandler:^(UIButton *sender) {
+            //筛选
+            
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _shaiXuanBtn;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -92,11 +200,27 @@
             [weakSelf.lauchShow hidden];
             if (tag==1) {
                 //去抽奖
-                
+                [self goChouJiang];
             }
         };
     }
     return _lauchShow;
+}
+
+- (FEShopPopView *)shopPopView {
+    if (!_shopPopView) {
+        _shopPopView = [FEShopPopView createView];
+        _shopPopView.frame = CGRectMake(10, SCREEN_HEIGHT-175-10-SafeAreaBottomHeight-SafeAreaTopHeight, SCREEN_WIDTH-20, 175);
+        _shopPopView.hidden = YES;
+        WEAKSELF;
+        _shopPopView.didClick = ^(NSInteger tag) {
+            if (tag == 0) {
+                FEShopDetailViewController *shopVC = [[FEShopDetailViewController alloc] init];
+                [weakSelf.navigationController pushViewController:shopVC animated:YES];
+            }
+        };
+    }
+    return _shopPopView;
 }
 
 - (void)configLocationManager
@@ -196,7 +320,7 @@
         }
         
         //根据定位信息，添加annotation
-        MAPointAnnotation *annotation = [[MAPointAnnotation alloc] init];
+        FEPointAnnotation *annotation = [[FEPointAnnotation alloc] init];
         [annotation setCoordinate:location.coordinate];
         
         //有无逆地理信息，annotationView的标题显示的字段不一样
@@ -230,15 +354,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)onClick:(UITapGestureRecognizer *)gesture {
+# pragma 点击了annota
+- (void)annotationClick:(UITapGestureRecognizer *)gesture {
     NSLog(@"=== annotation clicked");
 
     MAAnnotationView *annoView = (MAAnnotationView*) gesture.view;
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"alert" message:[NSString stringWithFormat:@"onClick-%@", annoView.annotation.title] delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil, nil];
-    
-    [alert show];
-    
     if(annoView.annotation == self.mapView.selectedAnnotations.firstObject) {
         if(annoView.selected == NO) {
             [annoView setSelected:YES animated:YES];
@@ -247,7 +367,6 @@
     } else {
         [self.mapView selectAnnotation:annoView.annotation animated:YES];
     }
-
 }
 
 #pragma mark - AMapLocationManager Delegate
@@ -278,7 +397,8 @@
     //获取到定位信息，更新annotation
     if (self.pointAnnotaiton == nil)
     {
-        self.pointAnnotaiton = [[MAPointAnnotation alloc] init];
+        self.pointAnnotaiton = [[FEPointAnnotation alloc] init];
+        self.pointAnnotaiton.type = FEPointAnnotLoc;
         [self.pointAnnotaiton setCoordinate:location.coordinate];
         
         [self addAnnotationToMapView:self.pointAnnotaiton];
@@ -307,10 +427,10 @@
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:9];
     for (int i = 0; i < 9; ++i)
     {
-        MAPointAnnotation *a = [[MAPointAnnotation alloc] init];
+        FEPointAnnotation *a = [[FEPointAnnotation alloc] init];
         a.coordinate = coordinates[i];
-        a.title      = [NSString stringWithFormat:@"anno:%d", i];
-        a.subtitle = [NSString stringWithFormat:@"%d", i%3+1];
+        a.title      = [NSString stringWithFormat:@"距离%d千米，骑行%d分钟", i,i*5];
+        a.type = i%3+1;
         [arr addObject:a];
     }
 
@@ -320,20 +440,21 @@
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
-    if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
+    if ([annotation isKindOfClass:[FEPointAnnotation class]]) {
+        
         NSString *pointReuseIndetifier = @"pointReuseIndetifier";
         
         MAAnnotationView *annotationView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
         if(!annotationView) {
             annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndetifier];
-            [annotationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onClick:)]];
+            [annotationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(annotationClick:)]];
         }
-        NSInteger type = [annotation.subtitle integerValue];
-        if (type==3) {
+        FEPointAnnotType type = ((FEPointAnnotation *)annotation).type;
+        if (type==FEPointAnnotFix) {
             annotationView.image = [UIImage imageNamed:@"map_fix.png"];
-        }else if (type == 1){
+        }else if (type == FEPointAnnotSlowlyChong){
             annotationView.image = [UIImage imageNamed:@"map_manch.png"];
-        }else if (type == 2){
+        }else if (type == FEPointAnnotQuickChong){
             annotationView.image = [UIImage imageNamed:@"map_quickch.png"];
         }else{
             annotationView.image            = [UIImage imageNamed:@"icon_location.png"];
@@ -346,11 +467,23 @@
     return nil;
 }
 
-- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)annoView
 {
-    NSLog(@"onClick-%@", view.annotation.title);
+    NSLog(@"onClick-%@", annoView.annotation.title);
+    self.shopPopView.hidden = NO;
+//    [self.navigationController.navigationBar setHidden:YES];
+//    [[self rootTabBarController].tabBar setHidden:YES];
 }
 
+- (void)mapView:(MAMapView *)mapView didDeselectAnnotationView:(MAAnnotationView *)view{
+    NSLog(@"remove-%@", view.annotation.title);
+    self.shopPopView.hidden = YES;
+}
+
+- (FindTabBarController *)rootTabBarController{
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return app.tabBarController;
+}
 
 - (void)dealloc
 {

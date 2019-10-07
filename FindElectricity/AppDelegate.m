@@ -7,12 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "FindTabBarController.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 
 @interface AppDelegate ()
 @property(nonatomic,strong) DemonNavigationController *tabNavigationVC;
-@property(nonatomic,strong) FindTabBarController *tabBarController;
+
 @end
 
 @implementation AppDelegate
@@ -96,6 +95,5 @@
     }
     return _tabBarController;
 }
-
 
 @end

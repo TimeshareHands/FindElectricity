@@ -1,8 +1,8 @@
 //
-//  FEMapNavigiItem.h
+//  FEMapWeather.h
 //  FindElectricity
 //
-//  Created by 李冬强 on 2019/10/4.
+//  Created by 李冬强 on 2019/10/6.
 //  Copyright © 2019 LiDongQiang. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FEMapNavigiItem : UIView
-@property (copy, nonatomic) void(^didTap)(NSInteger tag);
+@interface FEMapWeather : UIView
+
 @end
 
 NS_ASSUME_NONNULL_END

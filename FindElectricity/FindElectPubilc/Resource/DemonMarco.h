@@ -110,5 +110,5 @@
 const static NSString *FEAMapKey = @"b38728b38131c13a24e8454f6a5dc233";
 
 //主题颜色、副主题颜色
-#define kThemeColor UIColorFromHex(0xeb4040)
+#define kThemeColor UIColorFromHex(0x000000)
 #define kSubTopicColor UIColorFromHex(0xf23030)

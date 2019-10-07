@@ -24,6 +24,7 @@ target 'FindElectricity' do
    pod 'AMap3DMap-NO-IDFA'
    pod 'AMapLocation-NO-IDFA'
    pod 'AMapNavi-NO-IDFA'
+#   pod 'AMapSearch'
    pod "Qiniu", "~> 7.1"
    pod 'BlocksKit'
 end

@@ -13,5 +13,5 @@
 UIKIT_EXTERN NSString *const kSwitchTabNotification;
 
 - (instancetype)init;
-
+- (void)switchTab:(NSIndexPath *)indexPath;
 @end
