@@ -23,8 +23,8 @@ target 'FindElectricity' do
    pod 'MJRefresh'
    pod 'AMap3DMap-NO-IDFA'
    pod 'AMapLocation-NO-IDFA'
-   pod 'AMapNavi-NO-IDFA'
-#   pod 'AMapSearch'
+#   pod 'AMapNavi-NO-IDFA'
+   pod 'AMapSearch-NO-IDFA'
    pod "Qiniu", "~> 7.1"
    pod 'BlocksKit'
 end

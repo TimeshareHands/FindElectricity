@@ -8,6 +8,7 @@
 
 #import "FEMapViewController.h"
 #import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 #import "FELauchShow.h"
 #import "FEMapWeather.h"
@@ -18,7 +19,7 @@
 #import "FEShopPopView.h"
 #import "FEShopDetailViewController.h"
 #import "FindTabBarController.h"
-@interface FEMapViewController ()<MAMapViewDelegate,AMapLocationManagerDelegate>
+@interface FEMapViewController ()<MAMapViewDelegate,AMapLocationManagerDelegate,AMapSearchDelegate>
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) UIImageView *centerImg;
 @property (nonatomic, strong) UIButton *chouJBtn;
@@ -32,6 +33,7 @@
 @property (nonatomic, strong) AMapLocationManager *locationManager;
 @property (nonatomic, copy) AMapLocatingCompletionBlock completionBlock;
 @property (nonatomic, strong) FEPointAnnotation *pointAnnotaiton;
+@property (nonatomic, strong) AMapSearchAPI *search;
 @end
 
 @implementation FEMapViewController
@@ -369,6 +371,60 @@
     }
 }
 
+# pragma mark -AMapSearchAPI
+- (void)ridingRouteSearchFromCoord:(CLLocationCoordinate2D)fromCoord toCoord:(CLLocationCoordinate2D)toCoord {
+    if(!_search){
+        _search = [[AMapSearchAPI alloc] init];
+        _search.delegate = self;
+    }
+    AMapRidingRouteSearchRequest *navi = [[AMapRidingRouteSearchRequest alloc] init];
+
+    /* 出发点. {28.201112, 112.97111}*/
+    navi.origin = [AMapGeoPoint locationWithLatitude:28.20111
+                                           longitude:112.97111];
+    /* 目的地. */
+    navi.destination = [AMapGeoPoint locationWithLatitude:toCoord.latitude
+                                                longitude:toCoord.longitude];
+    [self.search AMapRidingRouteSearch:navi];
+}
+
+/* 路径规划搜索回调. */
+- (void)onRouteSearchDone:(AMapRouteSearchBaseRequest *)request response:(AMapRouteSearchResponse *)response
+{
+    if (response.route == nil)
+    {
+        return;
+    }
+    
+   //解析response获取路径信息，具体解析见 Demo
+    //构造折线对象
+//    MAPolyline *commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:4];
+//
+//    //在地图上添加折线对象
+//    [_mapView addOverlay: commonPolyline];
+}
+
+- (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", error);
+}
+
+- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MAPolyline class]])
+    {
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
+        
+        polylineRenderer.lineWidth    = 8.f;
+        polylineRenderer.strokeColor  = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.6];
+        polylineRenderer.lineJoinType = kMALineJoinRound;
+        polylineRenderer.lineCapType  = kMALineCapRound;
+        
+        return polylineRenderer;
+    }
+    return nil;
+}
+
 #pragma mark - AMapLocationManager Delegate
 
 - (void)amapLocationManager:(AMapLocationManager *)manager doRequireLocationAuth:(CLLocationManager *)locationManager
@@ -478,6 +534,7 @@
 - (void)mapView:(MAMapView *)mapView didDeselectAnnotationView:(MAAnnotationView *)view{
     NSLog(@"remove-%@", view.annotation.title);
     self.shopPopView.hidden = YES;
+    [self ridingRouteSearchFromCoord:self.pointAnnotaiton.coordinate toCoord:view.annotation.coordinate];
 }
 
 - (FindTabBarController *)rootTabBarController{
