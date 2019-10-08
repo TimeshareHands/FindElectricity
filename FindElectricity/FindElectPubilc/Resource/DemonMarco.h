@@ -112,3 +112,92 @@ const static NSString *FEAMapKey = @"b38728b38131c13a24e8454f6a5dc233";
 //主题颜色、副主题颜色
 #define kThemeColor UIColorFromHex(0x000000)
 #define kSubTopicColor UIColorFromHex(0xf23030)
+
+/*日志打印*/
+#ifdef DEBUG
+#define MYLog(...)  NSLog(__VA_ARGS__)
+#else
+#define MYLog(...)
+#endif
+
+//SVP
+#define MTSVPShowWithText(obj) {[SVProgressHUD showWithStatus:obj];\
+[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];}
+#define MTSVPShowWithTextMask(obj) {[SVProgressHUD showWithStatus:obj];\
+[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];}
+#define MTSVPShowInfoText(obj) {[SVProgressHUD showInfoWithStatus:obj];\
+[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];}
+
+#define MTSVPShowSuccessWithText(obj) {[SVProgressHUD showSuccessWithStatus:obj];}
+
+#define MTSVPDismiss  [SVProgressHUD dismiss]
+
+//
+#define MTUUID [[[UIDevice currentDevice] identifierForVendor] UUIDString]
+
+
+/*字体*/
+//字体
+/*方正 Font: FZLTCHJW--GB1-0 粗黑
+ Font: FZLTHJW--GB1-0 黑
+ Font: FZLTXHJW--GB1-0 细黑
+ */
+#define MTBaseFontBold @"STHeitiSC-Medium" //基本字体
+#define MTBaseFont @"STHeitiSC-Light"
+#define MTFont(fontName, s) [UIFont fontWithName:fontName size:(s)]
+
+/*判断空对象*/
+#define ObjIsNotNull(a)                 a != nil && a != [NSNull null]
+#define NullObjToString(a)              ObjIsNotNull(a) ? a : @""
+
+#define WeakSelf(weakSelf)  __weak __typeof(&*self) weakSelf = self;
+
+/*属性*/
+#define COPY_NONATOMIC_PROPERTY @property (nonatomic, copy)
+#define STRONG_NONATOMIC_PROPERTY @property (nonatomic, strong)
+#define ASSIGN_NONATOMIC_PROPERTY @property (nonatomic, assign)
+#define WEAK_NONATOMIC_PROPERTY   @property (nonatomic, weak)
+
+/*调用函数*/
+#define MTLogFun  MTLog(@"%s",__func__);
+
+/*KeyWindow*/
+#define MTKeyWindow [UIApplication sharedApplication].keyWindow
+
+
+/*输出视图的frame边界*/
+#define MTLogFrame(view)  MTLog(@"current Frame = %@",NSStringFromCGRect(view.frame) );
+
+/*输出所有子视图*/
+#define MTLogSubviews(view)  MTLog(@"%@",view.subviews);
+
+/*获取UIStoryboard*/
+#define MTStoryboards(name) [UIStoryboard storyboardWithName:name bundle:nil]
+/*根据UIStoryboard的identifier获取ViewController*/
+#define MTStoryboardsController(storyboards, identifier) [MTStoryboards(storyboards) instantiateViewControllerWithIdentifier:identifier]
+
+/*获取Xib*/
+#define MTXib(name) [UINib nibWithNibName:name bundle:nil]
+
+/*消息发送*/
+#import <objc/message.h>
+#define MTMessageSend(target, action, ...) ((void(*)(id, SEL, ...))objc_msgSend)(target, action, ## __VA_ARGS__)
+
+/*添加KVO观察者*/
+#define MTAddKVOObserver(object, target, keyPath) [object addObserver:target forKeyPath:keyPath options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL]
+
+/*移除KVO观察者*/
+#define MTRemoveKVOObserver(object, target, keyPath) [object removeObserver:target forKeyPath:keyPath]
+
+/*发送通知*/
+#define MTPostNotification(name, obj, info) [[NSNotificationCenter defaultCenter] postNotificationName:name object:obj userInfo:info]
+
+/*接收通知*/
+#define MTAddNotificationObserver(observer, action, names, obj) [[NSNotificationCenter defaultCenter] addObserver:observer selector:action name:names object:obj]
+
+/*移除通知*/
+#define MTRemoveNotificationObserver(observer, names, obj) [[NSNotificationCenter defaultCenter] removeObserver:observer name:names object:obj]
+
+//屏幕比例尺寸
+#define MTGetHeightScale(w,scale) ((w)/(scale))
+#define MTGetWidthScale(h,scale) ((h)*(scale))

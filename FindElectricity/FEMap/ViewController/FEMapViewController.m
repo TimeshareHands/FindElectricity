@@ -11,6 +11,7 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 #import "FELauchShow.h"
+#import "FEMapCategView.h"
 #import "FEMapWeather.h"
 #import "FEMapNavigiItem.h"
 #import "FEMessageViewController.h"
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) UIButton *positionBtn;
 @property (nonatomic, strong) UIButton *shaiXuanBtn;
 @property (weak, nonatomic) FELauchShow *lauchShow;
+@property (weak, nonatomic) FEMapCategView *categView;
 @property (strong, nonatomic) FEMapWeather *weatherView;
 @property (strong, nonatomic) FEMapNavigiItem *naviRightItem;
 @property (nonatomic, weak) FEShopPopView *shopPopView;
@@ -179,7 +181,7 @@
         [_shaiXuanBtn setImage:[UIImage imageNamed:@"map_categ"] forState:UIControlStateNormal];
         [_shaiXuanBtn bk_addEventHandler:^(UIButton *sender) {
             //筛选
-            
+            [self.categView show];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _shaiXuanBtn;
@@ -209,10 +211,22 @@
     return _lauchShow;
 }
 
+- (FEMapCategView *)categView {
+    if (!_categView) {
+        _categView = [FEMapCategView createView];
+        _categView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        WEAKSELF;
+        _categView.comfirm = ^(FEMapCategView * _Nonnull view, NSString *status) {
+            MYLog(@"%@",status);
+        };
+    }
+    return _categView;
+}
+
 - (FEShopPopView *)shopPopView {
     if (!_shopPopView) {
         _shopPopView = [FEShopPopView createView];
-        _shopPopView.frame = CGRectMake(10, SCREEN_HEIGHT-175-10-SafeAreaBottomHeight-SafeAreaTopHeight, SCREEN_WIDTH-20, 175);
+        _shopPopView.frame = CGRectMake(0, SCREEN_HEIGHT-175-SafeAreaBottomHeight-SafeAreaTopHeight, SCREEN_WIDTH, 175);
         _shopPopView.hidden = YES;
         WEAKSELF;
         _shopPopView.didClick = ^(NSInteger tag) {

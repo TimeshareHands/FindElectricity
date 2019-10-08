@@ -159,7 +159,7 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
     NSArray *titleArray = @[@"地图", @"骑行", @"任务", @"我的"];
     
     UIColor *normalFontColor = [UIColor colorWithHex:0x666666];
-    UIColor *selectedFontColor = [UIColor colorWithHex:0xDF2100];// [UIColor colorWithHex:0xEF3D3D];
+    UIColor *selectedFontColor = [UIColor colorWithHex:0x404040];// [UIColor colorWithHex:0xEF3D3D];
 
 
     // 按钮的宽、高

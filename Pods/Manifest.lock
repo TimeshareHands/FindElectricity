@@ -19,6 +19,9 @@ PODS:
   - AMapFoundation-NO-IDFA (1.5.7)
   - AMapLocation-NO-IDFA (2.6.3):
     - AMapFoundation-NO-IDFA (~> 1.4)
+  - AMapNavi-NO-IDFA (6.9.1):
+    - AMap3DMap-NO-IDFA (~> 6.7)
+    - AMapFoundation-NO-IDFA (~> 1.5)
   - AMapSearch-NO-IDFA (6.9.0):
     - AMapFoundation-NO-IDFA (~> 1.4)
   - BlocksKit (2.2.5):
@@ -43,11 +46,13 @@ PODS:
   - SDWebImage (5.1.1):
     - SDWebImage/Core (= 5.1.1)
   - SDWebImage/Core (5.1.1)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AFNetworking
   - AMap3DMap-NO-IDFA
   - AMapLocation-NO-IDFA
+  - AMapNavi-NO-IDFA
   - AMapSearch-NO-IDFA
   - BlocksKit
   - Masonry
@@ -55,6 +60,7 @@ DEPENDENCIES:
   - MJRefresh
   - Qiniu (~> 7.1)
   - SDWebImage
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -69,13 +75,16 @@ SPEC REPOS:
     - Qiniu
     - SDWebImage
   trunk:
+    - AMapNavi-NO-IDFA
     - AMapSearch-NO-IDFA
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AMap3DMap-NO-IDFA: ffb000a25913efcdc5d979faa54a78655965bc23
   AMapFoundation-NO-IDFA: 9088085827c831811bb0fd3afd96b99963a7cf71
   AMapLocation-NO-IDFA: f22a480573aa18c521946f13d49521f042a7dca6
+  AMapNavi-NO-IDFA: e31341c7af48f751b41a0579e7a5aed8ff19836f
   AMapSearch-NO-IDFA: 264999e6c149383a8f164c2fe49b51513e93d674
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -83,7 +92,8 @@ SPEC CHECKSUMS:
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   Qiniu: 9d1f20dcc348919972b4ee1b1272f9b9d4a7e69e
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: ff428b758fd2b1d1ad9fcc187fb0f3c208f419cf
+PODFILE CHECKSUM: de22c957423837269e6289693c2a6a57a27ad266
 
 COCOAPODS: 1.8.0
