@@ -177,7 +177,7 @@
         WEAKSELF;
         [_positionBtn bk_addEventHandler:^(UIButton *sender) {
             //地位
-            [weakSelf.mapView setCenterCoordinate:weakSelf.pointAnnotaiton.coordinate animated:YES];
+            [weakSelf.mapView setCenterCoordinate:weakSelf.mapView.userLocation.coordinate animated:YES];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _positionBtn;

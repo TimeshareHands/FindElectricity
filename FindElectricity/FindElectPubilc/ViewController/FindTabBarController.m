@@ -225,7 +225,6 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
     if (!_mapManageVC) {
         _mapManageVC = [[FEMapViewController alloc] init];
         _mapManageVC.title = @"";
-        [_mapManageVC.view setBackgroundColor:[UIColor blueColor]];
     }
     return _mapManageVC;
 }
@@ -242,8 +241,7 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 {
     if (!_rideManageVC) {
         _rideManageVC = [[FECycleViewController alloc] init];
-        [_rideManageVC.view setBackgroundColor:[UIColor blackColor]];
-        _rideManageVC.title = @"导航";
+        _rideManageVC.title = @"骑行";
     }
     return _rideManageVC;
 }
