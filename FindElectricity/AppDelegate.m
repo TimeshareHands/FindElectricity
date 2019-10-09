@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
-
+#import <IQKeyboardManager.h>
 @interface AppDelegate ()
 @property(nonatomic,strong) DemonNavigationController *tabNavigationVC;
 
@@ -19,11 +19,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-      self.window.rootViewController = self.tabNavigationVC;
-    [self configureAPIKey];
+    self.window.rootViewController = self.tabNavigationVC;
+    
     self.window.backgroundColor     = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self configureAPIKey];
+        [self keyboardSet];
+    });
     return YES;
+    
+}
+
+- (void)keyboardSet
+{
+    //Enabling keyboard manager
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:10];
+    //Enabling autoToolbar behaviour. If It is set to NO. You have to manually create UIToolbar for keyboard.
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+    
+    //Setting toolbar behavious to IQAutoToolbarBySubviews. Set it to IQAutoToolbarByTag to manage previous/next according to UITextField's tag property in increasing order.
+    [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarBySubviews];
+    
+    //Resign textField if touched outside of UITextField/UITextView.
+    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
     
 }
 

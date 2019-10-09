@@ -9,7 +9,7 @@
 #import "FindTabBarController.h"
 #import "DemonTabbarItem.h"
 #import "FEMapViewController.h"
-#import "FEMapNaviViewController.h"
+#import "FECycleViewController.h"
 #import "FEWorkMainVC.h"
 
 NSString *const kSwitchTabNotification = @"SwitchTabNotification";
@@ -159,7 +159,7 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
     NSArray *titleArray = @[@"地图", @"骑行", @"任务", @"我的"];
     
     UIColor *normalFontColor = [UIColor colorWithHex:0x666666];
-    UIColor *selectedFontColor = [UIColor colorWithHex:0xDF2100];// [UIColor colorWithHex:0xEF3D3D];
+    UIColor *selectedFontColor = [UIColor colorWithHex:0x404040];// [UIColor colorWithHex:0xEF3D3D];
 
 
     // 按钮的宽、高
@@ -241,7 +241,7 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 - (DemonViewController *)rideManageVC
 {
     if (!_rideManageVC) {
-        _rideManageVC = [[FEMapNaviViewController alloc] init];
+        _rideManageVC = [[FECycleViewController alloc] init];
         [_rideManageVC.view setBackgroundColor:[UIColor blackColor]];
         _rideManageVC.title = @"导航";
     }

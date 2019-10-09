@@ -19,9 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GtU-Nx-Y9G">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GtU-Nx-Y9G">
+                    <rect key="frame" x="0.0" y="10" width="375" height="657"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="ixS-MN-vSf"/>
                         <outlet property="delegate" destination="-1" id="2fQ-VM-DZE"/>
@@ -30,7 +30,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="GtU-Nx-Y9G" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="0Ep-OL-AIS"/>
+                <constraint firstItem="GtU-Nx-Y9G" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="10" id="0Ep-OL-AIS"/>
                 <constraint firstItem="GtU-Nx-Y9G" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="8no-Uq-uIT"/>
                 <constraint firstItem="GtU-Nx-Y9G" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="drK-7v-hm9"/>
                 <constraint firstItem="GtU-Nx-Y9G" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="lRh-df-NBC"/>

@@ -39,13 +39,23 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - IQKeyboardManager (6.5.0)
+  - Mantle (2.1.0):
+    - Mantle/extobjc (= 2.1.0)
+  - Mantle/extobjc (2.1.0)
   - Masonry (1.1.0)
-  - MJExtension (3.1.2)
+  - MJExtension (3.2.0)
   - MJRefresh (3.2.0)
+  - MTLManagedObjectAdapter (1.0.3):
+    - Mantle (~> 2.0)
+    - MTLManagedObjectAdapter/extobjc (= 1.0.3)
+  - MTLManagedObjectAdapter/extobjc (1.0.3):
+    - Mantle (~> 2.0)
   - Qiniu (7.2.6)
-  - SDWebImage (5.1.1):
-    - SDWebImage/Core (= 5.1.1)
-  - SDWebImage/Core (5.1.1)
+  - SDWebImage (5.2.0):
+    - SDWebImage/Core (= 5.2.0)
+  - SDWebImage/Core (5.2.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AFNetworking
@@ -54,27 +64,34 @@ DEPENDENCIES:
   - AMapNavi-NO-IDFA
   - AMapSearch-NO-IDFA
   - BlocksKit
+  - IQKeyboardManager
+  - Mantle
   - Masonry
   - MJExtension
   - MJRefresh
+  - MTLManagedObjectAdapter (~> 1.0.3)
   - Qiniu (~> 7.1)
   - SDWebImage
+  - SVProgressHUD
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - AFNetworking
     - AMap3DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
     - AMapLocation-NO-IDFA
+    - AMapNavi-NO-IDFA
+    - AMapSearch-NO-IDFA
     - BlocksKit
+    - IQKeyboardManager
+    - Mantle
     - Masonry
     - MJExtension
     - MJRefresh
+    - MTLManagedObjectAdapter
     - Qiniu
     - SDWebImage
-  trunk:
-    - AMapNavi-NO-IDFA
-    - AMapSearch-NO-IDFA
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -84,12 +101,16 @@ SPEC CHECKSUMS:
   AMapNavi-NO-IDFA: e31341c7af48f751b41a0579e7a5aed8ff19836f
   AMapSearch-NO-IDFA: 264999e6c149383a8f164c2fe49b51513e93d674
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
+  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJExtension: 81e8e411ced318561dd09334b0c83d8227cef79c
+  MJExtension: e22bed65fdcd38e957242982b7384f2984c9088e
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  MTLManagedObjectAdapter: 631a53432675dcf03a9d90624afb3cececf54631
   Qiniu: 9d1f20dcc348919972b4ee1b1272f9b9d4a7e69e
-  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  SDWebImage: 609192dcf3898c910a2848032372ead951e66364
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 4a8065a2fd3ec85e1ff0c9713fe0a4a3d46bb4ac
+PODFILE CHECKSUM: 0c90b51521c0c3180b790e8fba1bcae321edead8
 
 COCOAPODS: 1.8.0

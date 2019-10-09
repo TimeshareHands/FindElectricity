@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = CS_Color_BackGroundGray;
+    self.view.backgroundColor = UIColorFromHex(0xf3f6f9);
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"map_back.png" highlightIcon:nil imageScale:1 target:self action:@selector(back)];
 }

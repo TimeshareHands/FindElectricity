@@ -13,6 +13,7 @@
 #import "CommonUtility.h"
 #import "MANaviRoute.h"
 #import "FELauchShow.h"
+#import "FEMapCategView.h"
 #import "FEMapWeather.h"
 #import "FEMapNavigiItem.h"
 #import "FEMessageViewController.h"
@@ -28,6 +29,7 @@
 @property (nonatomic, strong) UIButton *positionBtn;
 @property (nonatomic, strong) UIButton *shaiXuanBtn;
 @property (weak, nonatomic) FELauchShow *lauchShow;
+@property (weak, nonatomic) FEMapCategView *categView;
 @property (strong, nonatomic) FEMapWeather *weatherView;
 @property (strong, nonatomic) FEMapNavigiItem *naviRightItem;
 @property (nonatomic, weak) FEShopPopView *shopPopView;
@@ -57,7 +59,7 @@
 - (void)addView {
     //导航栏
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.weatherView];
-    UIView *rightItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
+    UIView *rightItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
     [rightItem addSubview:self.naviRightItem];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItem];
     [self.view addSubview:self.mapView];
@@ -81,18 +83,18 @@
     }];
     [self.chouJBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(60);
-        make.width.mas_equalTo(51);
-        make.top.equalTo(self.mapView).offset(20);
-        make.right.equalTo(self.mapView).offset(-20);
+        make.width.mas_equalTo(50);
+        make.top.equalTo(self.mapView).offset(25);
+        make.right.equalTo(self.mapView).offset(-10);
     }];
     [self.positionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.width.mas_equalTo(48);
-        make.bottom.equalTo(self.mapView).offset(-20);
-        make.right.equalTo(self.mapView).offset(-20);
+        make.height.width.mas_equalTo(36);
+        make.bottom.equalTo(self.mapView).offset(-10);
+        make.right.equalTo(self.chouJBtn);
     }];
     [self.shaiXuanBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.width.mas_equalTo(48);
-        make.bottom.equalTo(self.positionBtn.mas_top).offset(-10);
+        make.height.width.mas_equalTo(36);
+        make.bottom.equalTo(self.positionBtn.mas_top).offset(-17);
         make.right.equalTo(self.positionBtn);
     }];
     
@@ -172,9 +174,10 @@
     if (!_positionBtn) {
         _positionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_positionBtn setImage:[UIImage imageNamed:@"map_location"] forState:UIControlStateNormal];
+        WEAKSELF;
         [_positionBtn bk_addEventHandler:^(UIButton *sender) {
             //地位
-            
+            [weakSelf.mapView setCenterCoordinate:weakSelf.pointAnnotaiton.coordinate animated:YES];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _positionBtn;
@@ -186,7 +189,7 @@
         [_shaiXuanBtn setImage:[UIImage imageNamed:@"map_categ"] forState:UIControlStateNormal];
         [_shaiXuanBtn bk_addEventHandler:^(UIButton *sender) {
             //筛选
-            
+            [self.categView show];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _shaiXuanBtn;
@@ -216,10 +219,22 @@
     return _lauchShow;
 }
 
+- (FEMapCategView *)categView {
+    if (!_categView) {
+        _categView = [FEMapCategView createView];
+        _categView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        WEAKSELF;
+        _categView.comfirm = ^(FEMapCategView * _Nonnull view, NSString *status) {
+            MYLog(@"%@",status);
+        };
+    }
+    return _categView;
+}
+
 - (FEShopPopView *)shopPopView {
     if (!_shopPopView) {
         _shopPopView = [FEShopPopView createView];
-        _shopPopView.frame = CGRectMake(10, SCREEN_HEIGHT-175-10-SafeAreaBottomHeight-SafeAreaTopHeight, SCREEN_WIDTH-20, 175);
+        _shopPopView.frame = CGRectMake(0, SCREEN_HEIGHT-175-SafeAreaBottomHeight-SafeAreaTopHeight, SCREEN_WIDTH, 175);
         _shopPopView.hidden = YES;
         WEAKSELF;
         _shopPopView.didClick = ^(NSInteger tag) {

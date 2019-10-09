@@ -820,7 +820,7 @@
     if (self)
     {
         self.anntationVisible = YES;
-        self.routeColor = [UIColor blueColor];
+        self.routeColor = [UIColor colorWithRed:73.0f/255.0f green:189.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
         self.walkingColor = [UIColor cyanColor];
         self.railwayColor = [UIColor greenColor];
         

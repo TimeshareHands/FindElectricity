@@ -31,6 +31,9 @@
 		20916A88234B407F0045C7C8 /* FEPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A87234B407F0045C7C8 /* FEPointAnnotation.m */; };
 		20916A8B234B56060045C7C8 /* FEShopPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A8A234B56060045C7C8 /* FEShopPopView.m */; };
 		20916A8D234B566D0045C7C8 /* FEShopPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A8C234B566C0045C7C8 /* FEShopPopView.xib */; };
+		20916A8F234CBE490045C7C8 /* FEMapCategView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A8E234CBE490045C7C8 /* FEMapCategView.xib */; };
+		20916A92234CBE770045C7C8 /* FEMapCategView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A91234CBE770045C7C8 /* FEMapCategView.m */; };
+		20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A94234CD90E0045C7C8 /* UIViewController+FEDealloc.m */; };
 		4E02F1932343913300308D99 /* FEWorkMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1922343913300308D99 /* FEWorkMainVC.m */; };
 		4E02F1A52344351300308D99 /* FEWorkMainHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1A42344351300308D99 /* FEWorkMainHeadView.m */; };
 		4E02F1A823449DF700308D99 /* FETWorkMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1A723449DF700308D99 /* FETWorkMainTableViewCell.m */; };
@@ -129,6 +132,11 @@
 		20916A89234B56060045C7C8 /* FEShopPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEShopPopView.h; sourceTree = "<group>"; };
 		20916A8A234B56060045C7C8 /* FEShopPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEShopPopView.m; sourceTree = "<group>"; };
 		20916A8C234B566C0045C7C8 /* FEShopPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEShopPopView.xib; sourceTree = "<group>"; };
+		20916A8E234CBE490045C7C8 /* FEMapCategView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMapCategView.xib; sourceTree = "<group>"; };
+		20916A90234CBE770045C7C8 /* FEMapCategView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapCategView.h; sourceTree = "<group>"; };
+		20916A91234CBE770045C7C8 /* FEMapCategView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapCategView.m; sourceTree = "<group>"; };
+		20916A93234CD90E0045C7C8 /* UIViewController+FEDealloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+FEDealloc.h"; sourceTree = "<group>"; };
+		20916A94234CD90E0045C7C8 /* UIViewController+FEDealloc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+FEDealloc.m"; sourceTree = "<group>"; };
 		36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.release.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.release.xcconfig"; sourceTree = "<group>"; };
 		481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.debug.xcconfig"; sourceTree = "<group>"; };
 		4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -288,6 +296,9 @@
 				20916A592348CD1E0045C7C8 /* FELauchShow.h */,
 				20916A5A2348CD1E0045C7C8 /* FELauchShow.m */,
 				20916A5C2348CF650045C7C8 /* FELauchShow.xib */,
+				20916A90234CBE770045C7C8 /* FEMapCategView.h */,
+				20916A91234CBE770045C7C8 /* FEMapCategView.m */,
+				20916A8E234CBE490045C7C8 /* FEMapCategView.xib */,
 				20916A81234AF2820045C7C8 /* FEMessageCell.h */,
 				20916A82234AF2820045C7C8 /* FEMessageCell.m */,
 				20916A83234AF2820045C7C8 /* FEMessageCell.xib */,
@@ -604,6 +615,8 @@
 				4E063D40233A122900D6756A /* UIColor+Extend.m */,
 				20916A79234AF07E0045C7C8 /* UIBarButtonItem+MTAdditions.h */,
 				20916A7A234AF07E0045C7C8 /* UIBarButtonItem+MTAdditions.m */,
+				20916A93234CD90E0045C7C8 /* UIViewController+FEDealloc.h */,
+				20916A94234CD90E0045C7C8 /* UIViewController+FEDealloc.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -807,6 +820,7 @@
 				20916A5D2348CF650045C7C8 /* FELauchShow.xib in Resources */,
 				20916A8D234B566D0045C7C8 /* FEShopPopView.xib in Resources */,
 				4E02F20B2349798F00308D99 /* UMSocialSDKResources.bundle in Resources */,
+				20916A8F234CBE490045C7C8 /* FEMapCategView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -975,6 +989,8 @@
 				4E02F1ED2348AB2400308D99 /* FELoginRegisterModel.m in Sources */,
 				4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */,
 				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
+				20916A92234CBE770045C7C8 /* FEMapCategView.m in Sources */,
+				20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */,
 				4E063D55233A122900D6756A /* NSString+Extend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1172,6 +1188,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 28QC567322;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/UMSocialUI",

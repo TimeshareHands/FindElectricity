@@ -25,6 +25,13 @@ target 'FindElectricity' do
    pod 'AMapLocation-NO-IDFA'
    pod 'AMapNavi-NO-IDFA'
    pod 'AMapSearch-NO-IDFA'
+   pod 'SVProgressHUD'
+   pod 'IQKeyboardManager'
+   
+   # Mantle 增强 https://github.com/hilen/MantleExtension
+   pod 'Mantle'
+   pod 'MTLManagedObjectAdapter', '~> 1.0.3'
+   
    pod "Qiniu", "~> 7.1"
    pod 'BlocksKit'
 end
