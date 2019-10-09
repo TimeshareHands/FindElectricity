@@ -51,6 +51,9 @@
     
     //设置允许连续定位逆地理
     [self.locationManager setLocatingWithReGeocode:YES];
+    
+    //设置开启虚拟定位风险监测，可以根据需要开启
+    [self.locationManager setDetectRiskOfFakeLocation:NO];
 }
 
 - (void)addView{
@@ -196,6 +199,13 @@
     [self.locationManager startUpdatingLocation];
 }
 
+//停止定位
+- (void)stopUpdatingLocation
+{
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager setDelegate:nil];
+}
+
 //角度定位
 - (void)startHeadingLocation
 {
@@ -227,6 +237,13 @@
         _centerImg.image = [UIImage imageNamed:@"map_position.png"];
     }
     return _centerImg;
+}
+
+- (void)dealloc
+{
+    [self stopUpdatingLocation];
+    
+    self.completionBlock = nil;
 }
 
 /*

@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) locAction;
 //开始进行连续定位
 - (void)startUpdatingLocation;
-
+//停止定位
+- (void)stopUpdatingLocation;
 //角度定位
 - (void)startHeadingLocation;
 @end

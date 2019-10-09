@@ -71,7 +71,7 @@ DEPENDENCIES:
   - MJRefresh
   - MTLManagedObjectAdapter (~> 1.0.3)
   - Qiniu (~> 7.1)
-  - SDWebImage
+  - SDWebImage (= 5.2.0)
   - SVProgressHUD
 
 SPEC REPOS:
@@ -111,6 +111,6 @@ SPEC CHECKSUMS:
   SDWebImage: 609192dcf3898c910a2848032372ead951e66364
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 0c90b51521c0c3180b790e8fba1bcae321edead8
+PODFILE CHECKSUM: 9737c0a8a6940995fabd753219da6b18285f01ec
 
 COCOAPODS: 1.8.0

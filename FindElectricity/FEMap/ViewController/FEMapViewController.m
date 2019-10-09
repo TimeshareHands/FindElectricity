@@ -22,11 +22,10 @@
 #import "FEShopPopView.h"
 #import "FEShopDetailViewController.h"
 #import "FindTabBarController.h"
+#import "FECycleMap.h"
 @interface FEMapViewController ()<MAMapViewDelegate,AMapLocationManagerDelegate,AMapSearchDelegate>
-@property (nonatomic, strong) MAMapView *mapView;
-@property (nonatomic, strong) UIImageView *centerImg;
+@property (nonatomic, strong) FECycleMap *mapView;
 @property (nonatomic, strong) UIButton *chouJBtn;
-@property (nonatomic, strong) UIButton *positionBtn;
 @property (nonatomic, strong) UIButton *shaiXuanBtn;
 @property (weak, nonatomic) FELauchShow *lauchShow;
 @property (weak, nonatomic) FEMapCategView *categView;
@@ -51,9 +50,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self addView];
-    
-    [self initCompleteBlock];
-    [self configLocationManager];
 }
 
 - (void)addView {
@@ -63,9 +59,7 @@
     [rightItem addSubview:self.naviRightItem];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItem];
     [self.view addSubview:self.mapView];
-    [self.mapView addSubview:self.centerImg];
     [self.mapView addSubview:self.chouJBtn];
-    [self.mapView addSubview:self.positionBtn];
     [self.mapView addSubview:self.shaiXuanBtn];
     [self.mapView addSubview:self.shopPopView];
     [self makeUpconstraint];
@@ -76,34 +70,23 @@
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.mas_equalTo(self.view);
     }];
-    [self.centerImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(31);
-        make.width.mas_equalTo(20);
-        make.centerX.centerY.equalTo(self.mapView);
-    }];
     [self.chouJBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(60);
         make.width.mas_equalTo(50);
         make.top.equalTo(self.mapView).offset(25);
         make.right.equalTo(self.mapView).offset(-10);
     }];
-    [self.positionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.width.mas_equalTo(36);
-        make.bottom.equalTo(self.mapView).offset(-10);
-        make.right.equalTo(self.chouJBtn);
-    }];
     [self.shaiXuanBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.width.mas_equalTo(36);
-        make.bottom.equalTo(self.positionBtn.mas_top).offset(-17);
-        make.right.equalTo(self.positionBtn);
+        make.bottom.equalTo(self.mapView).offset(-61);
+        make.right.equalTo(self.chouJBtn);
     }];
     
-//    [self.shopPopView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(175);
-//        make.bottom.equalTo(self.mapView).offset(-10);
-//        make.right.equalTo(self.mapView).offset(20);
-//        make.left.equalTo(self.mapView).offset(-20);
-//    }];
+    [self.shopPopView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(175);
+        make.bottom.right.left.equalTo(self.mapView).offset(0);
+        
+    }];
 }
 
 - (FEMapWeather *)weatherView {
@@ -136,21 +119,13 @@
 
 - (MAMapView *)mapView {
     if (!_mapView) {
-        _mapView = [[MAMapView alloc] init];
+        _mapView = [[FECycleMap alloc] init];
         _mapView.delegate = self;
         _mapView.allowsAnnotationViewSorting = NO;
 //        _mapView.showsUserLocation = YES;
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
-}
-
-- (UIImageView *)centerImg {
-    if (!_centerImg) {
-        _centerImg = [[UIImageView alloc] init];
-        _centerImg.image = [UIImage imageNamed:@"map_position.png"];
-    }
-    return _centerImg;
 }
 
 - (UIButton *)chouJBtn {
@@ -168,19 +143,6 @@
 #pragma 抽奖
 - (void)goChouJiang {
     
-}
-
-- (UIButton *)positionBtn {
-    if (!_positionBtn) {
-        _positionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_positionBtn setImage:[UIImage imageNamed:@"map_location"] forState:UIControlStateNormal];
-        WEAKSELF;
-        [_positionBtn bk_addEventHandler:^(UIButton *sender) {
-            //地位
-            [weakSelf.mapView setCenterCoordinate:weakSelf.mapView.userLocation.coordinate animated:YES];
-        } forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _positionBtn;
 }
 
 - (UIButton *)shaiXuanBtn {
@@ -234,7 +196,7 @@
 - (FEShopPopView *)shopPopView {
     if (!_shopPopView) {
         _shopPopView = [FEShopPopView createView];
-        _shopPopView.frame = CGRectMake(0, SCREEN_HEIGHT-175-SafeAreaBottomHeight-SafeAreaTopHeight, SCREEN_WIDTH, 175);
+//        _shopPopView.frame = CGRectMake(0, SCREEN_HEIGHT-175-SafeAreaBottomHeight-SafeAreaTopHeight, SCREEN_WIDTH, 175);
         _shopPopView.hidden = YES;
         WEAKSELF;
         _shopPopView.didClick = ^(NSInteger tag) {
@@ -247,121 +209,12 @@
     return _shopPopView;
 }
 
-- (void)configLocationManager
-{
-    self.locationManager = [[AMapLocationManager alloc] init];
-
-    [self.locationManager setDelegate:self];
-
-    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
-
-    //设置期望定位精度
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
-    
-    //设置不允许系统暂停定位
-    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
-    
-    //设置允许在后台定位
-//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
-    
-    //设置定位超时时间
-    [self.locationManager setLocationTimeout:6];
-    
-    //设置逆地理超时时间
-    [self.locationManager setReGeocodeTimeout:3];
-    
-    //设置开启虚拟定位风险监测，可以根据需要开启
-    [self.locationManager setDetectRiskOfFakeLocation:NO];
-    
-    [self.locationManager startUpdatingLocation];
-}
-
 - (void)cleanUpAction
 {
     //停止定位
-    [self.locationManager stopUpdatingLocation];
-    
-    [self.locationManager setDelegate:nil];
+    [self.mapView stopUpdatingLocation];
 
     [self.mapView removeAnnotations:self.mapView.annotations];
-}
-
-- (void)reGeocodeAction
-{
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    
-    //进行单次带逆地理定位请求
-    [self.locationManager requestLocationWithReGeocode:YES completionBlock:self.completionBlock];
-}
-
-- (void)locAction
-{
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    
-    //进行单次定位请求
-    [self.locationManager requestLocationWithReGeocode:NO completionBlock:self.completionBlock];
-}
-
-#pragma mark - Initialization
-
-- (void)initCompleteBlock
-{
-    WEAKSELF;
-    self.completionBlock = ^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error)
-    {
-        if (error != nil && error.code == AMapLocationErrorLocateFailed)
-        {
-            //定位错误：此时location和regeocode没有返回值，不进行annotation的添加
-            NSLog(@"定位错误:{%ld - %@};", (long)error.code, error.userInfo);
-            return;
-        }
-        else if (error != nil
-                 && (error.code == AMapLocationErrorReGeocodeFailed
-                     || error.code == AMapLocationErrorTimeOut
-                     || error.code == AMapLocationErrorCannotFindHost
-                     || error.code == AMapLocationErrorBadURL
-                     || error.code == AMapLocationErrorNotConnectedToInternet
-                     || error.code == AMapLocationErrorCannotConnectToHost))
-        {
-            //逆地理错误：在带逆地理的单次定位中，逆地理过程可能发生错误，此时location有返回值，regeocode无返回值，进行annotation的添加
-            NSLog(@"逆地理错误:{%ld - %@};", (long)error.code, error.userInfo);
-        }
-        else if (error != nil && error.code == AMapLocationErrorRiskOfFakeLocation)
-        {
-            //存在虚拟定位的风险：此时location和regeocode没有返回值，不进行annotation的添加
-            NSLog(@"存在虚拟定位的风险:{%ld - %@};", (long)error.code, error.userInfo);
-            
-            //存在虚拟定位的风险的定位结果
-            __unused CLLocation *riskyLocateResult = [error.userInfo objectForKey:@"AMapLocationRiskyLocateResult"];
-            //存在外接的辅助定位设备
-            __unused NSDictionary *externalAccressory = [error.userInfo objectForKey:@"AMapLocationAccessoryInfo"];
-            
-            return;
-        }
-        else
-        {
-            //没有错误：location有返回值，regeocode是否有返回值取决于是否进行逆地理操作，进行annotation的添加
-        }
-        
-        //根据定位信息，添加annotation
-        FEPointAnnotation *annotation = [[FEPointAnnotation alloc] init];
-        [annotation setCoordinate:location.coordinate];
-        
-        //有无逆地理信息，annotationView的标题显示的字段不一样
-        if (regeocode)
-        {
-            [annotation setTitle:[NSString stringWithFormat:@"%@", regeocode.formattedAddress]];
-            [annotation setSubtitle:[NSString stringWithFormat:@"%@-%@-%.2fm", regeocode.citycode, regeocode.adcode, location.horizontalAccuracy]];
-        }
-        else
-        {
-            [annotation setTitle:[NSString stringWithFormat:@"lat:%f;lon:%f;", location.coordinate.latitude, location.coordinate.longitude]];
-            [annotation setSubtitle:[NSString stringWithFormat:@"accuracy:%.2fm", location.horizontalAccuracy]];
-        }
-        
-        FEMapViewController *strongSelf = weakSelf;
-        [strongSelf addAnnotationToMapView:annotation];
-    };
 }
 
 - (void)addAnnotationToMapView:(id<MAAnnotation>)annotation
@@ -489,45 +342,24 @@
     return nil;
 }
 
-#pragma mark - AMapLocationManager Delegate
-
-- (void)amapLocationManager:(AMapLocationManager *)manager doRequireLocationAuth:(CLLocationManager *)locationManager
-{
-    [locationManager requestAlwaysAuthorization];
-}
-
-- (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
-{
-    NSLog(@"%s, amapLocationManager = %@, error = %@", __func__, [manager class], error);
-    
-    if (error.code == AMapLocationErrorRiskOfFakeLocation) {
-        NSLog(@"存在虚拟定位的风险:{%ld - %@};", (long)error.code, error.userInfo);
-        
-        //存在虚拟定位的风险的定位结果
-        __unused CLLocation *riskyLocateResult = [error.userInfo objectForKey:@"AMapLocationRiskyLocateResult"];
-        //存在外接的辅助定位设备
-        __unused NSDictionary *externalAccressory = [error.userInfo objectForKey:@"AMapLocationAccessoryInfo"];
-    }
-}
-
-- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode
-{
-    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress);
-    
-    //获取到定位信息，更新annotation
-    if (self.pointAnnotaiton == nil)
-    {
-        self.pointAnnotaiton = [[FEPointAnnotation alloc] init];
-        self.pointAnnotaiton.type = FEPointAnnotLoc;
-        [self.pointAnnotaiton setCoordinate:location.coordinate];
-        
-        [self addAnnotationToMapView:self.pointAnnotaiton];
-    }
-    
-    [self.pointAnnotaiton setCoordinate:location.coordinate];
-    
-    [self.mapView setCenterCoordinate:location.coordinate];
-}
+//- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode
+//{
+//    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress);
+//
+//    //获取到定位信息，更新annotation
+//    if (self.pointAnnotaiton == nil)
+//    {
+//        self.pointAnnotaiton = [[FEPointAnnotation alloc] init];
+//        self.pointAnnotaiton.type = FEPointAnnotLoc;
+//        [self.pointAnnotaiton setCoordinate:location.coordinate];
+//
+//        [self addAnnotationToMapView:self.pointAnnotaiton];
+//    }
+//
+//    [self.pointAnnotaiton setCoordinate:location.coordinate];
+//
+//    [self.mapView setCenterCoordinate:location.coordinate];
+//}
 
 #pragma mark - mapview delegate
 - (void)mapInitComplete:(MAMapView *)mapView {
