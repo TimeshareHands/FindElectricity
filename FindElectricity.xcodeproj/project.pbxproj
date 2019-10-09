@@ -66,6 +66,10 @@
 		4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D51233A122900D6756A /* DemonNavigationController.m */; };
 		4E063D59233A122900D6756A /* DemonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D52233A122900D6756A /* DemonViewController.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
+		CB826161234C6DDD00DA6D21 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB82615F234C6DDD00DA6D21 /* CommonUtility.m */; };
+		CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826164234C714200DA6D21 /* MANaviPolyline.m */; };
+		CB82616C234C714300DA6D21 /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826166234C714200DA6D21 /* LineDashPolyline.m */; };
+		CB82616D234C714300DA6D21 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826168234C714200DA6D21 /* MANaviRoute.m */; };
 		D532EF3E72AEF38A889770FB /* Pods_FindElectricityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +207,14 @@
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89DC2668A0F80A8AA3A406CF /* Pods-FindElectricityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB82615F234C6DDD00DA6D21 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
+		CB826160234C6DDD00DA6D21 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
+		CB826164234C714200DA6D21 /* MANaviPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviPolyline.m; sourceTree = "<group>"; };
+		CB826165234C714200DA6D21 /* LineDashPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDashPolyline.h; sourceTree = "<group>"; };
+		CB826166234C714200DA6D21 /* LineDashPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDashPolyline.m; sourceTree = "<group>"; };
+		CB826167234C714200DA6D21 /* MANaviPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviPolyline.h; sourceTree = "<group>"; };
+		CB826168234C714200DA6D21 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
+		CB826169234C714300DA6D21 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
 		E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -254,6 +266,12 @@
 		20916A44234789530045C7C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB826165234C714200DA6D21 /* LineDashPolyline.h */,
+				CB826166234C714200DA6D21 /* LineDashPolyline.m */,
+				CB826167234C714200DA6D21 /* MANaviPolyline.h */,
+				CB826164234C714200DA6D21 /* MANaviPolyline.m */,
+				CB826169234C714300DA6D21 /* MANaviRoute.h */,
+				CB826168234C714200DA6D21 /* MANaviRoute.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +326,8 @@
 				20916A73234AEF410045C7C8 /* MTResourceManager.m */,
 				20916A75234AEF410045C7C8 /* UIViewExt.h */,
 				20916A72234AEF410045C7C8 /* UIViewExt.m */,
+				CB826160234C6DDD00DA6D21 /* CommonUtility.h */,
+				CB82615F234C6DDD00DA6D21 /* CommonUtility.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -929,19 +949,23 @@
 				20916A4D234789530045C7C8 /* FEMapViewController.m in Sources */,
 				4E02F1F32348DF1000308D99 /* FEUserOperation.m in Sources */,
 				20916A84234AF2820045C7C8 /* FEMessageCell.m in Sources */,
+				CB826161234C6DDD00DA6D21 /* CommonUtility.m in Sources */,
 				4E02F1A823449DF700308D99 /* FETWorkMainTableViewCell.m in Sources */,
 				20916A5323478B1F0045C7C8 /* FEMapNavigiItem.m in Sources */,
 				20916A50234789530045C7C8 /* FEMapNaviViewController.m in Sources */,
 				20916A77234AEF420045C7C8 /* UIViewExt.m in Sources */,
 				4E063D57233A122900D6756A /* FindTabBarController.m in Sources */,
 				20916A5723478DDA0045C7C8 /* FECycleViewController.m in Sources */,
+				CB82616D234C714300DA6D21 /* MANaviRoute.m in Sources */,
 				20916A88234B407F0045C7C8 /* FEPointAnnotation.m in Sources */,
 				20916A7F234AF19A0045C7C8 /* FEShopDetailViewController.m in Sources */,
 				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,
 				20916A602348D4760045C7C8 /* FEViewXib.m in Sources */,
 				4E02F1A52344351300308D99 /* FEWorkMainHeadView.m in Sources */,
 				4E063D1B233A104F00D6756A /* main.m in Sources */,
+				CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */,
 				4E02F1BA23461F6000308D99 /* FEWorkEValueShopVC.m in Sources */,
+				CB82616C234C714300DA6D21 /* LineDashPolyline.m in Sources */,
 				20916A8B234B56060045C7C8 /* FEShopPopView.m in Sources */,
 				4E02F1B72346175A00308D99 /* FEWorkGetGiftCell.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,
@@ -1113,9 +1137,41 @@
 			baseConfigurationReference = 481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28QC567322;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = J677Q28PH8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/UMSocialUI",
+					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5",
+					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/common_ios_2.0.1/normal",
+				);
+				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
+				INFOPLIST_FILE = FindElectricity/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/SocialLibraries/QQ",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
+				PRODUCT_NAME = "找电";
+				PROVISIONING_PROFILE_SPECIFIER = FindElectricity;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4E063D36233A104F00D6756A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/UMSocialUI",
@@ -1137,37 +1193,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
 				PRODUCT_NAME = "找电";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		4E063D36233A104F00D6756A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28QC567322;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/UMSocialUI",
-					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5",
-					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/common_ios_2.0.1/normal",
-				);
-				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
-				INFOPLIST_FILE = FindElectricity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/SocialLibraries/WeChat",
-					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/SocialLibraries/QQ",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
-				PRODUCT_NAME = "找电";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -14,6 +14,11 @@ typedef NS_ENUM(NSInteger,FEPointAnnotType){
     FEPointAnnotFix = 1,
     FEPointAnnotQuickChong = 2,
     FEPointAnnotSlowlyChong = 3,
+    FEPointAnnotRiding = 10,
+    FEPointAnnotDrive = 11,
+    FEPointAnnotWalking = 12,
+    FEPointAnnotBus = 13,
+    FEPointAnnotRailway = 14,
 };
 @interface FEPointAnnotation : MAPointAnnotation
 @property (assign, nonatomic) FEPointAnnotType type; 

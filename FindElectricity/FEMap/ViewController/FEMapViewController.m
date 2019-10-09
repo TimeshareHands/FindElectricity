@@ -10,6 +10,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
+#import "CommonUtility.h"
+#import "MANaviRoute.h"
 #import "FELauchShow.h"
 #import "FEMapWeather.h"
 #import "FEMapNavigiItem.h"
@@ -33,7 +35,11 @@
 @property (nonatomic, strong) AMapLocationManager *locationManager;
 @property (nonatomic, copy) AMapLocatingCompletionBlock completionBlock;
 @property (nonatomic, strong) FEPointAnnotation *pointAnnotaiton;
+@property (assign, nonatomic) CLLocationCoordinate2D startCoordinate; //起始点经纬度
+@property (assign, nonatomic) CLLocationCoordinate2D destinationCoordinate;
 @property (nonatomic, strong) AMapSearchAPI *search;
+@property (strong, nonatomic) AMapRoute *route;  //路径规划信息
+@property (strong, nonatomic) MANaviRoute * naviRoute;  //用于显示当前路线方案.
 @end
 
 @implementation FEMapViewController
@@ -51,7 +57,7 @@
 - (void)addView {
     //导航栏
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.weatherView];
-    UIView *rightItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    UIView *rightItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
     [rightItem addSubview:self.naviRightItem];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItem];
     [self.view addSubview:self.mapView];
@@ -89,6 +95,7 @@
         make.bottom.equalTo(self.positionBtn.mas_top).offset(-10);
         make.right.equalTo(self.positionBtn);
     }];
+    
 //    [self.shopPopView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.height.mas_equalTo(175);
 //        make.bottom.equalTo(self.mapView).offset(-10);
@@ -107,7 +114,7 @@
 
 - (FEMapNavigiItem *)naviRightItem {
     if (!_naviRightItem) {
-        _naviRightItem = [[FEMapNavigiItem alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+        _naviRightItem = [[FEMapNavigiItem alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
         WEAKSELF;
         _naviRightItem.didTap = ^void(NSInteger tag) {
             if (tag==0) {
@@ -130,8 +137,8 @@
         _mapView = [[MAMapView alloc] init];
         _mapView.delegate = self;
         _mapView.allowsAnnotationViewSorting = NO;
-        _mapView.showsUserLocation = YES;
-        _mapView.userTrackingMode = MAUserTrackingModeFollow;
+//        _mapView.showsUserLocation = YES;
+//        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
 }
@@ -380,11 +387,13 @@
     AMapRidingRouteSearchRequest *navi = [[AMapRidingRouteSearchRequest alloc] init];
 
     /* 出发点. {28.201112, 112.97111}*/
-    navi.origin = [AMapGeoPoint locationWithLatitude:28.20111
+    navi.origin = [AMapGeoPoint locationWithLatitude:28.201112
                                            longitude:112.97111];
+    self.startCoordinate = (CLLocationCoordinate2D){28.201112, 112.97111};
     /* 目的地. */
     navi.destination = [AMapGeoPoint locationWithLatitude:toCoord.latitude
                                                 longitude:toCoord.longitude];
+    self.destinationCoordinate = toCoord;
     [self.search AMapRidingRouteSearch:navi];
 }
 
@@ -395,13 +404,37 @@
     {
         return;
     }
+    self.route = response.route;
+    [self presentCurrentRouteCourse];
+}
+
+//在地图上显示当前选择的路径
+- (void)presentCurrentRouteCourse {
     
-   //解析response获取路径信息，具体解析见 Demo
-    //构造折线对象
-//    MAPolyline *commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:4];
-//
-//    //在地图上添加折线对象
-//    [_mapView addOverlay: commonPolyline];
+    if (self.route.paths.count <= 0) {
+        return;
+    }
+    
+    [self.naviRoute removeFromMapView];  //清空地图上已有的路线
+    
+    
+    FEPointAnnotType type = FEPointAnnotRiding; //骑行类型
+    
+    AMapGeoPoint *startPoint = [AMapGeoPoint locationWithLatitude:self.startCoordinate.latitude longitude:self.startCoordinate.longitude]; //起点
+
+    AMapGeoPoint *endPoint = [AMapGeoPoint locationWithLatitude:self.destinationCoordinate.latitude longitude:self.destinationCoordinate.longitude];  //终点
+    
+    //根据已经规划的路径，起点，终点，规划类型，是否显示实时路况，生成显示方案
+    self.naviRoute = [MANaviRoute naviRouteForPath:self.route.paths[0] withNaviType:type showTraffic:NO startPoint:startPoint endPoint:endPoint];
+    
+    [self.naviRoute addToMapView:self.mapView];  //显示到地图上
+    
+    UIEdgeInsets edgePaddingRect = UIEdgeInsetsMake(10, 10, 10, 10);
+    
+    //缩放地图使其适应polylines的展示
+    [self.mapView setVisibleMapRect:[CommonUtility mapRectForOverlays:self.naviRoute.routePolylines]
+                        edgePadding:edgePaddingRect
+                           animated:NO];
 }
 
 - (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
@@ -411,14 +444,30 @@
 
 - (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
 {
-    if ([overlay isKindOfClass:[MAPolyline class]])
-    {
-        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
+    //虚线，如需要步行的
+    if ([overlay isKindOfClass:[LineDashPolyline class]]) {
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:((LineDashPolyline *)overlay).polyline];
+        polylineRenderer.lineWidth = 6;
+        polylineRenderer.lineDash = YES;
+        polylineRenderer.strokeColor = [UIColor redColor];
+
+        return polylineRenderer;
+    }
+    
+    //showTraffic为NO时，不需要带实时路况，路径为单一颜色
+    if ([overlay isKindOfClass:[MANaviPolyline class]]) {
+        MANaviPolyline *naviPolyline = (MANaviPolyline *)overlay;
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:naviPolyline.polyline];
         
-        polylineRenderer.lineWidth    = 8.f;
-        polylineRenderer.strokeColor  = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.6];
-        polylineRenderer.lineJoinType = kMALineJoinRound;
-        polylineRenderer.lineCapType  = kMALineCapRound;
+        polylineRenderer.lineWidth = 6;
+        
+        if (naviPolyline.type == FEPointAnnotWalking) {
+            polylineRenderer.strokeColor = self.naviRoute.walkingColor;
+        } else if (naviPolyline.type == FEPointAnnotRailway) {
+            polylineRenderer.strokeColor = self.naviRoute.railwayColor;
+        } else {
+            polylineRenderer.strokeColor = self.naviRoute.routeColor;
+        }
         
         return polylineRenderer;
     }
@@ -506,16 +555,28 @@
             [annotationView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(annotationClick:)]];
         }
         FEPointAnnotType type = ((FEPointAnnotation *)annotation).type;
-        if (type==FEPointAnnotFix) {
-            annotationView.image = [UIImage imageNamed:@"map_fix.png"];
-        }else if (type == FEPointAnnotSlowlyChong){
-            annotationView.image = [UIImage imageNamed:@"map_manch.png"];
-        }else if (type == FEPointAnnotQuickChong){
-            annotationView.image = [UIImage imageNamed:@"map_quickch.png"];
-        }else{
-            annotationView.image            = [UIImage imageNamed:@"icon_location.png"];
+        switch (type) {
+            case FEPointAnnotFix:
+                annotationView.image = [UIImage imageNamed:@"map_fix.png"];
+                break;
+                
+            case FEPointAnnotSlowlyChong:
+                annotationView.image = [UIImage imageNamed:@"map_manch.png"];
+                break;
+                
+            case FEPointAnnotQuickChong:
+                annotationView.image = [UIImage imageNamed:@"map_quickch.png"];
+                break;
+                
+            case FEPointAnnotRiding:
+                annotationView.image = [UIImage imageNamed:@"map_ride"];
+                break;
+            case FEPointAnnotLoc:
+                annotationView.image = [UIImage imageNamed:@"icon_location"];
+                break;
+            default:
+                break;
         }
-        
         annotationView.canShowCallout = YES;
         return annotationView;
     }
@@ -527,6 +588,7 @@
 {
     NSLog(@"onClick-%@", annoView.annotation.title);
     self.shopPopView.hidden = NO;
+    [self ridingRouteSearchFromCoord:self.pointAnnotaiton.coordinate toCoord:annoView.annotation.coordinate];
 //    [self.navigationController.navigationBar setHidden:YES];
 //    [[self rootTabBarController].tabBar setHidden:YES];
 }
@@ -534,7 +596,6 @@
 - (void)mapView:(MAMapView *)mapView didDeselectAnnotationView:(MAAnnotationView *)view{
     NSLog(@"remove-%@", view.annotation.title);
     self.shopPopView.hidden = YES;
-    [self ridingRouteSearchFromCoord:self.pointAnnotaiton.coordinate toCoord:view.annotation.coordinate];
 }
 
 - (FindTabBarController *)rootTabBarController{
