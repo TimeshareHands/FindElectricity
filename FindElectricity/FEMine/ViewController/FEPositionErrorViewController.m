@@ -7,8 +7,10 @@
 //
 
 #import "FEPositionErrorViewController.h"
-
-@interface FEPositionErrorViewController ()
+#import "FEShopListCell.h"
+@interface FEPositionErrorViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (copy, nonatomic) NSMutableArray *dataSource;
 
 @end
 
@@ -16,7 +18,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setNavgaTitle:@"纠错的店铺"];
+    [self initData];
+}
+
+- (void)initData {
+    _dataSource = [NSMutableArray array];
+}
+
+#pragma mark --tableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"cell";
+    FEShopListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell==nil)
+    {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"FEShopListCell" owner:self options:nil][0];
+    }
+    cell.btn.hidden = YES;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 93;
 }
 
 /*
