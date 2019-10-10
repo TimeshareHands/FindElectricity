@@ -11,7 +11,7 @@
 #import "FEMapViewController.h"
 #import "FECycleViewController.h"
 #import "FEWorkMainVC.h"
-
+#import "FELoginViewController.h"
 NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 
 @interface FindTabBarController()
@@ -203,6 +203,10 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:item.tag];
     [self switchTab:indexPath];
+    if (![FEUserOperation manager].userModel) {
+          FELoginViewController *loginVC =[[FELoginViewController alloc]init];
+          [self presentViewController:loginVC animated:YES completion:nil];
+    }
 }
 
 - (void)switchTab:(NSIndexPath *)indexPath

@@ -34,4 +34,8 @@
 #import "BlocksKit+UIKit.h"
 #import "NetUrlHeader.h"
 #import "UIViewExt.h"
+#import "FEUserOperation.h"
+#import "FELoginRegisterModel.h"
+#import "NetWorkManger.h"
+#import "UIViewController+HUD.h"
 #endif

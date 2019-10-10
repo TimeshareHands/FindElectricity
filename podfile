@@ -18,7 +18,6 @@ target 'FindElectricity' do
   end
    pod 'AFNetworking'
    pod 'Masonry'
-   pod 'SDWebImage','5.2.0'
    pod 'MJExtension'
    pod 'MJRefresh'
    pod 'AMap3DMap-NO-IDFA'
