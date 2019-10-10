@@ -8,12 +8,18 @@
 
 #import "FEMineMsgViewController.h"
 #import "FEMineMsgCell.h"
+#import "FEMsgChangeViewController.h"
+#import "FEChangePhoneViewController.h"
+#import "FESignChangeViewController.h"
 @interface FEMineMsgViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (copy, nonatomic) NSArray *dataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *nickname;
-@property (weak, nonatomic) IBOutlet UILabel *leve;
-@property (weak, nonatomic) IBOutlet UILabel *sign;
+@property (weak, nonatomic) FEMineMsgCell *avtCell;
+@property (weak, nonatomic) FEMineMsgCell *nicknameCell;
+@property (weak, nonatomic) FEMineMsgCell *sexCell;
+@property (weak, nonatomic) FEMineMsgCell *phoneCell;
+@property (weak, nonatomic) FEMineMsgCell *addressCell;
+@property (weak, nonatomic) FEMineMsgCell *signCell;
 
 
 @end
@@ -65,30 +71,35 @@
             {
                 //头像
                 cell.img.hidden = NO;
+                _avtCell = cell;
                 break;
             }
             case 1:
             {
                 //名称
-                
+                _nicknameCell = cell;
+                _nicknameCell.rightLab.text = @"小李";
                 break;
             }
             case 2:
             {
                 //性别
-                
+                _sexCell = cell;
+                _sexCell.rightLab.text = @"男";
                 break;
             }
             case 3:
             {
                 //电话号码
-                
+                _phoneCell = cell;
+                _phoneCell.rightLab.text = @"15667676668";
                 break;
             }
             case 4:
             {
                 //地址
-                
+                _addressCell = cell;
+                _addressCell.rightLab.text = @"长沙";
                 break;
             }
             default:
@@ -99,7 +110,8 @@
             case 0:
             {
                 //签名
-                
+                _signCell = cell;
+                _signCell.rightLab.text = @"你牛逼";
                 break;
             }
             default:
@@ -122,7 +134,9 @@
             case 1:
             {
                 //名称
-                
+                FEMsgChangeViewController *vc = [[FEMsgChangeViewController alloc] init];
+                vc.mscCell = _nicknameCell;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             case 2:
@@ -134,7 +148,8 @@
             case 3:
             {
                 //电话号码
-                
+                FEMsgChangeViewController *vc = [[FEMsgChangeViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             case 4:
@@ -151,7 +166,9 @@
             case 0:
             {
                 //签名
-                
+                FESignChangeViewController *vc = [[FESignChangeViewController alloc] init];
+                vc.mscCell = _signCell;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             default:

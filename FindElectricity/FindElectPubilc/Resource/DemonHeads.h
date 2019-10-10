@@ -32,6 +32,7 @@
 #import "CSColor.h"
 #import "DemonViewController.h"
 #import "BlocksKit+UIKit.h"
+#import "SVProgressHUD.h"
 #import "NetUrlHeader.h"
 #import "UIViewExt.h"
 #import "FEUserOperation.h"

@@ -34,6 +34,12 @@
 		20916A8F234CBE490045C7C8 /* FEMapCategView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A8E234CBE490045C7C8 /* FEMapCategView.xib */; };
 		20916A92234CBE770045C7C8 /* FEMapCategView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A91234CBE770045C7C8 /* FEMapCategView.m */; };
 		20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A94234CD90E0045C7C8 /* UIViewController+FEDealloc.m */; };
+		20916A99234F7FD60045C7C8 /* FEMsgChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A97234F7FD60045C7C8 /* FEMsgChangeViewController.m */; };
+		20916A9A234F7FD60045C7C8 /* FEMsgChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A98234F7FD60045C7C8 /* FEMsgChangeViewController.xib */; };
+		20916A9E234F85770045C7C8 /* FESignChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A9C234F85760045C7C8 /* FESignChangeViewController.m */; };
+		20916A9F234F85770045C7C8 /* FESignChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A9D234F85770045C7C8 /* FESignChangeViewController.xib */; };
+		20916AA3234F85A90045C7C8 /* FEChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916AA1234F85A90045C7C8 /* FEChangePhoneViewController.m */; };
+		20916AA4234F85A90045C7C8 /* FEChangePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916AA2234F85A90045C7C8 /* FEChangePhoneViewController.xib */; };
 		4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1EF2348C55900308D99 /* NetWorkManger.m */; };
 		4E02F1F32348DF1000308D99 /* FEUserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1F22348DF1000308D99 /* FEUserOperation.m */; };
 		4E02F20B2349798F00308D99 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E02F1FE2349798F00308D99 /* UMSocialSDKResources.bundle */; };
@@ -245,6 +251,15 @@
 		20916A91234CBE770045C7C8 /* FEMapCategView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapCategView.m; sourceTree = "<group>"; };
 		20916A93234CD90E0045C7C8 /* UIViewController+FEDealloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+FEDealloc.h"; sourceTree = "<group>"; };
 		20916A94234CD90E0045C7C8 /* UIViewController+FEDealloc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+FEDealloc.m"; sourceTree = "<group>"; };
+		20916A96234F7FD60045C7C8 /* FEMsgChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMsgChangeViewController.h; sourceTree = "<group>"; };
+		20916A97234F7FD60045C7C8 /* FEMsgChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMsgChangeViewController.m; sourceTree = "<group>"; };
+		20916A98234F7FD60045C7C8 /* FEMsgChangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMsgChangeViewController.xib; sourceTree = "<group>"; };
+		20916A9B234F85760045C7C8 /* FESignChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESignChangeViewController.h; sourceTree = "<group>"; };
+		20916A9C234F85760045C7C8 /* FESignChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESignChangeViewController.m; sourceTree = "<group>"; };
+		20916A9D234F85770045C7C8 /* FESignChangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FESignChangeViewController.xib; sourceTree = "<group>"; };
+		20916AA0234F85A90045C7C8 /* FEChangePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEChangePhoneViewController.h; sourceTree = "<group>"; };
+		20916AA1234F85A90045C7C8 /* FEChangePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEChangePhoneViewController.m; sourceTree = "<group>"; };
+		20916AA2234F85A90045C7C8 /* FEChangePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEChangePhoneViewController.xib; sourceTree = "<group>"; };
 		36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.release.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.release.xcconfig"; sourceTree = "<group>"; };
 		481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.debug.xcconfig"; sourceTree = "<group>"; };
 		4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1238,6 +1253,15 @@
 				CBEDBD64234F09F300A923A3 /* FEMineMsgViewController.h */,
 				CBEDBD65234F09F300A923A3 /* FEMineMsgViewController.m */,
 				CBEDBD66234F09F300A923A3 /* FEMineMsgViewController.xib */,
+				20916A9B234F85760045C7C8 /* FESignChangeViewController.h */,
+				20916A9C234F85760045C7C8 /* FESignChangeViewController.m */,
+				20916A9D234F85770045C7C8 /* FESignChangeViewController.xib */,
+				20916AA0234F85A90045C7C8 /* FEChangePhoneViewController.h */,
+				20916AA1234F85A90045C7C8 /* FEChangePhoneViewController.m */,
+				20916AA2234F85A90045C7C8 /* FEChangePhoneViewController.xib */,
+				20916A96234F7FD60045C7C8 /* FEMsgChangeViewController.h */,
+				20916A97234F7FD60045C7C8 /* FEMsgChangeViewController.m */,
+				20916A98234F7FD60045C7C8 /* FEMsgChangeViewController.xib */,
 				CBEDBD69234F0A1D00A923A3 /* FEAddressViewController.h */,
 				CBEDBD6A234F0A1D00A923A3 /* FEAddressViewController.m */,
 				CBEDBD6B234F0A1D00A923A3 /* FEAddressViewController.xib */,
@@ -1406,6 +1430,7 @@
 				CBEDBD68234F09F300A923A3 /* FEMineMsgViewController.xib in Resources */,
 				CBEDBD8B234F0BF500A923A3 /* FEPositionErrorViewController.xib in Resources */,
 				20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */,
+				20916A9A234F7FD60045C7C8 /* FEMsgChangeViewController.xib in Resources */,
 				CBEDBD5E234F007000A923A3 /* FEMineCell.xib in Resources */,
 				20916A5823478DDA0045C7C8 /* FECycleViewController.xib in Resources */,
 				CBEDBD59234EE11100A923A3 /* FEMineViewController.xib in Resources */,
@@ -1416,6 +1441,7 @@
 				CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */,
 				4E02F43A234F228600308D99 /* README.md in Resources */,
 				20916A4F234789530045C7C8 /* FEMapViewController.xib in Resources */,
+				20916A9F234F85770045C7C8 /* FESignChangeViewController.xib in Resources */,
 				CBEDBD63234F099F00A923A3 /* FESettingsViewController.xib in Resources */,
 				20916A80234AF19A0045C7C8 /* FEShopDetailViewController.xib in Resources */,
 				20916A85234AF2820045C7C8 /* FEMessageCell.xib in Resources */,
@@ -1427,6 +1453,7 @@
 				20916A5D2348CF650045C7C8 /* FELauchShow.xib in Resources */,
 				20916A8D234B566D0045C7C8 /* FEShopPopView.xib in Resources */,
 				CBEDBD86234F0B8F00A923A3 /* FECollectViewController.xib in Resources */,
+				20916AA4234F85A90045C7C8 /* FEChangePhoneViewController.xib in Resources */,
 				CB1567C6234F495100F2485F /* FEMineMsgCell.xib in Resources */,
 				CB1567C1234F38DA00F2485F /* FEShopListCell.xib in Resources */,
 				4E02F20B2349798F00308D99 /* UMSocialSDKResources.bundle in Resources */,
@@ -1568,6 +1595,7 @@
 				CBEDBD67234F09F300A923A3 /* FEMineMsgViewController.m in Sources */,
 				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,
 				CBEDBD62234F099F00A923A3 /* FESettingsViewController.m in Sources */,
+				20916A99234F7FD60045C7C8 /* FEMsgChangeViewController.m in Sources */,
 				CBEDBD7B234F0ABC00A923A3 /* FEShopJionViewController.m in Sources */,
 				4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */,
 				CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */,
@@ -1672,6 +1700,7 @@
 				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
 				CB4FAC6C234F51EC0094D3E9 /* FEMyShopListCell.m in Sources */,
 				CBEDBD76234F0A8100A923A3 /* FEFeedbackViewController.m in Sources */,
+				20916AA3234F85A90045C7C8 /* FEChangePhoneViewController.m in Sources */,
 				4E02F468234F228600308D99 /* UIView+WebCache.m in Sources */,
 				20916A92234CBE770045C7C8 /* FEMapCategView.m in Sources */,
 				4E02F452234F228600308D99 /* SDImageIOCoder.m in Sources */,
@@ -1696,6 +1725,7 @@
 				4E02F454234F228600308D99 /* SDAnimatedImageRep.m in Sources */,
 				4E02F455234F228600308D99 /* SDWebImageDownloaderConfig.m in Sources */,
 				4E02F446234F228600308D99 /* SDWebImageCacheSerializer.m in Sources */,
+				20916A9E234F85770045C7C8 /* FESignChangeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
