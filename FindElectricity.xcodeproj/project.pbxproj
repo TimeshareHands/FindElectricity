@@ -34,18 +34,6 @@
 		20916A8F234CBE490045C7C8 /* FEMapCategView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A8E234CBE490045C7C8 /* FEMapCategView.xib */; };
 		20916A92234CBE770045C7C8 /* FEMapCategView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A91234CBE770045C7C8 /* FEMapCategView.m */; };
 		20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A94234CD90E0045C7C8 /* UIViewController+FEDealloc.m */; };
-		4E02F1932343913300308D99 /* FEWorkMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1922343913300308D99 /* FEWorkMainVC.m */; };
-		4E02F1A52344351300308D99 /* FEWorkMainHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1A42344351300308D99 /* FEWorkMainHeadView.m */; };
-		4E02F1A823449DF700308D99 /* FETWorkMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1A723449DF700308D99 /* FETWorkMainTableViewCell.m */; };
-		4E02F1AB2345D88100308D99 /* FEWorkEValueDetailHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1AA2345D88100308D99 /* FEWorkEValueDetailHeadView.m */; };
-		4E02F1AE2345E07800308D99 /* FEWorkEValueDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1AD2345E07800308D99 /* FEWorkEValueDetailVC.m */; };
-		4E02F1B12345E9F300308D99 /* FEWorkEvalueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1B02345E9F300308D99 /* FEWorkEvalueCell.m */; };
-		4E02F1B42346161E00308D99 /* FEWorkGetGiftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1B32346161E00308D99 /* FEWorkGetGiftVC.m */; };
-		4E02F1B72346175A00308D99 /* FEWorkGetGiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1B62346175A00308D99 /* FEWorkGetGiftCell.m */; };
-		4E02F1BA23461F6000308D99 /* FEWorkEValueShopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1B923461F6000308D99 /* FEWorkEValueShopVC.m */; };
-		4E02F1BD2346230100308D99 /* FEWorkEvalueGetPrizeChanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1BC2346230100308D99 /* FEWorkEvalueGetPrizeChanceCell.m */; };
-		4E02F1C02346D54A00308D99 /* FEWorkGiftCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1BF2346D54A00308D99 /* FEWorkGiftCardCell.m */; };
-		4E02F1ED2348AB2400308D99 /* FELoginRegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1EC2348AB2400308D99 /* FELoginRegisterModel.m */; };
 		4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1EF2348C55900308D99 /* NetWorkManger.m */; };
 		4E02F1F32348DF1000308D99 /* FEUserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1F22348DF1000308D99 /* FEUserOperation.m */; };
 		4E02F20B2349798F00308D99 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E02F1FE2349798F00308D99 /* UMSocialSDKResources.bundle */; };
@@ -55,6 +43,28 @@
 		4E02F20F2349798F00308D99 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E02F2072349798F00308D99 /* libSocialQQ.a */; };
 		4E02F2102349798F00308D99 /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E02F20A2349798F00308D99 /* UMCommon.framework */; };
 		4E02F2122349FD7D00308D99 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E02F2112349FD7D00308D99 /* libsqlite3.tbd */; };
+		4E02F28E234EFAFB00308D99 /* FELoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F27F234EFAFB00308D99 /* FELoginViewController.m */; };
+		4E02F28F234EFAFB00308D99 /* FERegisterAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F283234EFAFB00308D99 /* FERegisterAccountVC.m */; };
+		4E02F290234EFAFB00308D99 /* FEFindPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F284234EFAFB00308D99 /* FEFindPasswordVC.m */; };
+		4E02F291234EFAFB00308D99 /* FELoginRegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F287234EFAFB00308D99 /* FELoginRegisterModel.m */; };
+		4E02F292234EFAFB00308D99 /* FEInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F28A234EFAFB00308D99 /* FEInputCell.m */; };
+		4E02F293234EFAFB00308D99 /* FESmsCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F28B234EFAFB00308D99 /* FESmsCodeCell.m */; };
+		4E02F2B8234EFB4300308D99 /* FEWorkMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F296234EFB4300308D99 /* FEWorkMainVC.m */; };
+		4E02F2B9234EFB4300308D99 /* FEWorkEValueDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F297234EFB4300308D99 /* FEWorkEValueDetailVC.m */; };
+		4E02F2BA234EFB4300308D99 /* FEWorkEValueShopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F29A234EFB4300308D99 /* FEWorkEValueShopVC.m */; };
+		4E02F2BB234EFB4300308D99 /* FEWorkGetGiftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F29E234EFB4300308D99 /* FEWorkGetGiftVC.m */; };
+		4E02F2BC234EFB4300308D99 /* FEWorkTurnTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F29F234EFB4300308D99 /* FEWorkTurnTableVC.m */; };
+		4E02F2BD234EFB4300308D99 /* FEWorkStrategyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2A1234EFB4300308D99 /* FEWorkStrategyVC.m */; };
+		4E02F2BE234EFB4300308D99 /* FEWorkGetGiftShareAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2A5234EFB4300308D99 /* FEWorkGetGiftShareAlertView.m */; };
+		4E02F2BF234EFB4300308D99 /* FEWorkEvalueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2A6234EFB4300308D99 /* FEWorkEvalueCell.m */; };
+		4E02F2C0234EFB4300308D99 /* FEWorkEValueDetailHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2A7234EFB4300308D99 /* FEWorkEValueDetailHeadView.m */; };
+		4E02F2C1234EFB4300308D99 /* FEWorkGetGiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2A8234EFB4300308D99 /* FEWorkGetGiftCell.m */; };
+		4E02F2C2234EFB4300308D99 /* FEWorkGetGiftAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2B0234EFB4300308D99 /* FEWorkGetGiftAlertView.m */; };
+		4E02F2C3234EFB4300308D99 /* FEWorkMainHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2B2234EFB4300308D99 /* FEWorkMainHeadView.m */; };
+		4E02F2C4234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2B3234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.m */; };
+		4E02F2C5234EFB4300308D99 /* FEWorkInviteAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2B4234EFB4300308D99 /* FEWorkInviteAlertView.m */; };
+		4E02F2C6234EFB4300308D99 /* FETWorkMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2B6234EFB4300308D99 /* FETWorkMainTableViewCell.m */; };
+		4E02F2C7234EFB4300308D99 /* FEWorkGiftCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F2B7234EFB4300308D99 /* FEWorkGiftCardCell.m */; };
 		4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D09233A104E00D6756A /* AppDelegate.m */; };
 		4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D0C233A104E00D6756A /* SceneDelegate.m */; };
 		4E063D15233A104F00D6756A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E063D14233A104F00D6756A /* Assets.xcassets */; };
@@ -145,30 +155,6 @@
 		36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.release.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.release.xcconfig"; sourceTree = "<group>"; };
 		481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.debug.xcconfig"; sourceTree = "<group>"; };
 		4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4E02F1912343913300308D99 /* FEWorkMainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkMainVC.h; sourceTree = "<group>"; };
-		4E02F1922343913300308D99 /* FEWorkMainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkMainVC.m; sourceTree = "<group>"; };
-		4E02F1A32344351300308D99 /* FEWorkMainHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkMainHeadView.h; sourceTree = "<group>"; };
-		4E02F1A42344351300308D99 /* FEWorkMainHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkMainHeadView.m; sourceTree = "<group>"; };
-		4E02F1A623449DF700308D99 /* FETWorkMainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FETWorkMainTableViewCell.h; sourceTree = "<group>"; };
-		4E02F1A723449DF700308D99 /* FETWorkMainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FETWorkMainTableViewCell.m; sourceTree = "<group>"; };
-		4E02F1A92345D88100308D99 /* FEWorkEValueDetailHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkEValueDetailHeadView.h; sourceTree = "<group>"; };
-		4E02F1AA2345D88100308D99 /* FEWorkEValueDetailHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkEValueDetailHeadView.m; sourceTree = "<group>"; };
-		4E02F1AC2345E07800308D99 /* FEWorkEValueDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkEValueDetailVC.h; sourceTree = "<group>"; };
-		4E02F1AD2345E07800308D99 /* FEWorkEValueDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkEValueDetailVC.m; sourceTree = "<group>"; };
-		4E02F1AF2345E9F300308D99 /* FEWorkEvalueCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkEvalueCell.h; sourceTree = "<group>"; };
-		4E02F1B02345E9F300308D99 /* FEWorkEvalueCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkEvalueCell.m; sourceTree = "<group>"; };
-		4E02F1B22346161E00308D99 /* FEWorkGetGiftVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetGiftVC.h; sourceTree = "<group>"; };
-		4E02F1B32346161E00308D99 /* FEWorkGetGiftVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetGiftVC.m; sourceTree = "<group>"; };
-		4E02F1B52346175A00308D99 /* FEWorkGetGiftCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetGiftCell.h; sourceTree = "<group>"; };
-		4E02F1B62346175A00308D99 /* FEWorkGetGiftCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetGiftCell.m; sourceTree = "<group>"; };
-		4E02F1B823461F6000308D99 /* FEWorkEValueShopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkEValueShopVC.h; sourceTree = "<group>"; };
-		4E02F1B923461F6000308D99 /* FEWorkEValueShopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkEValueShopVC.m; sourceTree = "<group>"; };
-		4E02F1BB2346230100308D99 /* FEWorkEvalueGetPrizeChanceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkEvalueGetPrizeChanceCell.h; sourceTree = "<group>"; };
-		4E02F1BC2346230100308D99 /* FEWorkEvalueGetPrizeChanceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkEvalueGetPrizeChanceCell.m; sourceTree = "<group>"; };
-		4E02F1BE2346D54A00308D99 /* FEWorkGiftCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGiftCardCell.h; sourceTree = "<group>"; };
-		4E02F1BF2346D54A00308D99 /* FEWorkGiftCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGiftCardCell.m; sourceTree = "<group>"; };
-		4E02F1EB2348AB2400308D99 /* FELoginRegisterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FELoginRegisterModel.h; sourceTree = "<group>"; };
-		4E02F1EC2348AB2400308D99 /* FELoginRegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FELoginRegisterModel.m; sourceTree = "<group>"; };
 		4E02F1EE2348C55900308D99 /* NetWorkManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkManger.h; sourceTree = "<group>"; };
 		4E02F1EF2348C55900308D99 /* NetWorkManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkManger.m; sourceTree = "<group>"; };
 		4E02F1F12348DF1000308D99 /* FEUserOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEUserOperation.h; sourceTree = "<group>"; };
@@ -183,6 +169,50 @@
 		4E02F2072349798F00308D99 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		4E02F20A2349798F00308D99 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
 		4E02F2112349FD7D00308D99 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4E02F27F234EFAFB00308D99 /* FELoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FELoginViewController.m; sourceTree = "<group>"; };
+		4E02F280234EFAFB00308D99 /* FERegisterAccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FERegisterAccountVC.h; sourceTree = "<group>"; };
+		4E02F281234EFAFB00308D99 /* FEFindPasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEFindPasswordVC.h; sourceTree = "<group>"; };
+		4E02F282234EFAFB00308D99 /* FELoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELoginViewController.h; sourceTree = "<group>"; };
+		4E02F283234EFAFB00308D99 /* FERegisterAccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FERegisterAccountVC.m; sourceTree = "<group>"; };
+		4E02F284234EFAFB00308D99 /* FEFindPasswordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEFindPasswordVC.m; sourceTree = "<group>"; };
+		4E02F286234EFAFB00308D99 /* FELoginRegisterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FELoginRegisterModel.h; sourceTree = "<group>"; };
+		4E02F287234EFAFB00308D99 /* FELoginRegisterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FELoginRegisterModel.m; sourceTree = "<group>"; };
+		4E02F289234EFAFB00308D99 /* FESmsCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESmsCodeCell.h; sourceTree = "<group>"; };
+		4E02F28A234EFAFB00308D99 /* FEInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEInputCell.m; sourceTree = "<group>"; };
+		4E02F28B234EFAFB00308D99 /* FESmsCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESmsCodeCell.m; sourceTree = "<group>"; };
+		4E02F28C234EFAFB00308D99 /* FEInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEInputCell.h; sourceTree = "<group>"; };
+		4E02F296234EFB4300308D99 /* FEWorkMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkMainVC.m; sourceTree = "<group>"; };
+		4E02F297234EFB4300308D99 /* FEWorkEValueDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkEValueDetailVC.m; sourceTree = "<group>"; };
+		4E02F298234EFB4300308D99 /* FEWorkTurnTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkTurnTableVC.h; sourceTree = "<group>"; };
+		4E02F299234EFB4300308D99 /* FEWorkGetGiftVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGetGiftVC.h; sourceTree = "<group>"; };
+		4E02F29A234EFB4300308D99 /* FEWorkEValueShopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkEValueShopVC.m; sourceTree = "<group>"; };
+		4E02F29B234EFB4300308D99 /* FEWorkStrategyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkStrategyVC.h; sourceTree = "<group>"; };
+		4E02F29C234EFB4300308D99 /* FEWorkEValueDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkEValueDetailVC.h; sourceTree = "<group>"; };
+		4E02F29D234EFB4300308D99 /* FEWorkMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkMainVC.h; sourceTree = "<group>"; };
+		4E02F29E234EFB4300308D99 /* FEWorkGetGiftVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetGiftVC.m; sourceTree = "<group>"; };
+		4E02F29F234EFB4300308D99 /* FEWorkTurnTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkTurnTableVC.m; sourceTree = "<group>"; };
+		4E02F2A0234EFB4300308D99 /* FEWorkEValueShopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkEValueShopVC.h; sourceTree = "<group>"; };
+		4E02F2A1234EFB4300308D99 /* FEWorkStrategyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkStrategyVC.m; sourceTree = "<group>"; };
+		4E02F2A4234EFB4300308D99 /* FEWorkGetGiftAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGetGiftAlertView.h; sourceTree = "<group>"; };
+		4E02F2A5234EFB4300308D99 /* FEWorkGetGiftShareAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetGiftShareAlertView.m; sourceTree = "<group>"; };
+		4E02F2A6234EFB4300308D99 /* FEWorkEvalueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkEvalueCell.m; sourceTree = "<group>"; };
+		4E02F2A7234EFB4300308D99 /* FEWorkEValueDetailHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkEValueDetailHeadView.m; sourceTree = "<group>"; };
+		4E02F2A8234EFB4300308D99 /* FEWorkGetGiftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetGiftCell.m; sourceTree = "<group>"; };
+		4E02F2A9234EFB4300308D99 /* FETWorkMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FETWorkMainTableViewCell.h; sourceTree = "<group>"; };
+		4E02F2AA234EFB4300308D99 /* FEWorkInviteAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkInviteAlertView.h; sourceTree = "<group>"; };
+		4E02F2AB234EFB4300308D99 /* FEWorkMainHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkMainHeadView.h; sourceTree = "<group>"; };
+		4E02F2AC234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkEvalueGetPrizeChanceCell.h; sourceTree = "<group>"; };
+		4E02F2AD234EFB4300308D99 /* FEWorkGiftCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGiftCardCell.h; sourceTree = "<group>"; };
+		4E02F2AE234EFB4300308D99 /* FEWorkEvalueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkEvalueCell.h; sourceTree = "<group>"; };
+		4E02F2AF234EFB4300308D99 /* FEWorkGetGiftShareAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGetGiftShareAlertView.h; sourceTree = "<group>"; };
+		4E02F2B0234EFB4300308D99 /* FEWorkGetGiftAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetGiftAlertView.m; sourceTree = "<group>"; };
+		4E02F2B1234EFB4300308D99 /* FEWorkEValueDetailHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkEValueDetailHeadView.h; sourceTree = "<group>"; };
+		4E02F2B2234EFB4300308D99 /* FEWorkMainHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkMainHeadView.m; sourceTree = "<group>"; };
+		4E02F2B3234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkEvalueGetPrizeChanceCell.m; sourceTree = "<group>"; };
+		4E02F2B4234EFB4300308D99 /* FEWorkInviteAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkInviteAlertView.m; sourceTree = "<group>"; };
+		4E02F2B5234EFB4300308D99 /* FEWorkGetGiftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGetGiftCell.h; sourceTree = "<group>"; };
+		4E02F2B6234EFB4300308D99 /* FETWorkMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FETWorkMainTableViewCell.m; sourceTree = "<group>"; };
+		4E02F2B7234EFB4300308D99 /* FEWorkGiftCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGiftCardCell.m; sourceTree = "<group>"; };
 		4E063D05233A104E00D6756A /* 找电.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "找电.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E063D08233A104E00D6756A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4E063D09233A104E00D6756A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -380,100 +410,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		4E02F18C2343910000308D99 /* FEWork */ = {
-			isa = PBXGroup;
-			children = (
-				4E02F18D2343910000308D99 /* Controller */,
-				4E02F18E2343910000308D99 /* Model */,
-				4E02F18F2343910000308D99 /* View */,
-			);
-			path = FEWork;
-			sourceTree = "<group>";
-		};
-		4E02F18D2343910000308D99 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				4E02F1912343913300308D99 /* FEWorkMainVC.h */,
-				4E02F1922343913300308D99 /* FEWorkMainVC.m */,
-				4E02F1AC2345E07800308D99 /* FEWorkEValueDetailVC.h */,
-				4E02F1AD2345E07800308D99 /* FEWorkEValueDetailVC.m */,
-				4E02F1B22346161E00308D99 /* FEWorkGetGiftVC.h */,
-				4E02F1B32346161E00308D99 /* FEWorkGetGiftVC.m */,
-				4E02F1B823461F6000308D99 /* FEWorkEValueShopVC.h */,
-				4E02F1B923461F6000308D99 /* FEWorkEValueShopVC.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4E02F18E2343910000308D99 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4E02F18F2343910000308D99 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				4E02F1A32344351300308D99 /* FEWorkMainHeadView.h */,
-				4E02F1A42344351300308D99 /* FEWorkMainHeadView.m */,
-				4E02F1A623449DF700308D99 /* FETWorkMainTableViewCell.h */,
-				4E02F1A723449DF700308D99 /* FETWorkMainTableViewCell.m */,
-				4E02F1A92345D88100308D99 /* FEWorkEValueDetailHeadView.h */,
-				4E02F1AA2345D88100308D99 /* FEWorkEValueDetailHeadView.m */,
-				4E02F1AF2345E9F300308D99 /* FEWorkEvalueCell.h */,
-				4E02F1B02345E9F300308D99 /* FEWorkEvalueCell.m */,
-				4E02F1B52346175A00308D99 /* FEWorkGetGiftCell.h */,
-				4E02F1B62346175A00308D99 /* FEWorkGetGiftCell.m */,
-				4E02F1BB2346230100308D99 /* FEWorkEvalueGetPrizeChanceCell.h */,
-				4E02F1BC2346230100308D99 /* FEWorkEvalueGetPrizeChanceCell.m */,
-				4E02F1BE2346D54A00308D99 /* FEWorkGiftCardCell.h */,
-				4E02F1BF2346D54A00308D99 /* FEWorkGiftCardCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4E02F1E62348AAC700308D99 /* FELoginRegister */ = {
-			isa = PBXGroup;
-			children = (
-				4E02F1E72348AAC700308D99 /* Controller */,
-				4E02F1E82348AAC700308D99 /* Model */,
-				4E02F1E92348AAC700308D99 /* View */,
-				4E02F1EA2348AAC700308D99 /* Service */,
-			);
-			path = FELoginRegister;
-			sourceTree = "<group>";
-		};
-		4E02F1E72348AAC700308D99 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		4E02F1E82348AAC700308D99 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4E02F1EB2348AB2400308D99 /* FELoginRegisterModel.h */,
-				4E02F1EC2348AB2400308D99 /* FELoginRegisterModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		4E02F1E92348AAC700308D99 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		4E02F1EA2348AAC700308D99 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		4E02F1FB2349798F00308D99 /* FrameWork */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,6 +481,120 @@
 			path = normal;
 			sourceTree = "<group>";
 		};
+		4E02F27D234EFAFB00308D99 /* FELoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				4E02F27E234EFAFB00308D99 /* Controller */,
+				4E02F285234EFAFB00308D99 /* Model */,
+				4E02F288234EFAFB00308D99 /* View */,
+				4E02F28D234EFAFB00308D99 /* Service */,
+			);
+			path = FELoginRegister;
+			sourceTree = "<group>";
+		};
+		4E02F27E234EFAFB00308D99 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E02F281234EFAFB00308D99 /* FEFindPasswordVC.h */,
+				4E02F284234EFAFB00308D99 /* FEFindPasswordVC.m */,
+				4E02F282234EFAFB00308D99 /* FELoginViewController.h */,
+				4E02F27F234EFAFB00308D99 /* FELoginViewController.m */,
+				4E02F280234EFAFB00308D99 /* FERegisterAccountVC.h */,
+				4E02F283234EFAFB00308D99 /* FERegisterAccountVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E02F285234EFAFB00308D99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E02F286234EFAFB00308D99 /* FELoginRegisterModel.h */,
+				4E02F287234EFAFB00308D99 /* FELoginRegisterModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E02F288234EFAFB00308D99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E02F28C234EFAFB00308D99 /* FEInputCell.h */,
+				4E02F28A234EFAFB00308D99 /* FEInputCell.m */,
+				4E02F289234EFAFB00308D99 /* FESmsCodeCell.h */,
+				4E02F28B234EFAFB00308D99 /* FESmsCodeCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E02F28D234EFAFB00308D99 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4E02F294234EFB4300308D99 /* FEWork */ = {
+			isa = PBXGroup;
+			children = (
+				4E02F295234EFB4300308D99 /* Controller */,
+				4E02F2A2234EFB4300308D99 /* Model */,
+				4E02F2A3234EFB4300308D99 /* View */,
+			);
+			path = FEWork;
+			sourceTree = "<group>";
+		};
+		4E02F295234EFB4300308D99 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E02F29C234EFB4300308D99 /* FEWorkEValueDetailVC.h */,
+				4E02F297234EFB4300308D99 /* FEWorkEValueDetailVC.m */,
+				4E02F2A0234EFB4300308D99 /* FEWorkEValueShopVC.h */,
+				4E02F29A234EFB4300308D99 /* FEWorkEValueShopVC.m */,
+				4E02F299234EFB4300308D99 /* FEWorkGetGiftVC.h */,
+				4E02F29E234EFB4300308D99 /* FEWorkGetGiftVC.m */,
+				4E02F29D234EFB4300308D99 /* FEWorkMainVC.h */,
+				4E02F296234EFB4300308D99 /* FEWorkMainVC.m */,
+				4E02F29B234EFB4300308D99 /* FEWorkStrategyVC.h */,
+				4E02F2A1234EFB4300308D99 /* FEWorkStrategyVC.m */,
+				4E02F298234EFB4300308D99 /* FEWorkTurnTableVC.h */,
+				4E02F29F234EFB4300308D99 /* FEWorkTurnTableVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E02F2A2234EFB4300308D99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E02F2A3234EFB4300308D99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E02F2A9234EFB4300308D99 /* FETWorkMainTableViewCell.h */,
+				4E02F2B6234EFB4300308D99 /* FETWorkMainTableViewCell.m */,
+				4E02F2AE234EFB4300308D99 /* FEWorkEvalueCell.h */,
+				4E02F2A6234EFB4300308D99 /* FEWorkEvalueCell.m */,
+				4E02F2B1234EFB4300308D99 /* FEWorkEValueDetailHeadView.h */,
+				4E02F2A7234EFB4300308D99 /* FEWorkEValueDetailHeadView.m */,
+				4E02F2AC234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.h */,
+				4E02F2B3234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.m */,
+				4E02F2A4234EFB4300308D99 /* FEWorkGetGiftAlertView.h */,
+				4E02F2B0234EFB4300308D99 /* FEWorkGetGiftAlertView.m */,
+				4E02F2B5234EFB4300308D99 /* FEWorkGetGiftCell.h */,
+				4E02F2A8234EFB4300308D99 /* FEWorkGetGiftCell.m */,
+				4E02F2AF234EFB4300308D99 /* FEWorkGetGiftShareAlertView.h */,
+				4E02F2A5234EFB4300308D99 /* FEWorkGetGiftShareAlertView.m */,
+				4E02F2AD234EFB4300308D99 /* FEWorkGiftCardCell.h */,
+				4E02F2B7234EFB4300308D99 /* FEWorkGiftCardCell.m */,
+				4E02F2AA234EFB4300308D99 /* FEWorkInviteAlertView.h */,
+				4E02F2B4234EFB4300308D99 /* FEWorkInviteAlertView.m */,
+				4E02F2AB234EFB4300308D99 /* FEWorkMainHeadView.h */,
+				4E02F2B2234EFB4300308D99 /* FEWorkMainHeadView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4E063CFC233A104E00D6756A = {
 			isa = PBXGroup;
 			children = (
@@ -570,9 +620,9 @@
 		4E063D07233A104E00D6756A /* FindElectricity */ = {
 			isa = PBXGroup;
 			children = (
+				4E02F294234EFB4300308D99 /* FEWork */,
+				4E02F27D234EFAFB00308D99 /* FELoginRegister */,
 				20916A43234789530045C7C8 /* FEMap */,
-				4E02F1E62348AAC700308D99 /* FELoginRegister */,
-				4E02F18C2343910000308D99 /* FEWork */,
 				CBE117C5233C68E8003DA1C4 /* FECycling */,
 				4E063D3D233A122900D6756A /* FindElectPubilc */,
 				4E063D08233A104E00D6756A /* AppDelegate.h */,
@@ -971,53 +1021,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E02F1C02346D54A00308D99 /* FEWorkGiftCardCell.m in Sources */,
-				4E02F1B12345E9F300308D99 /* FEWorkEvalueCell.m in Sources */,
 				4E063D54233A122900D6756A /* UIColor+Extend.m in Sources */,
-				4E02F1932343913300308D99 /* FEWorkMainVC.m in Sources */,
 				20916A5B2348CD1E0045C7C8 /* FELauchShow.m in Sources */,
-				4E02F1AE2345E07800308D99 /* FEWorkEValueDetailVC.m in Sources */,
+				4E02F2BC234EFB4300308D99 /* FEWorkTurnTableVC.m in Sources */,
 				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,
 				4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */,
 				CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */,
+				4E02F2BE234EFB4300308D99 /* FEWorkGetGiftShareAlertView.m in Sources */,
 				20916A67234AD3020045C7C8 /* FEMessageViewController.m in Sources */,
+				4E02F2C4234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.m in Sources */,
+				4E02F2BA234EFB4300308D99 /* FEWorkEValueShopVC.m in Sources */,
 				20916A78234AEF420045C7C8 /* MTResourceManager.m in Sources */,
+				4E02F2BF234EFB4300308D99 /* FEWorkEvalueCell.m in Sources */,
+				4E02F2B8234EFB4300308D99 /* FEWorkMainVC.m in Sources */,
 				20916A63234A14DE0045C7C8 /* FEMapWeather.m in Sources */,
-				4E02F1BD2346230100308D99 /* FEWorkEvalueGetPrizeChanceCell.m in Sources */,
 				20916A4D234789530045C7C8 /* FEMapViewController.m in Sources */,
 				4E02F1F32348DF1000308D99 /* FEUserOperation.m in Sources */,
+				4E02F2C0234EFB4300308D99 /* FEWorkEValueDetailHeadView.m in Sources */,
 				20916A84234AF2820045C7C8 /* FEMessageCell.m in Sources */,
 				CB826161234C6DDD00DA6D21 /* CommonUtility.m in Sources */,
-				4E02F1A823449DF700308D99 /* FETWorkMainTableViewCell.m in Sources */,
 				20916A5323478B1F0045C7C8 /* FEMapNavigiItem.m in Sources */,
 				20916A50234789530045C7C8 /* FEMapNaviViewController.m in Sources */,
 				20916A77234AEF420045C7C8 /* UIViewExt.m in Sources */,
 				4E063D57233A122900D6756A /* FindTabBarController.m in Sources */,
+				4E02F2C6234EFB4300308D99 /* FETWorkMainTableViewCell.m in Sources */,
+				4E02F28F234EFAFB00308D99 /* FERegisterAccountVC.m in Sources */,
+				4E02F2C7234EFB4300308D99 /* FEWorkGiftCardCell.m in Sources */,
 				20916A5723478DDA0045C7C8 /* FECycleViewController.m in Sources */,
 				CB82616D234C714300DA6D21 /* MANaviRoute.m in Sources */,
 				20916A88234B407F0045C7C8 /* FEPointAnnotation.m in Sources */,
+				4E02F2C3234EFB4300308D99 /* FEWorkMainHeadView.m in Sources */,
+				4E02F2C2234EFB4300308D99 /* FEWorkGetGiftAlertView.m in Sources */,
 				20916A7F234AF19A0045C7C8 /* FEShopDetailViewController.m in Sources */,
 				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,
+				4E02F28E234EFAFB00308D99 /* FELoginViewController.m in Sources */,
 				20916A602348D4760045C7C8 /* FEViewXib.m in Sources */,
-				4E02F1A52344351300308D99 /* FEWorkMainHeadView.m in Sources */,
 				4E063D1B233A104F00D6756A /* main.m in Sources */,
 				CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */,
-				4E02F1BA23461F6000308D99 /* FEWorkEValueShopVC.m in Sources */,
+				4E02F291234EFAFB00308D99 /* FELoginRegisterModel.m in Sources */,
+				4E02F293234EFAFB00308D99 /* FESmsCodeCell.m in Sources */,
 				CB82616C234C714300DA6D21 /* LineDashPolyline.m in Sources */,
+				4E02F2BB234EFB4300308D99 /* FEWorkGetGiftVC.m in Sources */,
 				20916A8B234B56060045C7C8 /* FEShopPopView.m in Sources */,
-				4E02F1B72346175A00308D99 /* FEWorkGetGiftCell.m in Sources */,
+				4E02F2BD234EFB4300308D99 /* FEWorkStrategyVC.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,
-				4E02F1B42346161E00308D99 /* FEWorkGetGiftVC.m in Sources */,
 				20916A7B234AF07F0045C7C8 /* UIBarButtonItem+MTAdditions.m in Sources */,
 				CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */,
-				4E02F1AB2345D88100308D99 /* FEWorkEValueDetailHeadView.m in Sources */,
-				4E02F1ED2348AB2400308D99 /* FELoginRegisterModel.m in Sources */,
 				4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */,
 				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
 				20916A92234CBE770045C7C8 /* FEMapCategView.m in Sources */,
 				20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */,
 				4E063D55233A122900D6756A /* NSString+Extend.m in Sources */,
+				4E02F292234EFAFB00308D99 /* FEInputCell.m in Sources */,
+				4E02F2C5234EFB4300308D99 /* FEWorkInviteAlertView.m in Sources */,
+				4E02F2B9234EFB4300308D99 /* FEWorkEValueDetailVC.m in Sources */,
 				CBA72A70234DD0CA00C7070E /* FECycleMapViewController.m in Sources */,
+				4E02F290234EFAFB00308D99 /* FEFindPasswordVC.m in Sources */,
+				4E02F2C1234EFB4300308D99 /* FEWorkGetGiftCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

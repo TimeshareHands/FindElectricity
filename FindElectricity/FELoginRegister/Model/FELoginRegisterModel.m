@@ -12,8 +12,19 @@
 
 @end
 
+@implementation FELoginRequestModel
+
+
+
+@end
 
 @implementation FERegisterRequestModel
+
+
+
+@end
+
+@implementation FEFindPasswordRequestModel
 
 
 
