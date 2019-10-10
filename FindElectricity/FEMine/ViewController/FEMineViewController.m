@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavgaTitle:@"设置"];
+    
     [self initData];
     [self addView];
 }

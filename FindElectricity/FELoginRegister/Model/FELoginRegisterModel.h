@@ -14,9 +14,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface FERegisterRequestModel : NSObject
+
+@interface FELoginRequestModel : NSObject
 @property(nonatomic, copy)NSString *mobile;
 @property(nonatomic, copy)NSString *pwd;
+@end
+
+@interface FERegisterRequestModel : NSObject
+
+@property(nonatomic, copy)NSString *mobile;
+@property(nonatomic, copy)NSString *pwd;
+@property(nonatomic, copy)NSString *verifyCode;
+@property(nonatomic, copy)NSString *invCode;
+
+@end
+
+@interface FEFindPasswordRequestModel : NSObject
+@property(nonatomic, copy)NSString  *mobile;
+@property(nonatomic, copy)NSString  *verifyCode;
+@property(nonatomic, copy)NSString  *pwd;
 @end
 
 @interface FELoginResponseUserInfoModel : NSObject
@@ -45,5 +61,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy)NSString  *telephone;
 @property(nonatomic, copy)NSString  *uid;
 @end
+
 
 NS_ASSUME_NONNULL_END

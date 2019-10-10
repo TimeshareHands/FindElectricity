@@ -44,7 +44,7 @@ PODS:
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
   - Masonry (1.1.0)
-  - MJExtension (3.2.0)
+  - MJExtension (3.2.1)
   - MJRefresh (3.2.0)
   - MTLManagedObjectAdapter (1.0.3):
     - Mantle (~> 2.0)
@@ -52,9 +52,6 @@ PODS:
   - MTLManagedObjectAdapter/extobjc (1.0.3):
     - Mantle (~> 2.0)
   - Qiniu (7.2.6)
-  - SDWebImage (5.2.0):
-    - SDWebImage/Core (= 5.2.0)
-  - SDWebImage/Core (5.2.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -71,11 +68,10 @@ DEPENDENCIES:
   - MJRefresh
   - MTLManagedObjectAdapter (~> 1.0.3)
   - Qiniu (~> 7.1)
-  - SDWebImage (= 5.2.0)
   - SVProgressHUD
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - AMap3DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
@@ -90,7 +86,6 @@ SPEC REPOS:
     - MJRefresh
     - MTLManagedObjectAdapter
     - Qiniu
-    - SDWebImage
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -104,13 +99,12 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJExtension: e22bed65fdcd38e957242982b7384f2984c9088e
+  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   MTLManagedObjectAdapter: 631a53432675dcf03a9d90624afb3cececf54631
   Qiniu: 9d1f20dcc348919972b4ee1b1272f9b9d4a7e69e
-  SDWebImage: 609192dcf3898c910a2848032372ead951e66364
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 9737c0a8a6940995fabd753219da6b18285f01ec
+PODFILE CHECKSUM: 3c6b4fd59b103434dbf5c2dd881c50f07fb81c2e
 
-COCOAPODS: 1.8.0
+COCOAPODS: 1.7.5
