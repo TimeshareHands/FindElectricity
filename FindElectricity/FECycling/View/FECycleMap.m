@@ -7,7 +7,7 @@
 //
 
 #import "FECycleMap.h"
-#import <AMapLocationKit/AMapLocationKit.h>
+
 
 @interface FECycleMap()<AMapLocationManagerDelegate>
 //@property (nonatomic, strong) MAMapView *mapView;
@@ -19,6 +19,7 @@
 @property (nonatomic, strong) CLLocation *feUserLocation;
 @property (nonatomic, strong) AMapLocationReGeocode *reGeocode;
 @property (nonatomic, assign) CGFloat annotationViewAngle;
+@property (nonatomic, strong) NSError *error;
 
 @end
 
@@ -90,6 +91,7 @@
         //存在外接的辅助定位设备
         __unused NSDictionary *externalAccressory = [error.userInfo objectForKey:@"AMapLocationAccessoryInfo"];
     }
+    _error = error;
 }
 
 - (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode
@@ -104,9 +106,8 @@
     else
     {
         self.feUserLocation = location;
-
     }
-    
+    [self updateLoctionBlock];
 }
 
 - (BOOL)amapLocationManagerShouldDisplayHeadingCalibration:(AMapLocationManager *)manager
@@ -120,17 +121,26 @@
     NSLog(@"################### heading : %f - %f", newHeading.trueHeading, newHeading.magneticHeading);
     _annotationViewAngle = newHeading.trueHeading*M_PI/180.0f + M_PI;
     //        _annotationView.transform =  CGAffineTransformRotate(_annotationView.transform ,angle);
+    [self updateLoctionBlock];
+}
+
+- (void)updateLoctionBlock {
+    if (_locationUpdateBlock) {
+        _locationUpdateBlock(_feUserLocation,_reGeocode,_annotationViewAngle,_error);
+    }
 }
 
 //进行单次带逆地理定位请求
 - (void)reGeocodeAction
 {
+    [self initCompleteBlock];
     [self.locationManager requestLocationWithReGeocode:YES completionBlock:self.completionBlock];
 }
 
 //进行单次定位请求
 - (void)locAction
 {
+    [self initCompleteBlock];
     [self.locationManager requestLocationWithReGeocode:NO completionBlock:self.completionBlock];
 }
 
@@ -138,6 +148,7 @@
 
 - (void)initCompleteBlock
 {
+    self.completionBlock = nil;
     WEAKSELF;
     self.completionBlock = ^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error)
     {
@@ -180,16 +191,12 @@
         if (regeocode)
         {
             weakSelf.reGeocode = regeocode;
-//            [annotation setTitle:[NSString stringWithFormat:@"%@", regeocode.formattedAddress]];
-//            [annotation setSubtitle:[NSString stringWithFormat:@"%@-%@-%.2fm", regeocode.citycode, regeocode.adcode, location.horizontalAccuracy]];
         }
         else
         {
             weakSelf.feUserLocation = location;
-//            [annotation setTitle:[NSString stringWithFormat:@"lat:%f;lon:%f;", location.coordinate.latitude, location.coordinate.longitude]];
-//            [annotation setSubtitle:[NSString stringWithFormat:@"accuracy:%.2fm", location.horizontalAccuracy]];
         }
-        
+        [weakSelf updateLoctionBlock];
     };
 }
 
@@ -237,6 +244,11 @@
         _centerImg.image = [UIImage imageNamed:@"map_position.png"];
     }
     return _centerImg;
+}
+
+-(void)setIsShowMapCenter:(BOOL)isShowMapCenter {
+    _isShowMapCenter = isShowMapCenter;
+    _centerImg.hidden = !_isShowMapCenter;
 }
 
 - (void)dealloc

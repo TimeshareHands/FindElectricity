@@ -60,8 +60,9 @@
         _mapView = [[FECycleMap alloc] init];
         _mapView.delegate = self;
         _mapView.allowsAnnotationViewSorting = NO;
+        [_mapView setIsShowMapCenter:NO];
         [self.mapView startHeadingLocation];
-        _mapView.showsUserLocation = YES;
+//        _mapView.showsUserLocation = YES;
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;

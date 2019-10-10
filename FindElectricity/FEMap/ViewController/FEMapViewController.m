@@ -120,8 +120,25 @@
 - (MAMapView *)mapView {
     if (!_mapView) {
         _mapView = [[FECycleMap alloc] init];
+        WEAKSELF;
+        _mapView.locationUpdateBlock = ^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull reGeocode, CGFloat locationAngle, NSError * _Nonnull error) {
+                MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
+            
+                //获取到定位信息，更新annotation
+                if (weakSelf.pointAnnotaiton == nil)
+                {
+                    weakSelf.pointAnnotaiton = [[FEPointAnnotation alloc] init];
+                    weakSelf.pointAnnotaiton.type = FEPointAnnotLoc;
+                    [weakSelf.pointAnnotaiton setCoordinate:location.coordinate];
+            
+                    [weakSelf addAnnotationToMapView:weakSelf.pointAnnotaiton];
+                    [weakSelf.mapView setCenterCoordinate:location.coordinate];
+                }
+                [weakSelf.pointAnnotaiton setCoordinate:location.coordinate];
+        };
         _mapView.delegate = self;
         _mapView.allowsAnnotationViewSorting = NO;
+        [_mapView startHeadingLocation];
 //        _mapView.showsUserLocation = YES;
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
@@ -342,24 +359,6 @@
     return nil;
 }
 
-//- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode
-//{
-//    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress);
-//
-//    //获取到定位信息，更新annotation
-//    if (self.pointAnnotaiton == nil)
-//    {
-//        self.pointAnnotaiton = [[FEPointAnnotation alloc] init];
-//        self.pointAnnotaiton.type = FEPointAnnotLoc;
-//        [self.pointAnnotaiton setCoordinate:location.coordinate];
-//
-//        [self addAnnotationToMapView:self.pointAnnotaiton];
-//    }
-//
-//    [self.pointAnnotaiton setCoordinate:location.coordinate];
-//
-//    [self.mapView setCenterCoordinate:location.coordinate];
-//}
 
 #pragma mark - mapview delegate
 - (void)mapInitComplete:(MAMapView *)mapView {

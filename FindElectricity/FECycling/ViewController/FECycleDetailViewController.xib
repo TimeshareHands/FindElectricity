@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FECycleDetailViewController">
             <connections>
+                <outlet property="endBtn" destination="MaQ-WM-9n8" id="DcH-tK-sFe"/>
+                <outlet property="goonBtn" destination="Me5-fd-hVq" id="5Y0-vw-mxZ"/>
+                <outlet property="stopBtn" destination="RHn-Id-d3P" id="aTl-QB-OOk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -105,7 +108,7 @@
                         <action selector="tapAction:" destination="-1" eventType="touchUpInside" id="NfZ-u8-S6a"/>
                     </connections>
                 </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaQ-WM-9n8">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaQ-WM-9n8" customClass="FEStopProcessBtn">
                     <rect key="frame" x="92" y="502" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="cyc_end"/>

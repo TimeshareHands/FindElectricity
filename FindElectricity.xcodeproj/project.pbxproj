@@ -78,6 +78,9 @@
 		CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A73234DD42B00C7070E /* FECycleMap.m */; };
 		CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */; };
 		CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */; };
+		CBEDBD4F234ED57000A923A3 /* FEStopProcessBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD4E234ED57000A923A3 /* FEStopProcessBtn.m */; };
+		CBEDBD58234EE11100A923A3 /* FEMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD56234EE11100A923A3 /* FEMineViewController.m */; };
+		CBEDBD59234EE11100A923A3 /* FEMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEDBD57234EE11100A923A3 /* FEMineViewController.xib */; };
 		D532EF3E72AEF38A889770FB /* Pods_FindElectricityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -236,6 +239,11 @@
 		CBEDBD48234DE2AC00A923A3 /* FECycleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleDetailViewController.h; sourceTree = "<group>"; };
 		CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleDetailViewController.m; sourceTree = "<group>"; };
 		CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleDetailViewController.xib; sourceTree = "<group>"; };
+		CBEDBD4D234ED57000A923A3 /* FEStopProcessBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEStopProcessBtn.h; sourceTree = "<group>"; };
+		CBEDBD4E234ED57000A923A3 /* FEStopProcessBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEStopProcessBtn.m; sourceTree = "<group>"; };
+		CBEDBD55234EE11100A923A3 /* FEMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMineViewController.h; sourceTree = "<group>"; };
+		CBEDBD56234EE11100A923A3 /* FEMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMineViewController.m; sourceTree = "<group>"; };
+		CBEDBD57234EE11100A923A3 /* FEMineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMineViewController.xib; sourceTree = "<group>"; };
 		E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -570,6 +578,7 @@
 		4E063D07233A104E00D6756A /* FindElectricity */ = {
 			isa = PBXGroup;
 			children = (
+				CBEDBD51234EE05D00A923A3 /* FEMine */,
 				20916A43234789530045C7C8 /* FEMap */,
 				4E02F1E62348AAC700308D99 /* FELoginRegister */,
 				4E02F18C2343910000308D99 /* FEWork */,
@@ -701,6 +710,8 @@
 			children = (
 				CBA72A72234DD42B00C7070E /* FECycleMap.h */,
 				CBA72A73234DD42B00C7070E /* FECycleMap.m */,
+				CBEDBD4D234ED57000A923A3 /* FEStopProcessBtn.h */,
+				CBEDBD4E234ED57000A923A3 /* FEStopProcessBtn.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -719,6 +730,40 @@
 				CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CBEDBD51234EE05D00A923A3 /* FEMine */ = {
+			isa = PBXGroup;
+			children = (
+				CBEDBD52234EE07B00A923A3 /* ViewController */,
+				CBEDBD54234EE0B100A923A3 /* Model */,
+				CBEDBD53234EE0A100A923A3 /* View */,
+			);
+			path = FEMine;
+			sourceTree = "<group>";
+		};
+		CBEDBD52234EE07B00A923A3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBEDBD55234EE11100A923A3 /* FEMineViewController.h */,
+				CBEDBD56234EE11100A923A3 /* FEMineViewController.m */,
+				CBEDBD57234EE11100A923A3 /* FEMineViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CBEDBD53234EE0A100A923A3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBEDBD54234EE0B100A923A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -834,6 +879,7 @@
 				CBA72A71234DD0CA00C7070E /* FECycleMapViewController.xib in Resources */,
 				20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */,
 				20916A5823478DDA0045C7C8 /* FECycleViewController.xib in Resources */,
+				CBEDBD59234EE11100A923A3 /* FEMineViewController.xib in Resources */,
 				20916A68234AD3020045C7C8 /* FEMessageViewController.xib in Resources */,
 				CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */,
 				20916A4F234789530045C7C8 /* FEMapViewController.xib in Resources */,
@@ -987,6 +1033,7 @@
 				20916A4D234789530045C7C8 /* FEMapViewController.m in Sources */,
 				4E02F1F32348DF1000308D99 /* FEUserOperation.m in Sources */,
 				20916A84234AF2820045C7C8 /* FEMessageCell.m in Sources */,
+				CBEDBD58234EE11100A923A3 /* FEMineViewController.m in Sources */,
 				CB826161234C6DDD00DA6D21 /* CommonUtility.m in Sources */,
 				4E02F1A823449DF700308D99 /* FETWorkMainTableViewCell.m in Sources */,
 				20916A5323478B1F0045C7C8 /* FEMapNavigiItem.m in Sources */,
@@ -1004,6 +1051,7 @@
 				CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */,
 				4E02F1BA23461F6000308D99 /* FEWorkEValueShopVC.m in Sources */,
 				CB82616C234C714300DA6D21 /* LineDashPolyline.m in Sources */,
+				CBEDBD4F234ED57000A923A3 /* FEStopProcessBtn.m in Sources */,
 				20916A8B234B56060045C7C8 /* FEShopPopView.m in Sources */,
 				4E02F1B72346175A00308D99 /* FEWorkGetGiftCell.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,

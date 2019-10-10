@@ -53,6 +53,7 @@
 - (FECycleMap *)mapView {
     if (!_mapView) {
         _mapView = [[FECycleMap alloc] init];
+        [_mapView setIsShowMapCenter:NO];
         _mapView.delegate = self;
         _mapView.hidden = YES;
         _mapView.allowsAnnotationViewSorting = NO;

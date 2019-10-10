@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MAMapKit/MAMapKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 NS_ASSUME_NONNULL_BEGIN
-
+typedef void (^FEMapLocatUpdateBlock)(CLLocation *location, AMapLocationReGeocode *regeocode, CGFloat locationAngle,NSError *error);
 @interface FECycleMap : MAMapView
-//@property (assign, nonatomic) NSInteger type;
+@property (copy, nonatomic) FEMapLocatUpdateBlock locationUpdateBlock;
+@property (assign, nonatomic) BOOL isShowMapCenter;
 
 //进行单次带逆地理定位请求
 - (void) reGeocodeAction;
