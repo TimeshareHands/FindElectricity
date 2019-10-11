@@ -24,6 +24,7 @@
 
 #pragma mark 添加视图
 -(void)addView{
+    [self addSubview:self.bgImgView];
     [self makeUpConstriant];
 }
 #pragma mark 约束适配
@@ -55,5 +56,20 @@
         _cancelBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     }
     return _cancelBtn;
+}
+
+- (void)show {
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    [keyWindow addSubview:self];
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+           make.width.mas_equalTo(280);
+           make.height.mas_equalTo(498);
+           make.center.mas_equalTo(keyWindow);
+           
+    }];
+}
+
+- (void)hidden {
+    [self removeFromSuperview];
 }
 @end

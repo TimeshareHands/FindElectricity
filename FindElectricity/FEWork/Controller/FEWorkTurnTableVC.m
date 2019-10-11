@@ -8,8 +8,11 @@
 
 #import "FEWorkTurnTableVC.h"
 
-@interface FEWorkTurnTableVC ()
-
+@interface FEWorkTurnTableVC ()<CAAnimationDelegate>
+@property(nonatomic, strong)UIImageView *bgImageView;
+@property(nonatomic, strong)UIImageView *btnImageView;
+@property(nonatomic, assign)NSInteger circleAngle;
+@property(nonatomic, assign)BOOL isAnimation;
 @end
 
 @implementation FEWorkTurnTableVC
@@ -19,14 +22,37 @@
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
-*/
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
+#pragma  mark  添加视图
+- (void)addView{
+    [self.view addSubview:self.bgImageView];
+    [self.view addSubview:self.btnImageView];
+    [self makeUpconstriant];
+}
+#pragma  mark 约束适配
+- (void)makeUpconstriant{
+    
+}
+#pragma mark getter
+
+-(UIImageView *)bgImageView{
+    if (!_bgImageView) {
+        _bgImageView =[[UIImageView alloc]init];
+        [_btnImageView setImage:[UIImage imageNamed:@"wkc_bigRotaryTable"]];
+    }
+    return _bgImageView;
+}
+-(UIImageView *)btnImageView{
+    if (!_btnImageView) {
+        _btnImageView =[[UIImageView alloc]init];
+        [_btnImageView setImage:[UIImage imageNamed:@"wkc_choujiangAction"]];
+    }
+    return _btnImageView;
+}
 @end

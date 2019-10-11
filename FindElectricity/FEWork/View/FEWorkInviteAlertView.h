@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkInviteAlertView : UIView
 
+- (void)show;
+- (void)hidden;
 @end
 
 NS_ASSUME_NONNULL_END

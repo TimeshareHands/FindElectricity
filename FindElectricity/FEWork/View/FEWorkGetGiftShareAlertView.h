@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetGiftShareAlertView : UIView
-
+@property (copy, nonatomic) void(^didClick)(FEWorkGetGiftShareAlertView *,NSInteger);
+- (void)show;
+- (void)hidden;
 @end
 
 NS_ASSUME_NONNULL_END
