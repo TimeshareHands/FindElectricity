@@ -38,8 +38,18 @@
 
 - (void)getUserData {
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    WEAKSELF;
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(UserNewInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
-        [self setUserInfo:[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]]];
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf setUserInfo:[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]]];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
     } failure:^(NSError * _Nonnull error) {
         
     }];
@@ -49,7 +59,7 @@
     _userInfo = userInfo;
     _nickname.text = _userInfo.nickName;
     _sign.text = _userInfo.signature;
-    _leve.text = [NSString stringWithFormat:@" %@ ",_userInfo.grade];
+    _leve.text = [NSString stringWithFormat:@"  %@  ",_userInfo.grade];
     [_avtImg sd_setImageWithURL:[NSURL URLWithString:_userInfo.faceImg] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
     _avtImg.clipsToBounds = YES;
     _avtImg.layer.cornerRadius = 20;

@@ -22,7 +22,7 @@
 @property (weak, nonatomic) FEMineMsgCell *addressCell;
 @property (weak, nonatomic) FEMineMsgCell *signCell;
 @property (nonatomic, strong) NSData *icon;
-
+@property (strong, nonatomic) FELoginResponseUserInfoModel *userInfo;
 @end
 
 @implementation FEMineMsgViewController
@@ -133,14 +133,8 @@
     // 这里base64Encoding 要修改
 //    _iconString = [data base64Encoding];
     [self dismissViewControllerAnimated:YES completion:^{
-        //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"确定要把该图片设置为背景图" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        //        [alert show];
-        //        alertContent(@"nigjsldg");
-        //        kAlertView(@"确定把该图设置为头像", @"取消", @"确定");
-//        alertContent(@"确定把该图设置为头像", @"取消",@"确定");
-        //        alertContentWithTag(@"确定把该图设置为头像", @"取消",@"确定", 1);
+        
     }];
-    //    [self performSelector:@selector(saveImage:) withObject:_selectedImage afterDelay:0.5];
 }
 
 
@@ -299,6 +293,42 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 10;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self getUserData];
+}
+
+- (void)getUserData {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(UserNewInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf setUserInfo:[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]]];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)setUserInfo:(FELoginResponseUserInfoModel *)userInfo {
+    _userInfo = userInfo;
+    [_signCell.img sd_setImageWithURL:[NSURL URLWithString:_userInfo.faceImg] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
+//    _avtImg.clipsToBounds = YES;
+//    _avtImg.layer.cornerRadius = 20;
+    _nicknameCell.rightLab.text = _userInfo.nickName;
+    _signCell.rightLab.text = _userInfo.signature;
+    _sexCell.rightLab.text = _userInfo.sex;
+    _phoneCell.rightLab.text = _userInfo.mobile;
+    _addressCell.rightLab.text = _userInfo.area;
 }
 
 /*
