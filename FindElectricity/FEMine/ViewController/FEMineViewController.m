@@ -13,6 +13,7 @@
 #import "FEShopJionViewController.h"
 #import "FECollectViewController.h"
 #import "FEPositionErrorViewController.h"
+#import "FESharePopView.h"
 @interface FEMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (copy, nonatomic) NSArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIView *headView;
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *leve;
 @property (weak, nonatomic) IBOutlet UILabel *sign;
-
+@property (weak, nonatomic) FESharePopView *sharePopView;
 
 @end
 
@@ -53,6 +54,25 @@
 
 - (void)initData {
     _dataSource = @[@[@{@"title":@"商家入住申请",@"icon":@"mine_checkIn"},@{@"title":@"商家收藏",@"icon":@"mine_collect"},@{@"title":@"商家位置纠正",@"icon":@"mine_modify"}],@[@{@"title":@"意见建议",@"icon":@"mine_advice"},@{@"title":@"推荐好友",@"icon":@"mine_introduce"}]];
+}
+
+- (FESharePopView *)sharePopView {
+    if (!_sharePopView) {
+        _sharePopView = [FESharePopView createView];
+        _sharePopView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        WEAKSELF;
+        _sharePopView.didClick = ^(FESharePopView * _Nonnull lau, NSInteger tag) {
+            
+            if (tag==1) {
+                //朋友圈
+                
+            }else{
+                //微信好友
+                
+            }
+        };
+    }
+    return _sharePopView;
 }
 
 #pragma mark --tableViewDelegate
@@ -123,7 +143,7 @@
             case 1:
             {
                 //推荐
-                
+                [MTKeyWindow addSubview:self.sharePopView];
                 break;
             }
             default:
@@ -138,7 +158,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headView = [UIView new];
+    UIView *headView = [[UIView alloc] init];
     return headView;
 }
 

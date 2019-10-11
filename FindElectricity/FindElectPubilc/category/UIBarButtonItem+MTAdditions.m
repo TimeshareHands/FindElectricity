@@ -42,7 +42,7 @@
 + (UIBarButtonItem *)itemWithTitle:(NSString *)tilte target:(id)target action:(SEL)action color:(UIColor *)color
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = (CGRect){CGPointZero,CGSizeMake(50, 36)};
+    button.frame = (CGRect){CGPointZero,CGSizeMake(40, 36)};
     [button setTitle:tilte forState:UIControlStateNormal];
     [button setTitleColor:color forState:UIControlStateNormal];
     button.userInteractionEnabled = YES;

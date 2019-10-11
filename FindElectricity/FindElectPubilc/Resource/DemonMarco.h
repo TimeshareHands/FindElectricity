@@ -201,3 +201,6 @@ const static NSString *FEAMapKey = @"b38728b38131c13a24e8454f6a5dc233";
 //屏幕比例尺寸
 #define MTGetHeightScale(w,scale) ((w)/(scale))
 #define MTGetWidthScale(h,scale) ((h)*(scale))
+
+
+#define kCurrentCity @"currentCity"//当前城市

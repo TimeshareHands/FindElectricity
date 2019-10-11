@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavgaTitle:@"商家入驻"];
-    [self rightBtnWithTitle:@"添加" target:self action:@selector(addShop) color:UIColorFromHex(0xa7a7a7)];
+    [self rightBtnWithTitle:@" 添加" target:self action:@selector(addShop) color:UIColorFromHex(0x404040)];
     [self initData];
 }
 

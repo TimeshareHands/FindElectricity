@@ -7,8 +7,9 @@
 //
 
 #import "FESignChangeViewController.h"
-
+#import "SZTextView.h"
 @interface FESignChangeViewController ()
+@property (weak, nonatomic) IBOutlet SZTextView *intpuTF;
 
 @end
 
@@ -16,7 +17,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setNavgaTitle:@"个性签名"];
+    [self rightBtnWithTitle:@"完成" target:self action:@selector(comfirm) color:UIColorFromHex(0x404040)];
+    self.intpuTF.text = self.mscCell.rightLab.text;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.intpuTF becomeFirstResponder];
+}
+
+- (void)comfirm
+{
+    NSString *str = self.intpuTF.text;
+    
+    str = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if (!str.length) {
+        MTSVPShowInfoText(@"请输入内容");
+        return;
+    }
+    
+    if (self.mscCell) {
+        self.mscCell.rightLab.text = str;
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

@@ -24,7 +24,11 @@
 @end
 
 @implementation FECycleMap
-
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self addView];
+    [self configLocationManager];
+}
 - (instancetype)init
 {
     self = [super init];

@@ -16,7 +16,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setNavgaTitle:@"修改手机号"];
+    [self rightBtnWithTitle:@"完成" target:self action:@selector(comfirm) color:UIColorFromHex(0x404040)];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
+- (void)comfirm
+{
+//    NSString *str = self.intpuTF.text;
+//
+//    str = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//
+//    if (!str.length) {
+//        MTSVPShowInfoText(@"请输入内容");
+//        return;
+//    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

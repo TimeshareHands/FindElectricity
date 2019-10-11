@@ -11,7 +11,8 @@
 #import "FEMsgChangeViewController.h"
 #import "FEChangePhoneViewController.h"
 #import "FESignChangeViewController.h"
-@interface FEMineMsgViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "FESelectCityViewController.h"
+@interface FEMineMsgViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (copy, nonatomic) NSArray *dataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) FEMineMsgCell *avtCell;
@@ -20,7 +21,7 @@
 @property (weak, nonatomic) FEMineMsgCell *phoneCell;
 @property (weak, nonatomic) FEMineMsgCell *addressCell;
 @property (weak, nonatomic) FEMineMsgCell *signCell;
-
+@property (nonatomic, strong) NSData *icon;
 
 @end
 
@@ -39,6 +40,113 @@
 
 - (void)initData {
     _dataSource = @[@[@"头像",@"名称",@"性别",@"电话号码",@"地址"],@[@"签名"]];
+}
+
+- (void)showActionWith:(NSInteger)tag
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    actionSheet.tag = tag;
+    if (tag == 1) {
+        //选择性别
+        [actionSheet addButtonWithTitle:@"男"];
+        [actionSheet addButtonWithTitle:@"女"];
+    }
+    else{
+        [actionSheet addButtonWithTitle:@"拍照"];
+        [actionSheet addButtonWithTitle:@"从手机相册选择"];
+    }
+    // 同时添加一个取消按钮
+    [actionSheet addButtonWithTitle:@"取消"];
+    // 将取消按钮的index设置成我们刚添加的那个按钮，这样在delegate中就可以知道是那个按钮
+    actionSheet.destructiveButtonIndex = actionSheet.numberOfButtons - 1;
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - 判断设备是否有摄像头
+
+- (BOOL)isCameraAvailable
+{
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
+
+#pragma mark - UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag) {
+        //性别
+        switch (buttonIndex) {
+            case 0:
+            {
+                _sexCell.rightLab.text = @"男";
+                break;
+            }
+            case 1:
+            {
+                _sexCell.rightLab.text = @"女";
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }else{
+        switch (buttonIndex) {
+            case 0:
+            {
+                UIImagePickerController *imgPickerC = [[UIImagePickerController alloc]init];
+                imgPickerC.editing = YES;
+                imgPickerC.allowsEditing = YES;
+                imgPickerC.delegate = self;
+                if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+                {
+                    imgPickerC.sourceType = UIImagePickerControllerSourceTypeCamera;
+                    [self presentViewController:imgPickerC animated:YES completion:nil];
+                }
+                break;
+            }
+            case 1:
+            {
+                UIImagePickerController *imgPickerC = [[UIImagePickerController alloc]init];
+                imgPickerC.editing = YES;
+                imgPickerC.allowsEditing = YES;
+                imgPickerC.delegate = self;
+                imgPickerC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                [self presentViewController:imgPickerC animated:YES completion:nil];
+                break;
+            }
+                
+            default:
+                break;
+        }
+    }
+}
+
+//照相，选图片的delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *_selectedImage = [[UIImage alloc] init];
+    _selectedImage = info[@"UIImagePickerControllerEditedImage"];
+    _avtCell.img.image = _selectedImage;
+    _icon = UIImageJPEGRepresentation(_selectedImage, 0.3);
+    // 这里base64Encoding 要修改
+//    _iconString = [data base64Encoding];
+    [self dismissViewControllerAnimated:YES completion:^{
+        //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"确定要把该图片设置为背景图" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        //        [alert show];
+        //        alertContent(@"nigjsldg");
+        //        kAlertView(@"确定把该图设置为头像", @"取消", @"确定");
+//        alertContent(@"确定把该图设置为头像", @"取消",@"确定");
+        //        alertContentWithTag(@"确定把该图设置为头像", @"取消",@"确定", 1);
+    }];
+    //    [self performSelector:@selector(saveImage:) withObject:_selectedImage afterDelay:0.5];
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark --tableViewDelegate
@@ -111,7 +219,7 @@
             {
                 //签名
                 _signCell = cell;
-                _signCell.rightLab.text = @"你牛逼";
+                _signCell.rightLab.text = @"用户很懒，还没有个性签名";
                 break;
             }
             default:
@@ -128,7 +236,7 @@
             case 0:
             {
                 //头像
-                
+                [self showActionWith:0];
                 break;
             }
             case 1:
@@ -142,7 +250,7 @@
             case 2:
             {
                 //性别
-                
+                [self showActionWith:1];
                 break;
             }
             case 3:
@@ -155,7 +263,9 @@
             case 4:
             {
                 //地址
-                
+                FESelectCityViewController *vc = [[FESelectCityViewController alloc] init];
+                vc.mCell = _addressCell;
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             default:
@@ -183,7 +293,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headView = [UIView new];
+    UIView *headView = [[UIView alloc] init];
     return headView;
 }
 
