@@ -1,22 +1,22 @@
 //
-//  FEAddShopViewController.m
+//  FESignChangeViewController.m
 //  FindElectricity
 //
-//  Created by DongQiangLi on 2019/10/10.
+//  Created by 李冬强 on 2019/10/10.
 //  Copyright © 2019 LiDongQiang. All rights reserved.
 //
 
-#import "FEAddShopViewController.h"
+#import "FESignChangeViewController.h"
 
-@interface FEAddShopViewController ()
+@interface FESignChangeViewController ()
 
 @end
 
-@implementation FEAddShopViewController
+@implementation FESignChangeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavgaTitle:@"商家入驻"];
+    // Do any additional setup after loading the view from its nib.
 }
 
 /*

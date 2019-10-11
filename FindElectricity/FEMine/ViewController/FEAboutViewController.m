@@ -9,6 +9,8 @@
 #import "FEAboutViewController.h"
 
 @interface FEAboutViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *getUpdateBtn;
+@property (weak, nonatomic) IBOutlet UILabel *version;
 
 @end
 
@@ -16,7 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setNavgaTitle:@"关于找电"];
+    _getUpdateBtn.layer.cornerRadius = 7.5;
+    _getUpdateBtn.layer.borderColor = [[UIColor colorWithRed:40.0f/255.0f green:184.0f/255.0f blue:136.0f/255.0f alpha:1.0f] CGColor];
+    _getUpdateBtn.layer.borderWidth = 1.5;
 }
 
 /*
