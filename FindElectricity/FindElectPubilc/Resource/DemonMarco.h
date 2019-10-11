@@ -204,3 +204,4 @@ const static NSString *FEAMapKey = @"b38728b38131c13a24e8454f6a5dc233";
 
 
 #define kCurrentCity @"currentCity"//当前城市
+#define kFEDefaultImg @"logo.png"

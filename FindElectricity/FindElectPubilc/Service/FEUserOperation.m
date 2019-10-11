@@ -19,4 +19,27 @@ static dispatch_once_t onceToken;
     });
     return manager;
 }
+
+- (BOOL)didLogin
+{
+    if (self.token.length)
+    {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)logoutUser
+{
+    self.token = @"";
+}
+
+-(void)setToken:(NSString *)token {
+    //我先简单处理，缓存
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"FEToken"];
+}
+
+-(NSString *)token {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"FEToken"];
+}
 @end

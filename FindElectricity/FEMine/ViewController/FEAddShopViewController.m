@@ -8,7 +8,14 @@
 
 #import "FEAddShopViewController.h"
 #import "FECycleMap.h"
-@interface FEAddShopViewController ()
+@interface FEAddShopViewController ()<UIPickerViewDelegate,UIPickerViewDataSource>
+@property (assign, nonatomic) NSInteger flag;
+@property (weak, nonatomic) IBOutlet UILabel *zaoTime;
+@property (weak, nonatomic) IBOutlet UILabel *wanTime;
+//view
+@property (weak, nonatomic) IBOutlet UIDatePicker *myPicker;
+@property (weak, nonatomic) IBOutlet UIView *maskView;
+
 @property (weak, nonatomic) IBOutlet UIView *headView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *upLoadBtn;
@@ -33,8 +40,50 @@
     _upLoadBtn.clipsToBounds = YES;
 }
 
+- (IBAction)dateAct:(UIButton *)sender
+{
+    if (sender.tag == 1) {
+        _flag = 1;
+    }
+    else
+    {
+        _flag = 2;
+    }
+    [self showMyPicker];
+}
+
+#pragma mark - private method
+- (void)showMyPicker
+{
+    self.maskView.hidden = NO;
+    
+}
+
+- (void)hideMyPicker {
+    self.maskView.hidden = YES;
+}
+
+- (IBAction)cancel:(id)sender {
+    [self hideMyPicker];
+}
+
+- (IBAction)ensure:(id)sender {
+    NSDate *date = _myPicker.date;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat: @"HH:mm"];
+    NSString *time = [dateFormatter stringFromDate:date];
+    if (_flag == 1) {
+        _zaoTime.text = time;
+    }else
+    {
+        _wanTime.text = time;
+    }
+    [self hideMyPicker];
+}
 
 - (IBAction)save:(id)sender {
+    //保存
+    
 }
 
 /*

@@ -22,6 +22,19 @@ NS_ASSUME_NONNULL_BEGIN
  *登录token
  */
 @property(nonatomic,copy)NSString *token;
+
+
+/**
+是否登录
+ 
+@return YES 表示登录
+*/
+- (BOOL)didLogin;
+
+/**
+ 退出登录
+ */
+- (void)logoutUser;
 @end
 
 

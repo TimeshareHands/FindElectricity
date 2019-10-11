@@ -12,6 +12,8 @@
             <connections>
                 <outlet property="headView" destination="NXf-Kp-FSb" id="2EF-6j-eGp"/>
                 <outlet property="mapView" destination="D5j-oV-LC5" id="XKu-ol-bL7"/>
+                <outlet property="maskView" destination="JmF-J1-yYZ" id="p8c-VH-8LB"/>
+                <outlet property="myPicker" destination="KeE-Qq-Hp9" id="0JI-R5-exv"/>
                 <outlet property="tableView" destination="FES-5M-7hy" id="Ii0-5p-Qmx"/>
                 <outlet property="upLoadBtn" destination="TUj-VZ-u1f" id="doe-5b-IZr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -39,6 +41,67 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JmF-J1-yYZ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1T-Ti-5pk">
+                            <rect key="frame" x="0.0" y="490" width="375" height="177"/>
+                            <subviews>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KeE-Qq-Hp9">
+                                    <rect key="frame" x="0.0" y="44" width="375" height="133"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="133" id="d27-Kd-om9"/>
+                                    </constraints>
+                                </datePicker>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzU-5f-VWI">
+                                    <rect key="frame" x="8" y="6" width="63" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="7jB-hH-kj4"/>
+                                        <constraint firstAttribute="width" constant="63" id="ftP-bl-7v6"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="取消">
+                                        <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="JaG-fh-XAg"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTB-TP-M2Y">
+                                    <rect key="frame" x="304" y="6" width="63" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="63" id="6Ap-tm-BOX"/>
+                                        <constraint firstAttribute="height" constant="30" id="mT0-bL-8x7"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="确定">
+                                        <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="ensure:" destination="-1" eventType="touchUpInside" id="hjb-Cd-xsW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="JzU-5f-VWI" firstAttribute="top" secondItem="t1T-Ti-5pk" secondAttribute="top" constant="6" id="Drh-5l-QPh"/>
+                                <constraint firstAttribute="trailing" secondItem="nTB-TP-M2Y" secondAttribute="trailing" constant="8" id="OA8-ed-Flg"/>
+                                <constraint firstItem="JzU-5f-VWI" firstAttribute="leading" secondItem="t1T-Ti-5pk" secondAttribute="leading" constant="8" id="PgW-vn-hLR"/>
+                                <constraint firstAttribute="trailing" secondItem="KeE-Qq-Hp9" secondAttribute="trailing" id="QfA-YY-n4o"/>
+                                <constraint firstAttribute="height" constant="177" id="bIP-6g-a23"/>
+                                <constraint firstAttribute="bottom" secondItem="KeE-Qq-Hp9" secondAttribute="bottom" id="l4l-RP-R62"/>
+                                <constraint firstItem="nTB-TP-M2Y" firstAttribute="top" secondItem="t1T-Ti-5pk" secondAttribute="top" constant="6" id="q4Z-ZS-32w"/>
+                                <constraint firstItem="KeE-Qq-Hp9" firstAttribute="leading" secondItem="t1T-Ti-5pk" secondAttribute="leading" id="zCu-ur-RXU"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="t1T-Ti-5pk" firstAttribute="leading" secondItem="JmF-J1-yYZ" secondAttribute="leading" id="9Ab-zl-7X1"/>
+                        <constraint firstAttribute="trailing" secondItem="t1T-Ti-5pk" secondAttribute="trailing" id="Rz9-0k-oTk"/>
+                        <constraint firstAttribute="bottom" secondItem="t1T-Ti-5pk" secondAttribute="bottom" id="hRs-jS-vAS"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -48,7 +111,11 @@
                 <constraint firstAttribute="trailing" secondItem="UVJ-p3-F3p" secondAttribute="trailing" id="NL8-RL-b8U"/>
                 <constraint firstItem="FES-5M-7hy" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Oq9-Nl-nRd"/>
                 <constraint firstItem="FES-5M-7hy" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="P7j-lv-f5m"/>
+                <constraint firstItem="JmF-J1-yYZ" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="RBG-rC-EXB"/>
+                <constraint firstItem="JmF-J1-yYZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="a4S-7S-FmQ"/>
+                <constraint firstItem="JmF-J1-yYZ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="fCK-5I-W1B"/>
                 <constraint firstItem="UVJ-p3-F3p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lDu-2Z-N7B"/>
+                <constraint firstItem="JmF-J1-yYZ" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="r7b-43-7fw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="-95.200000000000003" y="151.57421289355324"/>
@@ -236,6 +303,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-zf-fqs">
+                            <rect key="frame" x="80" y="1" width="74" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="dateAct:" destination="-1" eventType="touchUpInside" id="2ux-nn-UBf"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
@@ -355,7 +429,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="SDu-uq-Wdv"/>
-            <point key="canvasLocation" x="-95" y="767"/>
+            <point key="canvasLocation" x="-95.200000000000003" y="766.41679160419801"/>
         </view>
     </objects>
     <resources>

@@ -14,6 +14,7 @@
 #import "FECollectViewController.h"
 #import "FEPositionErrorViewController.h"
 #import "FESharePopView.h"
+
 @interface FEMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (copy, nonatomic) NSArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIView *headView;
@@ -23,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *leve;
 @property (weak, nonatomic) IBOutlet UILabel *sign;
 @property (weak, nonatomic) FESharePopView *sharePopView;
-
+@property (strong, nonatomic) FELoginResponseUserInfoModel *userInfo;
 @end
 
 @implementation FEMineViewController
@@ -33,6 +34,25 @@
     
     [self initData];
     [self addView];
+}
+
+- (void)getUserData {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(UserNewInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        [self setUserInfo:[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]]];
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)setUserInfo:(FELoginResponseUserInfoModel *)userInfo {
+    _userInfo = userInfo;
+    _nickname.text = _userInfo.nickName;
+    _sign.text = _userInfo.signature;
+    _leve.text = [NSString stringWithFormat:@" %@ ",_userInfo.grade];
+    [_avtImg sd_setImageWithURL:[NSURL URLWithString:_userInfo.faceImg] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
+    _avtImg.clipsToBounds = YES;
+    _avtImg.layer.cornerRadius = 20;
 }
 
 - (void)addView {
@@ -48,8 +68,6 @@
     _tableView.tableHeaderView = _headView;
     _leve.layer.borderColor = [UIColor whiteColor].CGColor;
     _leve.layer.borderWidth = 1;
-    _nickname.text = @"我是小李";
-    _leve.text = @" 青铜6 ";
 }
 
 - (void)initData {
@@ -174,6 +192,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self getUserData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
