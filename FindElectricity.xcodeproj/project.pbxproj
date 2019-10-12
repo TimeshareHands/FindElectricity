@@ -144,6 +144,10 @@
 		4E063D57233A122900D6756A /* FindTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D50233A122900D6756A /* FindTabBarController.m */; };
 		4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D51233A122900D6756A /* DemonNavigationController.m */; };
 		4E063D59233A122900D6756A /* DemonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D52233A122900D6756A /* DemonViewController.m */; };
+		4E783CE12350A763003872F2 /* FEGetPrizeShareFriendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE02350A763003872F2 /* FEGetPrizeShareFriendVC.m */; };
+		4E783CE42350AA83003872F2 /* FEWorkGetPrizeShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE32350AA83003872F2 /* FEWorkGetPrizeShareCell.m */; };
+		4E783CE723515133003872F2 /* FEWorkGetPrizeShareWxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE623515133003872F2 /* FEWorkGetPrizeShareWxCell.m */; };
+		4E783CEA2351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE92351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
 		CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E94234F1DCB00632F7B /* SZTextView.m */; };
 		CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E95234F1DCB00632F7B /* KLCoverView.m */; };
@@ -491,6 +495,14 @@
 		4E063D52233A122900D6756A /* DemonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemonViewController.m; sourceTree = "<group>"; };
 		4E063D53233A122900D6756A /* FindTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTabBarController.h; sourceTree = "<group>"; };
 		4E063D5D233A16F200D6756A /* FindElect-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FindElect-Prefix.pch"; sourceTree = "<group>"; };
+		4E783CDF2350A763003872F2 /* FEGetPrizeShareFriendVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEGetPrizeShareFriendVC.h; sourceTree = "<group>"; };
+		4E783CE02350A763003872F2 /* FEGetPrizeShareFriendVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEGetPrizeShareFriendVC.m; sourceTree = "<group>"; };
+		4E783CE22350AA83003872F2 /* FEWorkGetPrizeShareCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetPrizeShareCell.h; sourceTree = "<group>"; };
+		4E783CE32350AA83003872F2 /* FEWorkGetPrizeShareCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetPrizeShareCell.m; sourceTree = "<group>"; };
+		4E783CE523515133003872F2 /* FEWorkGetPrizeShareWxCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetPrizeShareWxCell.h; sourceTree = "<group>"; };
+		4E783CE623515133003872F2 /* FEWorkGetPrizeShareWxCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetPrizeShareWxCell.m; sourceTree = "<group>"; };
+		4E783CE82351515A003872F2 /* FEWorkGetPrizeShareAccordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetPrizeShareAccordCell.h; sourceTree = "<group>"; };
+		4E783CE92351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetPrizeShareAccordCell.m; sourceTree = "<group>"; };
 		69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.release.xcconfig"; sourceTree = "<group>"; };
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -886,6 +898,8 @@
 				4E02F2A1234EFB4300308D99 /* FEWorkStrategyVC.m */,
 				4E02F298234EFB4300308D99 /* FEWorkTurnTableVC.h */,
 				4E02F29F234EFB4300308D99 /* FEWorkTurnTableVC.m */,
+				4E783CDF2350A763003872F2 /* FEGetPrizeShareFriendVC.h */,
+				4E783CE02350A763003872F2 /* FEGetPrizeShareFriendVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -920,6 +934,12 @@
 				4E02F2B4234EFB4300308D99 /* FEWorkInviteAlertView.m */,
 				4E02F2AB234EFB4300308D99 /* FEWorkMainHeadView.h */,
 				4E02F2B2234EFB4300308D99 /* FEWorkMainHeadView.m */,
+				4E783CE22350AA83003872F2 /* FEWorkGetPrizeShareCell.h */,
+				4E783CE32350AA83003872F2 /* FEWorkGetPrizeShareCell.m */,
+				4E783CE523515133003872F2 /* FEWorkGetPrizeShareWxCell.h */,
+				4E783CE623515133003872F2 /* FEWorkGetPrizeShareWxCell.m */,
+				4E783CE82351515A003872F2 /* FEWorkGetPrizeShareAccordCell.h */,
+				4E783CE92351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1676,6 +1696,7 @@
 				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,
 				4E02F451234F228600308D99 /* NSButton+WebCache.m in Sources */,
 				4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */,
+				4E783CE42350AA83003872F2 /* FEWorkGetPrizeShareCell.m in Sources */,
 				CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */,
 				4E02F46D234F228600308D99 /* SDImageAssetManager.m in Sources */,
 				4E02F46C234F228600308D99 /* SDImageCachesManagerOperation.m in Sources */,
@@ -1687,6 +1708,7 @@
 				4E02F469234F228600308D99 /* UIImage+Metadata.m in Sources */,
 				4E02F43D234F228600308D99 /* SDImageCoder.m in Sources */,
 				4E02F2C4234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.m in Sources */,
+				4E783CEA2351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m in Sources */,
 				4E02F460234F228600308D99 /* SDImageGraphics.m in Sources */,
 				4E02F2BA234EFB4300308D99 /* FEWorkEValueShopVC.m in Sources */,
 				20916A78234AEF420045C7C8 /* MTResourceManager.m in Sources */,
@@ -1700,6 +1722,7 @@
 				CBEDBD58234EE11100A923A3 /* FEMineViewController.m in Sources */,
 				CB826161234C6DDD00DA6D21 /* CommonUtility.m in Sources */,
 				CBEDBD5D234F007000A923A3 /* FEMineCell.m in Sources */,
+				4E783CE723515133003872F2 /* FEWorkGetPrizeShareWxCell.m in Sources */,
 				4E02F465234F228600308D99 /* SDWebImageDefine.m in Sources */,
 				CB826161234C6DDD00DA6D21 /* CommonUtility.m in Sources */,
 				4E02F44A234F228600308D99 /* UIImage+MultiFormat.m in Sources */,
@@ -1726,6 +1749,7 @@
 				4E02F2C7234EFB4300308D99 /* FEWorkGiftCardCell.m in Sources */,
 				4E02F44C234F228600308D99 /* SDWebImageCompat.m in Sources */,
 				4E02F443234F228600308D99 /* UIImage+Transform.m in Sources */,
+				4E783CE12350A763003872F2 /* FEGetPrizeShareFriendVC.m in Sources */,
 				20916A5723478DDA0045C7C8 /* FECycleViewController.m in Sources */,
 				4E02F466234F228600308D99 /* SDWebImageOptionsProcessor.m in Sources */,
 				CB82616D234C714300DA6D21 /* MANaviRoute.m in Sources */,
