@@ -7,7 +7,7 @@
 //
 
 #import "FEUserOperation.h"
-
+#import "AppDelegate.h"
 static FEUserOperation *manager = nil;
 static dispatch_once_t onceToken;
 @implementation FEUserOperation
@@ -32,6 +32,12 @@ static dispatch_once_t onceToken;
 - (void)logoutUser
 {
     self.token = @"";
+    dispatch_async(dispatch_get_main_queue(), ^{
+        AppDelegate *appdele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appdele.tabBarController.navigationController popToRootViewControllerAnimated:YES];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+        [appdele.tabBarController switchTab:indexPath];
+    });
 }
 
 -(void)setToken:(NSString *)token {

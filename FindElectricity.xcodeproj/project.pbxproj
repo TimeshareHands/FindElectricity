@@ -174,6 +174,9 @@
 		CBED22BB235054630009B75D /* CityData.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBED22B9235054630009B75D /* CityData.plist */; };
 		CBED22BE2350592B0009B75D /* FESharePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22BD2350592B0009B75D /* FESharePopView.m */; };
 		CBED22C0235059560009B75D /* FESharePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBED22BF235059560009B75D /* FESharePopView.xib */; };
+		CBED22C32351CF1D0009B75D /* FEMySHopListMode.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C22351CF1D0009B75D /* FEMySHopListMode.m */; };
+		CBED22C62351DABC0009B75D /* FEMapCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C52351DABC0009B75D /* FEMapCollectModel.m */; };
+		CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C82351E2BE0009B75D /* FEMessageModel.m */; };
 		CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */; };
 		CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */; };
 		CBEDBD4F234ED57000A923A3 /* FEStopProcessBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD4E234ED57000A923A3 /* FEStopProcessBtn.m */; };
@@ -540,6 +543,12 @@
 		CBED22BC2350592B0009B75D /* FESharePopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESharePopView.h; sourceTree = "<group>"; };
 		CBED22BD2350592B0009B75D /* FESharePopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESharePopView.m; sourceTree = "<group>"; };
 		CBED22BF235059560009B75D /* FESharePopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FESharePopView.xib; sourceTree = "<group>"; };
+		CBED22C12351CF1D0009B75D /* FEMySHopListMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMySHopListMode.h; sourceTree = "<group>"; };
+		CBED22C22351CF1D0009B75D /* FEMySHopListMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMySHopListMode.m; sourceTree = "<group>"; };
+		CBED22C42351DABC0009B75D /* FEMapCollectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapCollectModel.h; sourceTree = "<group>"; };
+		CBED22C52351DABC0009B75D /* FEMapCollectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapCollectModel.m; sourceTree = "<group>"; };
+		CBED22C72351E2BE0009B75D /* FEMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMessageModel.h; sourceTree = "<group>"; };
+		CBED22C82351E2BE0009B75D /* FEMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMessageModel.m; sourceTree = "<group>"; };
 		CBEDBD48234DE2AC00A923A3 /* FECycleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleDetailViewController.h; sourceTree = "<group>"; };
 		CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleDetailViewController.m; sourceTree = "<group>"; };
 		CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleDetailViewController.xib; sourceTree = "<group>"; };
@@ -635,6 +644,8 @@
 				CB826164234C714200DA6D21 /* MANaviPolyline.m */,
 				CB826169234C714300DA6D21 /* MANaviRoute.h */,
 				CB826168234C714200DA6D21 /* MANaviRoute.m */,
+				CBED22C72351E2BE0009B75D /* FEMessageModel.h */,
+				CBED22C82351E2BE0009B75D /* FEMessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1360,6 +1371,10 @@
 				CBED22B9235054630009B75D /* CityData.plist */,
 				CBED22B8235054630009B75D /* TLCity.h */,
 				CBED22B7235054630009B75D /* TLCity.m */,
+				CBED22C12351CF1D0009B75D /* FEMySHopListMode.h */,
+				CBED22C22351CF1D0009B75D /* FEMySHopListMode.m */,
+				CBED22C42351DABC0009B75D /* FEMapCollectModel.h */,
+				CBED22C52351DABC0009B75D /* FEMapCollectModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1702,6 +1717,7 @@
 				4E02F464234F228600308D99 /* SDWebImageCacheKeyFilter.m in Sources */,
 				CBED22BA235054630009B75D /* TLCity.m in Sources */,
 				4E02F2C6234EFB4300308D99 /* FETWorkMainTableViewCell.m in Sources */,
+				CBED22C62351DABC0009B75D /* FEMapCollectModel.m in Sources */,
 				4E02F442234F228600308D99 /* UIImage+ForceDecode.m in Sources */,
 				4E02F46B234F228600308D99 /* SDWebImageDownloaderRequestModifier.m in Sources */,
 				4E02F28F234EFAFB00308D99 /* FERegisterAccountVC.m in Sources */,
@@ -1723,6 +1739,7 @@
 				20916A7F234AF19A0045C7C8 /* FEShopDetailViewController.m in Sources */,
 				4E02F463234F228600308D99 /* SDImageCacheConfig.m in Sources */,
 				4E02F457234F228600308D99 /* SDImageGIFCoder.m in Sources */,
+				CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */,
 				4E02F43C234F228600308D99 /* SDAnimatedImageView+WebCache.m in Sources */,
 				4E02F44B234F228600308D99 /* SDMemoryCache.m in Sources */,
 				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,
@@ -1735,6 +1752,7 @@
 				4E063D1B233A104F00D6756A /* main.m in Sources */,
 				CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */,
 				4E02F2CF234F14EE00308D99 /* MBProgressHUD.m in Sources */,
+				CBED22C32351CF1D0009B75D /* FEMySHopListMode.m in Sources */,
 				4E02F291234EFAFB00308D99 /* FELoginRegisterModel.m in Sources */,
 				4E02F444234F228600308D99 /* SDWebImageDownloader.m in Sources */,
 				4E02F293234EFAFB00308D99 /* FESmsCodeCell.m in Sources */,

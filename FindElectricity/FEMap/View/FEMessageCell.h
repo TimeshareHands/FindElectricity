@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FEMessageModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEMessageCell : UITableViewCell
+@property (weak, nonatomic) FEMessageModel *model;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *detailLab;
 @property (weak, nonatomic) IBOutlet UILabel *red;
