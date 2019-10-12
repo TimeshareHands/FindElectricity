@@ -124,6 +124,10 @@
         _mapView.locationUpdateBlock = ^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull reGeocode, CGFloat locationAngle, NSError * _Nonnull error) {
                 MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (reGeocode.city) {
+                    [[NSUserDefaults standardUserDefaults] setObject:reGeocode.city forKey:kCurrentCity];
+                }
                 //获取到定位信息，更新annotation
                 if (weakSelf.pointAnnotaiton == nil)
                 {
@@ -135,6 +139,7 @@
                     [weakSelf.mapView setCenterCoordinate:location.coordinate];
                 }
                 [weakSelf.pointAnnotaiton setCoordinate:location.coordinate];
+            });
         };
         _mapView.delegate = self;
         _mapView.allowsAnnotationViewSorting = NO;
@@ -428,6 +433,10 @@
     }
     
     return nil;
+}
+
+-(void)mapView:(MAMapView *)mapView mapDidMoveByUser:(BOOL)wasUserAction {
+    MYLog(@"--lati:%f;longt:%f",mapView.centerCoordinate.latitude,mapView.centerCoordinate.longitude);
 }
 
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)annoView

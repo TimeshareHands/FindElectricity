@@ -10,6 +10,8 @@
 #import <UIKit+AFNetworking.h>
 #import "QiniuSDK.h"
 #import "FEUserOperation.h"
+#import "FELoginViewController.h"
+#import "AppDelegate.h"
 #define kTimeOut 60.0
 
 static NetWorkManger *manager = nil;
@@ -61,6 +63,10 @@ static AFHTTPSessionManager *afnManager = nil;
            NSString *decodeStr = [str decodeBase64StringToString] ;
            decodeStr =[[decodeStr substringWithRange:NSMakeRange(6, decodeStr.length-6)] decodeBase64StringToString];
             NSDictionary *dic = [self dictionaryWithJsonString:decodeStr];
+            //判断登录是否失效
+            if ([dic[@"code"] intValue] == 4010) {
+                [self goLogin];
+            }
             success(dic);
         }else {
             NSLog(@"No Data");
@@ -144,5 +150,13 @@ static AFHTTPSessionManager *afnManager = nil;
         }
     }];
  
+}
+
+- (void)goLogin {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        FELoginViewController *loginVC =[[FELoginViewController alloc]init];
+        AppDelegate *appdele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appdele.tabBarController presentViewController:loginVC animated:YES completion:nil];
+    });
 }
 @end

@@ -159,6 +159,8 @@
 		CB1567C6234F495100F2485F /* FEMineMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1567C4234F495100F2485F /* FEMineMsgCell.xib */; };
 		CB4FAC6C234F51EC0094D3E9 /* FEMyShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FAC6A234F51EC0094D3E9 /* FEMyShopListCell.m */; };
 		CB4FAC6D234F51EC0094D3E9 /* FEMyShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4FAC6B234F51EC0094D3E9 /* FEMyShopListCell.xib */; };
+		CB4FAC71235026DB0094D3E9 /* FESelectCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FAC6F235026DB0094D3E9 /* FESelectCityViewController.m */; };
+		CB4FAC72235026DB0094D3E9 /* FESelectCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4FAC70235026DB0094D3E9 /* FESelectCityViewController.xib */; };
 		CB826161234C6DDD00DA6D21 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CB82615F234C6DDD00DA6D21 /* CommonUtility.m */; };
 		CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826164234C714200DA6D21 /* MANaviPolyline.m */; };
 		CB82616C234C714300DA6D21 /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826166234C714200DA6D21 /* LineDashPolyline.m */; };
@@ -166,6 +168,16 @@
 		CBA72A70234DD0CA00C7070E /* FECycleMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A6E234DD0CA00C7070E /* FECycleMapViewController.m */; };
 		CBA72A71234DD0CA00C7070E /* FECycleMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */; };
 		CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A73234DD42B00C7070E /* FECycleMap.m */; };
+		CBED22AB235048840009B75D /* FENewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22A9235048840009B75D /* FENewsCell.m */; };
+		CBED22AC235048840009B75D /* FENewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBED22AA235048840009B75D /* FENewsCell.xib */; };
+		CBED22B0235049AA0009B75D /* FENewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22AE235049AA0009B75D /* FENewsViewController.m */; };
+		CBED22B1235049AA0009B75D /* FENewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBED22AF235049AA0009B75D /* FENewsViewController.xib */; };
+		CBED22B523504AAE0009B75D /* FEDocmDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22B323504AAE0009B75D /* FEDocmDetailViewController.m */; };
+		CBED22B623504AAE0009B75D /* FEDocmDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBED22B423504AAE0009B75D /* FEDocmDetailViewController.xib */; };
+		CBED22BA235054630009B75D /* TLCity.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22B7235054630009B75D /* TLCity.m */; };
+		CBED22BB235054630009B75D /* CityData.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBED22B9235054630009B75D /* CityData.plist */; };
+		CBED22BE2350592B0009B75D /* FESharePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22BD2350592B0009B75D /* FESharePopView.m */; };
+		CBED22C0235059560009B75D /* FESharePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBED22BF235059560009B75D /* FESharePopView.xib */; };
 		CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */; };
 		CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */; };
 		CBEDBD4F234ED57000A923A3 /* FEStopProcessBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD4E234ED57000A923A3 /* FEStopProcessBtn.m */; };
@@ -509,6 +521,9 @@
 		CB4FAC69234F51EC0094D3E9 /* FEMyShopListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMyShopListCell.h; sourceTree = "<group>"; };
 		CB4FAC6A234F51EC0094D3E9 /* FEMyShopListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMyShopListCell.m; sourceTree = "<group>"; };
 		CB4FAC6B234F51EC0094D3E9 /* FEMyShopListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMyShopListCell.xib; sourceTree = "<group>"; };
+		CB4FAC6E235026DB0094D3E9 /* FESelectCityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESelectCityViewController.h; sourceTree = "<group>"; };
+		CB4FAC6F235026DB0094D3E9 /* FESelectCityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESelectCityViewController.m; sourceTree = "<group>"; };
+		CB4FAC70235026DB0094D3E9 /* FESelectCityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FESelectCityViewController.xib; sourceTree = "<group>"; };
 		CB82615F234C6DDD00DA6D21 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
 		CB826160234C6DDD00DA6D21 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		CB826164234C714200DA6D21 /* MANaviPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviPolyline.m; sourceTree = "<group>"; };
@@ -522,6 +537,21 @@
 		CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleMapViewController.xib; sourceTree = "<group>"; };
 		CBA72A72234DD42B00C7070E /* FECycleMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleMap.h; sourceTree = "<group>"; };
 		CBA72A73234DD42B00C7070E /* FECycleMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleMap.m; sourceTree = "<group>"; };
+		CBED22A8235048840009B75D /* FENewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FENewsCell.h; sourceTree = "<group>"; };
+		CBED22A9235048840009B75D /* FENewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FENewsCell.m; sourceTree = "<group>"; };
+		CBED22AA235048840009B75D /* FENewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FENewsCell.xib; sourceTree = "<group>"; };
+		CBED22AD235049AA0009B75D /* FENewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FENewsViewController.h; sourceTree = "<group>"; };
+		CBED22AE235049AA0009B75D /* FENewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FENewsViewController.m; sourceTree = "<group>"; };
+		CBED22AF235049AA0009B75D /* FENewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FENewsViewController.xib; sourceTree = "<group>"; };
+		CBED22B223504AAE0009B75D /* FEDocmDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEDocmDetailViewController.h; sourceTree = "<group>"; };
+		CBED22B323504AAE0009B75D /* FEDocmDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEDocmDetailViewController.m; sourceTree = "<group>"; };
+		CBED22B423504AAE0009B75D /* FEDocmDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEDocmDetailViewController.xib; sourceTree = "<group>"; };
+		CBED22B7235054630009B75D /* TLCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCity.m; sourceTree = "<group>"; };
+		CBED22B8235054630009B75D /* TLCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCity.h; sourceTree = "<group>"; };
+		CBED22B9235054630009B75D /* CityData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CityData.plist; sourceTree = "<group>"; };
+		CBED22BC2350592B0009B75D /* FESharePopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESharePopView.h; sourceTree = "<group>"; };
+		CBED22BD2350592B0009B75D /* FESharePopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESharePopView.m; sourceTree = "<group>"; };
+		CBED22BF235059560009B75D /* FESharePopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FESharePopView.xib; sourceTree = "<group>"; };
 		CBEDBD48234DE2AC00A923A3 /* FECycleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleDetailViewController.h; sourceTree = "<group>"; };
 		CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleDetailViewController.m; sourceTree = "<group>"; };
 		CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleDetailViewController.xib; sourceTree = "<group>"; };
@@ -1282,6 +1312,9 @@
 				20916A96234F7FD60045C7C8 /* FEMsgChangeViewController.h */,
 				20916A97234F7FD60045C7C8 /* FEMsgChangeViewController.m */,
 				20916A98234F7FD60045C7C8 /* FEMsgChangeViewController.xib */,
+				CB4FAC6E235026DB0094D3E9 /* FESelectCityViewController.h */,
+				CB4FAC6F235026DB0094D3E9 /* FESelectCityViewController.m */,
+				CB4FAC70235026DB0094D3E9 /* FESelectCityViewController.xib */,
 				CBEDBD69234F0A1D00A923A3 /* FEAddressViewController.h */,
 				CBEDBD6A234F0A1D00A923A3 /* FEAddressViewController.m */,
 				CBEDBD6B234F0A1D00A923A3 /* FEAddressViewController.xib */,
@@ -1303,6 +1336,12 @@
 				CBEDBD87234F0BF500A923A3 /* FEPositionErrorViewController.h */,
 				CBEDBD88234F0BF500A923A3 /* FEPositionErrorViewController.m */,
 				CBEDBD89234F0BF500A923A3 /* FEPositionErrorViewController.xib */,
+				CBED22AD235049AA0009B75D /* FENewsViewController.h */,
+				CBED22AE235049AA0009B75D /* FENewsViewController.m */,
+				CBED22AF235049AA0009B75D /* FENewsViewController.xib */,
+				CBED22B223504AAE0009B75D /* FEDocmDetailViewController.h */,
+				CBED22B323504AAE0009B75D /* FEDocmDetailViewController.m */,
+				CBED22B423504AAE0009B75D /* FEDocmDetailViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1313,6 +1352,9 @@
 				CBEDBD5A234F007000A923A3 /* FEMineCell.h */,
 				CBEDBD5B234F007000A923A3 /* FEMineCell.m */,
 				CBEDBD5C234F007000A923A3 /* FEMineCell.xib */,
+				CBED22BC2350592B0009B75D /* FESharePopView.h */,
+				CBED22BD2350592B0009B75D /* FESharePopView.m */,
+				CBED22BF235059560009B75D /* FESharePopView.xib */,
 				CB0D0E9A234F20FC00632F7B /* FESettingsCell.h */,
 				CB0D0E9B234F20FC00632F7B /* FESettingsCell.m */,
 				CB0D0E9C234F20FC00632F7B /* FESettingsCell.xib */,
@@ -1325,6 +1367,9 @@
 				CB4FAC69234F51EC0094D3E9 /* FEMyShopListCell.h */,
 				CB4FAC6A234F51EC0094D3E9 /* FEMyShopListCell.m */,
 				CB4FAC6B234F51EC0094D3E9 /* FEMyShopListCell.xib */,
+				CBED22A8235048840009B75D /* FENewsCell.h */,
+				CBED22A9235048840009B75D /* FENewsCell.m */,
+				CBED22AA235048840009B75D /* FENewsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1332,6 +1377,9 @@
 		CBEDBD54234EE0B100A923A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBED22B9235054630009B75D /* CityData.plist */,
+				CBED22B8235054630009B75D /* TLCity.h */,
+				CBED22B7235054630009B75D /* TLCity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1448,6 +1496,7 @@
 				4E063D18233A104F00D6756A /* LaunchScreen.storyboard in Resources */,
 				CBA72A71234DD0CA00C7070E /* FECycleMapViewController.xib in Resources */,
 				CBEDBD68234F09F300A923A3 /* FEMineMsgViewController.xib in Resources */,
+				CBED22C0235059560009B75D /* FESharePopView.xib in Resources */,
 				CBEDBD8B234F0BF500A923A3 /* FEPositionErrorViewController.xib in Resources */,
 				20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */,
 				20916A9A234F7FD60045C7C8 /* FEMsgChangeViewController.xib in Resources */,
@@ -1458,9 +1507,13 @@
 				CB4FAC6D234F51EC0094D3E9 /* FEMyShopListCell.xib in Resources */,
 				CB0D0E9E234F20FC00632F7B /* FESettingsCell.xib in Resources */,
 				CBEDBD77234F0A8100A923A3 /* FEFeedbackViewController.xib in Resources */,
+				CBED22B623504AAE0009B75D /* FEDocmDetailViewController.xib in Resources */,
 				CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */,
+				CBED22B1235049AA0009B75D /* FENewsViewController.xib in Resources */,
 				4E02F43A234F228600308D99 /* README.md in Resources */,
+				CBED22AC235048840009B75D /* FENewsCell.xib in Resources */,
 				20916A4F234789530045C7C8 /* FEMapViewController.xib in Resources */,
+				CB4FAC72235026DB0094D3E9 /* FESelectCityViewController.xib in Resources */,
 				20916A9F234F85770045C7C8 /* FESignChangeViewController.xib in Resources */,
 				CBEDBD63234F099F00A923A3 /* FESettingsViewController.xib in Resources */,
 				20916A80234AF19A0045C7C8 /* FEShopDetailViewController.xib in Resources */,
@@ -1479,6 +1532,7 @@
 				4E02F20B2349798F00308D99 /* UMSocialSDKResources.bundle in Resources */,
 				20916A8F234CBE490045C7C8 /* FEMapCategView.xib in Resources */,
 				CBEDBD72234F0A4500A923A3 /* FEAboutViewController.xib in Resources */,
+				CBED22BB235054630009B75D /* CityData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1664,10 +1718,12 @@
 				20916A50234789530045C7C8 /* FEMapNaviViewController.m in Sources */,
 				20916A77234AEF420045C7C8 /* UIViewExt.m in Sources */,
 				4E02F441234F228600308D99 /* SDAnimatedImageView.m in Sources */,
+				CBED22B523504AAE0009B75D /* FEDocmDetailViewController.m in Sources */,
 				4E063D57233A122900D6756A /* FindTabBarController.m in Sources */,
 				CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */,
 				CBEDBD8A234F0BF500A923A3 /* FEPositionErrorViewController.m in Sources */,
 				4E02F464234F228600308D99 /* SDWebImageCacheKeyFilter.m in Sources */,
+				CBED22BA235054630009B75D /* TLCity.m in Sources */,
 				4E02F2C6234EFB4300308D99 /* FETWorkMainTableViewCell.m in Sources */,
 				4E02F442234F228600308D99 /* UIImage+ForceDecode.m in Sources */,
 				4E02F46B234F228600308D99 /* SDWebImageDownloaderRequestModifier.m in Sources */,
@@ -1697,6 +1753,7 @@
 				4E02F28E234EFAFB00308D99 /* FELoginViewController.m in Sources */,
 				4E02F45C234F228600308D99 /* SDWebImageTransition.m in Sources */,
 				20916A602348D4760045C7C8 /* FEViewXib.m in Sources */,
+				CBED22BE2350592B0009B75D /* FESharePopView.m in Sources */,
 				CBEDBD80234F0B2C00A923A3 /* FEAddShopViewController.m in Sources */,
 				4E02F461234F228600308D99 /* SDImageCacheDefine.m in Sources */,
 				4E063D1B233A104F00D6756A /* main.m in Sources */,
@@ -1726,6 +1783,7 @@
 				CBEDBD76234F0A8100A923A3 /* FEFeedbackViewController.m in Sources */,
 				20916AA3234F85A90045C7C8 /* FEChangePhoneViewController.m in Sources */,
 				4E02F468234F228600308D99 /* UIView+WebCache.m in Sources */,
+				CBED22B0235049AA0009B75D /* FENewsViewController.m in Sources */,
 				20916A92234CBE770045C7C8 /* FEMapCategView.m in Sources */,
 				4E02F452234F228600308D99 /* SDImageIOCoder.m in Sources */,
 				4E02F46A234F228600308D99 /* UIButton+WebCache.m in Sources */,
@@ -1733,9 +1791,11 @@
 				CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */,
 				4E063D55233A122900D6756A /* NSString+Extend.m in Sources */,
 				CBEDBD6C234F0A1D00A923A3 /* FEAddressViewController.m in Sources */,
+				CB4FAC71235026DB0094D3E9 /* FESelectCityViewController.m in Sources */,
 				4E02F292234EFAFB00308D99 /* FEInputCell.m in Sources */,
 				4E02F440234F228600308D99 /* SDAnimatedImage.m in Sources */,
 				4E02F471234F228600308D99 /* NSBezierPath+RoundedCorners.m in Sources */,
+				CBED22AB235048840009B75D /* FENewsCell.m in Sources */,
 				4E02F467234F228600308D99 /* UIView+WebCacheOperation.m in Sources */,
 				4E02F2C5234EFB4300308D99 /* FEWorkInviteAlertView.m in Sources */,
 				4E02F43E234F228600308D99 /* SDWebImageManager.m in Sources */,
@@ -1916,7 +1976,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = J677Q28PH8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1938,7 +1998,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
 				PRODUCT_NAME = "找电";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = FindElectricity;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;

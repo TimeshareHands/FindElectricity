@@ -204,11 +204,11 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:item.tag];
     [self switchTab:indexPath];
-    //暂时注释，方便调UI
-//    if (![FEUserOperation manager].userModel) {
-//          FELoginViewController *loginVC =[[FELoginViewController alloc]init];
-//          [self presentViewController:loginVC animated:YES completion:nil];
-//    }
+    
+    if (![[FEUserOperation manager] didLogin]) {
+          FELoginViewController *loginVC =[[FELoginViewController alloc]init];
+          [self presentViewController:loginVC animated:YES completion:nil];
+    }
 }
 
 - (void)switchTab:(NSIndexPath *)indexPath

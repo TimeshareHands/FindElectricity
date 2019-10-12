@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavgaTitle:@"昵称"];
+    [self rightBtnWithTitle:@"完成" target:self action:@selector(comfirm) color:UIColorFromHex(0x404040)];
     self.intpuTF.text = self.mscCell.rightLab.text;
 }
 
@@ -27,7 +28,7 @@
     [self.intpuTF becomeFirstResponder];
 }
 
-- (IBAction)comfirm:(UIButton *)sender
+- (void)comfirm
 {
     NSString *str = self.intpuTF.text;
     
@@ -38,11 +39,31 @@
         return;
     }
     
-    if (self.mscCell) {
-        self.mscCell.rightLab.text = str;
-    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [self editInfo];
+}
+
+- (void)editInfo {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:@"nickName" forKey:@"fieldName"];
+    [parameter setValue:_intpuTF.text forKey:@"fieldValue"];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(EditInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (weakSelf.mscCell) {
+                    weakSelf.mscCell.rightLab.text = weakSelf.intpuTF.text;
+                }
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 /*

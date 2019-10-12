@@ -33,7 +33,7 @@
 
 - (void)makeUpconstriant {
     [self.icon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self).offset(-10);
+        make.left.mas_equalTo(self).offset(0);
         make.width.mas_equalTo(24);
         make.height.mas_equalTo(24);
         make.centerY.mas_equalTo(self);

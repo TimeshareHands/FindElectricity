@@ -9,6 +9,9 @@
 #import "FEChangePhoneViewController.h"
 
 @interface FEChangePhoneViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *phone;
+@property (weak, nonatomic) IBOutlet UITextField *msCode;
+@property (weak, nonatomic) IBOutlet UIButton *sendCode;
 
 @end
 
@@ -16,7 +19,74 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setNavgaTitle:@"修改手机号"];
+    [self rightBtnWithTitle:@"完成" target:self action:@selector(comfirm) color:UIColorFromHex(0x404040)];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
+- (IBAction)sendMsCode:(UIButton *)sender {
+    sender.enabled = NO;
+    NSString *phone = [self.phone.text eliminateSpace];
+    if (phone.length!= 11) {
+        MTSVPShowInfoText(@"请填写正确的手机号码");
+        return;
+    }
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:phone forKey:@"mobile"];
+    [parameter setValue:@"CHANGEMOBILE" forKey:@"type"];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(ChangeMobileHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                MTSVPShowSuccessWithText(@"发送成功");
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+    
+}
+
+- (void)comfirm
+{
+    NSString *phone = [self.phone.text eliminateSpace];
+    NSString *code = [self.msCode.text eliminateSpace];
+    if (!phone.length&&!code.length) {
+        MTSVPShowInfoText(@"请完善信息");
+        return;
+    }
+    
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:code forKey:@"verifyCode"];
+    [parameter setValue:phone forKey:@"mobile"];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(ChangeMobileHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 /*

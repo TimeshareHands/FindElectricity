@@ -13,6 +13,8 @@
 #import "FEShopJionViewController.h"
 #import "FECollectViewController.h"
 #import "FEPositionErrorViewController.h"
+#import "FESharePopView.h"
+
 @interface FEMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (copy, nonatomic) NSArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIView *headView;
@@ -21,8 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (weak, nonatomic) IBOutlet UILabel *leve;
 @property (weak, nonatomic) IBOutlet UILabel *sign;
-
-
+@property (weak, nonatomic) FESharePopView *sharePopView;
+@property (strong, nonatomic) FELoginResponseUserInfoModel *userInfo;
 @end
 
 @implementation FEMineViewController
@@ -32,6 +34,35 @@
     
     [self initData];
     [self addView];
+}
+
+- (void)getUserData {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(UserNewInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf setUserInfo:[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]]];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)setUserInfo:(FELoginResponseUserInfoModel *)userInfo {
+    _userInfo = userInfo;
+    _nickname.text = _userInfo.nickName;
+    _sign.text = _userInfo.signature;
+    _leve.text = [NSString stringWithFormat:@"  %@  ",_userInfo.grade];
+    [_avtImg sd_setImageWithURL:[NSURL URLWithString:_userInfo.faceImg] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
+    _avtImg.clipsToBounds = YES;
+    _avtImg.layer.cornerRadius = 20;
 }
 
 - (void)addView {
@@ -47,12 +78,29 @@
     _tableView.tableHeaderView = _headView;
     _leve.layer.borderColor = [UIColor whiteColor].CGColor;
     _leve.layer.borderWidth = 1;
-    _nickname.text = @"我是小李";
-    _leve.text = @" 青铜6 ";
 }
 
 - (void)initData {
     _dataSource = @[@[@{@"title":@"商家入住申请",@"icon":@"mine_checkIn"},@{@"title":@"商家收藏",@"icon":@"mine_collect"},@{@"title":@"商家位置纠正",@"icon":@"mine_modify"}],@[@{@"title":@"意见建议",@"icon":@"mine_advice"},@{@"title":@"推荐好友",@"icon":@"mine_introduce"}]];
+}
+
+- (FESharePopView *)sharePopView {
+    if (!_sharePopView) {
+        _sharePopView = [FESharePopView createView];
+        _sharePopView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        WEAKSELF;
+        _sharePopView.didClick = ^(FESharePopView * _Nonnull lau, NSInteger tag) {
+            
+            if (tag==1) {
+                //朋友圈
+                
+            }else{
+                //微信好友
+                
+            }
+        };
+    }
+    return _sharePopView;
 }
 
 #pragma mark --tableViewDelegate
@@ -123,7 +171,7 @@
             case 1:
             {
                 //推荐
-                
+                [MTKeyWindow addSubview:self.sharePopView];
                 break;
             }
             default:
@@ -138,7 +186,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headView = [UIView new];
+    UIView *headView = [[UIView alloc] init];
     return headView;
 }
 
@@ -154,6 +202,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self getUserData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

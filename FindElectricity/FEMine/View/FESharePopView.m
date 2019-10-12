@@ -1,22 +1,21 @@
 //
-//  FELauchShow.m
+//  FESharePopView.m
 //  FindElectricity
 //
-//  Created by 李冬强 on 2019/10/5.
+//  Created by DongQiangLi on 2019/10/11.
 //  Copyright © 2019 LiDongQiang. All rights reserved.
 //
 
-#import "FELauchShow.h"
+#import "FESharePopView.h"
 
-@implementation FELauchShow
-
+@implementation FESharePopView
 - (void)show {
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
     [keyWindow addSubview:self];
 }
 
 - (void)hidden {
-    [self setHidden:YES];
+    [self removeFromSuperview];
 }
 
 /*
@@ -28,8 +27,13 @@
 */
 
 - (IBAction)tapAction:(UIButton *)sender {
-    if (_didClick) {
-        _didClick(self,sender.tag);
+    if (sender.tag > 0) {
+        if (_didClick) {
+            _didClick(self,sender.tag);
+        }
     }
+    [self hidden];
 }
+
+
 @end

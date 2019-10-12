@@ -25,12 +25,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>此App会在拍照时访问相机权限</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>地图要使用的定位</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>地图需要您的定位服务，否则可能无法使用。</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>地图要使用的定位</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App需要保存照片到相册是否允许？</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
@@ -41,6 +45,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

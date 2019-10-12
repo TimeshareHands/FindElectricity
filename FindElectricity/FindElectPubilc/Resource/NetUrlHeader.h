@@ -13,6 +13,7 @@
 #define BASE_URLWith(str) [NSString stringWithFormat:@"%@%@",BASE_URL,str]
 #define KImg_URLWith(str)  [NSURL URLWithString:str]
 #define BASE_URL @"http://zhaodian.cswpw.cn/zhaodian/v2"
+#define KSuccessCode 2000
 
 //骑行
 #define CirclingSubHttp  @"/circlingSub" //骑行数据提交
@@ -59,6 +60,14 @@
 #define InvInfoHttp @"/invInfo"  //推荐界面接口
 #define TiXianReqHttp    @"/tixianReq"  //申请提现接口
 
+//用户
+#define EditInfoHttp  @"/editInfo"  //编辑用户
+#define AddressSetHttp @"/addressSet"  //个人中心收货地址完善
+#define AddressInfoHttp    @"/addressInfo"  //个人中心收货地址获取详情
+#define ChangeMobileHttp  @"/changeMobile"  //电话号码变更接口
+#define UserNewInfoHttp  @"/userNewInfo"  //获取用户相关信息***********
+#define AddAdviceHttp  @"/addAdvice"  //平台建议提交
+#define ClearTokenHttp  @"/clearToken"  //退出登录
 
 
 #endif /* NetUrlHeader_h */

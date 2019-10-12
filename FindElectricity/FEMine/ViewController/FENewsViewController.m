@@ -1,22 +1,26 @@
 //
-//  FEMessageViewController.m
+//  FENewsViewController.m
 //  FindElectricity
 //
-//  Created by 李冬强 on 2019/10/7.
+//  Created by DongQiangLi on 2019/10/11.
 //  Copyright © 2019 LiDongQiang. All rights reserved.
 //
 
-#import "FEMessageViewController.h"
-#import "FEMessageCell.h"
-@interface FEMessageViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (strong, nonatomic) NSMutableArray *dataSource;
+#import "FENewsViewController.h"
+#import "FENewsCell.h"
+#import "FEDocmDetailViewController.h"
+@interface FENewsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (copy, nonatomic) NSMutableArray *dataSource;
+
 @end
 
-@implementation FEMessageViewController
+@implementation FENewsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavgaTitle:@"消息"];
+    [self setNavgaTitle:@"办证"];
+    [self initData];
 }
 
 - (void)initData {
@@ -24,30 +28,38 @@
 }
 
 #pragma mark --tableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 12;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"cell";
-    FEMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    FENewsCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell==nil)
     {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"FEMessageCell" owner:self options:nil][0];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"FENewsCell" owner:self options:nil][0];
     }
-    cell.titleLab.text = @"舒服的设计费发";
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    FEDocmDetailViewController *detailVC = [[FEDocmDetailViewController alloc] init];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 66;
+    return 90;
 }
 
 /*
