@@ -171,7 +171,7 @@
         [[NSUserDefaults standardUserDefaults]setObject:city.cityName forKey:kCurrentCity];
     }
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [self editInfo];
 }
 
 - (NSArray *) sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -232,6 +232,28 @@
 - (void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)editInfo {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:@"area" forKey:@"fieldName"];
+    [parameter setValue:_mCell.rightLab.text forKey:@"fieldValue"];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(EditInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
