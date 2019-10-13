@@ -60,14 +60,28 @@
 #define InvInfoHttp @"/invInfo"  //推荐界面接口
 #define TiXianReqHttp    @"/tixianReq"  //申请提现接口
 
+//地图
+#define TenantsHttp @"/tenants"  //商家入驻
+#define EditMapHttp @"/editMap"  //地图点修改
+#define ServiceTypeHttp @"serviceType"  //服务类型列表
+#define TenantsLogHttp @"/tenantsLog"  //入驻申请记录列表
+#define DelTenantsHttp @"/delTenants"  //删除未处理的入驻申请
+#define MapListHttp @"/mapList"  //地图列表
+#define MapInfoHttp @"/mapInfo"  //地图点信息
+#define MapCollectionHttp @"/mapCollection"  //地图点收藏
+#define CollectionListHttp @"/collectionList"  //地图收藏列表
+#define MapCorrectionHttp @"/mapCorrection"  //地图点（商家位置）纠错
+#define CorrectionListHttp @"/correctionList"  //地图点（商家位置）纠错列表
+#define CorrectionContentHttp @"/orrectionContent"  //纠错内容详情
+
 //用户
-#define EditInfoHttp  @"/editInfo"  //编辑用户
-#define AddressSetHttp @"/addressSet"  //个人中心收货地址完善
-#define AddressInfoHttp    @"/addressInfo"  //个人中心收货地址获取详情
-#define ChangeMobileHttp  @"/changeMobile"  //电话号码变更接口
+#define EditInfoHttp  @"/editInfo"  //编辑用户***********
+#define AddressSetHttp @"/addressSet"  //个人中心收货地址完善***********
+#define AddressInfoHttp    @"/addressInfo"  //个人中心收货地址获取详情***********
+#define ChangeMobileHttp  @"/changeMobile"  //电话号码变更接口***********
 #define UserNewInfoHttp  @"/userNewInfo"  //获取用户相关信息***********
-#define AddAdviceHttp  @"/addAdvice"  //平台建议提交
-#define ClearTokenHttp  @"/clearToken"  //退出登录
+#define AddAdviceHttp  @"/addAdvice"  //平台建议提交***********
+#define ClearTokenHttp  @"/clearToken"  //退出登录***********
 
 
 #endif /* NetUrlHeader_h */

@@ -81,6 +81,25 @@
     
 }
 
+- (IBAction)logoutAct:(id)sender {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(ClearTokenHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[FEUserOperation manager] logoutUser];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 /*
 #pragma mark - Navigation
 

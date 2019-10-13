@@ -205,7 +205,7 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:item.tag];
     [self switchTab:indexPath];
     
-    if (![[FEUserOperation manager] didLogin]) {
+    if (![[FEUserOperation manager] didLogin]&&item.tag>1) {
           FELoginViewController *loginVC =[[FELoginViewController alloc]init];
           [self presentViewController:loginVC animated:YES completion:nil];
     }

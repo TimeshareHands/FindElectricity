@@ -88,7 +88,9 @@
                             <constraint firstAttribute="width" constant="30" id="Q7d-a1-iXd"/>
                             <constraint firstAttribute="height" constant="30" id="R57-4l-AxB"/>
                         </constraints>
-                        <state key="normal" image="cyc_close"/>
+                        <state key="normal" title="X">
+                            <color key="titleColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
@@ -117,10 +119,15 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="addressLab" destination="G24-lo-hSA" id="htL-4C-ocD"/>
+                <outlet property="btn" destination="fws-DI-AHQ" id="69w-YJ-jpd"/>
+                <outlet property="phoneLab" destination="X5D-3m-DsX" id="RZF-3I-NyU"/>
+                <outlet property="stateLab" destination="KsH-gv-chQ" id="Xlf-EK-vqB"/>
+                <outlet property="timeLab" destination="rrT-NX-Ghv" id="fzs-Qj-P6r"/>
+                <outlet property="titleLab" destination="Cr3-pY-Elk" id="sCc-bP-93F"/>
+            </connections>
             <point key="canvasLocation" x="128.98550724637681" y="126.89732142857142"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="cyc_close" width="58" height="58"/>
-    </resources>
 </document>

@@ -115,9 +115,9 @@ const static NSString *FEAMapKey = @"b38728b38131c13a24e8454f6a5dc233";
 
 /*日志打印*/
 #ifdef DEBUG
-#define MYLog(...)  NSLog(__VA_ARGS__)
+#define MYLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
-#define MYLog(...)
+#define MYLog(FORMAT, ...) nil
 #endif
 
 //SVP

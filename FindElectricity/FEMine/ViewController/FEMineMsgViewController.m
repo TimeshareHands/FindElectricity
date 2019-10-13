@@ -80,11 +80,13 @@
             case 0:
             {
                 _sexCell.rightLab.text = @"男";
+                [self editInfoFieldName:@"sex" fieldValue:@"1"];
                 break;
             }
             case 1:
             {
                 _sexCell.rightLab.text = @"女";
+                [self editInfoFieldName:@"sex" fieldValue:@"2"];
                 break;
             }
                 
@@ -133,7 +135,7 @@
     // 这里base64Encoding 要修改
 //    _iconString = [data base64Encoding];
     [self dismissViewControllerAnimated:YES completion:^{
-        
+        [self upLoadIcon];
     }];
 }
 
@@ -250,7 +252,7 @@
             case 3:
             {
                 //电话号码
-                FEMsgChangeViewController *vc = [[FEMsgChangeViewController alloc] init];
+                FEChangePhoneViewController *vc = [[FEChangePhoneViewController alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
@@ -321,14 +323,48 @@
 
 - (void)setUserInfo:(FELoginResponseUserInfoModel *)userInfo {
     _userInfo = userInfo;
-    [_signCell.img sd_setImageWithURL:[NSURL URLWithString:_userInfo.faceImg] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
-//    _avtImg.clipsToBounds = YES;
-//    _avtImg.layer.cornerRadius = 20;
+    [_avtCell.img sd_setImageWithURL:[NSURL URLWithString:_userInfo.faceImg] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
     _nicknameCell.rightLab.text = _userInfo.nickName;
     _signCell.rightLab.text = _userInfo.signature;
-    _sexCell.rightLab.text = _userInfo.sex;
+    _sexCell.rightLab.text = [_userInfo.sex isEqualToString:@"1"]?@"男":@"女";
     _phoneCell.rightLab.text = _userInfo.mobile;
     _addressCell.rightLab.text = _userInfo.area;
+}
+
+- (void)upLoadIcon{
+    [[NetWorkManger manager] uploadImageToQNFileData:_icon success:^(id  _Nonnull responseObject) {
+        NSString *data = (NSString *)responseObject;
+        if ([data containsString:@"http"]) {
+            [self editInfoFieldName:@"faceImg" fieldValue:data];
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)editInfoFieldName:(NSString *)fieldName fieldValue:(NSString *)fieldValue {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:fieldName forKey:@"fieldName"];
+    [parameter setValue:fieldValue forKey:@"fieldValue"];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(EditInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 /*

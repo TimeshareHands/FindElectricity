@@ -28,6 +28,7 @@
     
     self.title = @"城市选择";
     [self addView];
+    _currentCity = [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentCity];
 //    [self getCurrentCity];
 }
 
@@ -156,22 +157,19 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *area = @"";
     if (indexPath.section==0)
     {
-        if (_currentCity) {
-            _mCell.rightLab.text = _currentCity;
-            [[NSUserDefaults standardUserDefaults]setObject:_currentCity forKey:kCurrentCity];
-        }
+        area = _currentCity;
     }
     else
     {
         TLCityGroup *group = [self.data objectAtIndex:indexPath.section - 1];
         TLCity *city = [group.arrayCitys objectAtIndex:indexPath.row];
-        _mCell.rightLab.text = city.cityName;
-        [[NSUserDefaults standardUserDefaults]setObject:city.cityName forKey:kCurrentCity];
+        area = city.cityName;
     }
     
-    [self editInfo];
+    [self editInfoFieldName:@"area" fieldValue:area];
 }
 
 - (NSArray *) sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -234,10 +232,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)editInfo {
+- (void)editInfoFieldName:(NSString *)fieldName fieldValue:(NSString *)fieldValue {
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    [parameter setValue:@"area" forKey:@"fieldName"];
-    [parameter setValue:_mCell.rightLab.text forKey:@"fieldValue"];
+    [parameter setValue:fieldName forKey:@"fieldName"];
+    [parameter setValue:fieldValue forKey:@"fieldValue"];
     WEAKSELF;
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(EditInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
         NSDictionary *data = (NSDictionary *)responseObject;
