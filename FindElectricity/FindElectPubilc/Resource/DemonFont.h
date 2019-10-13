@@ -32,6 +32,7 @@
 #define Demon_26_Font [UIFont fontWithName:@"STHeitiSC-Light" size:26]
 #define Demon_30_Font [UIFont fontWithName:@"STHeitiSC-Light" size:30]
 #define Demon_32_Font [UIFont fontWithName:@"STHeitiSC-Light" size:32]
+#define Demon_36_Font [UIFont fontWithName:@"STHeitiSC-Light" size:36]
 #define Demon_38_Font [UIFont fontWithName:@"STHeitiSC-Light" size:38]
 
 #define Demon_10_MediumFont [UIFont fontWithName:@"STHeitiSC-Medium" size:10]
