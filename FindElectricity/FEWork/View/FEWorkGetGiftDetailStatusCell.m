@@ -85,6 +85,7 @@
     if (!_whiteView) {
         _whiteView =[[UIView alloc]init];
         [_whiteView setBackgroundColor:[UIColor whiteColor]];
+        [_whiteView.layer setCornerRadius:5];
     }
     return _whiteView;
 }

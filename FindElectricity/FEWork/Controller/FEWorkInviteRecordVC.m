@@ -89,7 +89,7 @@
 -(UITableView *)myTableView{
     if (!_myTableView) {
         _myTableView =[[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
-        [_myTableView setSeparatorStyle:UITableViewScrollPositionNone];
+        [_myTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_myTableView setDelegate:self];
         [_myTableView setDataSource:self];
     }

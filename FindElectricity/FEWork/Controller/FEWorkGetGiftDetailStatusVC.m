@@ -49,7 +49,7 @@
 #pragma mark -getter
 -(UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView =[[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _myTableView =[[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         [_myTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_myTableView setDelegate:self];
         [_myTableView setDataSource:self];
@@ -105,6 +105,7 @@
     UIView *headView =[[UIView alloc]init];
     UIView *whiteView =[[UIView alloc]init];
     [whiteView setBackgroundColor:[UIColor whiteColor]];
+    [whiteView.layer setCornerRadius:5];
     [headView addSubview:whiteView];
     [whiteView addSubview:self.leftLbl1];
     [whiteView addSubview:self.leftLbl2];
