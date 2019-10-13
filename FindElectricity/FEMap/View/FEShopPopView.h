@@ -7,12 +7,13 @@
 //
 
 #import "FEViewXib.h"
-
+#import "FEMapInfoModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEShopPopView : FEViewXib
+@property (weak,nonatomic) FEMapInfoModel *model;
 @property (weak, nonatomic) IBOutlet UIImageView *shopImg;
-@property (copy, nonatomic) void(^didClick)(NSInteger);
+@property (copy, nonatomic) void(^didClick)(NSInteger,NSString *mapId);
 - (IBAction)btnAct:(UIButton *)sender;
 
 @end

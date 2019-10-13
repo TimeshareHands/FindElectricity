@@ -109,6 +109,20 @@
 /** 使用高德地图API，请注册Key，注册地址：http://lbs.amap.com/console/key */
 const static NSString *FEAMapKey = @"b38728b38131c13a24e8454f6a5dc233";
 
+typedef NS_ENUM(NSInteger,FEPointAnnotType){
+    FEPointAnnotLoc = 0,
+    FEPointAnnotSlowlyChong = 1,
+    FEPointAnnotQuickChong = 2,
+    FEPointAnnotFix = 3,
+    
+    FEPointAnnotAll = 4,
+    FEPointAnnotRiding = 10,
+    FEPointAnnotDrive = 11,
+    FEPointAnnotWalking = 12,
+    FEPointAnnotBus = 13,
+    FEPointAnnotRailway = 14,
+};
+
 //主题颜色、副主题颜色
 #define kThemeColor UIColorFromHex(0x000000)
 #define kSubTopicColor UIColorFromHex(0xf23030)

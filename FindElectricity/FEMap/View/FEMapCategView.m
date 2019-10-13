@@ -11,7 +11,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *select1;
 @property (weak, nonatomic) IBOutlet UIImageView *select2;
 @property (weak, nonatomic) IBOutlet UIImageView *select3;
-
+@property (strong, nonatomic) NSMutableArray *serverIds;
 @end
 @implementation FEMapCategView
 - (void)show {
@@ -21,6 +21,23 @@
 
 - (void)hidden {
     [self removeFromSuperview];
+//    [self setHidden:YES];
+}
+
+//拼接serverID
+- (void)serverID:(NSString *)sID isAdd:(BOOL)isAdd {
+    if (isAdd) {
+        [self.serverIds containsObject:sID]? : [self.serverIds addObject:sID];
+    }else {
+        ![self.serverIds containsObject:sID]? : [self.serverIds removeObject:sID];
+    }
+}
+
+- (NSMutableArray *)serverIds {
+    if (!_serverIds) {
+        _serverIds = [NSMutableArray arrayWithArray:@[@"1",@"2",@"3"]];
+    }
+    return _serverIds;
 }
 
 /*
@@ -35,15 +52,21 @@
     if (sender.tag==4){
         [self hidden];
         if (_comfirm) {
-            NSString *status = [NSString stringWithFormat:@"%d-%d-%d",_select1.isHidden,_select2.isHidden,_select3.isHidden];
+            NSString *status = [NSString stringWithFormat:@"%@",[_serverIds componentsJoinedByString:@"|"]];
             _comfirm(self,status);
         }
-    }else if (sender.tag == 1){
-        _select3.hidden = !_select3.hidden;
-    }else if (sender.tag == 2){
-        _select1.hidden = !_select1.hidden;
     }else if (sender.tag == 3){
+        sender.selected = !sender.selected;
+        _select3.hidden = !_select3.hidden;
+        [self serverID:[NSString stringWithFormat:@"%d",sender.tag] isAdd:sender.selected];
+    }else if (sender.tag == 2){
+        sender.selected = !sender.selected;
+        _select1.hidden = !_select1.hidden;
+        [self serverID:[NSString stringWithFormat:@"%d",sender.tag] isAdd:sender.selected];
+    }else if (sender.tag == 1){
+        sender.selected = !sender.selected;
         _select2.hidden = !_select2.hidden;
+        [self serverID:[NSString stringWithFormat:@"%d",sender.tag] isAdd:sender.selected];
     }else {
         [self hidden];
     }

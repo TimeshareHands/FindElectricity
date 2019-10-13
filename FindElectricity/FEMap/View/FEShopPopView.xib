@@ -57,10 +57,10 @@
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址：长沙市开福区万达广场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k41-jU-Lg1">
-                            <rect key="frame" x="82" y="55" width="223" height="15"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址：长沙市开福区万达广场" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k41-jU-Lg1">
+                            <rect key="frame" x="82" y="55" width="223" height="14.5"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="15" id="e2J-u4-JAF"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="e2J-u4-JAF"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,6 +75,7 @@
                             <state key="normal" title=" 收藏" image="map_attion">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <state key="selected" image="mine_collect"/>
                             <connections>
                                 <action selector="btnAct:" destination="kzE-BL-Nhg" eventType="touchUpInside" id="3xS-XM-f56"/>
                             </connections>
@@ -175,7 +176,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="FMn-nt-cXM"/>
             <connections>
+                <outlet property="address" destination="k41-jU-Lg1" id="1iD-4m-Ucn"/>
+                <outlet property="collectBtn" destination="UuS-dg-UPf" id="dlf-9Z-wyq"/>
+                <outlet property="name" destination="s2n-CI-Qin" id="QDm-X7-NMA"/>
                 <outlet property="shopImg" destination="mUh-gP-A58" id="1Ls-zf-APf"/>
+                <outlet property="timeLab" destination="wTr-ko-67L" id="XHL-7Y-Ggz"/>
             </connections>
             <point key="canvasLocation" x="-258.39999999999998" y="19.340329835082461"/>
         </view>
@@ -186,5 +191,6 @@
         <image name="map_line" width="13" height="13.5"/>
         <image name="map_phone" width="13.5" height="13.5"/>
         <image name="map_to" width="57" height="57"/>
+        <image name="mine_collect" width="15" height="15"/>
     </resources>
 </document>

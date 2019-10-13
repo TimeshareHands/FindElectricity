@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FEMapNavigiItem : UIView
 @property (copy, nonatomic) void(^didTap)(NSInteger tag);
+- (void)notReadNum:(NSInteger)num;
 @end
 
 NS_ASSUME_NONNULL_END

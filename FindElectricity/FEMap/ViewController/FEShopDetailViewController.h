@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEShopDetailViewController : DemonViewController
-
+@property (copy,nonatomic) NSString *mapId;
 @end
 
 NS_ASSUME_NONNULL_END

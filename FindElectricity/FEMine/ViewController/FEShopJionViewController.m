@@ -11,10 +11,11 @@
 #import "FEAddShopViewController.h"
 #import "MJRefresh.h"
 #import "FEMySHopListMode.h"
-@interface FEShopJionViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface FEShopJionViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (copy, nonatomic) NSMutableArray *dataSource;
 @property (nonatomic, assign) int pageNo;
+@property (nonatomic, assign) NSInteger index;
 @end
 
 @implementation FEShopJionViewController
@@ -69,6 +70,10 @@
         cell = [[NSBundle mainBundle] loadNibNamed:@"FEMyShopListCell" owner:self options:nil][0];
     }
     cell.model = _dataSource[indexPath.row];
+    cell.btn.tag = indexPath.row;
+    [cell.btn bk_addEventHandler:^(id sender) {
+        [self delete:sender];
+    } forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -136,6 +141,50 @@
 - (void)loadMore
 {
     [self getDataOfPage:(++_pageNo) pageSize:20];
+}
+
+- (void)delete:(UIButton *)sender {
+    _index = sender.tag;
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    
+    [actionSheet addButtonWithTitle:@"确定删除"];
+    // 同时添加一个取消按钮
+    [actionSheet addButtonWithTitle:@"取消"];
+    // 将取消按钮的index设置成我们刚添加的那个按钮，这样在delegate中就可以知道是那个按钮
+    actionSheet.destructiveButtonIndex = actionSheet.numberOfButtons - 1;
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            [self deleteShop];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+//删除店铺
+- (void)deleteShop {
+    FEMySHopListMode *model = _dataSource[_index];
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:model.mapId forKey:@"mapId"];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(DelTenantsHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self refreshData];
+        });
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 /*
