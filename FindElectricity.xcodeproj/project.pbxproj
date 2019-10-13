@@ -148,6 +148,11 @@
 		4E783CE42350AA83003872F2 /* FEWorkGetPrizeShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE32350AA83003872F2 /* FEWorkGetPrizeShareCell.m */; };
 		4E783CE723515133003872F2 /* FEWorkGetPrizeShareWxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE623515133003872F2 /* FEWorkGetPrizeShareWxCell.m */; };
 		4E783CEA2351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE92351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m */; };
+		4E783CF023520D76003872F2 /* FEWorkInviteStandStardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CEF23520D76003872F2 /* FEWorkInviteStandStardVC.m */; };
+		4E783CF323529C1A003872F2 /* FEWorkInviteFriendRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CF223529C1A003872F2 /* FEWorkInviteFriendRecordCell.m */; };
+		4E783CF623529CDA003872F2 /* FEWorkInviteRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CF523529CDA003872F2 /* FEWorkInviteRecordVC.m */; };
+		4E783CF92352C85A003872F2 /* FEWorkGetGiftDetailStatusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CF82352C85A003872F2 /* FEWorkGetGiftDetailStatusVC.m */; };
+		4E783CFC2352C894003872F2 /* FEWorkGetGiftDetailStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CFB2352C894003872F2 /* FEWorkGetGiftDetailStatusCell.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
 		CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E94234F1DCB00632F7B /* SZTextView.m */; };
 		CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E95234F1DCB00632F7B /* KLCoverView.m */; };
@@ -500,6 +505,16 @@
 		4E783CE623515133003872F2 /* FEWorkGetPrizeShareWxCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetPrizeShareWxCell.m; sourceTree = "<group>"; };
 		4E783CE82351515A003872F2 /* FEWorkGetPrizeShareAccordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetPrizeShareAccordCell.h; sourceTree = "<group>"; };
 		4E783CE92351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetPrizeShareAccordCell.m; sourceTree = "<group>"; };
+		4E783CEE23520D76003872F2 /* FEWorkInviteStandStardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkInviteStandStardVC.h; sourceTree = "<group>"; };
+		4E783CEF23520D76003872F2 /* FEWorkInviteStandStardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkInviteStandStardVC.m; sourceTree = "<group>"; };
+		4E783CF123529C1A003872F2 /* FEWorkInviteFriendRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkInviteFriendRecordCell.h; sourceTree = "<group>"; };
+		4E783CF223529C1A003872F2 /* FEWorkInviteFriendRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkInviteFriendRecordCell.m; sourceTree = "<group>"; };
+		4E783CF423529CDA003872F2 /* FEWorkInviteRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkInviteRecordVC.h; sourceTree = "<group>"; };
+		4E783CF523529CDA003872F2 /* FEWorkInviteRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkInviteRecordVC.m; sourceTree = "<group>"; };
+		4E783CF72352C85A003872F2 /* FEWorkGetGiftDetailStatusVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetGiftDetailStatusVC.h; sourceTree = "<group>"; };
+		4E783CF82352C85A003872F2 /* FEWorkGetGiftDetailStatusVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetGiftDetailStatusVC.m; sourceTree = "<group>"; };
+		4E783CFA2352C894003872F2 /* FEWorkGetGiftDetailStatusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetGiftDetailStatusCell.h; sourceTree = "<group>"; };
+		4E783CFB2352C894003872F2 /* FEWorkGetGiftDetailStatusCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkGetGiftDetailStatusCell.m; sourceTree = "<group>"; };
 		69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.release.xcconfig"; sourceTree = "<group>"; };
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -889,6 +904,12 @@
 				4E02F29F234EFB4300308D99 /* FEWorkTurnTableVC.m */,
 				4E783CDF2350A763003872F2 /* FEGetPrizeShareFriendVC.h */,
 				4E783CE02350A763003872F2 /* FEGetPrizeShareFriendVC.m */,
+				4E783CEE23520D76003872F2 /* FEWorkInviteStandStardVC.h */,
+				4E783CEF23520D76003872F2 /* FEWorkInviteStandStardVC.m */,
+				4E783CF423529CDA003872F2 /* FEWorkInviteRecordVC.h */,
+				4E783CF523529CDA003872F2 /* FEWorkInviteRecordVC.m */,
+				4E783CF72352C85A003872F2 /* FEWorkGetGiftDetailStatusVC.h */,
+				4E783CF82352C85A003872F2 /* FEWorkGetGiftDetailStatusVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -929,6 +950,10 @@
 				4E783CE623515133003872F2 /* FEWorkGetPrizeShareWxCell.m */,
 				4E783CE82351515A003872F2 /* FEWorkGetPrizeShareAccordCell.h */,
 				4E783CE92351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m */,
+				4E783CF123529C1A003872F2 /* FEWorkInviteFriendRecordCell.h */,
+				4E783CF223529C1A003872F2 /* FEWorkInviteFriendRecordCell.m */,
+				4E783CFA2352C894003872F2 /* FEWorkGetGiftDetailStatusCell.h */,
+				4E783CFB2352C894003872F2 /* FEWorkGetGiftDetailStatusCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1660,6 +1685,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E783CF623529CDA003872F2 /* FEWorkInviteRecordVC.m in Sources */,
 				CB1567C0234F38DA00F2485F /* FEShopListCell.m in Sources */,
 				4E063D54233A122900D6756A /* UIColor+Extend.m in Sources */,
 				4E02F456234F228600308D99 /* SDImageCache.m in Sources */,
@@ -1685,6 +1711,7 @@
 				CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */,
 				4E02F46D234F228600308D99 /* SDImageAssetManager.m in Sources */,
 				4E02F46C234F228600308D99 /* SDImageCachesManagerOperation.m in Sources */,
+				4E783CF023520D76003872F2 /* FEWorkInviteStandStardVC.m in Sources */,
 				4E02F44E234F228600308D99 /* SDWebImageError.m in Sources */,
 				4E02F45D234F228600308D99 /* SDImageTransformer.m in Sources */,
 				4E02F448234F228600308D99 /* UIImage+GIF.m in Sources */,
@@ -1694,6 +1721,7 @@
 				4E02F43D234F228600308D99 /* SDImageCoder.m in Sources */,
 				4E02F2C4234EFB4300308D99 /* FEWorkEvalueGetPrizeChanceCell.m in Sources */,
 				4E783CEA2351515A003872F2 /* FEWorkGetPrizeShareAccordCell.m in Sources */,
+				4E783CF92352C85A003872F2 /* FEWorkGetGiftDetailStatusVC.m in Sources */,
 				4E02F460234F228600308D99 /* SDImageGraphics.m in Sources */,
 				4E02F2BA234EFB4300308D99 /* FEWorkEValueShopVC.m in Sources */,
 				20916A78234AEF420045C7C8 /* MTResourceManager.m in Sources */,
@@ -1729,6 +1757,7 @@
 				4E02F46B234F228600308D99 /* SDWebImageDownloaderRequestModifier.m in Sources */,
 				4E02F28F234EFAFB00308D99 /* FERegisterAccountVC.m in Sources */,
 				4E02F44D234F228600308D99 /* SDImageAPNGCoder.m in Sources */,
+				4E783CFC2352C894003872F2 /* FEWorkGetGiftDetailStatusCell.m in Sources */,
 				4E02F46E234F228600308D99 /* SDWeakProxy.m in Sources */,
 				4E02F2C7234EFB4300308D99 /* FEWorkGiftCardCell.m in Sources */,
 				4E02F44C234F228600308D99 /* SDWebImageCompat.m in Sources */,
@@ -1744,6 +1773,7 @@
 				4E02F2C3234EFB4300308D99 /* FEWorkMainHeadView.m in Sources */,
 				4E02F2C2234EFB4300308D99 /* FEWorkGetGiftAlertView.m in Sources */,
 				4E02F453234F228600308D99 /* SDDiskCache.m in Sources */,
+				4E783CF323529C1A003872F2 /* FEWorkInviteFriendRecordCell.m in Sources */,
 				20916A7F234AF19A0045C7C8 /* FEShopDetailViewController.m in Sources */,
 				4E02F463234F228600308D99 /* SDImageCacheConfig.m in Sources */,
 				4E02F457234F228600308D99 /* SDImageGIFCoder.m in Sources */,
