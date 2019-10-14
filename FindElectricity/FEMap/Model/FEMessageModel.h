@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FEMessageModel : NSObject
 @property (nonatomic, strong) NSString *ctime;
 @property (nonatomic, strong) NSString *is_read;
-@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *_id;
 @property (nonatomic, strong) NSString *msg;
 @property (nonatomic, strong) NSString *title;
 @end

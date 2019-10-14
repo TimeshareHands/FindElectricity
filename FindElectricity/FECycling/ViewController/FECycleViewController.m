@@ -9,10 +9,18 @@
 #import "FECycleViewController.h"
 #import "FECycleMap.h"
 #import "FECycleDetailViewController.h"
+#import "FEFunction.h"
 @interface FECycleViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
 @property (strong, nonatomic) FECycleMap *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *currentElec;
+@property (weak, nonatomic) IBOutlet UILabel *tipLab;
+@property (weak, nonatomic) IBOutlet UILabel *todayElec;
+@property (weak, nonatomic) IBOutlet UILabel *allElec;
+@property (weak, nonatomic) IBOutlet UILabel *currentKM;
+@property (weak, nonatomic) IBOutlet UILabel *currentTime;
+@property (weak, nonatomic) IBOutlet UILabel *maxElec;
 
 @end
 
@@ -23,6 +31,11 @@
     self.navigationItem.leftBarButtonItem = nil;
     [self setNavgaTitle:@"骑行赚积分"];
     [self addView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self getCyclingDataRequest];
 }
 
 - (void)addView{
@@ -54,7 +67,7 @@
     if (!_mapView) {
         _mapView = [[FECycleMap alloc] init];
         [_mapView setIsShowMapCenter:NO];
-        _mapView.delegate = self;
+//        _mapView.delegate = self;
         _mapView.hidden = YES;
         _mapView.allowsAnnotationViewSorting = NO;
         [self.mapView startHeadingLocation];
@@ -68,6 +81,50 @@
     [self.mapView setHidden:NO];
 }
 
+- (void)getCyclingDataRequest {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(CirclingPanelDataHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf getDataSuccess:responseObject];
+        });
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)getDataSuccess:(id)response
+{
+    //    [SVProgressHUD dismiss];
+    NSDictionary *data = (NSDictionary *)response;
+    MYLog(@"%@",data);
+    if ([data[@"code"] intValue] == KSuccessCode) {
+        MTSVPDismiss;
+        NSDictionary *elecInfo = data[@"data"];
+//        MTSVPShowInfoText(data[@"data"][@"announcement"]);
+        if (elecInfo.allKeys)
+        {
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            NSInteger kmToElec = [elecInfo[@"kmToElectricity"] integerValue];
+            [userDefault setInteger:kmToElec forKey:kFEKMToElecNum];
+            NSInteger currentKM = (NSInteger)([userDefault objectForKey:kFECycleKM]);
+            NSInteger currentTime = (NSInteger)([userDefault objectForKey:kFECycleTime]);
+            _currentElec.text = [NSString stringWithFormat:@"%d",currentKM/kmToElec];
+            _currentTime.text = timeFormt(currentTime);
+            NSInteger todayE = [elecInfo[@"todayElectricity"] integerValue];
+            NSInteger maxE = [elecInfo[@"maxElectricity"] integerValue];
+            NSInteger allE = [elecInfo[@"allElectricity"] integerValue];
+            _tipLab.text = [NSString stringWithFormat:@"每骑行1km得%d电量值",kmToElec];
+            _maxElec.text = [NSString stringWithFormat:@"%d电量值",maxE];
+            _todayElec.text = [NSString stringWithFormat:@"%d",todayE];
+            _allElec.text = [NSString stringWithFormat:@"%d",allE];
+            _currentKM.text = [NSString stringWithFormat:@"%d",currentKM];
+        }
+    }else {
+        MTSVPShowInfoText(data[@"msg"]);
+    }
+}
 
 /*
 #pragma mark - Navigation

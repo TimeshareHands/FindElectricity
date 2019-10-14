@@ -8,6 +8,7 @@
 
 #import "FEShopDetailViewController.h"
 #import "FEMapInfoModel.h"
+#import "FECorrectionViewController.h"
 @interface FEShopDetailViewController ()
 @property (strong, nonatomic) FEMapInfoModel *shopInfo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -69,6 +70,13 @@
         //打电话
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",_shopInfo.merchantsMobile]]];
 
+    }else if (sender.tag == 2){
+        FECorrectionViewController *vc = [[FECorrectionViewController alloc] init];
+        vc.mapId = _shopInfo.mapId;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else {
+        //路线
+        
     }
 }
 
@@ -85,6 +93,8 @@
         
     }];
 }
+
+
 
 /*
 #pragma mark - Navigation

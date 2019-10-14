@@ -48,6 +48,7 @@
 @property (copy, nonatomic) NSString *type;  //类型
 @property (strong, nonatomic) NSMutableArray *mapDatas;  //类型
 @property (strong, nonatomic) FEMapInfoModel *currentMapInfo;  //类型
+@property (strong, nonatomic) MAAnnotationView *CurrAnnotationView;  //类型
 @end
 
 @implementation FEMapViewController
@@ -242,6 +243,10 @@
                 FEShopDetailViewController *shopVC = [[FEShopDetailViewController alloc] init];
                 shopVC.mapId = mapId;
                 [weakSelf.navigationController pushViewController:shopVC animated:YES];
+            }else if (tag == 2){
+                FECorrectionViewController *vc = [[FECorrectionViewController alloc] init];
+                vc.mapId = mapId;
+                [weakSelf.navigationController pushViewController:vc animated:YES];
             }
         };
     }
@@ -302,9 +307,13 @@
     //根据已经规划的路径，起点，终点，规划类型，是否显示实时路况，生成显示方案
     self.naviRoute = [MANaviRoute naviRouteForPath:self.route.paths[0] withNaviType:type showTraffic:NO startPoint:startPoint endPoint:endPoint];
     
+    //显示距离时间
+    AMapPath *path = self.route.paths[0];
+    [_CurrAnnotationView.annotation setTitle:[NSString stringWithFormat:@"距离%d米，骑行%d分钟",path.distance,path.duration/60]];
+    
     [self.naviRoute addToMapView:self.mapView];  //显示到地图上
     
-    UIEdgeInsets edgePaddingRect = UIEdgeInsetsMake(10, 10, 10, 10);
+    UIEdgeInsets edgePaddingRect = UIEdgeInsetsMake(10, 10, 40, 10);
     
     //缩放地图使其适应polylines的展示
     [self.mapView setVisibleMapRect:[CommonUtility mapRectForOverlays:self.naviRoute.routePolylines]
@@ -474,6 +483,7 @@
 }
 
 - (void)getMapAnnoViewMsg:(MAAnnotationView *)annoView {
+    _CurrAnnotationView = annoView;
     FEPointAnnotation *annotation = (FEPointAnnotation *)annoView.annotation;
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     [parameter setValue:annotation.mapId forKey:@"mapId"];
@@ -484,7 +494,6 @@
             if ([data[@"code"] intValue] == KSuccessCode) {
                 MTSVPDismiss;
                 FEMapInfoModel *model = [FEMapInfoModel mj_objectWithKeyValues:data[@"data"]];
-                [annotation setTitle:model.merchantsName];
                 [weakSelf setCurrentMapInfo:model];
             }else {
                 MTSVPShowInfoText(data[@"msg"]);
@@ -534,7 +543,7 @@
 //        MTSVPShowInfoText(data[@"data"][@"announcement"]);
         if (array.count == 0)
         {
-            MTSVPShowInfoText(@"附近暂无数据");
+//            MTSVPShowInfoText(@"附近暂无数据");
         }
         [self addAnnotationsToMap:[FEMapsModel mj_objectArrayWithKeyValuesArray:array]];
     }else {
@@ -562,7 +571,7 @@
 }
 
 - (FEPointAnnotType)serviceToType:(NSString *)serverId {
-    if ([serverId containsString:@","]) {
+    if ([serverId containsString:@","]||[serverId containsString:@"，"]) {
         return FEPointAnnotAll;
     }
     return [serverId integerValue];

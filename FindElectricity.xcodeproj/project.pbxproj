@@ -195,6 +195,7 @@
 		CBED22C32351CF1D0009B75D /* FEMySHopListMode.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C22351CF1D0009B75D /* FEMySHopListMode.m */; };
 		CBED22C62351DABC0009B75D /* FEMapCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C52351DABC0009B75D /* FEMapCollectModel.m */; };
 		CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C82351E2BE0009B75D /* FEMessageModel.m */; };
+		CBED22CD235447760009B75D /* FETimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22CC235447760009B75D /* FETimeManager.m */; };
 		CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */; };
 		CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */; };
 		CBEDBD4F234ED57000A923A3 /* FEStopProcessBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD4E234ED57000A923A3 /* FEStopProcessBtn.m */; };
@@ -602,6 +603,9 @@
 		CBED22C52351DABC0009B75D /* FEMapCollectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapCollectModel.m; sourceTree = "<group>"; };
 		CBED22C72351E2BE0009B75D /* FEMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMessageModel.h; sourceTree = "<group>"; };
 		CBED22C82351E2BE0009B75D /* FEMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMessageModel.m; sourceTree = "<group>"; };
+		CBED22CA235421410009B75D /* FEFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEFunction.h; sourceTree = "<group>"; };
+		CBED22CB235447760009B75D /* FETimeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FETimeManager.h; sourceTree = "<group>"; };
+		CBED22CC235447760009B75D /* FETimeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FETimeManager.m; sourceTree = "<group>"; };
 		CBEDBD48234DE2AC00A923A3 /* FECycleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleDetailViewController.h; sourceTree = "<group>"; };
 		CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleDetailViewController.m; sourceTree = "<group>"; };
 		CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleDetailViewController.xib; sourceTree = "<group>"; };
@@ -1299,6 +1303,7 @@
 				4E063D4B233A122900D6756A /* DemonFont.h */,
 				4E063D49233A122900D6756A /* DemonHeads.h */,
 				4E063D4A233A122900D6756A /* DemonMarco.h */,
+				CBED22CA235421410009B75D /* FEFunction.h */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1329,6 +1334,8 @@
 		CBE117C6233C68E8003DA1C4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBED22CB235447760009B75D /* FETimeManager.h */,
+				CBED22CC235447760009B75D /* FETimeManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1764,6 +1771,7 @@
 				4E02F459234F228600308D99 /* SDWebImageDownloaderOperation.m in Sources */,
 				4E02F470234F228600308D99 /* SDAsyncBlockOperation.m in Sources */,
 				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,
+				CBED22CD235447760009B75D /* FETimeManager.m in Sources */,
 				4E02F451234F228600308D99 /* NSButton+WebCache.m in Sources */,
 				4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */,
 				4E783CE42350AA83003872F2 /* FEWorkGetPrizeShareCell.m in Sources */,

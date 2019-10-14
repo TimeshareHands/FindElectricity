@@ -218,4 +218,7 @@ typedef NS_ENUM(NSInteger,FEPointAnnotType){
 
 
 #define kCurrentCity @"currentCity"//当前城市
-#define kFEDefaultImg @"logo.png"
+#define kFEDefaultImg @"logo.png"  //defaultImg
+#define kFECycleKM @"FECycleKM"  //本次骑行公里
+#define kFECycleTime @"FECycleTime"  //本次骑行时间
+#define kFEKMToElecNum @"FEKMToElecNum"  //公里转换电量的转换值
