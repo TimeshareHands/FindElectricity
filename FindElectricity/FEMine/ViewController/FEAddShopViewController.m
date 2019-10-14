@@ -115,7 +115,7 @@
     _address.text = reGeocode.regeocode.formattedAddress;
 }
 
-#pragma mark amapdelegete
+#pragma mark AMapdelegete
 - (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     MYLog(@"--lati:%f;longt:%f",mapView.centerCoordinate.latitude,mapView.centerCoordinate.longitude);
     CLLocationCoordinate2D coord = _mapView.centerCoordinate;

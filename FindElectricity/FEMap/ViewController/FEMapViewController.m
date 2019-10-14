@@ -26,6 +26,7 @@
 #import "FECycleMap.h"
 #import "FEMapsModel.h"
 #import "FEMapInfoModel.h"
+#import "FEMapManager.h"
 @interface FEMapViewController ()<MAMapViewDelegate,AMapLocationManagerDelegate,AMapSearchDelegate>
 @property (nonatomic, strong) FECycleMap *mapView;
 @property (nonatomic, strong) UIButton *chouJBtn;
@@ -153,6 +154,15 @@
                     [weakSelf getMapDataOfoordinate:location.coordinate type:weakSelf.type];
                 }
                 [weakSelf.pointAnnotaiton setCoordinate:location.coordinate];
+                //获取天气
+                [[FEMapManager manager] weatherSearchCity:reGeocode.city finishBlock:^(id  _Nonnull response, FEAMapSearchType type, NSError * _Nonnull error) {
+                    if (type == FEAMapSearchTypeWeather) {
+                        AMapWeatherSearchResponse *resp = (AMapWeatherSearchResponse *)response;
+                        if (resp.lives.count) {
+                            AMapLocalWeatherLive *live = (AMapLocalWeatherLive *)[resp.lives lastObject];
+                        }
+                    }
+                }];
             });
         };
         _mapView.delegate = self;

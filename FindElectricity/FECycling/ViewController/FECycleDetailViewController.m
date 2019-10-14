@@ -22,6 +22,11 @@
     [super viewDidLoad];
     [self setNavgaTitle:@"骑行倒计时"];
     [self addView];
+    CLLocationCoordinate2D dest = (CLLocationCoordinate2D){28.000,112.0000};
+    [[FEMapManager manager] getDistanceFromCoord:_startCoord toCoord:dest finishBlock:^(id  _Nonnull response, FEAMapSearchType type, NSError * _Nonnull error) {
+        NSArray *arr = ((AMapDistanceSearchResponse *)response).results;
+        MYLog(@"%@--count:%d",arr,arr.count);
+    }];
 }
 
 - (void)addView {

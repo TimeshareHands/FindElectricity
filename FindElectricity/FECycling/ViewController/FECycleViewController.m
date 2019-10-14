@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentTime;
 @property (weak, nonatomic) IBOutlet UILabel *maxElec;
 
+
+@property (assign, nonatomic) CLLocationCoordinate2D startCoord;
 @end
 
 @implementation FECycleViewController
@@ -48,8 +50,10 @@
     beginBtn.backgroundColor = UIColorFromHex(0x04bb2d);
     beginBtn.layer.cornerRadius = 40;
     beginBtn.clipsToBounds = YES;
+    WEAKSELF;
     [beginBtn bk_addEventHandler:^(id sender) {
         FECycleDetailViewController *detailVC = [[FECycleDetailViewController alloc] init];
+        detailVC.startCoord = weakSelf.startCoord;
         [self.navigationController pushViewController:detailVC animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     [self.mapView addSubview:beginBtn];
@@ -69,8 +73,14 @@
         [_mapView setIsShowMapCenter:NO];
 //        _mapView.delegate = self;
         _mapView.hidden = YES;
+        WEAKSELF;
+        _mapView.locationUpdateBlock = ^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull reGeocode, CGFloat locationAngle, NSError * _Nonnull error) {
+                MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
+            
+            weakSelf.startCoord = location.coordinate;
+        };
         _mapView.allowsAnnotationViewSorting = NO;
-        [self.mapView startHeadingLocation];
+//        [self.mapView startHeadingLocation];
         _mapView.showsUserLocation = YES;
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
