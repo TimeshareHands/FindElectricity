@@ -80,7 +80,7 @@
             weakSelf.startCoord = location.coordinate;
         };
         _mapView.allowsAnnotationViewSorting = NO;
-//        [self.mapView startHeadingLocation];
+        [self.mapView startUpdatingLocation];
         _mapView.showsUserLocation = YES;
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }

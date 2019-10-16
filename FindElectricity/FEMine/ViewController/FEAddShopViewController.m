@@ -82,6 +82,7 @@
     };
     _mapView.delegate = self;
     _mapView.allowsAnnotationViewSorting = NO;
+    [_mapView startUpdatingLocation];
 //    [_mapView startHeadingLocation];
 }
 
@@ -112,7 +113,9 @@
 
 - (void)setReGeocode:(AMapReGeocodeSearchResponse *)reGeocode {
     _reGeocode = reGeocode;
-    _address.text = reGeocode.regeocode.formattedAddress;
+    AMapAddressComponent *addCom = reGeocode.regeocode.addressComponent;
+    _pcq.text = [NSString stringWithFormat:@"%@ %@ %@",addCom.province,addCom.city,addCom.district];
+    _address.text = addCom.township;
 }
 
 #pragma mark AMapdelegete
