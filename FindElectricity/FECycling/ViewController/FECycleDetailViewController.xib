@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FECycleDetailViewController">
             <connections>
+                <outlet property="currentElec" destination="tVJ-N8-NoS" id="zHM-ZP-1Ji"/>
+                <outlet property="currentKM" destination="Zae-pT-2fb" id="Q7Y-vk-4S3"/>
+                <outlet property="currentTime" destination="AHW-xu-fQ1" id="urI-a0-qMC"/>
                 <outlet property="endBtn" destination="MaQ-WM-9n8" id="DcH-tK-sFe"/>
                 <outlet property="goonBtn" destination="Me5-fd-hVq" id="5Y0-vw-mxZ"/>
+                <outlet property="speed" destination="zRD-pN-JfE" id="PtV-1r-Kbz"/>
                 <outlet property="stopBtn" destination="RHn-Id-d3P" id="aTl-QB-OOk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

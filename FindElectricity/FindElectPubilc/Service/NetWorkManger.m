@@ -73,6 +73,7 @@ static AFHTTPSessionManager *afnManager = nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (error) {
+            MTSVPShowInfoText(@"请求出错！");
             failure(error);
         }
     }];

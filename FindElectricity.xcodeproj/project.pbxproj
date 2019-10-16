@@ -196,6 +196,19 @@
 		CBED22C62351DABC0009B75D /* FEMapCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C52351DABC0009B75D /* FEMapCollectModel.m */; };
 		CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C82351E2BE0009B75D /* FEMessageModel.m */; };
 		CBED22CD235447760009B75D /* FETimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22CC235447760009B75D /* FETimeManager.m */; };
+		CBED22D323556A340009B75D /* ll.png in Resources */ = {isa = PBXBuildFile; fileRef = CBED22D023556A340009B75D /* ll.png */; };
+		CBED22D423556A340009B75D /* other.png in Resources */ = {isa = PBXBuildFile; fileRef = CBED22D123556A340009B75D /* other.png */; };
+		CBED22D523556A340009B75D /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = CBED22D223556A340009B75D /* me.png */; };
+		CBED22DA23556A4E0009B75D /* UILabel+Han.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22D723556A4E0009B75D /* UILabel+Han.m */; };
+		CBED22DB23556A4E0009B75D /* UIImage+Han.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22D823556A4E0009B75D /* UIImage+Han.m */; };
+		CBED22DE23556A640009B75D /* CSMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22DC23556A640009B75D /* CSMessageModel.m */; };
+		CBED22E923556A8F0009B75D /* CSEmojiCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22E023556A8E0009B75D /* CSEmojiCollectionViewCell.m */; };
+		CBED22EA23556A8F0009B75D /* EmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22E323556A8E0009B75D /* EmojiView.m */; };
+		CBED22EB23556A8F0009B75D /* CSRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22E523556A8E0009B75D /* CSRecord.m */; };
+		CBED22EC23556A8F0009B75D /* CSBigView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22E723556A8F0009B75D /* CSBigView.m */; };
+		CBED22ED23556A8F0009B75D /* CSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22E823556A8F0009B75D /* CSMessageCell.m */; };
+		CBED22F0235579740009B75D /* image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBED22EE235579740009B75D /* image@3x.png */; };
+		CBED22F1235579740009B75D /* image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBED22EF235579740009B75D /* image@2x.png */; };
 		CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */; };
 		CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */; };
 		CBEDBD4F234ED57000A923A3 /* FEStopProcessBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD4E234ED57000A923A3 /* FEStopProcessBtn.m */; };
@@ -606,6 +619,27 @@
 		CBED22CA235421410009B75D /* FEFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEFunction.h; sourceTree = "<group>"; };
 		CBED22CB235447760009B75D /* FETimeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FETimeManager.h; sourceTree = "<group>"; };
 		CBED22CC235447760009B75D /* FETimeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FETimeManager.m; sourceTree = "<group>"; };
+		CBED22D023556A340009B75D /* ll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ll.png; sourceTree = "<group>"; };
+		CBED22D123556A340009B75D /* other.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = other.png; sourceTree = "<group>"; };
+		CBED22D223556A340009B75D /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
+		CBED22D623556A4E0009B75D /* UILabel+Han.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Han.h"; sourceTree = "<group>"; };
+		CBED22D723556A4E0009B75D /* UILabel+Han.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Han.m"; sourceTree = "<group>"; };
+		CBED22D823556A4E0009B75D /* UIImage+Han.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Han.m"; sourceTree = "<group>"; };
+		CBED22D923556A4E0009B75D /* UIImage+Han.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Han.h"; sourceTree = "<group>"; };
+		CBED22DC23556A640009B75D /* CSMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMessageModel.m; sourceTree = "<group>"; };
+		CBED22DD23556A640009B75D /* CSMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMessageModel.h; sourceTree = "<group>"; };
+		CBED22DF23556A8E0009B75D /* CSEmojiCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSEmojiCollectionViewCell.h; sourceTree = "<group>"; };
+		CBED22E023556A8E0009B75D /* CSEmojiCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSEmojiCollectionViewCell.m; sourceTree = "<group>"; };
+		CBED22E123556A8E0009B75D /* CSMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMessageCell.h; sourceTree = "<group>"; };
+		CBED22E223556A8E0009B75D /* EmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiView.h; sourceTree = "<group>"; };
+		CBED22E323556A8E0009B75D /* EmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiView.m; sourceTree = "<group>"; };
+		CBED22E423556A8E0009B75D /* CSRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSRecord.h; sourceTree = "<group>"; };
+		CBED22E523556A8E0009B75D /* CSRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSRecord.m; sourceTree = "<group>"; };
+		CBED22E623556A8F0009B75D /* CSBigView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSBigView.h; sourceTree = "<group>"; };
+		CBED22E723556A8F0009B75D /* CSBigView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSBigView.m; sourceTree = "<group>"; };
+		CBED22E823556A8F0009B75D /* CSMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMessageCell.m; sourceTree = "<group>"; };
+		CBED22EE235579740009B75D /* image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image@3x.png"; sourceTree = "<group>"; };
+		CBED22EF235579740009B75D /* image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image@2x.png"; sourceTree = "<group>"; };
 		CBEDBD48234DE2AC00A923A3 /* FECycleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleDetailViewController.h; sourceTree = "<group>"; };
 		CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleDetailViewController.m; sourceTree = "<group>"; };
 		CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleDetailViewController.xib; sourceTree = "<group>"; };
@@ -684,6 +718,7 @@
 		20916A43234789530045C7C8 /* FEMap */ = {
 			isa = PBXGroup;
 			children = (
+				CBED22CE235569950009B75D /* Resources */,
 				20916A6F234AEF410045C7C8 /* Utils */,
 				20916A44234789530045C7C8 /* Model */,
 				20916A45234789530045C7C8 /* View */,
@@ -709,6 +744,8 @@
 				2035300E2352FADE0070A2F0 /* FEMapInfoModel.m */,
 				20353015235339C40070A2F0 /* FEMapManager.h */,
 				20353016235339C40070A2F0 /* FEMapManager.m */,
+				CBED22DD23556A640009B75D /* CSMessageModel.h */,
+				CBED22DC23556A640009B75D /* CSMessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -736,6 +773,16 @@
 				20916A89234B56060045C7C8 /* FEShopPopView.h */,
 				20916A8A234B56060045C7C8 /* FEShopPopView.m */,
 				20916A8C234B566C0045C7C8 /* FEShopPopView.xib */,
+				CBED22E623556A8F0009B75D /* CSBigView.h */,
+				CBED22E723556A8F0009B75D /* CSBigView.m */,
+				CBED22DF23556A8E0009B75D /* CSEmojiCollectionViewCell.h */,
+				CBED22E023556A8E0009B75D /* CSEmojiCollectionViewCell.m */,
+				CBED22E123556A8E0009B75D /* CSMessageCell.h */,
+				CBED22E823556A8F0009B75D /* CSMessageCell.m */,
+				CBED22E423556A8E0009B75D /* CSRecord.h */,
+				CBED22E523556A8E0009B75D /* CSRecord.m */,
+				CBED22E223556A8E0009B75D /* EmojiView.h */,
+				CBED22E323556A8E0009B75D /* EmojiView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -775,6 +822,10 @@
 				CB0D0E95234F1DCB00632F7B /* KLCoverView.m */,
 				CB0D0E96234F1DCC00632F7B /* SZTextView.h */,
 				CB0D0E94234F1DCB00632F7B /* SZTextView.m */,
+				CBED22D923556A4E0009B75D /* UIImage+Han.h */,
+				CBED22D823556A4E0009B75D /* UIImage+Han.m */,
+				CBED22D623556A4E0009B75D /* UILabel+Han.h */,
+				CBED22D723556A4E0009B75D /* UILabel+Han.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1367,6 +1418,26 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		CBED22CE235569950009B75D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CBED22CF235569B90009B75D /* images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CBED22CF235569B90009B75D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CBED22D023556A340009B75D /* ll.png */,
+				CBED22EF235579740009B75D /* image@2x.png */,
+				CBED22EE235579740009B75D /* image@3x.png */,
+				CBED22D223556A340009B75D /* me.png */,
+				CBED22D123556A340009B75D /* other.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		CBEDBD51234EE05D00A923A3 /* FEMine */ = {
 			isa = PBXGroup;
 			children = (
@@ -1590,12 +1661,16 @@
 				CBEDBD8B234F0BF500A923A3 /* FEPositionErrorViewController.xib in Resources */,
 				20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */,
 				20916A9A234F7FD60045C7C8 /* FEMsgChangeViewController.xib in Resources */,
+				CBED22D423556A340009B75D /* other.png in Resources */,
+				CBED22D323556A340009B75D /* ll.png in Resources */,
 				CBEDBD5E234F007000A923A3 /* FEMineCell.xib in Resources */,
+				CBED22F1235579740009B75D /* image@2x.png in Resources */,
 				20916A5823478DDA0045C7C8 /* FECycleViewController.xib in Resources */,
 				CBEDBD59234EE11100A923A3 /* FEMineViewController.xib in Resources */,
 				20916A68234AD3020045C7C8 /* FEMessageViewController.xib in Resources */,
 				CB4FAC6D234F51EC0094D3E9 /* FEMyShopListCell.xib in Resources */,
 				CB0D0E9E234F20FC00632F7B /* FESettingsCell.xib in Resources */,
+				CBED22D523556A340009B75D /* me.png in Resources */,
 				CBEDBD77234F0A8100A923A3 /* FEFeedbackViewController.xib in Resources */,
 				CBED22B623504AAE0009B75D /* FEDocmDetailViewController.xib in Resources */,
 				CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */,
@@ -1607,6 +1682,7 @@
 				203530142352FE270070A2F0 /* FECorrectionViewController.xib in Resources */,
 				20916A9F234F85770045C7C8 /* FESignChangeViewController.xib in Resources */,
 				CBEDBD63234F099F00A923A3 /* FESettingsViewController.xib in Resources */,
+				CBED22F0235579740009B75D /* image@3x.png in Resources */,
 				20916A80234AF19A0045C7C8 /* FEShopDetailViewController.xib in Resources */,
 				20916A85234AF2820045C7C8 /* FEMessageCell.xib in Resources */,
 				4E02F439234F228600308D99 /* LICENSE in Resources */,
@@ -1754,6 +1830,7 @@
 				4E783CF623529CDA003872F2 /* FEWorkInviteRecordVC.m in Sources */,
 				CB1567C0234F38DA00F2485F /* FEShopListCell.m in Sources */,
 				4E063D54233A122900D6756A /* UIColor+Extend.m in Sources */,
+				CBED22EC23556A8F0009B75D /* CSBigView.m in Sources */,
 				4E02F456234F228600308D99 /* SDImageCache.m in Sources */,
 				4E02F44F234F228600308D99 /* SDWebImagePrefetcher.m in Sources */,
 				20916A5B2348CD1E0045C7C8 /* FELauchShow.m in Sources */,
@@ -1767,6 +1844,7 @@
 				CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */,
 				CBEDBD85234F0B8F00A923A3 /* FECollectViewController.m in Sources */,
 				4E02F43F234F228600308D99 /* UIImageView+HighlightedWebCache.m in Sources */,
+				CBED22DA23556A4E0009B75D /* UILabel+Han.m in Sources */,
 				4E02F2BC234EFB4300308D99 /* FEWorkTurnTableVC.m in Sources */,
 				4E02F459234F228600308D99 /* SDWebImageDownloaderOperation.m in Sources */,
 				4E02F470234F228600308D99 /* SDAsyncBlockOperation.m in Sources */,
@@ -1775,6 +1853,7 @@
 				4E02F451234F228600308D99 /* NSButton+WebCache.m in Sources */,
 				4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */,
 				4E783CE42350AA83003872F2 /* FEWorkGetPrizeShareCell.m in Sources */,
+				CBED22EA23556A8F0009B75D /* EmojiView.m in Sources */,
 				CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */,
 				4E02F46D234F228600308D99 /* SDImageAssetManager.m in Sources */,
 				4E02F46C234F228600308D99 /* SDImageCachesManagerOperation.m in Sources */,
@@ -1797,6 +1876,7 @@
 				20916A63234A14DE0045C7C8 /* FEMapWeather.m in Sources */,
 				20916A4D234789530045C7C8 /* FEMapViewController.m in Sources */,
 				4E02F1F32348DF1000308D99 /* FEUserOperation.m in Sources */,
+				CBED22DE23556A640009B75D /* CSMessageModel.m in Sources */,
 				4E02F2C0234EFB4300308D99 /* FEWorkEValueDetailHeadView.m in Sources */,
 				20916A84234AF2820045C7C8 /* FEMessageCell.m in Sources */,
 				CBEDBD58234EE11100A923A3 /* FEMineViewController.m in Sources */,
@@ -1820,6 +1900,7 @@
 				20353017235339C40070A2F0 /* FEMapManager.m in Sources */,
 				CBEDBD8A234F0BF500A923A3 /* FEPositionErrorViewController.m in Sources */,
 				4E02F464234F228600308D99 /* SDWebImageCacheKeyFilter.m in Sources */,
+				CBED22ED23556A8F0009B75D /* CSMessageCell.m in Sources */,
 				CBED22BA235054630009B75D /* TLCity.m in Sources */,
 				4E02F2C6234EFB4300308D99 /* FETWorkMainTableViewCell.m in Sources */,
 				CBED22C62351DABC0009B75D /* FEMapCollectModel.m in Sources */,
@@ -1877,6 +1958,7 @@
 				4E02F2BD234EFB4300308D99 /* FEWorkStrategyVC.m in Sources */,
 				4E02F462234F228600308D99 /* UIImage+MemoryCacheCost.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,
+				CBED22EB23556A8F0009B75D /* CSRecord.m in Sources */,
 				CBEDBD71234F0A4500A923A3 /* FEAboutViewController.m in Sources */,
 				4E02F46F234F228600308D99 /* SDInternalMacros.m in Sources */,
 				4E783D0523530F1E003872F2 /* FEGetPrizeRosterCell.m in Sources */,
@@ -1896,6 +1978,7 @@
 				4E02F452234F228600308D99 /* SDImageIOCoder.m in Sources */,
 				4E02F46A234F228600308D99 /* UIButton+WebCache.m in Sources */,
 				20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */,
+				CBED22DB23556A4E0009B75D /* UIImage+Han.m in Sources */,
 				CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */,
 				4E063D55233A122900D6756A /* NSString+Extend.m in Sources */,
 				CBEDBD6C234F0A1D00A923A3 /* FEAddressViewController.m in Sources */,
@@ -1913,6 +1996,7 @@
 				4E02F290234EFAFB00308D99 /* FEFindPasswordVC.m in Sources */,
 				4E02F2C1234EFB4300308D99 /* FEWorkGetGiftCell.m in Sources */,
 				4E02F472234F228600308D99 /* UIColor+HexString.m in Sources */,
+				CBED22E923556A8F0009B75D /* CSEmojiCollectionViewCell.m in Sources */,
 				4E02F43B234F228600308D99 /* NSImage+Compatibility.m in Sources */,
 				4E02F454234F228600308D99 /* SDAnimatedImageRep.m in Sources */,
 				4E02F455234F228600308D99 /* SDWebImageDownloaderConfig.m in Sources */,

@@ -36,7 +36,10 @@ static FETimeManager *shareManager = nil;
 
 - (void)timeRun {
     _didStartTime++;
-    MYLog(@"time:%d",_didStartTime);
+    MYLog(@"time:%f",_didStartTime);
+    if (_timeRunBlock) {
+        _timeRunBlock(_didStartTime);
+    }
 }
 
 - (void)startTiming {

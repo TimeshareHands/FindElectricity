@@ -80,6 +80,21 @@
     return _temp;
 }
 
+- (void)setLive:(AMapLocalWeatherLive *)live {
+    _live = live;
+    _temp.text = [NSString stringWithFormat:@"%@°C",_live.temperature];
+    NSString *weather = _live.weather;
+    _weather.text = _live.weather;
+    if ([weather containsString:@"雪"]) {
+        _icon.image = [UIImage imageNamed:@"map_snowy"];
+    }else if ([weather containsString:@"晴"]) {
+        _icon.image = [UIImage imageNamed:@"map_sunny"];
+    }else if ([weather containsString:@"雨"]) {
+        _icon.image = [UIImage imageNamed:@"map_rain"];
+    }else{
+        _icon.image = [UIImage imageNamed:@"map_duoyun"];
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
