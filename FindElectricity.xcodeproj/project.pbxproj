@@ -157,6 +157,7 @@
 		4E783D022352FB49003872F2 /* FEWorkGetPrizeContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D012352FB49003872F2 /* FEWorkGetPrizeContentCell.m */; };
 		4E783D0523530F1E003872F2 /* FEGetPrizeRosterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0423530F1E003872F2 /* FEGetPrizeRosterCell.m */; };
 		4E783D0823530F43003872F2 /* FETotalGetPrizeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0723530F43003872F2 /* FETotalGetPrizeRecordCell.m */; };
+		4E783D0B23535BD6003872F2 /* FEWorkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0A23535BD6003872F2 /* FEWorkModel.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
 		CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E94234F1DCB00632F7B /* SZTextView.m */; };
 		CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E95234F1DCB00632F7B /* KLCoverView.m */; };
@@ -530,6 +531,8 @@
 		4E783D0423530F1E003872F2 /* FEGetPrizeRosterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEGetPrizeRosterCell.m; sourceTree = "<group>"; };
 		4E783D0623530F43003872F2 /* FETotalGetPrizeRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FETotalGetPrizeRecordCell.h; sourceTree = "<group>"; };
 		4E783D0723530F43003872F2 /* FETotalGetPrizeRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FETotalGetPrizeRecordCell.m; sourceTree = "<group>"; };
+		4E783D0923535BD6003872F2 /* FEWorkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkModel.h; sourceTree = "<group>"; };
+		4E783D0A23535BD6003872F2 /* FEWorkModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkModel.m; sourceTree = "<group>"; };
 		69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.release.xcconfig"; sourceTree = "<group>"; };
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -940,6 +943,8 @@
 		4E02F2A2234EFB4300308D99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E783D0923535BD6003872F2 /* FEWorkModel.h */,
+				4E783D0A23535BD6003872F2 /* FEWorkModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1849,6 +1854,7 @@
 				CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */,
 				4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */,
 				CB0D0E9D234F20FC00632F7B /* FESettingsCell.m in Sources */,
+				4E783D0B23535BD6003872F2 /* FEWorkModel.m in Sources */,
 				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
 				CB4FAC6C234F51EC0094D3E9 /* FEMyShopListCell.m in Sources */,
 				CBEDBD76234F0A8100A923A3 /* FEFeedbackViewController.m in Sources */,
