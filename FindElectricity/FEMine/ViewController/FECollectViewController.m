@@ -10,10 +10,12 @@
 #import "FEShopListCell.h"
 #import "MJRefresh.h"
 #import "FEMapCollectModel.h"
-@interface FECollectViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "FEShopDetailViewController.h"
+@interface FECollectViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (copy, nonatomic) NSMutableArray *dataSource;
 @property (nonatomic, assign) int pageNo;
+@property (nonatomic, assign) NSInteger index;
 @end
 
 @implementation FECollectViewController
@@ -66,13 +68,19 @@
     cell.titleLab.text = model.merchantsName;
     cell.lab2.text = [NSString stringWithFormat:@"联系电话：%@",model.merchantsMobile];
     cell.lab3.text = [NSString stringWithFormat:@"商家地址：%@",model.area];
+    cell.btn.tag = indexPath.row;
+    [cell.btn bk_addEventHandler:^(id sender) {
+        [self delete:sender];
+    } forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
+    FEMapCollectModel *map = _dataSource[indexPath.row];
+    FEShopDetailViewController *shopVC = [[FEShopDetailViewController alloc] init];
+    shopVC.mapId = map.mapId;
+    [self.navigationController pushViewController:shopVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -137,6 +145,50 @@
 - (void)loadMore
 {
     [self getDataOfPage:(++_pageNo) pageSize:20];
+}
+
+- (void)delete:(UIButton *)sender {
+    _index = sender.tag;
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    
+    [actionSheet addButtonWithTitle:@"取消收藏"];
+    // 同时添加一个取消按钮
+    [actionSheet addButtonWithTitle:@"取消"];
+    // 将取消按钮的index设置成我们刚添加的那个按钮，这样在delegate中就可以知道是那个按钮
+    actionSheet.destructiveButtonIndex = actionSheet.numberOfButtons - 1;
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            [self cancelColl];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+//取消收藏
+- (void)cancelColl {
+    FEMapCollectModel *model = _dataSource[_index];
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:model.mapId forKey:@"mapId"];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MapCollectionHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self refreshData];
+        });
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 /*

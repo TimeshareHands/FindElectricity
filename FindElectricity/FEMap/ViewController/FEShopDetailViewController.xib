@@ -10,6 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FEShopDetailViewController">
             <connections>
+                <outlet property="address" destination="n3E-ce-tX3" id="3am-33-RZl"/>
+                <outlet property="collectBtn" destination="G7B-Qp-KGM" id="YyR-BN-oYM"/>
+                <outlet property="logo" destination="viG-Qh-lC9" id="gSf-n7-X4h"/>
+                <outlet property="name" destination="Xxx-ue-jOv" id="u9O-j9-3Zo"/>
+                <outlet property="shopImg" destination="ATV-Ne-Mbe" id="l38-B9-hLY"/>
+                <outlet property="telephone" destination="QC2-Gq-jPQ" id="1gR-Ga-2YC"/>
+                <outlet property="timeLab" destination="Ac9-PB-Dcp" id="LNj-na-put"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,7 +34,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POM-xn-pgx">
                     <rect key="frame" x="10" y="220" width="355" height="133"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_to" translatesAutoresizingMaskIntoConstraints="NO" id="ATV-Ne-Mbe">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_to" translatesAutoresizingMaskIntoConstraints="NO" id="ATV-Ne-Mbe">
                             <rect key="frame" x="10" y="10" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="YmR-Bn-sq1"/>
@@ -49,6 +56,9 @@
                             <state key="normal" title=" 电话" image="map_phone">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="btnAct:" destination="-1" eventType="touchUpInside" id="Pd0-X2-KHy"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPH-lT-8FB">
                             <rect key="frame" x="187" y="97" width="74" height="30"/>
@@ -59,6 +69,9 @@
                             <state key="normal" title=" 路线" image="map_line">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="btnAct:" destination="-1" eventType="touchUpInside" id="J1Z-LT-6EE"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Jr-fU-apO">
                             <rect key="frame" x="103" y="97" width="74" height="30"/>
@@ -69,6 +82,9 @@
                             <state key="normal" title=" 纠错" image="map_error">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="btnAct:" destination="-1" eventType="touchUpInside" id="ZcX-mC-Dw2"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7B-Qp-KGM">
                             <rect key="frame" x="19" y="97" width="74" height="30"/>
@@ -79,6 +95,10 @@
                             <state key="normal" title=" 收藏" image="map_attion">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <state key="selected" image="mine_collect"/>
+                            <connections>
+                                <action selector="btnAct:" destination="-1" eventType="touchUpInside" id="soL-eg-HYc"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="维修店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxx-ue-jOv">
                             <rect key="frame" x="89" y="10" width="256" height="20"/>
@@ -98,10 +118,10 @@
                             <color key="textColor" red="0.65490196078431373" green="0.65490196078431373" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址：长沙市开福区万达广场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3E-ce-tX3">
-                            <rect key="frame" x="89" y="68" width="256" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址：长沙市开福区万达广场" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3E-ce-tX3">
+                            <rect key="frame" x="89" y="68" width="256" height="14.5"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="kSV-X2-RXO"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="36" id="kSV-X2-RXO"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.65490196078431373" green="0.65490196078431373" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
@@ -202,5 +222,6 @@
         <image name="map_line" width="13" height="13.5"/>
         <image name="map_phone" width="13.5" height="13.5"/>
         <image name="map_to" width="57" height="57"/>
+        <image name="mine_collect" width="15" height="15"/>
     </resources>
 </document>

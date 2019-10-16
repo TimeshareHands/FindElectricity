@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1C95A1F921390CC36BB022E4 /* Pods_FindElectricityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B919612CE35A549F783F0A /* Pods_FindElectricityTests.framework */; };
+		2035300C2352CED50070A2F0 /* FEMapsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2035300B2352CED50070A2F0 /* FEMapsModel.m */; };
+		2035300F2352FADE0070A2F0 /* FEMapInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2035300E2352FADE0070A2F0 /* FEMapInfoModel.m */; };
+		203530132352FE270070A2F0 /* FECorrectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 203530112352FE270070A2F0 /* FECorrectionViewController.m */; };
+		203530142352FE270070A2F0 /* FECorrectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203530122352FE270070A2F0 /* FECorrectionViewController.xib */; };
+		20353017235339C40070A2F0 /* FEMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20353016235339C40070A2F0 /* FEMapManager.m */; };
 		20916A4D234789530045C7C8 /* FEMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916A48234789530045C7C8 /* FEMapViewController.m */; };
 		20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A49234789530045C7C8 /* FEMapNaviViewController.xib */; };
 		20916A4F234789530045C7C8 /* FEMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A4A234789530045C7C8 /* FEMapViewController.xib */; };
@@ -191,6 +196,7 @@
 		CBED22C32351CF1D0009B75D /* FEMySHopListMode.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C22351CF1D0009B75D /* FEMySHopListMode.m */; };
 		CBED22C62351DABC0009B75D /* FEMapCollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C52351DABC0009B75D /* FEMapCollectModel.m */; };
 		CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22C82351E2BE0009B75D /* FEMessageModel.m */; };
+		CBED22CD235447760009B75D /* FETimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22CC235447760009B75D /* FETimeManager.m */; };
 		CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */; };
 		CBEDBD4C234DE2AC00A923A3 /* FECycleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */; };
 		CBEDBD4F234ED57000A923A3 /* FEStopProcessBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEDBD4E234ED57000A923A3 /* FEStopProcessBtn.m */; };
@@ -237,6 +243,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2035300A2352CED50070A2F0 /* FEMapsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapsModel.h; sourceTree = "<group>"; };
+		2035300B2352CED50070A2F0 /* FEMapsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapsModel.m; sourceTree = "<group>"; };
+		2035300D2352FADE0070A2F0 /* FEMapInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapInfoModel.h; sourceTree = "<group>"; };
+		2035300E2352FADE0070A2F0 /* FEMapInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapInfoModel.m; sourceTree = "<group>"; };
+		203530102352FE270070A2F0 /* FECorrectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECorrectionViewController.h; sourceTree = "<group>"; };
+		203530112352FE270070A2F0 /* FECorrectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECorrectionViewController.m; sourceTree = "<group>"; };
+		203530122352FE270070A2F0 /* FECorrectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECorrectionViewController.xib; sourceTree = "<group>"; };
+		20353015235339C40070A2F0 /* FEMapManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMapManager.h; sourceTree = "<group>"; };
+		20353016235339C40070A2F0 /* FEMapManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapManager.m; sourceTree = "<group>"; };
 		20916A47234789530045C7C8 /* FEMapNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMapNaviViewController.h; sourceTree = "<group>"; };
 		20916A48234789530045C7C8 /* FEMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMapViewController.m; sourceTree = "<group>"; };
 		20916A49234789530045C7C8 /* FEMapNaviViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FEMapNaviViewController.xib; sourceTree = "<group>"; };
@@ -591,6 +606,9 @@
 		CBED22C52351DABC0009B75D /* FEMapCollectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMapCollectModel.m; sourceTree = "<group>"; };
 		CBED22C72351E2BE0009B75D /* FEMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMessageModel.h; sourceTree = "<group>"; };
 		CBED22C82351E2BE0009B75D /* FEMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMessageModel.m; sourceTree = "<group>"; };
+		CBED22CA235421410009B75D /* FEFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEFunction.h; sourceTree = "<group>"; };
+		CBED22CB235447760009B75D /* FETimeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FETimeManager.h; sourceTree = "<group>"; };
+		CBED22CC235447760009B75D /* FETimeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FETimeManager.m; sourceTree = "<group>"; };
 		CBEDBD48234DE2AC00A923A3 /* FECycleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleDetailViewController.h; sourceTree = "<group>"; };
 		CBEDBD49234DE2AC00A923A3 /* FECycleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleDetailViewController.m; sourceTree = "<group>"; };
 		CBEDBD4A234DE2AC00A923A3 /* FECycleDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleDetailViewController.xib; sourceTree = "<group>"; };
@@ -688,6 +706,12 @@
 				CB826168234C714200DA6D21 /* MANaviRoute.m */,
 				CBED22C72351E2BE0009B75D /* FEMessageModel.h */,
 				CBED22C82351E2BE0009B75D /* FEMessageModel.m */,
+				2035300A2352CED50070A2F0 /* FEMapsModel.h */,
+				2035300B2352CED50070A2F0 /* FEMapsModel.m */,
+				2035300D2352FADE0070A2F0 /* FEMapInfoModel.h */,
+				2035300E2352FADE0070A2F0 /* FEMapInfoModel.m */,
+				20353015235339C40070A2F0 /* FEMapManager.h */,
+				20353016235339C40070A2F0 /* FEMapManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -734,6 +758,9 @@
 				20916A7C234AF19A0045C7C8 /* FEShopDetailViewController.h */,
 				20916A7D234AF19A0045C7C8 /* FEShopDetailViewController.m */,
 				20916A7E234AF19A0045C7C8 /* FEShopDetailViewController.xib */,
+				203530102352FE270070A2F0 /* FECorrectionViewController.h */,
+				203530112352FE270070A2F0 /* FECorrectionViewController.m */,
+				203530122352FE270070A2F0 /* FECorrectionViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1281,6 +1308,7 @@
 				4E063D4B233A122900D6756A /* DemonFont.h */,
 				4E063D49233A122900D6756A /* DemonHeads.h */,
 				4E063D4A233A122900D6756A /* DemonMarco.h */,
+				CBED22CA235421410009B75D /* FEFunction.h */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1311,6 +1339,8 @@
 		CBE117C6233C68E8003DA1C4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBED22CB235447760009B75D /* FETimeManager.h */,
+				CBED22CC235447760009B75D /* FETimeManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1579,6 +1609,7 @@
 				CBED22AC235048840009B75D /* FENewsCell.xib in Resources */,
 				20916A4F234789530045C7C8 /* FEMapViewController.xib in Resources */,
 				CB4FAC72235026DB0094D3E9 /* FESelectCityViewController.xib in Resources */,
+				203530142352FE270070A2F0 /* FECorrectionViewController.xib in Resources */,
 				20916A9F234F85770045C7C8 /* FESignChangeViewController.xib in Resources */,
 				CBEDBD63234F099F00A923A3 /* FESettingsViewController.xib in Resources */,
 				20916A80234AF19A0045C7C8 /* FEShopDetailViewController.xib in Resources */,
@@ -1745,6 +1776,7 @@
 				4E02F459234F228600308D99 /* SDWebImageDownloaderOperation.m in Sources */,
 				4E02F470234F228600308D99 /* SDAsyncBlockOperation.m in Sources */,
 				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,
+				CBED22CD235447760009B75D /* FETimeManager.m in Sources */,
 				4E02F451234F228600308D99 /* NSButton+WebCache.m in Sources */,
 				4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */,
 				4E783CE42350AA83003872F2 /* FEWorkGetPrizeShareCell.m in Sources */,
@@ -1790,6 +1822,7 @@
 				CBED22B523504AAE0009B75D /* FEDocmDetailViewController.m in Sources */,
 				4E063D57233A122900D6756A /* FindTabBarController.m in Sources */,
 				CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */,
+				20353017235339C40070A2F0 /* FEMapManager.m in Sources */,
 				CBEDBD8A234F0BF500A923A3 /* FEPositionErrorViewController.m in Sources */,
 				4E02F464234F228600308D99 /* SDWebImageCacheKeyFilter.m in Sources */,
 				CBED22BA235054630009B75D /* TLCity.m in Sources */,
@@ -1816,11 +1849,13 @@
 				4E02F2C3234EFB4300308D99 /* FEWorkMainHeadView.m in Sources */,
 				4E02F2C2234EFB4300308D99 /* FEWorkGetGiftAlertView.m in Sources */,
 				4E02F453234F228600308D99 /* SDDiskCache.m in Sources */,
+				203530132352FE270070A2F0 /* FECorrectionViewController.m in Sources */,
 				4E783CF323529C1A003872F2 /* FEWorkInviteFriendRecordCell.m in Sources */,
 				20916A7F234AF19A0045C7C8 /* FEShopDetailViewController.m in Sources */,
 				4E02F463234F228600308D99 /* SDImageCacheConfig.m in Sources */,
 				4E02F457234F228600308D99 /* SDImageGIFCoder.m in Sources */,
 				CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */,
+				2035300C2352CED50070A2F0 /* FEMapsModel.m in Sources */,
 				4E02F43C234F228600308D99 /* SDAnimatedImageView+WebCache.m in Sources */,
 				4E02F44B234F228600308D99 /* SDMemoryCache.m in Sources */,
 				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,
@@ -1843,6 +1878,7 @@
 				4E02F2BB234EFB4300308D99 /* FEWorkGetGiftVC.m in Sources */,
 				4E02F45E234F228600308D99 /* NSData+ImageContentType.m in Sources */,
 				20916A8B234B56060045C7C8 /* FEShopPopView.m in Sources */,
+				2035300F2352FADE0070A2F0 /* FEMapInfoModel.m in Sources */,
 				4E02F2BD234EFB4300308D99 /* FEWorkStrategyVC.m in Sources */,
 				4E02F462234F228600308D99 /* UIImage+MemoryCacheCost.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,

@@ -1,8 +1,8 @@
 //
-//  FEShopDetailViewController.h
+//  FECorrectionViewController.h
 //  FindElectricity
 //
-//  Created by 李冬强 on 2019/10/7.
+//  Created by 李冬强 on 2019/10/13.
 //  Copyright © 2019 LiDongQiang. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FEShopDetailViewController : DemonViewController
+@interface FECorrectionViewController : DemonViewController
 @property (copy,nonatomic) NSString *mapId;
 @end
 

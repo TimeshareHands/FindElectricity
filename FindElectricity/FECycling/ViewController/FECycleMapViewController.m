@@ -11,6 +11,7 @@
 @interface FECycleMapViewController ()
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) FECycleMap *mapView;
+@property (assign, nonatomic) CLLocationCoordinate2D currentCoord;
 @end
 
 @implementation FECycleMapViewController
@@ -59,6 +60,14 @@
     if (!_mapView) {
         _mapView = [[FECycleMap alloc] init];
         _mapView.delegate = self;
+        WEAKSELF;
+        _mapView.locationUpdateBlock = ^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull reGeocode, CGFloat locationAngle, NSError * _Nonnull error) {
+                MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf setCurrentCoord:location.coordinate];
+            });
+        };
         _mapView.allowsAnnotationViewSorting = NO;
         [_mapView setIsShowMapCenter:NO];
         [self.mapView startHeadingLocation];
@@ -66,6 +75,11 @@
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
+}
+
+- (void)setCurrentCoord:(CLLocationCoordinate2D)currentCoord {
+    _currentCoord = currentCoord;
+    
 }
 
 /*

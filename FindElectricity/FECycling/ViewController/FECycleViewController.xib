@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FECycleViewController">
             <connections>
+                <outlet property="allElec" destination="jOk-0U-oBt" id="0zQ-21-3rd"/>
+                <outlet property="currentElec" destination="rOP-iS-Sqw" id="ExY-Xb-dBv"/>
+                <outlet property="currentKM" destination="gXK-nw-BMg" id="Wja-nK-OFD"/>
+                <outlet property="currentTime" destination="OZK-SC-Cbk" id="zUR-U0-RPe"/>
                 <outlet property="headView" destination="yFG-Uv-IOJ" id="zYl-Wy-0Db"/>
+                <outlet property="maxElec" destination="ZWi-8b-r0G" id="0sr-Pd-Sy6"/>
                 <outlet property="tableView" destination="GuZ-cm-iGt" id="enk-YN-3r2"/>
+                <outlet property="tipLab" destination="zwQ-7Z-NCi" id="sG8-NU-XSb"/>
+                <outlet property="todayElec" destination="tEa-Jy-unB" id="RYc-8a-7xk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

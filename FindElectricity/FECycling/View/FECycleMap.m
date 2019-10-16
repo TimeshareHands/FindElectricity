@@ -52,7 +52,7 @@
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
     //设置允许在后台定位
-    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
     
     //设置允许连续定位逆地理
     [self.locationManager setLocatingWithReGeocode:YES];
