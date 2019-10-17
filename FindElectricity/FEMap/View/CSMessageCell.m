@@ -48,7 +48,7 @@
         self.selectionStyle=UITableViewCellSelectionStyleNone;
         [self creatSubViewTime];
         [self creatSubViewBubble];
-        [self creatSubViewLogo];
+//        [self creatSubViewLogo];
         [self creatSubViewMessage];
         [self creatSubViewVoice];
         [self creatSubViewAnimationVoice];
@@ -77,13 +77,13 @@
     _timeLabel.hidden        = YES;
     [self.contentView addSubview:_timeLabel];
     _timeLabel.font=[UIFont fontWithName:MTBaseFont size:10];
-    _timeLabel.backgroundColor= UIColorFromHex(0xcecece);
-    _timeLabel.textColor=UIColorFromHex(0xfff);
+//    _timeLabel.backgroundColor= UIColorFromHex(0xcecece);
+    _timeLabel.textColor=UIColorFromHex(0x404040);
     _timeLabel.textAlignment=NSTextAlignmentCenter;
-    _timeLabel.layer.masksToBounds=YES;
-    _timeLabel.layer.cornerRadius=4;
-    _timeLabel.layer.borderColor= UIColorFromHex(0xcecece).CGColor;
-    _timeLabel.layer.borderWidth=1;
+//    _timeLabel.layer.masksToBounds=YES;
+//    _timeLabel.layer.cornerRadius=4;
+//    _timeLabel.layer.borderColor= UIColorFromHex(0xcecece).CGColor;
+//    _timeLabel.layer.borderWidth=1;
 }
 
 - (void)creatSubViewLogo
@@ -139,7 +139,7 @@
     
     
     
-    _logoImageView.hidden = NO;
+    _logoImageView.hidden = YES;
     _logoImageView.frame = [messageModel logoFrame];
    
     _bubbleImageView.hidden = NO;
@@ -185,8 +185,12 @@
         case MessageTypeImage:
             _imageImageView.hidden = NO;
             _imageImageView.frame = [messageModel imageFrame];
-            _imageImageView.image = messageModel.imageSmall;
-            CGSize imageSize = [messageModel.imageSmall imageShowSize];
+            if (messageModel.imageUrl.length) {
+                [_imageImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.imageUrl] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
+            }else {
+                _imageImageView.image = messageModel.imageSmall;
+            }
+            CGSize imageSize = [messageModel imageFrame].size;
             UIImageView *imageViewMask = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:_messageModel.messageSenderType == MessageSenderTypeMe ? @"me" :@"other"] stretchableImageWithLeftCapWidth:20 topCapHeight:40]];
             imageViewMask.frame = CGRectMake(0, 0, imageSize.width, imageSize.height);
             _imageImageView.layer.mask = imageViewMask.layer;

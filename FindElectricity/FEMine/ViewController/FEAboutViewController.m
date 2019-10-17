@@ -22,7 +22,7 @@
     _getUpdateBtn.layer.cornerRadius = 7.5;
     _getUpdateBtn.layer.borderColor = [[UIColor colorWithRed:40.0f/255.0f green:184.0f/255.0f blue:136.0f/255.0f alpha:1.0f] CGColor];
     _getUpdateBtn.layer.borderWidth = 1.5;
-    _version.text = PCReleaseVersionString;
+    _version.text = [NSString stringWithFormat:@"版本号v%@",PCReleaseVersionString];
 }
 
 /*

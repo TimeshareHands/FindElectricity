@@ -12,7 +12,7 @@
 
 #define BASE_URLWith(str) [NSString stringWithFormat:@"%@%@",BASE_URL,str]
 #define KImg_URLWith(str)  [NSURL URLWithString:str]
-#define BASE_URL @"http://zhaodian.cswpw.cn/zhaodian/v2"
+#define BASE_URL @"http://zhaodianapi.csjiayu.com/zhaodian/v2"
 #define KSuccessCode 2000
 
 //骑行
@@ -72,7 +72,7 @@
 #define CollectionListHttp @"/collectionList"  //地图收藏列表
 #define MapCorrectionHttp @"/mapCorrection"  //地图点（商家位置）纠错
 #define CorrectionListHttp @"/correctionList"  //地图点（商家位置）纠错列表
-#define CorrectionContentHttp @"/orrectionContent"  //纠错内容详情
+#define CorrectionContentHttp @"/correctionContent"  //纠错内容详情
 
 //用户
 #define EditInfoHttp  @"/editInfo"  //编辑用户***********

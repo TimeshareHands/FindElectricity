@@ -12,10 +12,16 @@
 #import "CSBigView.h"
 #import "EmojiView.h"
 #import "CSRecord.h"
+#import "FEMapInfoModel.h"
 @interface FECorrectionViewController ()<UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,CSMessageCellDelegate, EmojiViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *telephone;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UIImageView *shopImg;
+
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, assign) CGFloat nowHeight;
 @property (nonatomic, strong) UIImageView *photoImageView;
@@ -25,7 +31,7 @@
 @property (nonatomic, strong) UIImage *photoImage;
 @property (nonatomic, strong) NSIndexPath *selectIndex;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableBottomConstraint;
-
+@property (strong, nonatomic) FEMapInfoModel *shopInfo;
 @end
 
 @implementation FECorrectionViewController
@@ -34,6 +40,58 @@
     [super viewDidLoad];
     [self setTitle:@"纠错"];
     [self addView];
+    [self getData];
+}
+
+- (void)getData {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:_mapId forKey:@"mapId"];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(CorrectionContentHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf getDataSuccess:responseObject];
+        });
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+#pragma mark - 请求返回数据
+- (void)getDataSuccess:(id)response
+{
+    //    [SVProgressHUD dismiss];
+    NSDictionary *data = (NSDictionary *)response;
+    MYLog(@"%@",data);
+    if ([data[@"code"] intValue] == KSuccessCode) {
+        MTSVPDismiss;
+        NSArray *array = data[@"data"][@"list"];
+        FEMapInfoModel *info = [FEMapInfoModel mj_objectWithKeyValues:data[@"data"][@"mapInfo"]];
+        [self setShopInfo:info];
+        CSMessageModel *model;
+        for (NSDictionary *cont in array) {
+            model = [[CSMessageModel alloc] init];
+            model.showMessageTime=YES;
+            model.messageSenderType = [cont[@"type"] integerValue];
+            NSString *text = cont[@"content"];
+            model.messageType = text.length?MessageTypeText:MessageTypeImage;
+            model.imageUrl = cont[@"picture"];
+            model.messageText = text;
+            model.messageTime = cont[@"cTime"];
+            [_dataArray addObject:model];
+        }
+        [_tableView reloadData];
+    }else {
+        MTSVPShowInfoText(data[@"msg"]);
+    }
+}
+
+- (void)setShopInfo:(FEMapInfoModel *)shopInfo {
+    _shopInfo = shopInfo;
+    [_shopImg sd_setImageWithURL:[NSURL URLWithString:_shopInfo.brandImage] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
+    _name.text = _shopInfo.merchantsName;
+    _address.text = [NSString stringWithFormat:@"%@",_shopInfo.area];
+    _telephone.text = [NSString stringWithFormat:@"%@",_shopInfo.merchantsMobile];
 }
 
 - (void)addView {
@@ -50,35 +108,6 @@
     _ev.delegate = self;
     [self.view addSubview:_ev];
     
-    
-//    CSMessageModel *model = [[CSMessageModel alloc] init];
-//    model.showMessageTime=YES;
-//    model.messageTime = @"2017年12月12日 16:37";
-//    model.messageSenderType = MessageSenderTypeMe;
-//    model.messageType = MessageTypeText;
-//    model.messageText = @"推开窗看见星星依然守在夜空中心中不免多了些暖暖的感动一闪一闪的光努力把黑夜变亮气氛如此安详你在我的生命中是那最闪亮的星一直在无声夜空守护着我们的梦这世界那么大 我的爱只想要你懂 陪伴我孤寂旅程你知道我的梦 你知道我的痛你知道我们感受都相同    就算有再大的风也挡不住勇敢的冲动    努力的往前飞 再累也无所谓    黑夜过后的光芒有多美    分享你我的力量就能把对方的路照亮    我想我们都一样    渴望梦想的光芒    这一路喜悦彷徨    不要轻易说失望    回到最初时光    当时的你多么坚强    那鼓励让我难忘";
-//    [_dataArray addObject:model];
-//
-//    model = [[CSMessageModel alloc] init];
-//    model.showMessageTime=YES;
-//    model.messageSenderType = MessageSenderTypeOther;
-//    model.messageType = MessageTypeText;
-//    model.messageText = @"我们都一样";
-//    model.messageTime = @"16:40";
-//    [_dataArray addObject:model];
-//
-//
-//
-//
-//    model = [[CSMessageModel alloc] init];
-//    model.showMessageTime=YES;
-//    model.messageSenderType = MessageSenderTypeOther;
-//    model.messageType = MessageTypeImage;
-//    model.imageSmall = [UIImage imageNamed:@"m"];
-//    model.messageTime = @"16:40";
-//    [_dataArray addObject:model];
-    
-    
     _tableView.separatorColor = [UIColor clearColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -94,7 +123,7 @@
     NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardRect = [aValue CGRectValue];
     int height = keyboardRect.size.height;
-    _tableBottomConstraint.constant = 44 + height;
+    _tableBottomConstraint.constant = -44 - height;
     UIView *vi = [self.view viewWithTag:100];
     CGRect rec = vi.frame ;
     rec.origin.y = _nowHeight - height;
@@ -103,7 +132,7 @@
 - (void)keyboardWillHide:(NSNotification *)aNotification
 {
     _ev.hidden = YES;
-    _tableBottomConstraint.constant = 44;
+    _tableBottomConstraint.constant = -44;
     UIView *vi = [self.view viewWithTag:100];
     vi.frame = CGRectMake(0, _nowHeight, [UIScreen mainScreen].bounds.size.width, 44);
 }
@@ -151,7 +180,7 @@
     if (_ev.hidden == NO)
     {
         _ev.hidden = YES;
-        _tableBottomConstraint.constant = 44;
+        _tableBottomConstraint.constant = -44;
         UIView *vi = [self.view viewWithTag:100];
         vi.frame = CGRectMake(0, _nowHeight, [UIScreen mainScreen].bounds.size.width, 44);
     }
@@ -185,8 +214,8 @@
     }
     else if (model.messageType == MessageTypeImage)
     {
-        _bigImageView.bigImageView.image = model.imageSmall;
-        _bigImageView.show = YES;
+//        _bigImageView.bigImageView.image = model.imageSmall;
+//        _bigImageView.show = YES;
         
 //        [[UIApplication sharedApplication].keyWindow bringSubviewToFront:_bigImageView];
     }
@@ -203,13 +232,13 @@
     bgView.layer.borderWidth = 1;
     [self.view addSubview:bgView];
     
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(49, 0, bgView.bounds.size.width - 152, 44)];
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(49, 0, bgView.bounds.size.width - 60, 44)];
     textView.delegate = self;
     textView.tag = 101;
     textView.textColor = UIColorFromHex(0x404040);
     textView.returnKeyType = UIReturnKeySend;
     textView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    textView.text = @"hello world";
+    textView.text = @"";
     [bgView addSubview:textView];
     _textView = textView;
 
@@ -252,13 +281,55 @@
     model.messageSenderType = MessageSenderTypeMe;
     model.messageType = MessageTypeText;
     model.messageText = _textView.text;
-    model.messageTime = @"16:40";
+    model.messageTime = [self currentDateStringWithFormat:@"YYYY-MM-dd"];
     [_dataArray addObject:model];
     [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:_dataArray.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:_dataArray.count - 1 inSection:0]
                                 animated:YES
                           scrollPosition:UITableViewScrollPositionMiddle];
+   [self sendMsg:model.messageText type:MessageTypeText];
     _textView.text = @"";
+}
+
+- (void)sendMsg:(id)msg type:(MessageType) type{
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:_mapId forKey:@"mapId"];
+    WEAKSELF;
+    if (type == MessageTypeImage) {
+        [[NetWorkManger manager] uploadImageToQNFileData:UIImageJPEGRepresentation(_photoImage, 0.4) success:^(id  _Nonnull responseObject) {
+            [parameter setValue:@"" forKey:@"content"];
+            [parameter setValue:(NSString *)responseObject forKey:@"picture"];
+            [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MapCorrectionHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                });
+                
+            } failure:^(NSError * _Nonnull error) {
+                
+            }];
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+    }else{
+        [parameter setValue:(NSString *)msg forKey:@"content"];
+        [parameter setValue:@"" forKey:@"picture"];
+        [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MapCorrectionHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSDictionary *data = (NSDictionary *)responseObject;
+                    MYLog(@"%@",data);
+                    if ([data[@"code"] intValue] == KSuccessCode) {
+                        
+                    }else {
+                        MTSVPShowInfoText(data[@"msg"]);
+                    }
+            });
+            
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+    }
+    
+    
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
@@ -294,7 +365,7 @@ static int iiii = 0;
 {
     [self.view endEditing:YES];
     _ev.hidden = YES;
-    _tableBottomConstraint.constant = 44;
+    _tableBottomConstraint.constant = -44;
     UIView *vi = [self.view viewWithTag:100];
     vi.frame = CGRectMake(0, _nowHeight, [UIScreen mainScreen].bounds.size.width, 44);
     switch (btn.tag)
@@ -307,7 +378,7 @@ static int iiii = 0;
         {
             
             _ev.hidden = NO;
-            _tableBottomConstraint.constant = 44 + 180;
+            _tableBottomConstraint.constant = -44 - 180;
             UIView *vi = [self.view viewWithTag:100];
             CGRect rec = vi.frame ;
             rec.origin.y = _nowHeight - 180;
@@ -394,13 +465,14 @@ static int iiii = 0;
 {
      if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
      {
-        UIImage * image =info[UIImagePickerControllerOriginalImage];
+        UIImage * image = info[UIImagePickerControllerOriginalImage];
+         _photoImage = image;
         CSMessageModel * model = [[CSMessageModel alloc] init];
          model.showMessageTime=YES;
          model.messageSenderType = MessageSenderTypeMe;
          model.messageType = MessageTypeImage;
          model.imageSmall = image;
-         model.messageTime = @"16:40";
+         model.messageTime = [self currentDateStringWithFormat:@"YYYY-MM-dd"];
          [_dataArray addObject:model];
          
          [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:_dataArray.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
@@ -413,12 +485,13 @@ static int iiii = 0;
    else if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
     {
         UIImage * image =info[UIImagePickerControllerOriginalImage];
+        _photoImage = image;
         CSMessageModel * model = [[CSMessageModel alloc] init];
         model.showMessageTime=YES;
-        model.messageSenderType = MessageSenderTypeOther;
+        model.messageSenderType = MessageSenderTypeMe;
         model.messageType = MessageTypeImage;
         model.imageSmall = image;
-        model.messageTime = @"16:40";
+        model.messageTime = [self currentDateStringWithFormat:@"YYYY-MM-dd"];
         [_dataArray addObject:model];
         
         [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:_dataArray.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
@@ -428,7 +501,21 @@ static int iiii = 0;
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+    [self sendMsg:_photoImage type:MessageTypeImage];
 }
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSString *)currentDateStringWithFormat:(NSString *)format
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = format;
+    return [formatter stringFromDate:[NSDate date]];
+}
+
 - (void)showBigImage
 {
     

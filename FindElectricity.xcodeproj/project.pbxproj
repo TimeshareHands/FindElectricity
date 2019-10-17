@@ -182,6 +182,7 @@
 		CBA72A70234DD0CA00C7070E /* FECycleMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A6E234DD0CA00C7070E /* FECycleMapViewController.m */; };
 		CBA72A71234DD0CA00C7070E /* FECycleMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */; };
 		CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A73234DD42B00C7070E /* FECycleMap.m */; };
+		CBBD9A442356FABC005D6728 /* NSDictionary+FEExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBD9A432356FABC005D6728 /* NSDictionary+FEExtend.m */; };
 		CBED22AB235048840009B75D /* FENewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22A9235048840009B75D /* FENewsCell.m */; };
 		CBED22AC235048840009B75D /* FENewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBED22AA235048840009B75D /* FENewsCell.xib */; };
 		CBED22B0235049AA0009B75D /* FENewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22AE235049AA0009B75D /* FENewsViewController.m */; };
@@ -595,6 +596,8 @@
 		CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleMapViewController.xib; sourceTree = "<group>"; };
 		CBA72A72234DD42B00C7070E /* FECycleMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleMap.h; sourceTree = "<group>"; };
 		CBA72A73234DD42B00C7070E /* FECycleMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleMap.m; sourceTree = "<group>"; };
+		CBBD9A422356FABC005D6728 /* NSDictionary+FEExtend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FEExtend.h"; sourceTree = "<group>"; };
+		CBBD9A432356FABC005D6728 /* NSDictionary+FEExtend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FEExtend.m"; sourceTree = "<group>"; };
 		CBED22A8235048840009B75D /* FENewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FENewsCell.h; sourceTree = "<group>"; };
 		CBED22A9235048840009B75D /* FENewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FENewsCell.m; sourceTree = "<group>"; };
 		CBED22AA235048840009B75D /* FENewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FENewsCell.xib; sourceTree = "<group>"; };
@@ -1322,6 +1325,8 @@
 				20916A7A234AF07E0045C7C8 /* UIBarButtonItem+MTAdditions.m */,
 				20916A93234CD90E0045C7C8 /* UIViewController+FEDealloc.h */,
 				20916A94234CD90E0045C7C8 /* UIViewController+FEDealloc.m */,
+				CBBD9A422356FABC005D6728 /* NSDictionary+FEExtend.h */,
+				CBBD9A432356FABC005D6728 /* NSDictionary+FEExtend.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -1834,6 +1839,7 @@
 				4E02F456234F228600308D99 /* SDImageCache.m in Sources */,
 				4E02F44F234F228600308D99 /* SDWebImagePrefetcher.m in Sources */,
 				20916A5B2348CD1E0045C7C8 /* FELauchShow.m in Sources */,
+				CBBD9A442356FABC005D6728 /* NSDictionary+FEExtend.m in Sources */,
 				CB1567C5234F495100F2485F /* FEMineMsgCell.m in Sources */,
 				CBEDBD67234F09F300A923A3 /* FEMineMsgViewController.m in Sources */,
 				4E063D56233A122900D6756A /* DemonTabbarItem.m in Sources */,

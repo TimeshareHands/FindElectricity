@@ -24,7 +24,7 @@
     if (self.showMessageTime)
     {
         CGSize size = [self labelAutoCalculateRectWith:self.messageTime Font:[UIFont fontWithName:MTBaseFont size:10] MaxSize:CGSizeMake(MAXFLOAT, 17)];
-        rect = CGRectMake((ScreenWidth - size.width)/2, 0, size.width + 10, 17);
+        rect = CGRectMake((ScreenWidth - size.width)/2, 5, size.width + 10, 17);
     }
 
     return rect;
@@ -60,11 +60,11 @@
     }
     if (self.messageSenderType == MessageSenderTypeMe)
     {
-        rect = CGRectMake(ScreenWidth * 0.3, timeRect.size.height + 10, maxWith - 5, size.height > 44 ? size.height : 44);;
+        rect = CGRectMake(ScreenWidth -20 -size.width, timeRect.size.height + 10, size.width, size.height > 44 ? size.height : 44);;
     }
     else
     {
-        rect = CGRectMake(65 , timeRect.size.height + 10 , maxWith, size.height > 44 ? size.height : 44);
+        rect = CGRectMake(20 , timeRect.size.height + 10 , size.width, size.height > 44 ? size.height : 44);
     }
     return rect;
 }
@@ -121,18 +121,24 @@
     
     CGSize imageSize = [self.imageSmall imageShowSize];
     
-    if (self.imageSmall == nil)
+    if (self.imageSmall == nil&&self.imageUrl.length == 0)
     {
+        
+        
         return rect;
+    }
+    if (self.imageUrl) {
+        //为网络图片
+        imageSize = CGSizeMake(100, 100);
     }
     
     if (self.messageSenderType == MessageSenderTypeMe)
     {
-        rect = CGRectMake(ScreenWidth - imageSize.width - 50, timeLabelHeight + 10, imageSize.width, imageSize.height);
+        rect = CGRectMake(ScreenWidth - 20-imageSize.width, timeLabelHeight + 10, imageSize.width, imageSize.height);
     }
     else
     {
-        rect = CGRectMake(50, timeLabelHeight + 10, imageSize.width, imageSize.height);
+        rect = CGRectMake(20, timeLabelHeight + 10, imageSize.width, imageSize.height);
     }
     return rect;
 }

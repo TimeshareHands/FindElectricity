@@ -72,7 +72,7 @@
         _mapView = [[FECycleMap alloc] init];
         [_mapView setIsShowMapCenter:NO];
 //        _mapView.delegate = self;
-        _mapView.hidden = YES;
+//        _mapView.hidden = YES;
         WEAKSELF;
         _mapView.locationUpdateBlock = ^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull reGeocode, CGFloat locationAngle, NSError * _Nonnull error) {
                 MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
@@ -82,7 +82,7 @@
         _mapView.allowsAnnotationViewSorting = NO;
         [self.mapView startUpdatingLocation];
         _mapView.showsUserLocation = YES;
-//        _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
 }
@@ -118,8 +118,8 @@
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
             NSInteger kmToElec = [elecInfo[@"kmToElectricity"] integerValue];
             [userDefault setInteger:kmToElec forKey:kFEKMToElecNum];
-            NSInteger currentKM = (NSInteger)([userDefault objectForKey:kFECycleKM]);
-            NSInteger currentTime = (NSInteger)([userDefault objectForKey:kFECycleTime]);
+            NSInteger currentKM = (NSInteger)([userDefault integerForKey:kFECycleKM]);
+            NSInteger currentTime = (NSInteger)([userDefault integerForKey:kFECycleTime]);
             _currentElec.text = [NSString stringWithFormat:@"%d",currentKM/kmToElec];
             _currentTime.text = timeFormt(currentTime);
             NSInteger todayE = [elecInfo[@"todayElectricity"] integerValue];
@@ -130,6 +130,11 @@
             _todayElec.text = [NSString stringWithFormat:@"%d",todayE];
             _allElec.text = [NSString stringWithFormat:@"%d",allE];
             _currentKM.text = [NSString stringWithFormat:@"%d",currentKM];
+            if (currentTime>0) {
+                _mapView.hidden = YES;
+            }else{
+                _mapView.hidden = NO;
+            }
         }
     }else {
         MTSVPShowInfoText(data[@"msg"]);

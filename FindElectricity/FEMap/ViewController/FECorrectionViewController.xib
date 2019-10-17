@@ -10,9 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FECorrectionViewController">
             <connections>
+                <outlet property="address" destination="QDk-OB-11O" id="NPb-Is-Gkc"/>
                 <outlet property="headView" destination="evq-5q-8j8" id="6cP-7a-xbH"/>
+                <outlet property="name" destination="rVH-Yp-cSt" id="IkX-21-EnT"/>
+                <outlet property="shopImg" destination="KYy-3U-111" id="Rjj-4Z-Uvi"/>
                 <outlet property="tableBottomConstraint" destination="Obd-Dd-xh3" id="CGe-7g-c6z"/>
                 <outlet property="tableView" destination="iXD-GC-NFQ" id="Vkq-xV-W4S"/>
+                <outlet property="telephone" destination="3Ul-k9-PrN" id="b3L-nH-5Lx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
