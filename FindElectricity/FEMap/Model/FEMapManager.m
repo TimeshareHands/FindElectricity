@@ -14,6 +14,7 @@
 @property (copy,nonatomic) AMapSearchFinishBlock distanceBlock;
 @property (copy,nonatomic) AMapSearchFinishBlock regBlock;
 @property (copy,nonatomic) AMapSearchFinishBlock weatherBlock;
+@property (copy,nonatomic) AMapSearchFinishBlock poiBlock;
 @end
 
 static FEMapManager *manager = nil;
@@ -63,6 +64,15 @@ static FEMapManager *manager = nil;
     [self.search AMapWeatherSearch:regReq];
 }
 
+//获取POI信息
+- (void)poiSearchKeywords:(NSString *)keywords finishBlock:(AMapSearchFinishBlock)block{
+    _poiBlock = block;
+    AMapPOIKeywordsSearchRequest *regReq = [[AMapPOIKeywordsSearchRequest alloc] init];
+
+    regReq.keywords = keywords;
+    [self.search AMapPOIKeywordsSearch:regReq];
+}
+
 #pragma mark AMapSearchAPI delegete
 - (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
 {
@@ -101,11 +111,21 @@ static FEMapManager *manager = nil;
     }
 }
 
+- (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response{
+    if(response.count)
+    {
+        if (_poiBlock) {
+            _poiBlock(response,FEAMapSearchTypePOI,NULL);
+        }
+    }
+}
+
 - (void)dealloc
 {
     _distanceBlock = nil;
     _weatherBlock = nil;
     _regBlock = nil;
-    MYLog(@"----")
+    _poiBlock = nil;
+    MYLog(@"--FEMapManager dealloc--")
 }
 @end

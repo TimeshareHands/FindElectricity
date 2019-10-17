@@ -167,6 +167,8 @@
 		CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E95234F1DCB00632F7B /* KLCoverView.m */; };
 		CB0D0E9D234F20FC00632F7B /* FESettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E9B234F20FC00632F7B /* FESettingsCell.m */; };
 		CB0D0E9E234F20FC00632F7B /* FESettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0D0E9C234F20FC00632F7B /* FESettingsCell.xib */; };
+		CB155D592358518B0060A3AD /* FESeleLocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB155D572358518B0060A3AD /* FESeleLocViewController.m */; };
+		CB155D5A2358518B0060A3AD /* FESeleLocViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB155D582358518B0060A3AD /* FESeleLocViewController.xib */; };
 		CB1567C0234F38DA00F2485F /* FEShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1567BE234F38DA00F2485F /* FEShopListCell.m */; };
 		CB1567C1234F38DA00F2485F /* FEShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1567BF234F38DA00F2485F /* FEShopListCell.xib */; };
 		CB1567C5234F495100F2485F /* FEMineMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1567C3234F495100F2485F /* FEMineMsgCell.m */; };
@@ -571,6 +573,9 @@
 		CB0D0E9A234F20FC00632F7B /* FESettingsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESettingsCell.h; sourceTree = "<group>"; };
 		CB0D0E9B234F20FC00632F7B /* FESettingsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESettingsCell.m; sourceTree = "<group>"; };
 		CB0D0E9C234F20FC00632F7B /* FESettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FESettingsCell.xib; sourceTree = "<group>"; };
+		CB155D562358518B0060A3AD /* FESeleLocViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESeleLocViewController.h; sourceTree = "<group>"; };
+		CB155D572358518B0060A3AD /* FESeleLocViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESeleLocViewController.m; sourceTree = "<group>"; };
+		CB155D582358518B0060A3AD /* FESeleLocViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FESeleLocViewController.xib; sourceTree = "<group>"; };
 		CB1567BD234F38DA00F2485F /* FEShopListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEShopListCell.h; sourceTree = "<group>"; };
 		CB1567BE234F38DA00F2485F /* FEShopListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEShopListCell.m; sourceTree = "<group>"; };
 		CB1567BF234F38DA00F2485F /* FEShopListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEShopListCell.xib; sourceTree = "<group>"; };
@@ -1492,6 +1497,9 @@
 				CBEDBD7D234F0B2B00A923A3 /* FEAddShopViewController.h */,
 				CBEDBD7E234F0B2C00A923A3 /* FEAddShopViewController.m */,
 				CBEDBD7F234F0B2C00A923A3 /* FEAddShopViewController.xib */,
+				CB155D562358518B0060A3AD /* FESeleLocViewController.h */,
+				CB155D572358518B0060A3AD /* FESeleLocViewController.m */,
+				CB155D582358518B0060A3AD /* FESeleLocViewController.xib */,
 				CBEDBD82234F0B8F00A923A3 /* FECollectViewController.h */,
 				CBEDBD83234F0B8F00A923A3 /* FECollectViewController.m */,
 				CBEDBD84234F0B8F00A923A3 /* FECollectViewController.xib */,
@@ -1667,6 +1675,7 @@
 				20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */,
 				20916A9A234F7FD60045C7C8 /* FEMsgChangeViewController.xib in Resources */,
 				CBED22D423556A340009B75D /* other.png in Resources */,
+				CB155D5A2358518B0060A3AD /* FESeleLocViewController.xib in Resources */,
 				CBED22D323556A340009B75D /* ll.png in Resources */,
 				CBEDBD5E234F007000A923A3 /* FEMineCell.xib in Resources */,
 				CBED22F1235579740009B75D /* image@2x.png in Resources */,
@@ -1934,6 +1943,7 @@
 				203530132352FE270070A2F0 /* FECorrectionViewController.m in Sources */,
 				4E783CF323529C1A003872F2 /* FEWorkInviteFriendRecordCell.m in Sources */,
 				20916A7F234AF19A0045C7C8 /* FEShopDetailViewController.m in Sources */,
+				CB155D592358518B0060A3AD /* FESeleLocViewController.m in Sources */,
 				4E02F463234F228600308D99 /* SDImageCacheConfig.m in Sources */,
 				4E02F457234F228600308D99 /* SDImageGIFCoder.m in Sources */,
 				CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */,

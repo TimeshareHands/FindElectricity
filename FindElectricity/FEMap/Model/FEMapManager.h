@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger,FEAMapSearchType) {
     FEAMapSearchTypeReGeocode = 0,
     FEAMapSearchTypeDistance = 1,
     FEAMapSearchTypeWeather = 2,
+    FEAMapSearchTypePOI = 3,
 };
 typedef  void (^AMapSearchFinishBlock)(id response,FEAMapSearchType type,NSError *error);
 @interface FEMapManager : NSObject
@@ -33,7 +34,10 @@ typedef  void (^AMapSearchFinishBlock)(id response,FEAMapSearchType type,NSError
 获取天气信息
 */
 - (void)weatherSearchCity:(NSString *)city finishBlock:(AMapSearchFinishBlock)block;
-
+/**
+获取POI信息
+ */
+- (void)poiSearchKeywords:(NSString *)keywords finishBlock:(AMapSearchFinishBlock)block;
 
 @end
 

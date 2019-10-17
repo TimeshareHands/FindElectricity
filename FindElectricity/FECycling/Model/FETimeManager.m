@@ -28,6 +28,7 @@ static FETimeManager *shareManager = nil;
 }
 
 - (void)congfig {
+    _didStartTime = 0;
     WEAKSELF
     _timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
         [weakSelf timeRun];
