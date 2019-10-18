@@ -120,7 +120,7 @@
             [userDefault setInteger:kmToElec forKey:kFEKMToElecNum];
             NSInteger currentKM = (NSInteger)([userDefault integerForKey:kFECycleKM]);
             NSInteger currentTime = (NSInteger)([userDefault integerForKey:kFECycleTime]);
-            _currentElec.text = [NSString stringWithFormat:@"%d",currentKM/kmToElec];
+            _currentElec.text = [NSString stringWithFormat:@"%.2f",currentKM/1000.0*kmToElec];
             _currentTime.text = timeFormt(currentTime);
             NSInteger todayE = [elecInfo[@"todayElectricity"] integerValue];
             NSInteger maxE = [elecInfo[@"maxElectricity"] integerValue];
