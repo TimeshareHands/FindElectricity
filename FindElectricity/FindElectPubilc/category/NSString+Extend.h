@@ -195,4 +195,11 @@
  *  @return 密码错误提示
  */
 -(NSString *)pwdWarm;
+
+/**
+ *  @author lidongqiang
+ *  获取随机字符
+ *  @return 随机字符
+ */
++ (NSString *)randomStrWithLength:(NSInteger)length;
 @end

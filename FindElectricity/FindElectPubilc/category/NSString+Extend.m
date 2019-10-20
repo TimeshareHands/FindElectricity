@@ -197,5 +197,15 @@
     return formattedNumberString;
 }
 
++ (NSString *)randomStrWithLength:(NSInteger)length
 
+{
+    static NSString *kStringBase = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: length];
+    for (int i = 0; i < length; i++) {
+        [randomString appendFormat: @"%C", [kStringBase characterAtIndex:arc4random_uniform((u_int32_t)[kStringBase length])]];
+    }
+    
+    return [randomString copy];
+}
 @end

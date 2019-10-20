@@ -57,7 +57,7 @@
     _name.text = _shopInfo.merchantsName;
     _timeLab.text = [NSString stringWithFormat:@"营业时间：%@-%@",_shopInfo.openTime,_shopInfo.closeTime];
     _address.text = [NSString stringWithFormat:@"地址：%@",_shopInfo.area];
-    _address.text = [NSString stringWithFormat:@"电话号码：%@",_shopInfo.merchantsMobile];
+    _telephone.text = [NSString stringWithFormat:@"电话号码：%@",_shopInfo.merchantsMobile];
     _collectBtn.selected = ![_shopInfo.is_collection intValue];
     [self setNavgaTitle:_shopInfo.merchantsName];
 }

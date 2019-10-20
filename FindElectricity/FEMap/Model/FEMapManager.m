@@ -11,7 +11,10 @@
 
 @interface FEMapManager()<AMapSearchDelegate>
 @property (strong,nonatomic) AMapSearchAPI *search;
-@property (copy,nonatomic) AMapSearchFinishBlock responseBlock;
+@property (copy,nonatomic) AMapSearchFinishBlock distanceBlock;
+@property (copy,nonatomic) AMapSearchFinishBlock regBlock;
+@property (copy,nonatomic) AMapSearchFinishBlock weatherBlock;
+@property (copy,nonatomic) AMapSearchFinishBlock poiBlock;
 @end
 
 static FEMapManager *manager = nil;
@@ -34,7 +37,7 @@ static FEMapManager *manager = nil;
 
 //获取逆地理位置信息
 - (void)regSearchFromCoord:(CLLocationCoordinate2D)point finishBlock:(AMapSearchFinishBlock)block{
-    _responseBlock = block;
+    _regBlock = block;
     AMapReGeocodeSearchRequest *regReq = [[AMapReGeocodeSearchRequest alloc] init];
 
     regReq.location = [AMapGeoPoint locationWithLatitude:point.latitude longitude:point.longitude];
@@ -44,7 +47,7 @@ static FEMapManager *manager = nil;
 
 //获取2点直线距离
 - (void)getDistanceFromCoord:(CLLocationCoordinate2D)from toCoord:(CLLocationCoordinate2D)toCoord finishBlock:(AMapSearchFinishBlock)block{
-    _responseBlock = block;
+    _distanceBlock = block;
     AMapDistanceSearchRequest *distanReq = [[AMapDistanceSearchRequest alloc] init];
     distanReq.origins = @[[AMapGeoPoint locationWithLatitude:from.latitude longitude:from.longitude]];
     distanReq.destination = [AMapGeoPoint locationWithLatitude:toCoord.latitude longitude:toCoord.longitude];
@@ -54,11 +57,20 @@ static FEMapManager *manager = nil;
 
 //获取天气信息
 - (void)weatherSearchCity:(NSString *)city finishBlock:(AMapSearchFinishBlock)block{
-    _responseBlock = block;
+    _weatherBlock = block;
     AMapWeatherSearchRequest *regReq = [[AMapWeatherSearchRequest alloc] init];
 
     regReq.city = city;
     [self.search AMapWeatherSearch:regReq];
+}
+
+//获取POI信息
+- (void)poiSearchKeywords:(NSString *)keywords finishBlock:(AMapSearchFinishBlock)block{
+    _poiBlock = block;
+    AMapPOIKeywordsSearchRequest *regReq = [[AMapPOIKeywordsSearchRequest alloc] init];
+
+    regReq.keywords = keywords;
+    [self.search AMapPOIKeywordsSearch:regReq];
 }
 
 #pragma mark AMapSearchAPI delegete
@@ -66,8 +78,8 @@ static FEMapManager *manager = nil;
 {
     if(response.regeocode != nil)
     {
-        if (_responseBlock) {
-            _responseBlock(response,FEAMapSearchTypeReGeocode,NULL);
+        if (_regBlock) {
+            _regBlock(response,FEAMapSearchTypeReGeocode,NULL);
         }
     }
     else{
@@ -78,8 +90,8 @@ static FEMapManager *manager = nil;
 - (void)onDistanceSearchDone:(AMapDistanceSearchRequest *)request response:(AMapDistanceSearchResponse *)response {
     if(response.results != nil)
     {
-        if (_responseBlock) {
-            _responseBlock(response,FEAMapSearchTypeDistance,NULL);
+        if (_distanceBlock) {
+            _distanceBlock(response,FEAMapSearchTypeDistance,NULL);
         }
     }
     else{
@@ -90,8 +102,8 @@ static FEMapManager *manager = nil;
 - (void)onWeatherSearchDone:(AMapWeatherSearchRequest *)request response:(AMapWeatherSearchResponse *)response{
     if(response.lives != nil)
     {
-        if (_responseBlock) {
-            _responseBlock(response,FEAMapSearchTypeWeather,NULL);
+        if (_weatherBlock) {
+            _weatherBlock(response,FEAMapSearchTypeWeather,NULL);
         }
     }
     else{
@@ -99,8 +111,21 @@ static FEMapManager *manager = nil;
     }
 }
 
+- (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response{
+    if(response.count)
+    {
+        if (_poiBlock) {
+            _poiBlock(response,FEAMapSearchTypePOI,NULL);
+        }
+    }
+}
+
 - (void)dealloc
 {
-    MYLog(@"----")
+    _distanceBlock = nil;
+    _weatherBlock = nil;
+    _regBlock = nil;
+    _poiBlock = nil;
+    MYLog(@"--FEMapManager dealloc--")
 }
 @end

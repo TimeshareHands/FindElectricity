@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FETimeManager : NSObject
+
+@property (copy,nonatomic) void(^timeRunBlock)(NSTimeInterval sec);
 /**
  单例
  */

@@ -160,6 +160,7 @@
                         AMapWeatherSearchResponse *resp = (AMapWeatherSearchResponse *)response;
                         if (resp.lives.count) {
                             AMapLocalWeatherLive *live = (AMapLocalWeatherLive *)[resp.lives lastObject];
+                            [weakSelf.weatherView setLive:live];
                         }
                     }
                 }];

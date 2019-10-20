@@ -71,8 +71,9 @@
     }
     cell.model = _dataSource[indexPath.row];
     cell.btn.tag = indexPath.row;
+    WEAKSELF;
     [cell.btn bk_addEventHandler:^(id sender) {
-        [self delete:sender];
+        [weakSelf delete:sender];
     } forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }

@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FECycleMapViewController">
             <connections>
+                <outlet property="currentElec" destination="WcZ-VI-KE7" id="gw5-cv-O5b"/>
+                <outlet property="currentKM" destination="aP2-OD-lXy" id="aBF-SC-Ook"/>
+                <outlet property="currentTime" destination="rco-2o-F3I" id="mlN-CC-HkX"/>
+                <outlet property="speed" destination="c7A-Lb-G2Y" id="H9a-vp-PBi"/>
                 <outlet property="topView" destination="5t4-xa-Wtd" id="ySO-iJ-tj4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

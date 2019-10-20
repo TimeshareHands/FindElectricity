@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <AMapSearchKit/AMapSearchKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEMapWeather : UIView
-
+@property (strong, nonatomic) AMapLocalWeatherLive *live;
 @end
 
 NS_ASSUME_NONNULL_END

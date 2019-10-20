@@ -17,8 +17,8 @@
 
 - (void)setModel:(FEMySHopListMode *)model {
     _model = model;
-    _titleLab.text = [NSString stringWithFormat:@"营业时间：%@",_model.merchantsName];
-    _phoneLab.text = [NSString stringWithFormat:@"营业时间：%@",_model.merchantsMobile];
+    _titleLab.text = [NSString stringWithFormat:@"%@",_model.merchantsName];
+    _phoneLab.text = [NSString stringWithFormat:@"联系电话：%@",_model.merchantsMobile];
     _timeLab.text = [NSString stringWithFormat:@"营业时间：%@-%@",_model.openTime,_model.closeTime];
     _addressLab.text = [NSString stringWithFormat:@"%@",_model.area];
     NSInteger isPass = [_model.isPass integerValue];

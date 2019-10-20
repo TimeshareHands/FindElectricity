@@ -69,8 +69,9 @@
     cell.lab2.text = [NSString stringWithFormat:@"联系电话：%@",model.merchantsMobile];
     cell.lab3.text = [NSString stringWithFormat:@"商家地址：%@",model.area];
     cell.btn.tag = indexPath.row;
+    WEAKSELF;
     [cell.btn bk_addEventHandler:^(id sender) {
-        [self delete:sender];
+        [weakSelf delete:sender];
     } forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }

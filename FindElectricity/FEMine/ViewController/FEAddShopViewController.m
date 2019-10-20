@@ -8,7 +8,7 @@
 
 #import "FEAddShopViewController.h"
 #import "FECycleMap.h"
-#import <AMapSearchKit/AMapSearchKit.h>
+#import "FEMapManager.h"
 @interface FEAddShopViewController ()<UIPickerViewDelegate,UIPickerViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,MAMapViewDelegate,AMapSearchDelegate>
 @property (assign, nonatomic) NSInteger flag;
 @property (weak, nonatomic) IBOutlet UILabel *zaoTime;
@@ -61,6 +61,7 @@
     _upLoadBtn.clipsToBounds = YES;
     
     _mapView.showsUserLocation = YES;
+    _mapView.userTrackingMode = MAUserTrackingModeFollow;
     WEAKSELF;
     _mapView.locationUpdateBlock = ^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull reGeocode, CGFloat locationAngle, NSError * _Nonnull error) {
             MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
@@ -88,34 +89,22 @@
 
 //获取地址信息
 - (void)regSearchFromCoord:(AMapGeoPoint *)point {
-    if(!_search){
-        _search = [[AMapSearchAPI alloc] init];
-        _search.delegate = self;
-    }
-    AMapReGeocodeSearchRequest *regReq = [[AMapReGeocodeSearchRequest alloc] init];
-
-    regReq.location = point;
-    regReq.requireExtension = YES;
-    [self.search AMapReGoecodeSearch:regReq];
-}
-
-#pragma mark AMapSearchAPI delegete
-- (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
-{
-    if(response.regeocode != nil)
-    {
-        [self setReGeocode:response];
-    }
-    else{
-        
-    }
+    WEAKSELF;
+    [[FEMapManager manager] regSearchFromCoord:(CLLocationCoordinate2D){point.latitude,point.longitude} finishBlock:^(id  _Nonnull response, FEAMapSearchType type, NSError * _Nonnull error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (type==FEAMapSearchTypeReGeocode) {
+                AMapReGeocodeSearchResponse *reg = (AMapReGeocodeSearchResponse *)response;
+                [weakSelf setReGeocode:reg];
+            }
+        });
+    }];
 }
 
 - (void)setReGeocode:(AMapReGeocodeSearchResponse *)reGeocode {
     _reGeocode = reGeocode;
     AMapAddressComponent *addCom = reGeocode.regeocode.addressComponent;
     _pcq.text = [NSString stringWithFormat:@"%@ %@ %@",addCom.province,addCom.city,addCom.district];
-    _address.text = addCom.township;
+    _address.text = [NSString stringWithFormat:@"%@%@%@",addCom.township,addCom.neighborhood,addCom.building];
 }
 
 #pragma mark AMapdelegete

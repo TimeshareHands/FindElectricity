@@ -9,6 +9,7 @@
 #import "FEPositionErrorViewController.h"
 #import "FEShopListCell.h"
 #import "FEMapCollectModel.h"
+#import "FECorrectionViewController.h"
 @interface FEPositionErrorViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (copy, nonatomic) NSMutableArray *dataSource;
@@ -71,8 +72,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
+    FEMapCollectModel *model = _dataSource[indexPath.row];
+    FECorrectionViewController *vc = [[FECorrectionViewController alloc] init];
+    vc.mapId = model.mapId;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
