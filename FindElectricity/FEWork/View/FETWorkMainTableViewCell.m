@@ -61,9 +61,19 @@
     [self.confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self);
         make.right.mas_equalTo(-20);
+        make.width.mas_equalTo(68);
+        make.height.mas_equalTo(28);
     }];
 }
-
+-(void)setLeftImg:(NSString *)imageLogo topText:(NSString *)topText topCenterText:(NSString *)tpcenterText centerText:(NSString *)centerText bottomText:(NSString *)bottomText buttonColor:(UIColor *)color buttonTitle:(NSString *)buttonTitle{
+    [self.leftImg setImage:[UIImage imageNamed:imageLogo]];
+    [self.topLabel setText:topText];
+    [self.topCenterLabel setText:tpcenterText];
+    [self.centerLabel setText:centerText];
+    [self.bottomLabel setText:bottomText];
+    [self.confirmBtn setBackgroundColor:color];
+    [self.confirmBtn setTitle:buttonTitle forState:UIControlStateNormal];
+}
 #pragma mark --getter
 -(UIImageView *)leftImg{
     if (!_leftImg) {
@@ -109,6 +119,7 @@
         _confirmBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_confirmBtn setTitle:@"去邀请" forState:UIControlStateNormal];
         [_confirmBtn.titleLabel setFont:Demon_13_Font];
+        [_confirmBtn.layer setCornerRadius:14];
     }
     return _confirmBtn;
 }

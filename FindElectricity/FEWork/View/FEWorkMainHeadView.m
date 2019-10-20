@@ -13,7 +13,7 @@
 @property (nonatomic, strong) UIImageView *headimg;
 @property (nonatomic, strong) UILabel *infoLbl;
 @property (nonatomic, strong) UIButton *shopBtn;
-@property (nonatomic, strong) UIView *topMenuView;//我的电量值一栏
+@property (nonatomic, strong) UIButton *topMenuBtn;//我的电量值一栏
 @property (nonatomic, strong) UILabel *tm_HaveEvalueLbl;
 @property (nonatomic, strong) UILabel *tm_ShowHaveEvalueLbl;
 @property (nonatomic, strong) UILabel *tm_ShowGiveLbl;
@@ -24,19 +24,19 @@
 @property (nonatomic, strong) UIView *topGiveView;//签到领取电量一栏
 @property (nonatomic, strong) UILabel *tG_leftTopLbl;
 @property (nonatomic, strong) UILabel *tG_rightTopLbl;
-@property (nonatomic, strong) UIImageView *tG_coinImg1;
+@property (nonatomic, strong) UIButton *tG_coinImg1;
 @property (nonatomic, strong) UILabel *tG_coinBottomLbl1;
-@property (nonatomic, strong) UIImageView *tG_coinImg2;
+@property (nonatomic, strong) UIButton *tG_coinImg2;
 @property (nonatomic, strong) UILabel *tG_coinBottomLbl2;
-@property (nonatomic, strong) UIImageView *tG_coinImg3;
+@property (nonatomic, strong) UIButton *tG_coinImg3;
 @property (nonatomic, strong) UILabel *tG_coinBottomLbl3;
-@property (nonatomic, strong) UIImageView *tG_coinImg4;
+@property (nonatomic, strong) UIButton *tG_coinImg4;
 @property (nonatomic, strong) UILabel *tG_coinBottomLbl4;
-@property (nonatomic, strong) UIImageView *tG_coinImg5;
+@property (nonatomic, strong) UIButton *tG_coinImg5;
 @property (nonatomic, strong) UILabel *tG_coinBottomLbl5;
-@property (nonatomic, strong) UIImageView *tG_coinImg6;
+@property (nonatomic, strong) UIButton *tG_coinImg6;
 @property (nonatomic, strong) UILabel *tG_coinBottomLbl6;
-@property (nonatomic, strong) UIImageView *tG_coinImg7;
+@property (nonatomic, strong) UIButton *tG_coinImg7;
 @property (nonatomic, strong) UILabel *tG_coinBottomLbl7;
 @property (nonatomic, strong) UILabel *tG_coinLbl1;
 @property (nonatomic, strong) UILabel *tG_coinLbl2;
@@ -60,18 +60,20 @@
 
 #pragma mark --添加视图
 -(void)addView{
+    
     [self addSubview:self.topView];
     [self addSubview:self.bottomView];
     [self.topView addSubview:self.headimg];
     [self.topView addSubview:self.infoLbl];
     [self.topView addSubview:self.shopBtn];
-    [self.topView addSubview:self.topMenuView];
-    [self.topMenuView addSubview:self.tm_ShowHaveEvalueLbl];
-    [self.topMenuView addSubview:self.tm_HaveEvalueLbl];
-    [self.topMenuView addSubview:self.tm_ShowGiveLbl];
-    [self.topMenuView addSubview:self.tm_GiveLbl];
-    [self.topMenuView addSubview:self.tm_ShowChouCountLbl];
-    [self.topMenuView addSubview:self.tm_chouCountLbl];
+    [self addSubview:self.topMenuBtn];
+    [self.topMenuBtn addSubview:self.tm_ShowHaveEvalueLbl];
+    [self.topMenuBtn addSubview:self.tm_HaveEvalueLbl];
+    [self.topMenuBtn addSubview:self.tm_ShowGiveLbl];
+    [self.topMenuBtn addSubview:self.tm_GiveLbl];
+    [self.topMenuBtn addSubview:self.tm_ShowChouCountLbl];
+    [self.topMenuBtn addSubview:self.tm_chouCountLbl];
+    
     [self addSubview:self.banerImg];
     [self addSubview:self.topGiveView];
     [self.topGiveView addSubview:self.tG_leftTopLbl];
@@ -130,7 +132,7 @@
         make.height.mas_equalTo(30);
         make.width.mas_equalTo(90);
     }];
-    [self.topMenuView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.topMenuBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
         make.height.mas_equalTo(70);
@@ -147,7 +149,7 @@
         make.width.mas_equalTo(100);
     }];
     [self.tm_ShowGiveLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.topMenuView);
+        make.centerX.mas_equalTo(self.topMenuBtn);
         make.top.mas_equalTo(16);
         make.width.mas_equalTo(100);
     }];
@@ -157,7 +159,7 @@
         make.width.mas_equalTo(100);
     }];
     [self.tm_ShowChouCountLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.topMenuView.mas_right).offset(-17);
+        make.right.mas_equalTo(self.topMenuBtn.mas_right).offset(-17);
         make.top.mas_equalTo(16);
         make.width.mas_equalTo(100);
     }];
@@ -170,7 +172,7 @@
         make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
         make.height.mas_equalTo(90);
-        make.top.mas_equalTo(self.topMenuView.mas_bottom);
+        make.top.mas_equalTo(self.topMenuBtn.mas_bottom);
     }];
     [self.topGiveView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self);
@@ -334,17 +336,18 @@
     }
     return _shopBtn;
 }
--(UIView *)topMenuView{
-    if (!_topMenuView) {
-        _topMenuView =[[UIView alloc]init];
-        [_topMenuView setBackgroundColor:[UIColor whiteColor]];
-        [_topMenuView.layer setCornerRadius:5];
-        [_topMenuView setUserInteractionEnabled:YES];
-     
-        UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(findElectricity)];
-        [_topMenuView addGestureRecognizer:tap];
+-(UIButton *)topMenuBtn{
+    if (!_topMenuBtn) {
+        _topMenuBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        [_topMenuBtn.layer setCornerRadius:5];
+        [_topMenuBtn setBackgroundColor:[UIColor whiteColor]];
+        WEAKSELF;
+//        [_topMenuBtn addTarget:self action:@selector(findElect) forControlEvents:UIControlEventTouchUpInside];
+        [_topMenuBtn bk_addEventHandler:^(id sender) {
+            [weakSelf findElect];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
-    return _topMenuView;
+    return _topMenuBtn;
 }
 
 -(UILabel *)tm_ShowHaveEvalueLbl{
@@ -352,6 +355,7 @@
         _tm_ShowHaveEvalueLbl =[[UILabel alloc]init];
         [_tm_ShowHaveEvalueLbl setText:@"520"];
         [_tm_ShowHaveEvalueLbl setFont:Demon_15_Font];
+        [_tm_ShowHaveEvalueLbl setUserInteractionEnabled:YES];
         [_tm_ShowHaveEvalueLbl setTextAlignment:NSTextAlignmentCenter];
     }
     return _tm_ShowHaveEvalueLbl;
@@ -361,6 +365,7 @@
         _tm_HaveEvalueLbl =[[UILabel alloc]init];
         [_tm_HaveEvalueLbl setText:@"我的电量值"];
         [_tm_HaveEvalueLbl setFont:Demon_14_Font];
+        [_tm_HaveEvalueLbl setUserInteractionEnabled:YES];
         [_tm_HaveEvalueLbl setTextAlignment:NSTextAlignmentCenter];
     }
     return _tm_HaveEvalueLbl;
@@ -370,6 +375,7 @@
         _tm_ShowGiveLbl =[[UILabel alloc]init];
         [_tm_ShowGiveLbl setText:@"0"];
         [_tm_ShowGiveLbl setFont:Demon_15_Font];
+          [_tm_ShowGiveLbl setUserInteractionEnabled:YES];
          [_tm_ShowGiveLbl setTextAlignment:NSTextAlignmentCenter];
     }
     return _tm_ShowGiveLbl;
@@ -379,6 +385,7 @@
         _tm_GiveLbl =[[UILabel alloc]init];
         [_tm_GiveLbl setFont:Demon_14_Font];
          [_tm_GiveLbl setTextAlignment:NSTextAlignmentCenter];
+         [_tm_GiveLbl setUserInteractionEnabled:YES];
         [_tm_GiveLbl setText:@"今天获得电量值"];
     }
     return _tm_GiveLbl;
@@ -388,6 +395,7 @@
         _tm_ShowChouCountLbl =[[UILabel alloc]init];
         [_tm_ShowChouCountLbl setText:@"5"];
         [_tm_ShowChouCountLbl setTextAlignment:NSTextAlignmentCenter];
+        [_tm_ShowChouCountLbl setUserInteractionEnabled:YES];
         [_tm_ShowChouCountLbl setFont:Demon_15_Font];
         
     }
@@ -398,6 +406,7 @@
         _tm_chouCountLbl =[[UILabel alloc]init];
         [_tm_chouCountLbl setText:@"今日可抽奖数"];
         [_tm_chouCountLbl setFont:Demon_15_Font];
+         [_tm_chouCountLbl setUserInteractionEnabled:YES];
         [_tm_chouCountLbl setTextAlignment:NSTextAlignmentCenter];
     }
     return _tm_chouCountLbl;
@@ -407,8 +416,8 @@
         _banerImg =[[UIImageView alloc]init];
         [_banerImg setImage:[UIImage imageNamed:@"wkm_unchou"]];
         [_banerImg setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(choujiangAction)];
-        [_banerImg addGestureRecognizer:tap];
+        UITapGestureRecognizer *tapB =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(choujiangAction)];
+        [_banerImg addGestureRecognizer:tapB];
     }
     return _banerImg;
 }
@@ -436,14 +445,17 @@
     }
     return _tG_rightTopLbl;
 }
--(UIImageView *)tG_coinImg1{
+-(UIButton *)tG_coinImg1{
     if (!_tG_coinImg1) {
-        _tG_coinImg1 =[[UIImageView alloc]init];
-        [_tG_coinImg1 setImage:[UIImage imageNamed:@"wkm_coinUnselected"]];
-        [_tG_coinImg1 setUserInteractionEnabled:YES];
-        self.num =10;
-        UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(signInAction:)];
-        [_tG_coinImg1 addGestureRecognizer:tap];
+        _tG_coinImg1 =[UIButton buttonWithType:UIButtonTypeCustom];
+        [_tG_coinImg1 setImage:[UIImage imageNamed:@"wkm_coinUnselected"] forState:UIControlStateNormal];
+        [_tG_coinImg1 setImage:[UIImage imageNamed:@"wkm_coinSelected"] forState:UIControlStateSelected];
+       
+        WEAKSELF;
+        [_tG_coinImg1 bk_addEventHandler:^(UIButton *sender) {
+            self.num =10;
+            [weakSelf performSelector:@selector(signInAct) withObject:nil];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _tG_coinImg1;
 }
@@ -455,14 +467,17 @@
     }
     return _tG_coinBottomLbl1;
 }
--(UIImageView *)tG_coinImg2{
+-(UIButton *)tG_coinImg2{
     if (!_tG_coinImg2) {
-        _tG_coinImg2 =[[UIImageView alloc]init];
-        self.num =20;
-        [_tG_coinImg2 setImage:[UIImage imageNamed:@"wkm_coinUnselected"]];
-         [_tG_coinImg2 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(signInAction:)];
-        [_tG_coinImg2 addGestureRecognizer:tap];
+        _tG_coinImg2 =[UIButton buttonWithType:UIButtonTypeCustom];
+       
+        [_tG_coinImg2 setImage:[UIImage imageNamed:@"wkm_coinUnselected"] forState:UIControlStateNormal];
+        [_tG_coinImg2 setImage:[UIImage imageNamed:@"wkm_coinSelected"] forState:UIControlStateSelected];
+        WEAKSELF;
+       [_tG_coinImg2 bk_addEventHandler:^(UIButton *sender) {
+            self.num =20;
+           [weakSelf signInAct];
+       } forControlEvents:UIControlEventTouchUpInside];
     }
     return _tG_coinImg2;
 }
@@ -474,14 +489,17 @@
     }
     return _tG_coinBottomLbl2;
 }
--(UIImageView *)tG_coinImg3{
+-(UIButton *)tG_coinImg3{
     if (!_tG_coinImg3) {
-        _tG_coinImg3 =[[UIImageView alloc]init];
-        self.num =40;
-        UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(signInAction:)];
-        [_tG_coinImg3 addGestureRecognizer:tap];
-        [_tG_coinImg3 setUserInteractionEnabled:YES];
-        [_tG_coinImg3 setImage:[UIImage imageNamed:@"wkm_coinUnselected"]];
+        _tG_coinImg3 =[UIButton buttonWithType:UIButtonTypeCustom];
+         [_tG_coinImg3 setImage:[UIImage imageNamed:@"wkm_coinUnselected"] forState:UIControlStateNormal];
+      [_tG_coinImg3 setImage:[UIImage imageNamed:@"wkm_coinSelected"] forState:UIControlStateSelected];
+     WEAKSELF;
+        [_tG_coinImg3 bk_addEventHandler:^(UIButton *sender) {
+              self.num =40;
+            [weakSelf signInAct];
+        } forControlEvents:UIControlEventTouchUpInside];
+       
     }
     return _tG_coinImg3;
 }
@@ -493,14 +511,16 @@
     }
     return _tG_coinBottomLbl3;
 }
--(UIImageView *)tG_coinImg4{
+-(UIButton *)tG_coinImg4{
     if (!_tG_coinImg4) {
-        _tG_coinImg4 =[[UIImageView alloc]init];
-         self.num =80;
-        [_tG_coinImg4 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(signInAction:)];
-       [_tG_coinImg4 addGestureRecognizer:tap];
-        [_tG_coinImg4 setImage:[UIImage imageNamed:@"wkm_coinUnselected"]];
+        _tG_coinImg4 =[UIButton buttonWithType:UIButtonTypeCustom];
+         [_tG_coinImg4 setImage:[UIImage imageNamed:@"wkm_coinUnselected"] forState:UIControlStateNormal];
+        [_tG_coinImg4 setImage:[UIImage imageNamed:@"wkm_coinSelected"] forState:UIControlStateSelected];
+        WEAKSELF;
+       [_tG_coinImg4 bk_addEventHandler:^(UIButton *sender) {
+            self.num =80;
+           [weakSelf signInAct];
+       } forControlEvents:UIControlEventTouchUpInside];
     }
     return _tG_coinImg4;
 }
@@ -512,14 +532,17 @@
     }
     return _tG_coinBottomLbl4;
 }
--(UIImageView *)tG_coinImg5{
+-(UIButton *)tG_coinImg5{
     if (!_tG_coinImg5) {
-        _tG_coinImg5 =[[UIImageView alloc]init];
-        self.num =160;
-        [_tG_coinImg5 setUserInteractionEnabled:YES];
-       UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(signInAction:)];
-      [_tG_coinImg5 addGestureRecognizer:tap];
-        [_tG_coinImg5 setImage:[UIImage imageNamed:@"wkm_coinUnselected"]];
+        _tG_coinImg5 =[UIButton buttonWithType:UIButtonTypeCustom];
+          [_tG_coinImg5 setImage:[UIImage imageNamed:@"wkm_coinUnselected"] forState:UIControlStateNormal];
+         [_tG_coinImg5 setImage:[UIImage imageNamed:@"wkm_coinSelected"] forState:UIControlStateSelected];
+        WEAKSELF;
+        [_tG_coinImg5 bk_addEventHandler:^(UIButton *sender) {
+             self.num =160;
+            [weakSelf signInAct];
+        } forControlEvents:UIControlEventTouchUpInside];
+
     }
     return _tG_coinImg5;
 }
@@ -531,14 +554,17 @@
     }
     return _tG_coinBottomLbl5;
 }
--(UIImageView *)tG_coinImg6{
+-(UIButton *)tG_coinImg6{
     if (!_tG_coinImg6) {
-        _tG_coinImg6 =[[UIImageView alloc]init];
+        _tG_coinImg6 =[UIButton buttonWithType:UIButtonTypeCustom];
+          [_tG_coinImg6 setImage:[UIImage imageNamed:@"wkm_coinUnselected"] forState:UIControlStateNormal];
+           [_tG_coinImg6 setImage:[UIImage imageNamed:@"wkm_coinSelected"] forState:UIControlStateSelected];
         [_tG_coinImg6 setUserInteractionEnabled:YES];
-         self.num =320;
-         UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(signInAction:)];
-         [_tG_coinImg6 addGestureRecognizer:tap];
-        [_tG_coinImg6 setImage:[UIImage imageNamed:@"wkm_coinUnselected"]];
+        WEAKSELF;
+         [_tG_coinImg6 bk_addEventHandler:^(UIButton *sender) {
+             self.num =320;
+             [weakSelf signInAct];
+         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _tG_coinImg6;
 }
@@ -550,14 +576,16 @@
     }
     return _tG_coinBottomLbl6;
 }
--(UIImageView *)tG_coinImg7{
+-(UIButton *)tG_coinImg7{
     if (!_tG_coinImg7) {
-        _tG_coinImg7 =[[UIImageView alloc]init];
-        self.num =640;
-        [_tG_coinImg7 setUserInteractionEnabled:YES];
-        UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(signInAction:)];
-        [_tG_coinImg7 addGestureRecognizer:tap];
-        [_tG_coinImg7 setImage:[UIImage imageNamed:@"wkm_coinUnselected"]];
+        _tG_coinImg7 =[UIButton buttonWithType:UIButtonTypeCustom];
+        [_tG_coinImg7 setImage:[UIImage imageNamed:@"wkm_coinUnselected"] forState:UIControlStateNormal];
+       [_tG_coinImg7 setImage:[UIImage imageNamed:@"wkm_coinSelected"] forState:UIControlStateSelected];
+        WEAKSELF;
+        [_tG_coinImg7 bk_addEventHandler:^(UIButton *sender) {
+             self.num =640;
+            [weakSelf signInAct];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _tG_coinImg7;
 }
@@ -634,10 +662,9 @@
 }
 
 #pragma mark 查询电量值
--(void)findElectricity{
-       WEAKSELF
-    if ([weakSelf.localDelegate respondsToSelector:@selector(findElectricityAction)]) {
-        [weakSelf.localDelegate findElectricityAction];
+-(void)findElect{
+    if ([self.localDelegate respondsToSelector:@selector(findElectricityAction)]) {
+        [self.localDelegate findElectricityAction];
     }
 }
 #pragma mark 点击抽奖
@@ -648,8 +675,9 @@
     }
 }
 #pragma mark 签到
--(void)signInAction{
-       WEAKSELF
+-(void)signInAct{
+
+    WEAKSELF
     if ([weakSelf.localDelegate respondsToSelector:@selector(signInAction:)]) {
         [weakSelf.localDelegate signInAction:self.num];
     }
@@ -660,5 +688,79 @@
     if ([weakSelf.localDelegate respondsToSelector:@selector(enterEvalueShop)]) {
         [weakSelf.localDelegate enterEvalueShop];
     }
+}
+#pragma mark -填充数据
+-(void)fillData:(FEWorkPanelDataResponseModel *)pannelModel{
+    [self.tm_ShowHaveEvalueLbl setText:pannelModel.myElectrictyVal];
+    [self.tm_ShowGiveLbl setText:pannelModel.todayElectricity];
+    [self.tm_ShowChouCountLbl setText:pannelModel.lottery_number];
+    if ([pannelModel.sign_num isEqualToString:@"1"]) {
+        _tG_coinImg1.selected =YES;
+        _tG_coinImg1.userInteractionEnabled =NO;
+    }else if([pannelModel.sign_num isEqualToString:@"2"]){
+        _tG_coinImg1.selected =YES;
+        _tG_coinImg1.userInteractionEnabled =NO;
+        _tG_coinImg2.selected =YES;
+        _tG_coinImg2.userInteractionEnabled =NO;
+    }else if([pannelModel.sign_num isEqualToString:@"3"]){
+        _tG_coinImg1.selected =YES;
+        _tG_coinImg1.userInteractionEnabled =NO;
+        _tG_coinImg2.selected =YES;
+        _tG_coinImg2.userInteractionEnabled =NO;
+        _tG_coinImg3.selected =YES;
+        _tG_coinImg3.userInteractionEnabled =NO;
+    }else if([pannelModel.sign_num isEqualToString:@"4"]){
+        _tG_coinImg1.selected =YES;
+       _tG_coinImg1.userInteractionEnabled =NO;
+       _tG_coinImg2.selected =YES;
+       _tG_coinImg2.userInteractionEnabled =NO;
+       _tG_coinImg3.selected =YES;
+       _tG_coinImg3.userInteractionEnabled =NO;
+       _tG_coinImg4.selected =YES;
+        _tG_coinImg4.userInteractionEnabled =NO;
+    }else if([pannelModel.sign_num isEqualToString:@"5"]){
+        _tG_coinImg1.selected =YES;
+        _tG_coinImg1.userInteractionEnabled =NO;
+        _tG_coinImg2.selected =YES;
+        _tG_coinImg2.userInteractionEnabled =NO;
+        _tG_coinImg3.selected =YES;
+        _tG_coinImg3.userInteractionEnabled =NO;
+        _tG_coinImg4.selected =YES;
+        _tG_coinImg4.userInteractionEnabled =NO;
+        _tG_coinImg5.selected =YES;
+        _tG_coinImg5.userInteractionEnabled =NO;
+    }else if([pannelModel.sign_num isEqualToString:@"6"]){
+        _tG_coinImg1.selected =YES;
+        _tG_coinImg1.userInteractionEnabled =NO;
+        _tG_coinImg2.selected =YES;
+        _tG_coinImg2.userInteractionEnabled =NO;
+        _tG_coinImg3.selected =YES;
+        _tG_coinImg3.userInteractionEnabled =NO;
+        _tG_coinImg4.selected =YES;
+        _tG_coinImg4.userInteractionEnabled =NO;
+        _tG_coinImg5.selected =YES;
+        _tG_coinImg5.userInteractionEnabled =NO;
+        _tG_coinImg6.selected =YES;
+        _tG_coinImg6.userInteractionEnabled =NO;
+    }else if([pannelModel.sign_num isEqualToString:@"7"]){
+         _tG_coinImg1.selected =YES;
+          _tG_coinImg1.userInteractionEnabled =NO;
+          _tG_coinImg2.selected =YES;
+          _tG_coinImg2.userInteractionEnabled =NO;
+          _tG_coinImg3.selected =YES;
+          _tG_coinImg3.userInteractionEnabled =NO;
+          _tG_coinImg4.selected =YES;
+          _tG_coinImg4.userInteractionEnabled =NO;
+          _tG_coinImg5.selected =YES;
+          _tG_coinImg5.userInteractionEnabled =NO;
+          _tG_coinImg6.selected =YES;
+          _tG_coinImg6.userInteractionEnabled =NO;
+          _tG_coinImg7.selected =YES;
+          _tG_coinImg7.userInteractionEnabled =NO;
+    }
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+    return YES;
 }
 @end

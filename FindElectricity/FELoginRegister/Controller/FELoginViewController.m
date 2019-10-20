@@ -9,7 +9,7 @@
 #import "FELoginViewController.h"
 #import "FERegisterAccountVC.h"
 #import "FEFindPasswordVC.h"
-
+#import <UMShare/UMShare.h>
 @interface FELoginViewController ()
 @property(nonatomic, strong)UIImageView *topImgLogo;
 @property(nonatomic, strong)UILabel *topLbl;
@@ -37,10 +37,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+//    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+//    [self.navigationController setNavigationBarHidden:NO];
 }
 
 #pragma mark -添加视图
@@ -70,79 +72,79 @@
 - (void)makeUpConstriant{
     [self.topImgLogo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view).offset(150);
-        make.width.mas_equalTo(90);
-        make.height.mas_equalTo(90);
+        make.top.mas_equalTo(self.view).offset(HEIGHT_LY(120));
+        make.width.mas_equalTo(WIDTH_LY(90));
+        make.height.mas_equalTo(WIDTH_LY(90));
     }];
     [self.topLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
         make.top.mas_equalTo(self.topImgLogo.mas_bottom);
     }];
     [self.accountTxt mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.right.mas_equalTo(-15);
-        make.height.mas_equalTo(33);
-        make.top.mas_equalTo(self.topLbl.mas_bottom).offset(20);
+        make.left.mas_equalTo(WIDTH_LY(15));
+        make.right.mas_equalTo(WIDTH_LY(-15));
+        make.height.mas_equalTo(HEIGHT_LY(33));
+        make.top.mas_equalTo(self.topLbl.mas_bottom).offset(HEIGHT_LY(20));
     }];
     [self.lineView1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.top.mas_equalTo(self.accountTxt.mas_bottom).offset(10);
-        make.height.mas_equalTo(1);
-        make.right.mas_equalTo(-15);
+        make.left.mas_equalTo(WIDTH_LY(15));
+        make.top.mas_equalTo(self.accountTxt.mas_bottom).offset(HEIGHT_LY(10));
+        make.height.mas_equalTo(HEIGHT_LY(1));
+        make.right.mas_equalTo(WIDTH_LY(-15));
     }];
    
     [self.passwordTxt mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.right.mas_equalTo(-15);
-        make.top.mas_equalTo(self.lineView1.mas_bottom).offset(20);
+        make.left.mas_equalTo(WIDTH_LY(15));
+        make.right.mas_equalTo(WIDTH_LY(-15));
+        make.top.mas_equalTo(self.lineView1.mas_bottom).offset(HEIGHT_LY(20));
     }];
     [self.lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.left.mas_equalTo(15);
-       make.top.mas_equalTo(self.passwordTxt.mas_bottom).offset(10);
-       make.height.mas_equalTo(1);
-       make.right.mas_equalTo(-15);
+       make.left.mas_equalTo(WIDTH_LY(15));
+       make.top.mas_equalTo(self.passwordTxt.mas_bottom).offset(HEIGHT_LY(10));
+       make.height.mas_equalTo(HEIGHT_LY(1));
+       make.right.mas_equalTo(WIDTH_LY(-15));
     }];
     [self.protocalLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.top.mas_equalTo(self.lineView2.mas_bottom).offset(10);
+        make.left.mas_equalTo(WIDTH_LY(15));
+        make.top.mas_equalTo(self.lineView2.mas_bottom).offset(HEIGHT_LY(10));
     }];
     [self.protocalBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.protocalLbl.mas_right).offset(2);
         make.centerY.mas_equalTo(self.protocalLbl);
     }];
     [self.rememberLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.view).offset(-15);
+        make.right.mas_equalTo(self.view).offset(WIDTH_LY(-10));
         make.centerY.mas_equalTo(self.protocalLbl);
     }];
     [self.checkBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.rememberLbl.mas_left).offset(-5);
+        make.right.mas_equalTo(self.rememberLbl.mas_left).offset(WIDTH_LY(-5));
         make.centerY.mas_equalTo(self.rememberLbl);
     }];
     [self.comfirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.right.mas_equalTo(-15);
-        make.height.mas_equalTo(45);
-        make.top.mas_equalTo(self.rememberLbl.mas_bottom).offset(30);
+        make.left.mas_equalTo(WIDTH_LY(15));
+        make.right.mas_equalTo(WIDTH_LY(-15));
+        make.height.mas_equalTo(HEIGHT_LY(60));
+        make.top.mas_equalTo(self.rememberLbl.mas_bottom).offset(HEIGHT_LY(30));
     }];
     [self.registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(15);
-        make.top.mas_equalTo(self.comfirmBtn.mas_bottom).offset(10);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(44);
+        make.left.mas_equalTo(WIDTH_LY(15));
+        make.top.mas_equalTo(self.comfirmBtn.mas_bottom).offset(HEIGHT_LY(10));
+        make.width.mas_equalTo(WIDTH_LY(100));
+        make.height.mas_equalTo(HEIGHT_LY(44));
     }];
     [self.forgetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-15);
+        make.right.mas_equalTo(WIDTH_LY(-15));
         make.top.mas_equalTo(self.registerBtn);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(44);
+        make.width.mas_equalTo(WIDTH_LY(100));
+        make.height.mas_equalTo(HEIGHT_LY(44));
     }];
     [self.wxLoginLbl mas_makeConstraints:^(MASConstraintMaker *make) {
            make.centerX.mas_equalTo(self.view);
-           make.bottom.mas_equalTo(self.view).offset(-50);
+           make.bottom.mas_equalTo(self.view).offset(HEIGHT_LY(-50));
        }];
     [self.wxLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.wxLoginLbl.mas_top).offset(-10);
+        make.bottom.mas_equalTo(self.wxLoginLbl.mas_top).offset(HEIGHT_LY(-10));
     }];
    
 }
@@ -190,6 +192,7 @@
         _passwordTxt =[[UITextField alloc]init];
         [_passwordTxt setPlaceholder:@"请输入密码"];
         [_passwordTxt setFont:Demon_15_Font];
+        _passwordTxt.secureTextEntry =YES;
     }
     return _passwordTxt;
 }
@@ -215,6 +218,13 @@
     if (!_checkBtn) {
         _checkBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_checkBtn setImage:[UIImage imageNamed:@"felogin_uncheck"] forState:UIControlStateNormal];
+        [_checkBtn setImage:[UIImage imageNamed:@"felogin_check"] forState:UIControlStateSelected];
+        [_checkBtn bk_addEventHandler:^(UIButton *sender) {
+            sender.selected =!sender.selected;
+            if (sender.selected) {
+                NSLog(@"%@",self.passwordTxt.text);
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _checkBtn;
 }
@@ -231,8 +241,9 @@
     if (!_comfirmBtn) {
         _comfirmBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_comfirmBtn setTitle:@"登录" forState:UIControlStateNormal];
-        [_comfirmBtn setBackgroundColor:UIColorFromHex(0x5FE79B)];
+        [_comfirmBtn setBackgroundColor:UIColorFromHex(0x03bf30)];
          [_comfirmBtn.titleLabel setFont:Demon_24_Font];
+        [_comfirmBtn.layer setCornerRadius:25];
         [_comfirmBtn bk_addEventHandler:^(id sender) {
             [self loginAction];
         } forControlEvents:UIControlEventTouchUpInside];
@@ -245,7 +256,7 @@
         [_registerBtn setTitle:@"注册" forState:UIControlStateNormal];
         [_registerBtn setTitleColor:UIColorFromHex(0xC9C9C9) forState:UIControlStateNormal];
         [_registerBtn bk_addEventHandler:^(id sender) {
-            
+            [self registerAction];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _registerBtn;
@@ -256,7 +267,7 @@
         [_forgetBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
         [_forgetBtn setTitleColor:UIColorFromHex(0xC9C9C9) forState:UIControlStateNormal];
         [_forgetBtn bk_addEventHandler:^(id sender) {
-            
+            [self findPassWordAction];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _forgetBtn;
@@ -265,6 +276,10 @@
     if (!_wxLoginBtn) {
         _wxLoginBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_wxLoginBtn setImage:[UIImage imageNamed:@"felogin_wxlogin"] forState:UIControlStateNormal];
+        WEAKSELF;
+        [_wxLoginBtn bk_addEventHandler:^(id sender) {
+            [weakSelf getAuthWithUserInfoFromWechat];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _wxLoginBtn;
 }
@@ -282,16 +297,17 @@
     FELoginRequestModel *requestModel =[[FELoginRequestModel alloc]init];
     requestModel.mobile =self.accountTxt.text;
     requestModel.pwd =self.passwordTxt.text;
+     WEAKSELF;
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MobileLoginHttp)  parameters:[requestModel mj_JSONObject] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
         [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
         [FEUserOperation manager].token =responseObject[@"data"][@"token"];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        if ([self.localDelegate respondsToSelector:@selector(LoginSuccess)]) {
-            [self.localDelegate LoginSuccess];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+        if ([weakSelf.localDelegate respondsToSelector:@selector(LoginSuccess)]) {
+            [weakSelf.localDelegate LoginSuccess];
         }
     } failure:^(NSError * _Nonnull error) {
-        if ([self.localDelegate respondsToSelector:@selector(loginFailed:)]) {
-            [self.localDelegate loginFailed:error];
+        if ([weakSelf.localDelegate respondsToSelector:@selector(loginFailed:)]) {
+            [weakSelf.localDelegate loginFailed:error];
         }
     }];
 }
@@ -306,5 +322,38 @@
 - (void)findPassWordAction{
     FEFindPasswordVC *findPassVC =[[FEFindPasswordVC alloc]init];
     [self.navigationController pushViewController:findPassVC animated:YES];
+}
+
+- (void)getAuthWithUserInfoFromWechat
+{
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+            
+        } else {
+            UMSocialUserInfoResponse *resp = result;
+            [self wxLoginRequestWith:resp.openid];
+          
+        }
+    }];
+}
+
+- (void)wxLoginRequestWith:(NSString *)openid {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+     [parameter setValue:openid forKey:@"openid"];
+    WEAKSELF;
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(WXLoginHttp) parameters:parameter needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
+        [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
+           [FEUserOperation manager].token =responseObject[@"data"][@"token"];
+           [weakSelf.navigationController popViewControllerAnimated:YES];
+           if ([weakSelf.localDelegate respondsToSelector:@selector(LoginSuccess)]) {
+               [weakSelf.localDelegate LoginSuccess];
+           }
+    } failure:^(NSError * _Nonnull error) {
+        if ([weakSelf.localDelegate respondsToSelector:@selector(loginFailed:)]) {
+            [weakSelf.localDelegate loginFailed:error];
+        }
+    }];
+   
+    
 }
 @end

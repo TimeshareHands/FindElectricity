@@ -204,10 +204,23 @@ NSString *const kSwitchTabNotification = @"SwitchTabNotification";
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:item.tag];
     [self switchTab:indexPath];
-    
+    UIViewController *senderVC;
+    switch (indexPath.section) {
+        case 2:
+            senderVC =self.rideManageVC;
+            break;
+        case 3:
+            senderVC =self.workManageVC;
+            break;
+        case 4:
+            senderVC =self.mineManageVC;
+            break;
+        default:
+            break;
+    }
     if (![[FEUserOperation manager] didLogin]&&item.tag>1) {
-          FELoginViewController *loginVC =[[FELoginViewController alloc]init];
-          [self presentViewController:loginVC animated:YES completion:nil];
+        FELoginViewController *loginVC =[[FELoginViewController alloc]init];
+        [senderVC.navigationController pushViewController:loginVC animated:YES];
     }
 }
 

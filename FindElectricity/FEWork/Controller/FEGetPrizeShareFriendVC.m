@@ -10,7 +10,10 @@
 #import "FEWorkGetPrizeShareCell.h"
 #import "FEWorkGetPrizeShareWxCell.h"
 #import "FEWorkGetPrizeShareAccordCell.h"
-@interface FEGetPrizeShareFriendVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "FEWorkInviteAlertView.h"
+#import "FEWorkInviteRecordVC.h"
+#import "FEWorkShareBottomView.h"
+@interface FEGetPrizeShareFriendVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkGetPrizeShareWxCellDelegate,FEWorkGetPrizeShareCellDelegate,FEWorkGetPrizeShareAccordCellDelegate>
 @property(nonatomic,strong)UITableView *myTableView;
 @property(nonatomic,strong)UIView *bottomView;
 @property(nonatomic,strong)UIButton *friendLineBtn;
@@ -19,6 +22,8 @@
 @property(nonatomic,strong)UILabel *friendLineLbl;
 @property(nonatomic,strong)UILabel *wxLbl;
 @property(nonatomic,strong)UILabel *faceTofaceLbl;
+@property(nonatomic,strong)FEWorkInviteAlertView *inviteView;
+@property(nonatomic,strong)FEWorkShareBottomView *shareBottomView;
 @end
 
 @implementation FEGetPrizeShareFriendVC
@@ -96,6 +101,12 @@
 }
 
 #pragma mark -getter
+-(FEWorkInviteAlertView *)inviteView{
+    if (!_inviteView) {
+        _inviteView =[[FEWorkInviteAlertView alloc]init];
+    }
+    return _inviteView;
+}
 -(UITableView *)myTableView{
     if (!_myTableView) {
         _myTableView =[[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -130,7 +141,10 @@
     if (!_faceTofaceBtn) {
         _faceTofaceBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_faceTofaceBtn setImage:[UIImage imageNamed:@"wkc_FaceToFace"] forState:UIControlStateNormal];
-        
+        WEAKSELF;
+        [_faceTofaceBtn bk_addEventHandler:^(id sender) {
+            [weakSelf.inviteView show];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _faceTofaceBtn;
 }
@@ -168,14 +182,21 @@
     UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:kCellIndetify];
     if (cell ==nil) {
         if (indexPath.row ==0) {
-             cell = [[FEWorkGetPrizeShareCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            FEWorkGetPrizeShareCell* cell1 = [[FEWorkGetPrizeShareCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            cell1.localDelegate =self;
+            cell =cell1;
         }else if(indexPath.row ==1){
-             cell = [[FEWorkGetPrizeShareWxCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+           FEWorkGetPrizeShareWxCell  *cell2 = [[FEWorkGetPrizeShareWxCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            cell2.localDelegate =self;
+            cell =cell2;
         }else{
-             cell = [[FEWorkGetPrizeShareAccordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            FEWorkGetPrizeShareAccordCell *cell3 = [[FEWorkGetPrizeShareAccordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            cell3.localDelegate =self;
+            cell =cell3;
         }
+        
     }
-  
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -203,5 +224,18 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 201;
+}
+#pragma mark -
+-(void)shareToIntroduceAction{
+    
+}
+#pragma mark -
+-(void)generateShareImgAction{
+    [self.inviteView show];
+}
+#pragma mark -
+-(void)findRecord{
+    FEWorkInviteRecordVC *recordVC =[[FEWorkInviteRecordVC alloc]init];
+    [self.navigationController pushViewController:recordVC animated:YES];
 }
 @end

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGiftCardCell : UITableViewCell
-
+-(void)settLeftImg:(NSString *)leftImg topText:(NSString *)topText bottomText:(NSString *)bottomText;
 @end
 
 NS_ASSUME_NONNULL_END

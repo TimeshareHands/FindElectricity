@@ -154,9 +154,8 @@ static AFHTTPSessionManager *afnManager = nil;
 
 - (void)goLogin {
     dispatch_async(dispatch_get_main_queue(), ^{
-        FELoginViewController *loginVC =[[FELoginViewController alloc]init];
-        AppDelegate *appdele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appdele.tabBarController presentViewController:loginVC animated:YES completion:nil];
+//        [NSNotificationCenter defaultCenter]
+       
     });
 }
 @end

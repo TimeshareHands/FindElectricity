@@ -12,7 +12,8 @@
 
 #define BASE_URLWith(str) [NSString stringWithFormat:@"%@%@",BASE_URL,str]
 #define KImg_URLWith(str)  [NSURL URLWithString:str]
-#define BASE_URL @"http://zhaodian.cswpw.cn/zhaodian/v2"
+#define BASE_URL @"http://zhaodianapi.csjiayu.com/zhaodian/v2"
+
 #define KSuccessCode 2000
 
 //骑行

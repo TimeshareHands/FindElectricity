@@ -56,7 +56,11 @@
         make.height.mas_equalTo(30);
     }];
 }
-
+-(void)settLeftImg:(NSString *)leftImg topText:(NSString *)topText bottomText:(NSString *)bottomText{
+    [self.leftImg setImage:[UIImage imageNamed:leftImg]];
+    [self.topLbl setText:topText];
+    [self.bottomLbl setText:bottomText];
+}
 #pragma mark getter
 - (UIImageView *)leftImg{
     if (!_leftImg) {

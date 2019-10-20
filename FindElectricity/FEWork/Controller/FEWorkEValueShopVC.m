@@ -97,11 +97,26 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *kCellIndetify =@"cellIndentify";
     UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:kCellIndetify];
+   
     if (cell ==nil) {
         if (indexPath.section ==0) {
              cell =[[FEWorkEvalueGetPrizeChanceCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
         }else{
-             cell =[[FEWorkGiftCardCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+           FEWorkGiftCardCell *giftCell =[[FEWorkGiftCardCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            if (indexPath.row ==0) {
+                [giftCell settLeftImg:@"wkm_tolietPaperCard" topText:@"卫生纸卡1张" bottomText:@"5000电量值"];
+            }else if(indexPath.row ==1){
+                [giftCell settLeftImg:@"wkm_Edibleoil" topText:@"食用油卡1张" bottomText:@"6000电量值"];
+            }else if(indexPath.row ==2){
+                  [giftCell settLeftImg:@"wkm_DetergentCard" topText:@"洗洁精卡1张" bottomText:@"6000电量值"];
+            }else if(indexPath.row ==3){
+                  [giftCell settLeftImg:@"wkm_MobileCard" topText:@"手机卡1张" bottomText:@"175000电量值"];
+            }else if(indexPath.row ==4){
+                  [giftCell settLeftImg:@"wkm_moto" topText:@"电动车卡1张" bottomText:@"250000电量值"];
+            }else if(indexPath.row ==5){
+                   [giftCell settLeftImg:@"wkm_giftCard" topText:@"神秘礼物卡1张" bottomText:@"5000电量值"];
+            }
+            cell =giftCell;
         }
     }
     if (indexPath.section ==1) {
@@ -112,6 +127,7 @@
             [cell.textLabel setTextColor:UIColorFromHex(0xA7A7A7)];
         }
     }
+     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

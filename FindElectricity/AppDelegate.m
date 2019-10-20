@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <IQKeyboardManager.h>
+#import <UMShare/UMShare.h>
+#import <UMCommon/UMCommon.h>
 @interface AppDelegate ()
 @property(nonatomic,strong) DemonNavigationController *tabNavigationVC;
 
@@ -26,6 +28,10 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self configureAPIKey];
         [self keyboardSet];
+        [UMConfigure setLogEnabled:YES];
+        [UMConfigure initWithAppkey:@"5d1aca124ca3576af50011a7" channel:@"App Store"];
+          // U-Share 平台设置
+          [self configUSharePlatforms];
     });
     return YES;
     
@@ -116,4 +122,19 @@
     return _tabBarController;
 }
 
+- (void)configUSharePlatforms
+{
+    /* 设置微信的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx10131f267a34f481" appSecret:@"894bcf7dd72d7da84dfdccc48ea82837" redirectURL:@"http://mobile.umeng.com/social"];
+    /*
+     * 移除相应平台的分享，如微信收藏
+     */
+    [[UMSocialManager defaultManager] removePlatformProviderWithPlatformTypes:@[@(UMSocialPlatformType_WechatFavorite)]];
+    
+    /* 设置分享到QQ互联的appID
+     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+     */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1109591444"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    
+}
 @end

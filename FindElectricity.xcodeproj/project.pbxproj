@@ -163,6 +163,8 @@
 		4E783D0523530F1E003872F2 /* FEGetPrizeRosterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0423530F1E003872F2 /* FEGetPrizeRosterCell.m */; };
 		4E783D0823530F43003872F2 /* FETotalGetPrizeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0723530F43003872F2 /* FETotalGetPrizeRecordCell.m */; };
 		4E783D0B23535BD6003872F2 /* FEWorkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0A23535BD6003872F2 /* FEWorkModel.m */; };
+		4EF155E1235C40200037D8D4 /* FESignInActAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155E0235C40200037D8D4 /* FESignInActAlert.m */; };
+		4EF155E4235C6D340037D8D4 /* FEWorkShareBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
 		CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E94234F1DCB00632F7B /* SZTextView.m */; };
 		CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E95234F1DCB00632F7B /* KLCoverView.m */; };
@@ -548,6 +550,10 @@
 		4E783D0723530F43003872F2 /* FETotalGetPrizeRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FETotalGetPrizeRecordCell.m; sourceTree = "<group>"; };
 		4E783D0923535BD6003872F2 /* FEWorkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkModel.h; sourceTree = "<group>"; };
 		4E783D0A23535BD6003872F2 /* FEWorkModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkModel.m; sourceTree = "<group>"; };
+		4EF155DF235C40200037D8D4 /* FESignInActAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESignInActAlert.h; sourceTree = "<group>"; };
+		4EF155E0235C40200037D8D4 /* FESignInActAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESignInActAlert.m; sourceTree = "<group>"; };
+		4EF155E2235C6D340037D8D4 /* FEWorkShareBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkShareBottomView.h; sourceTree = "<group>"; };
+		4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkShareBottomView.m; sourceTree = "<group>"; };
 		69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.release.xcconfig"; sourceTree = "<group>"; };
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1017,6 +1023,10 @@
 				4E783D0423530F1E003872F2 /* FEGetPrizeRosterCell.m */,
 				4E783D0623530F43003872F2 /* FETotalGetPrizeRecordCell.h */,
 				4E783D0723530F43003872F2 /* FETotalGetPrizeRecordCell.m */,
+				4EF155DF235C40200037D8D4 /* FESignInActAlert.h */,
+				4EF155E0235C40200037D8D4 /* FESignInActAlert.m */,
+				4EF155E2235C6D340037D8D4 /* FEWorkShareBottomView.h */,
+				4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1901,6 +1911,7 @@
 				4E783CFF2352F396003872F2 /* FETWorkGetPrizeIntroduceCell.m in Sources */,
 				4E02F452234F228600308D99 /* SDImageIOCoder.m in Sources */,
 				4E02F46A234F228600308D99 /* UIButton+WebCache.m in Sources */,
+				4EF155E4235C6D340037D8D4 /* FEWorkShareBottomView.m in Sources */,
 				20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */,
 				CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */,
 				4E063D55233A122900D6756A /* NSString+Extend.m in Sources */,
@@ -1918,6 +1929,7 @@
 				CBA72A70234DD0CA00C7070E /* FECycleMapViewController.m in Sources */,
 				4E02F290234EFAFB00308D99 /* FEFindPasswordVC.m in Sources */,
 				4E02F2C1234EFB4300308D99 /* FEWorkGetGiftCell.m in Sources */,
+				4EF155E1235C40200037D8D4 /* FESignInActAlert.m in Sources */,
 				4E02F472234F228600308D99 /* UIColor+HexString.m in Sources */,
 				4E02F43B234F228600308D99 /* NSImage+Compatibility.m in Sources */,
 				4E02F454234F228600308D99 /* SDAnimatedImageRep.m in Sources */,
@@ -2090,7 +2102,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J677Q28PH8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2112,7 +2124,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
 				PRODUCT_NAME = "找电";
-				PROVISIONING_PROFILE_SPECIFIER = FindElectricity;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;

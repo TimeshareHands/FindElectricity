@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FEWorkModel.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol FEWorkMainHeadViewDelegate <NSObject>
 
@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkMainHeadView : UIView
 @property(nonatomic,weak)id<FEWorkMainHeadViewDelegate>localDelegate;
+-(void)fillData:(FEWorkPanelDataResponseModel *)pannelModel;
 @end
 
 NS_ASSUME_NONNULL_END
