@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetGiftCell : UITableViewCell
-
+-(void)setCount:(NSString *)count rightTopText:(NSString *)rightTopText rightBottomText:(NSString *)rightBottomText;
 @end
 
 NS_ASSUME_NONNULL_END

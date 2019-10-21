@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkEValueDetailVC : DemonViewController
-
+@property(nonatomic ,copy)NSString *myEvalue;
+@property(nonatomic ,copy)NSString *lotterNum;
 @end
 
 NS_ASSUME_NONNULL_END

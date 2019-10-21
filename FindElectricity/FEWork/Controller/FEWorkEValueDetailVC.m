@@ -9,9 +9,10 @@
 #import "FEWorkEValueDetailVC.h"
 #import "FEWorkEValueDetailHeadView.h"
 #import "FEWorkEvalueCell.h"
-@interface FEWorkEValueDetailVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface FEWorkEValueDetailVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkEValueDetailHeadViewDelegate>
 @property (nonatomic, strong) FEWorkEValueDetailHeadView *headView;
 @property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) NSArray *titleArr;
 @end
 
 @implementation FEWorkEValueDetailVC
@@ -23,6 +24,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self requestEvalueDetail];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -58,6 +60,9 @@
 -(FEWorkEValueDetailHeadView *)headView{
     if (!_headView) {
         _headView =[[FEWorkEValueDetailHeadView alloc]init];
+        [_headView setLocalDelegate:self];
+        _headView.lotterNum =self.lotterNum;
+        _headView.myEvalue =self.myEvalue;
     }
     return _headView;
 }
@@ -67,14 +72,22 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    NSArray *indexArr =self.titleArr.firstObject;
+    return indexArr.count +1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *kCellIndetify =@"cellIndentify";
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:kCellIndetify];
+    UITableViewCell *cell =[tableView cellForRowAtIndexPath:indexPath];
     if (cell ==nil) {
-        cell =[[FEWorkEvalueCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+       FEWorkEvalueCell *evalueCell =[[FEWorkEvalueCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+        if (indexPath.row>0) {
+         
+            NSArray *indexArr =self.titleArr.firstObject;
+            NSDictionary *dic =[NSDictionary dictionaryWithDictionary:indexArr[indexPath.row-1]];
+            [evalueCell setleftTopText:[NSString stringWithFormat:@"%@",dic[@"type"]] leftBottomText:[NSString stringWithFormat:@"%@",dic[@"desc"]] rightTopText:[NSString stringWithFormat:@"%@",dic[@"num"]] rightBottomText: [NSString stringWithFormat:@"%@",dic[@"ctime"]]];
+        }
+         cell =evalueCell;
     }
     if (indexPath.row ==0) {
        cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
@@ -82,6 +95,7 @@
         [cell.textLabel setFont:Demon_15_Font];
         [cell.textLabel setTextColor:UIColorFromHex(0xA7A7A7)];
     }
+    
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -120,5 +134,25 @@
         return 44;
     }
     return 88;
+}
+-(void)requestEvalueDetail{
+    WEAKSELF;
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(EletricityListHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+          NSDictionary *data = (NSDictionary *)responseObject;
+           if ([data[@"code"] intValue] == KSuccessCode) {
+              MTSVPDismiss;
+               weakSelf.titleArr =[NSArray arrayWithObject:data[@"data"][@"list"]] ;
+            [weakSelf.myTableView reloadData];
+          }else {
+              MTSVPShowInfoText(data[@"msg"]);
+          }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+#pragma mark -FEWorkEValueDetailHeadViewDelegate
+-(void)goDuiFUAction{
+    
 }
 @end

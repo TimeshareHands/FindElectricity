@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkShareBottomView : UIView
 @property(nonatomic, weak)id<FEWorkShareBottomViewDelegate>localDelagte;
+-(void)show;
+-(void)dissmiss;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -15,6 +15,7 @@
 @property (nonatomic, strong)UILabel *showCountLbl;
 @property (nonatomic, strong)UILabel *pageLbl;
 @property (nonatomic, strong)UILabel *showPageLbl;
+@property (nonatomic, strong)NSArray *list;
 @end
 
 @implementation FEWorkGetGiftVC
@@ -26,6 +27,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self requestRecord];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -106,14 +108,19 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return self.list.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *kCellIndetify =@"cellIndentify";
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:kCellIndetify];
+    UITableViewCell *cell =[tableView cellForRowAtIndexPath:indexPath];
     if (cell ==nil) {
-        cell =[[FEWorkGetGiftCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+        FEWorkGetGiftCell *giftCell =[[FEWorkGetGiftCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+        if(indexPath.row > 0){
+            NSDictionary *dic =self.list[indexPath.row-1];
+            [giftCell setCount:dic[@"name"] rightTopText:dic[@"num"] rightBottomText:dic[@"ctime"]];
+        }
+        cell =giftCell;
     }
     if (indexPath.row ==0) {
         cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
@@ -178,6 +185,25 @@
         return 44;
     }
     return 88;
+}
+-(void)requestRecord{
+    WEAKSELF;
+    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(ExhcangegoodlogHttp) parameters:dic needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+         NSDictionary *data = (NSDictionary *)responseObject;
+         if ([data[@"code"] intValue] == KSuccessCode) {
+                  MTSVPDismiss;
+             [weakSelf.showCountLbl setText:[NSString stringWithFormat:@"%@次",data[@"data"][@"lottery_number"]]];
+             [weakSelf.showPageLbl setText:[NSString stringWithFormat:@"%@张",data[@"data"][@"goods_card"]]];
+        
+             weakSelf.list =data[@"data"][@"list"];
+             [weakSelf.myTableView reloadData];
+              }else {
+                  MTSVPShowInfoText(data[@"msg"]);
+              }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 /*
 #pragma mark - Navigation

@@ -9,8 +9,9 @@
 #import "FEWorkEValueShopVC.h"
 #import "FEWorkGiftCardCell.h"
 #import "FEWorkEvalueGetPrizeChanceCell.h"
+#import "FEWorkGetGiftVC.h"
 @interface FEWorkEValueShopVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic ,strong) UITableView *myTableView;
+@property (nonatomic ,strong)UITableView *myTableView;
 @property (nonatomic, strong)UIView *horizonView;
 @property (nonatomic, strong)UILabel *eValueLbl;
 @property (nonatomic, strong)UILabel *getPrizeLbl;
@@ -25,6 +26,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self rquestEvalueShop];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -162,7 +164,10 @@
                make.centerY.mas_equalTo(headView);
                make.width.mas_equalTo(SCREEN_WIDTH/2-11);
            }];
-         
+        [headView bk_whenTapped:^{
+            FEWorkGetGiftVC *giftVC =[[FEWorkGetGiftVC alloc]init];
+            [self.navigationController pushViewController:giftVC animated:YES];
+        }];
           
     }
    
@@ -186,5 +191,21 @@
         return 330;
     }
     
+}
+-(void)rquestEvalueShop{
+    WEAKSELF;
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(ShopInfoHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+       if ([data[@"code"] intValue] == KSuccessCode) {
+          MTSVPDismiss;
+        [weakSelf.eValueLbl setText:[NSString stringWithFormat:@"电量值 %@",data[@"data"][@"myElectrictyVal"]]];
+//        [weakSelf.myTableView reloadData];
+      }else {
+          MTSVPShowInfoText(data[@"msg"]);
+      }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 @end

@@ -51,7 +51,12 @@
         make.right.mas_equalTo(self.rightTopLbl);
     }];
 }
-
+-(void)setleftTopText:(NSString *)leftTopText leftBottomText:(NSString *)leftBottomText rightTopText:(NSString *)rightTopText rightBottomText:(NSString *)rightBottomText{
+    [self.leftTopLbl setText:leftTopText];
+    [self.leftBottomLbl setText:leftBottomText];
+    [self.rightTopLbl setText:rightTopText];
+    [self.rightBottomLbl setText:rightBottomText];
+}
 #pragma mark getter
 -(UILabel *)leftTopLbl{
     if (!_leftTopLbl) {

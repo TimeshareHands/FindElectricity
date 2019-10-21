@@ -38,30 +38,30 @@
 #pragma mark -约束适配
 -(void)makeUpConstraint{
     [self.lineQV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.mas_centerX).offset(WIDTH_LY(-25));
+        make.right.mas_equalTo(self.mas_centerX).offset(WIDTH_LY(-50));
         make.width.mas_equalTo(WIDTH_LY(45));
-        make.height.mas_equalTo(HEIGHT_LY(45));
+        make.height.mas_equalTo(WIDTH_LY(45));
         make.top.mas_equalTo(HEIGHT_LY(20));
     }];
     [self.wxV mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.left.mas_equalTo(self.mas_centerX).offset(WIDTH_LY(25));
+           make.left.mas_equalTo(self.mas_centerX).offset(WIDTH_LY(50));
            make.width.mas_equalTo(WIDTH_LY(45));
-           make.height.mas_equalTo(HEIGHT_LY(45));
+           make.height.mas_equalTo(WIDTH_LY(45));
            make.top.mas_equalTo(HEIGHT_LY(20));
     }];
     [self.lineQLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.lineQV);
-        make.bottom.mas_equalTo(self.lineQV.mas_bottom).offset(HEIGHT_LY(10));
+        make.top.mas_equalTo(self.lineQV.mas_bottom).offset(HEIGHT_LY(10));
     }];
     [self.wxLbl mas_makeConstraints:^(MASConstraintMaker *make) {
          make.centerX.mas_equalTo(self.wxV);
-         make.bottom.mas_equalTo(self.wxV.mas_bottom).offset(HEIGHT_LY(10));
+         make.top.mas_equalTo(self.wxV.mas_bottom).offset(HEIGHT_LY(10));
     }];
     [self.cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self);
-        make.height.mas_equalTo(HEIGHT_LY(40));
+        make.top.mas_equalTo(self.wxLbl.mas_bottom).offset(5);
         make.left.mas_equalTo(self);
         make.right.mas_equalTo(self);
+        make.height.mas_equalTo(40);
     }];
 }
 
@@ -71,7 +71,7 @@
         _lineQV =[UIButton buttonWithType:UIButtonTypeCustom];
         [_lineQV setImage:[UIImage imageNamed:@"wkc_FriendLine"] forState:UIControlStateNormal];
         [_lineQV bk_addEventHandler:^(id sender) {
-            [self dismiss];
+            [self dissmiss];
             if ([self.localDelagte respondsToSelector:@selector(shareLineQ)]) {
                 [self.localDelagte shareLineQ];
             }
@@ -84,7 +84,7 @@
         _wxV =[UIButton buttonWithType:UIButtonTypeCustom];
         [_wxV setImage:[UIImage imageNamed:@"wkc_weixin"] forState:UIControlStateNormal];
         [_wxV bk_addEventHandler:^(id sender) {
-            [self dismiss];
+            [self dissmiss];
             if ([self.localDelagte respondsToSelector:@selector(shareWx)]) {
                 [self.localDelagte shareWx];
             }
@@ -110,17 +110,25 @@
     if (!_cancelBtn) {
         _cancelBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+        WEAKSELF;
+        [_cancelBtn bk_addEventHandler:^(id sender) {
+            [weakSelf dissmiss];
+        } forControlEvents:UIControlEventTouchUpInside];
+        [_cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [_cancelBtn.layer setBorderColor:[UIColor grayColor].CGColor];
+//        [_cancelBtn.layer setBorderWidth:0.5];
     }
     return _cancelBtn;
 }
 -(void)show{
-    [UIView animateWithDuration:1 animations:^{
-        [self setFrame:CGRectMake(0, SCREEN_HEIGHT-100, SCREEN_WIDTH, 100)];
+    [UIView animateWithDuration:0.5 animations:^{
+        [self setFrame:CGRectMake(0, SCREEN_HEIGHT-200, SCREEN_WIDTH, 200)];
     }];
 }
--(void)dismiss{
-    [UIView animateWithDuration:1 animations:^{
-        [self setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 100)];
+-(void)dissmiss{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [self setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 200)];
     }];
 }
 @end

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkEvalueCell : UITableViewCell
-
+-(void)setleftTopText:(NSString *)leftTopText leftBottomText:(NSString *)leftBottomText rightTopText:(NSString *)rightTopText rightBottomText:(NSString *)rightBottomText;
 @end
 
 NS_ASSUME_NONNULL_END

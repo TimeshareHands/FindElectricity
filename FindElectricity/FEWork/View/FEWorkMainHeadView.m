@@ -308,7 +308,7 @@
 -(UIImageView *)headimg{
     if (!_headimg) {
         _headimg =[[UIImageView alloc]init];
-        [_headimg setBackgroundColor:[UIColor blueColor]];
+//        [_headimg setBackgroundColor:[UIColor blueColor]];
         [_headimg.layer setCornerRadius:24];
     }
     return _headimg;
@@ -316,7 +316,7 @@
 -(UILabel *)infoLbl{
     if (!_infoLbl) {
         _infoLbl =[[UILabel alloc]init];
-        [_infoLbl setText:@"155****9621"];
+       
         [_infoLbl setFont:Demon_13_Font];
         [_infoLbl setTextColor:[UIColor whiteColor]];
     }
@@ -689,8 +689,34 @@
         [weakSelf.localDelegate enterEvalueShop];
     }
 }
+- (void)getUserData {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(UserNewInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf setUserInfo:[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]]];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)setUserInfo:(FELoginResponseUserInfoModel *)userInfo {
+   [_headimg sd_setImageWithURL:[NSURL URLWithString:userInfo.faceImg] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
+        _headimg.clipsToBounds = YES;
+    [_infoLbl setText:[self changeTelephone:userInfo.mobile]];
+}
+
 #pragma mark -填充数据
 -(void)fillData:(FEWorkPanelDataResponseModel *)pannelModel{
+    [self getUserData];
     [self.tm_ShowHaveEvalueLbl setText:pannelModel.myElectrictyVal];
     [self.tm_ShowGiveLbl setText:pannelModel.todayElectricity];
     [self.tm_ShowChouCountLbl setText:pannelModel.lottery_number];
@@ -763,4 +789,10 @@
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
     return YES;
 }
+
+-(NSString*)changeTelephone:(NSString*)teleStr{
+     NSString *string = [teleStr stringByReplacingOccurrencesOfString:[teleStr substringWithRange:NSMakeRange(3,4)]withString:@"****"];
+    return string;
+}
+
 @end

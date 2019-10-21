@@ -13,7 +13,8 @@
 #import "FEWorkInviteAlertView.h"
 #import "FEWorkInviteRecordVC.h"
 #import "FEWorkShareBottomView.h"
-@interface FEGetPrizeShareFriendVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkGetPrizeShareWxCellDelegate,FEWorkGetPrizeShareCellDelegate,FEWorkGetPrizeShareAccordCellDelegate>
+#import "FEWorkInviteStandStardVC.h"
+@interface FEGetPrizeShareFriendVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkGetPrizeShareWxCellDelegate,FEWorkGetPrizeShareCellDelegate,FEWorkGetPrizeShareAccordCellDelegate,FEWorkShareBottomViewDelegate,FEWorkInviteAlertViewDelegate>
 @property(nonatomic,strong)UITableView *myTableView;
 @property(nonatomic,strong)UIView *bottomView;
 @property(nonatomic,strong)UIButton *friendLineBtn;
@@ -24,6 +25,7 @@
 @property(nonatomic,strong)UILabel *faceTofaceLbl;
 @property(nonatomic,strong)FEWorkInviteAlertView *inviteView;
 @property(nonatomic,strong)FEWorkShareBottomView *shareBottomView;
+@property(nonatomic,strong) FEWorkGetPrizeShareAccordCell *cell3;
 @end
 
 @implementation FEGetPrizeShareFriendVC
@@ -35,6 +37,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self requestRecord];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -104,8 +107,15 @@
 -(FEWorkInviteAlertView *)inviteView{
     if (!_inviteView) {
         _inviteView =[[FEWorkInviteAlertView alloc]init];
+        [_inviteView setLocalDelegate:self];
     }
     return _inviteView;
+}
+-(FEWorkShareBottomView *)shareBottomView{
+    if (!_shareBottomView) {
+        _shareBottomView =[[FEWorkShareBottomView alloc]init];
+    }
+    return _shareBottomView;
 }
 -(UITableView *)myTableView{
     if (!_myTableView) {
@@ -190,9 +200,9 @@
             cell2.localDelegate =self;
             cell =cell2;
         }else{
-            FEWorkGetPrizeShareAccordCell *cell3 = [[FEWorkGetPrizeShareAccordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
-            cell3.localDelegate =self;
-            cell =cell3;
+           self.cell3 = [[FEWorkGetPrizeShareAccordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            self.cell3.localDelegate =self;
+            cell =self.cell3;
         }
         
     }
@@ -227,7 +237,15 @@
 }
 #pragma mark -
 -(void)shareToIntroduceAction{
-    
+    if (![self.view.subviews containsObject:self.shareBottomView]) {
+        [self.view addSubview:self.shareBottomView];
+        [self.shareBottomView setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 200)];
+    }
+    [self.shareBottomView show];
+}
+-(void)readStandard{
+    FEWorkInviteStandStardVC *standardVC =[[FEWorkInviteStandStardVC alloc]init];
+    [self.navigationController pushViewController:standardVC animated:YES];
 }
 #pragma mark -
 -(void)generateShareImgAction{
@@ -237,5 +255,73 @@
 -(void)findRecord{
     FEWorkInviteRecordVC *recordVC =[[FEWorkInviteRecordVC alloc]init];
     [self.navigationController pushViewController:recordVC animated:YES];
+}
+#pragma mark -
+-(void)shareWx{
+    
+}
+-(void)shareLineQ{
+    
+}
+
+#pragma mark -查询记录
+-(void)requestRecord{
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(InvFriendLogHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+         if ([data[@"code"] intValue] == KSuccessCode) {
+            MTSVPDismiss;
+            
+             NSString *lotterNum =data[@"data"][@"shareFriend"][@"lotteryNumber"];
+             NSString *shareNum =data[@"data"][@"shareFriend"][@"shareNum"];
+             NSString *regitserLotterNum =data[@"data"][@"register"][@"lotteryNumber"];
+             NSString *regitserNum =data[@"data"][@"register"][@"registerNum"];
+             [weakSelf.cell3.lb2 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"分享给微信好友%@次，赠送%@次抽奖机会",shareNum,lotterNum] Color:[UIColor redColor]]];
+             [weakSelf.cell3.lb3 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"邀请好友下载登录%@个，赠送%@次抽奖机会",regitserNum,regitserLotterNum] Color:[UIColor redColor]]];
+
+             [weakSelf.myTableView reloadData];
+        }else {
+            MTSVPShowInfoText(data[@"msg"]);
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+/**
+ *改变字符串中所有数字的颜色
+ */
+- (NSMutableAttributedString *)setRichNumberWithLabel:(NSString*)lbltext Color:(UIColor *)color {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:lbltext];
+    NSString *temp = nil;
+    for(int i =0; i < [attributedString length]; i++) {
+        temp = [lbltext substringWithRange:NSMakeRange(i, 1)];
+        if ([self isPureInt:temp]) {
+            [attributedString setAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             color, NSForegroundColorAttributeName,
+                                            nil]
+                                      range:NSMakeRange(i, 1)];
+        }
+    }
+   return attributedString;
+}
+ 
+ 
+/**
+ *此方法是用来判断一个字符串是不是整型.
+ *如果传进的字符串是一个字符,可以用来判断它是不是数字
+ */
+- (BOOL)isPureInt:(NSString *)string {
+    NSScanner *scan = [NSScanner scannerWithString:string];
+    int value;
+    return [scan scanInt:&value] && [scan isAtEnd];
+}
+#pragma mark -FEWorkInviteAlertViewDelegate
+-(void)goGiftAction{
+    if (![self.view.subviews containsObject:self.shareBottomView]) {
+        [self.view addSubview:self.shareBottomView];
+        [self.shareBottomView setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 200)];
+    }
+    [self.shareBottomView show];
 }
 @end
