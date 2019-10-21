@@ -112,6 +112,10 @@
         _lb3 =[[UILabel alloc]init];
         [_lb3 setText:@"我的邀请码：943E (点击复制)"];
         [_lb3 setFont:Demon_16_Font];
+        [_lb3 setUserInteractionEnabled:YES];
+        [_lb3 bk_whenTapped:^{
+            [self copyClick];
+        }];
     }
     return _lb3;
 }
@@ -120,7 +124,20 @@
         _lb4 =[[UILabel alloc]init];
         [_lb4 setText:@"请赠送抽奖规则"];
         [_lb4 setFont:Demon_12_Font];
+        [_lb4 setUserInteractionEnabled:YES];
+        WEAKSELF;
+        [_lb4 bk_whenTapped:^{
+            if ([weakSelf.localDelegate respondsToSelector:@selector(readStandard)]) {
+                [weakSelf.localDelegate readStandard];
+            }
+        }];
     }
     return _lb4;
+}
+
+- (void)copyClick {
+    UIPasteboard *pab = [UIPasteboard generalPasteboard];
+    pab.string = self.lb3.text;
+   
 }
 @end

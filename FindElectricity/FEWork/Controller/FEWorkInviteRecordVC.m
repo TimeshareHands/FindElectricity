@@ -16,6 +16,7 @@
 @property(nonatomic, strong)UILabel *headLbl1;
 @property(nonatomic, strong)UILabel *headLbl2;
 @property(nonatomic, strong)UILabel *headLbl3;
+
 @end
 
 @implementation FEWorkInviteRecordVC
@@ -27,6 +28,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self requestRecord];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -140,18 +142,72 @@
 }
 #pragma mark -tableViewDelegate&&tableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.listArr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *kCellIndetify =@"cellIndentify";
     UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:kCellIndetify];
     if (cell ==nil) {
-        cell =[[FEWorkInviteFriendRecordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+       FEWorkInviteFriendRecordCell *recordCell =[[FEWorkInviteFriendRecordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+        NSDictionary *dic =self.listArr[indexPath.row];
+        [recordCell fillLeftImage:dic[@"faceImg"] num:dic[@"num"] nickName:dic[@"nickName"] type:dic[@"type"] ctime:dic[@"ctime"]];
+        cell =recordCell;
     }
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
+}
+#pragma mark -查询记录
+-(void)requestRecord{
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(InvFriendLogHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+         if ([data[@"code"] intValue] == KSuccessCode) {
+            MTSVPDismiss;
+             weakSelf.listArr =data[@"data"][@"list"];
+             NSString *lotterNum =data[@"data"][@"shareFriend"][@"lotteryNumber"];
+             NSString *shareNum =data[@"data"][@"shareFriend"][@"shareNum"];
+             NSString *regitserLotterNum =data[@"data"][@"register"][@"lotteryNumber"];
+             NSString *regitserNum =data[@"data"][@"register"][@"registerNum"];
+             [weakSelf.headLbl2 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"分享给微信好友%@次，赠送%@次抽奖机会",shareNum,lotterNum] Color:[UIColor redColor]]];
+             [weakSelf.headLbl3 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"邀请好友下载登录%@个，赠送%@次抽奖机会",regitserNum,regitserLotterNum] Color:[UIColor redColor]]];
+             [self.myTableView reloadData];
+        }else {
+            MTSVPShowInfoText(data[@"msg"]);
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+/**
+ *改变字符串中所有数字的颜色
+ */
+- (NSMutableAttributedString *)setRichNumberWithLabel:(NSString*)lbltext Color:(UIColor *)color {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:lbltext];
+    NSString *temp = nil;
+    for(int i =0; i < [attributedString length]; i++) {
+        temp = [lbltext substringWithRange:NSMakeRange(i, 1)];
+        if ([self isPureInt:temp]) {
+            [attributedString setAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             color, NSForegroundColorAttributeName,
+                                            nil]
+                                      range:NSMakeRange(i, 1)];
+        }
+    }
+   return attributedString;
+}
+ 
+ 
+/**
+ *此方法是用来判断一个字符串是不是整型.
+ *如果传进的字符串是一个字符,可以用来判断它是不是数字
+ */
+- (BOOL)isPureInt:(NSString *)string {
+    NSScanner *scan = [NSScanner scannerWithString:string];
+    int value;
+    return [scan scanInt:&value] && [scan isAtEnd];
 }
 
 @end

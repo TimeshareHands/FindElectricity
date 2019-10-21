@@ -86,7 +86,7 @@
     if (!_leftBottomLbl) {
         _leftBottomLbl =[[UILabel alloc]init];
         [_leftBottomLbl setFont:Demon_28_MediumFont];
-        [_leftBottomLbl setText:@"1510"];
+        [_leftBottomLbl setText:self.myEvalue];
     }
     return _leftBottomLbl;
 }
@@ -94,7 +94,7 @@
     if (!_bottomLbl) {
         _bottomLbl =[[UILabel alloc]init];
         [_bottomLbl setFont:Demon_13_Font];
-        [_bottomLbl setText:@"可换取3次抽奖机会"];
+        [_bottomLbl setText:[NSString stringWithFormat:@"可换取%@次抽奖机会",self.lotterNum]];
     }
     return _bottomLbl;
 }
@@ -106,6 +106,12 @@
         [_onceBtn.layer setCornerRadius:5];
         [_onceBtn setBackgroundColor:[UIColor whiteColor]];
         [_onceBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        WEAKSELF;
+        [_onceBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegate respondsToSelector:@selector(goDuiFUAction)]) {
+                [weakSelf.localDelegate goDuiFUAction];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _onceBtn;
 }

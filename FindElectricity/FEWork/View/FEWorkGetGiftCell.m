@@ -76,5 +76,9 @@
     }
     return _rightBottomLbl;
 }
-
+-(void)setCount:(NSString *)count rightTopText:(NSString *)rightTopText rightBottomText:(NSString *)rightBottomText{
+    [self.leftCenterLbl setText:[NSString stringWithFormat:@"兑换抽象次数%@",count]];
+    [self.rightTopLbl setText:[NSString stringWithFormat:@"+%@",rightTopText]];
+    [self.rightBottomLbl setText:[NSString stringWithFormat:@"%@",rightBottomText]];
+}
 @end

@@ -66,6 +66,13 @@
         make.height.mas_equalTo(1);
     }];
 }
+-(void)fillLeftImage:(NSString*)imgUrl num:(NSString *)num nickName:(NSString *)nickName type:(NSString *)type  ctime:(NSString *)ctime{
+    [self.leftImageView setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
+    [self.leftLabel setText:[NSString stringWithFormat:@"%@",nickName]];
+    [self.topRightLabel setText:[NSString stringWithFormat:@"%@",ctime]];
+    [self.bottomRightLabel1 setText:[NSString stringWithFormat:@"%@",type]];
+    [self.bottomRightLabel2 setText:[NSString stringWithFormat:@"赠送%@次",num] ];
+}
 #pragma mark getter
 -(UIImageView *)leftImageView{
     if (!_leftImageView) {

@@ -10,8 +10,7 @@
 @interface FEWorkGetPrizeShareAccordCell()
 @property(nonatomic, strong)UIView *bgView;
 @property(nonatomic, strong)UILabel *lb1;
-@property(nonatomic, strong)UILabel *lb2;
-@property(nonatomic, strong)UILabel *lb3;
+
 @property(nonatomic, strong)UIButton *confirmBtn;
 @end
 

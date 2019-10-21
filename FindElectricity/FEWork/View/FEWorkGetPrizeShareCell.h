@@ -12,6 +12,7 @@
 
 -(void)shareToIntroduceAction;
 
+-(void)readStandard;
 @end
 NS_ASSUME_NONNULL_BEGIN
 

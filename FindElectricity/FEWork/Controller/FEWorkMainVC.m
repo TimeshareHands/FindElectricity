@@ -22,7 +22,7 @@
 @property (nonatomic, strong)FEWorkMainHeadView *headView;
 @property (nonatomic, strong)UITableView *myTableView;
 @property (nonatomic, strong)FEWorkPanelDataResponseModel *responseModel;
-@property (nonatomic, strong) FESignInActAlert *signInAlertV;
+@property (nonatomic, strong)FESignInActAlert *signInAlertV;
 @end
 
 @implementation FEWorkMainVC
@@ -34,13 +34,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestPanelData) name:@"loginSuccessNotification" object:nil];
     [self requestPanelData];
     [self.navigationController setNavigationBarHidden:YES];
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    
 }
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"loginSuccessNotification" object:nil];
+}
 #pragma mark -添加视图
 -(void)addView{
     [self.view addSubview:self.myTableView];
@@ -138,6 +142,8 @@
 #pragma FEWorkMainHeadViewDelegate
 -(void)findElectricityAction{ //查找电量
     FEWorkEValueDetailVC *detailVC =[[FEWorkEValueDetailVC alloc]init];
+    detailVC.lotterNum =self.responseModel.lottery_number;
+    detailVC.myEvalue =self.responseModel.myElectrictyVal;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
@@ -172,7 +178,7 @@
 -(void)requestPanelData{
         NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
         WEAKSELF;
-       [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(TaskPanelDataHttp)  parameters:parameter needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
+       [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(TaskPanelDataHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
            NSLog(@"responseObject=%@",responseObject);
            weakSelf.responseModel =[FEWorkPanelDataResponseModel mj_objectWithKeyValues:responseObject[@"data"]];
            [weakSelf.headView fillData:self.responseModel];

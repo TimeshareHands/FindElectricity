@@ -10,6 +10,7 @@
 #import "FERegisterAccountVC.h"
 #import "FEFindPasswordVC.h"
 #import <UMShare/UMShare.h>
+
 @interface FELoginViewController ()
 @property(nonatomic, strong)UIImageView *topImgLogo;
 @property(nonatomic, strong)UILabel *topLbl;
@@ -184,6 +185,10 @@
         _accountTxt =[[UITextField alloc]init];
         [_accountTxt setPlaceholder:@"请输入手机号"];
         [_accountTxt setFont:Demon_15_Font];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults objectForKey:@"account"]) {
+            [_accountTxt setText:[defaults objectForKey:@"account"]];
+        }
     }
     return _accountTxt;
 }
@@ -193,6 +198,7 @@
         [_passwordTxt setPlaceholder:@"请输入密码"];
         [_passwordTxt setFont:Demon_15_Font];
         _passwordTxt.secureTextEntry =YES;
+       
     }
     return _passwordTxt;
 }
@@ -219,9 +225,13 @@
         _checkBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_checkBtn setImage:[UIImage imageNamed:@"felogin_uncheck"] forState:UIControlStateNormal];
         [_checkBtn setImage:[UIImage imageNamed:@"felogin_check"] forState:UIControlStateSelected];
+        WEAKSELF;
         [_checkBtn bk_addEventHandler:^(UIButton *sender) {
             sender.selected =!sender.selected;
             if (sender.selected) {
+               NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:weakSelf.accountTxt.text forKey:@"account"];
+                [defaults setObject:weakSelf.passwordTxt.text forKey:@"password"];
                 NSLog(@"%@",self.passwordTxt.text);
             }
         } forControlEvents:UIControlEventTouchUpInside];
@@ -295,16 +305,23 @@
 #pragma mark 登录
 - (void)loginAction{
     FELoginRequestModel *requestModel =[[FELoginRequestModel alloc]init];
-    requestModel.mobile =self.accountTxt.text;
-    requestModel.pwd =self.passwordTxt.text;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"account"]) {
+        requestModel.mobile =[defaults objectForKey:@"account"];
+    }else{
+        requestModel.mobile =self.accountTxt.text;
+    }
+    if ([defaults objectForKey:@"password"]) {
+         requestModel.pwd =[defaults objectForKey:@"password"];
+     }else{
+         requestModel.pwd =self.passwordTxt.text;
+     }
      WEAKSELF;
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MobileLoginHttp)  parameters:[requestModel mj_JSONObject] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
         [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
         [FEUserOperation manager].token =responseObject[@"data"][@"token"];
         [weakSelf.navigationController popViewControllerAnimated:YES];
-        if ([weakSelf.localDelegate respondsToSelector:@selector(LoginSuccess)]) {
-            [weakSelf.localDelegate LoginSuccess];
-        }
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
     } failure:^(NSError * _Nonnull error) {
         if ([weakSelf.localDelegate respondsToSelector:@selector(loginFailed:)]) {
             [weakSelf.localDelegate loginFailed:error];
@@ -345,13 +362,9 @@
         [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
            [FEUserOperation manager].token =responseObject[@"data"][@"token"];
            [weakSelf.navigationController popViewControllerAnimated:YES];
-           if ([weakSelf.localDelegate respondsToSelector:@selector(LoginSuccess)]) {
-               [weakSelf.localDelegate LoginSuccess];
-           }
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
     } failure:^(NSError * _Nonnull error) {
-        if ([weakSelf.localDelegate respondsToSelector:@selector(loginFailed:)]) {
-            [weakSelf.localDelegate loginFailed:error];
-        }
+       
     }];
    
     

@@ -12,6 +12,7 @@
 @property(nonatomic, strong)UIButton *confirmBtn;
 @property(nonatomic, strong)UIButton *cancelBtn;
 @property(nonatomic, strong)UIView *shadowView;
+@property(nonatomic, strong)UIButton *goGiftBtn;
 @end
 
 @implementation FEWorkInviteAlertView
@@ -27,6 +28,7 @@
 -(void)addView{
     [self addSubview:self.bgImgView];
     [self addSubview:self.cancelBtn];
+    [self.bgImgView addSubview:self.goGiftBtn];
     [self makeUpConstriant];
 }
 #pragma mark 约束适配
@@ -36,6 +38,12 @@
         make.right.mas_equalTo(self);
         make.top.mas_equalTo(self).offset(-15);
         make.bottom.mas_equalTo(-WIDTH_LY(45));
+    }];
+    [self.goGiftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.bgImgView);
+        make.right.mas_equalTo(self.bgImgView);
+        make.height.mas_equalTo(100);
+        make.bottom.mas_equalTo(self.bgImgView);
     }];
     [self.cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bgImgView.mas_bottom).offset(HEIGHT_LY(10));
@@ -77,6 +85,18 @@
         [_shadowView setAlpha:0.6];
     }
     return _shadowView;
+}
+-(UIButton *)goGiftBtn{
+    if (!_goGiftBtn) {
+        _goGiftBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        WEAKSELF;
+        [_goGiftBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegate respondsToSelector:@selector(goGiftAction)]) {
+                [weakSelf.localDelegate goGiftAction];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _goGiftBtn;
 }
 - (void)show {
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];

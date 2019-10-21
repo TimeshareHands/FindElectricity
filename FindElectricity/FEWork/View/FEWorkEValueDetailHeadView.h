@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol FEWorkEValueDetailHeadViewDelegate <NSObject>
+
+-(void)goDuiFUAction;
+
+@end
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkEValueDetailHeadView : UIView
-
+@property(nonatomic,weak)id <FEWorkEValueDetailHeadViewDelegate>localDelegate;
+@property(nonatomic ,copy)NSString *myEvalue;
+@property(nonatomic ,copy)NSString *lotterNum;
 @end
 
 NS_ASSUME_NONNULL_END
