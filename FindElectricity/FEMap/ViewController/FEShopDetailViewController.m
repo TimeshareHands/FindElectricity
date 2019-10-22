@@ -9,6 +9,7 @@
 #import "FEShopDetailViewController.h"
 #import "FEMapInfoModel.h"
 #import "FECorrectionViewController.h"
+#import "FENaviManager.h"
 @interface FEShopDetailViewController ()
 @property (strong, nonatomic) FEMapInfoModel *shopInfo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -95,6 +96,9 @@
 }
 
 
+- (IBAction)naviTo:(id)sender {
+    [[FENaviManager manager] routePlanWithEndPoint:(CLLocationCoordinate2D){_shopInfo.latitude,_shopInfo.longitude} name:_shopInfo.merchantsName];
+}
 
 /*
 #pragma mark - Navigation

@@ -1,36 +1,28 @@
 //
-//  FEMapNaviViewController.m
+//  FENaviManager.m
 //  FindElectricity
 //
-//  Created by DongQiangLi on 2019/9/26.
+//  Created by DongQiangLi on 2019/10/22.
 //  Copyright © 2019 LiDongQiang. All rights reserved.
 //
 
-#import "FEMapNaviViewController.h"
-#import <AMapNaviKit/AMapNaviKit.h>
-@interface FEMapNaviViewController ()//<AMapNaviCompositeManagerDelegate>
+#import "FENaviManager.h"
+
+@interface FENaviManager ()<AMapNaviCompositeManagerDelegate>
 //
 @property (nonatomic, strong) AMapNaviCompositeManager *compositeManager;
 
 @end
-
-@implementation FEMapNaviViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    UIButton *routeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    routeBtn.frame = CGRectMake(100, 100, 200, 45);
-    [routeBtn setTitle:@"传入终点" forState:UIControlStateNormal];
-    [routeBtn setTitleColor:[UIColor colorWithRed:53/255.0 green:117/255.0 blue:255/255.0 alpha:1] forState:UIControlStateNormal];
-    routeBtn.layer.borderWidth = 1;
-    routeBtn.layer.borderColor = [UIColor colorWithRed:53/255.0 green:117/255.0 blue:255/255.0 alpha:1].CGColor;
-    routeBtn.layer.cornerRadius = 5;
-    [routeBtn addTarget:self action:@selector(routePlanWithEndPoint) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:routeBtn];
+@implementation FENaviManager
+static FENaviManager *manager = nil;
++ (FENaviManager *)manager {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [[FENaviManager alloc] init];
+    });
+    return manager;
 }
 
-//// init
 - (AMapNaviCompositeManager *)compositeManager {
     if (!_compositeManager) {
         _compositeManager = [[AMapNaviCompositeManager alloc] init];  // 初始化
@@ -40,9 +32,9 @@
 }
 
 // 传入终点
-- (void)routePlanWithEndPoint {
+- (void)routePlanWithEndPoint:(CLLocationCoordinate2D)desPoint name:(NSString *)name {
     AMapNaviCompositeUserConfig *config = [[AMapNaviCompositeUserConfig alloc] init];
-    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeEnd location:[AMapNaviPoint locationWithLatitude:39.918058 longitude:116.397026] name:@"故宫" POIId:nil];  //传入终点
+    [config setRoutePlanPOIType:AMapNaviRoutePlanPOITypeEnd location:[AMapNaviPoint locationWithLatitude:desPoint.latitude longitude:desPoint.longitude] name:name POIId:nil];  //传入终点
     [self.compositeManager presentRoutePlanViewControllerWithOptions:config];
 }
 
@@ -77,15 +69,4 @@
 - (void)compositeManager:(AMapNaviCompositeManager *)compositeManager didArrivedDestination:(AMapNaviMode)naviMode {
     NSLog(@"didArrivedDestination,%ld",(long)naviMode);
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
