@@ -9,7 +9,10 @@
 #import "FEShopDetailViewController.h"
 #import "FEMapInfoModel.h"
 #import "FECorrectionViewController.h"
-@interface FEShopDetailViewController ()
+#import "FENaviManager.h"
+#import <AMapNaviKit/AMapNaviKit.h>
+#import "FEMapNaviViewController.h"
+@interface FEShopDetailViewController ()<AMapNaviRideManagerDelegate,RideNaviViewControllerDelegate>
 @property (strong, nonatomic) FEMapInfoModel *shopInfo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
@@ -18,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *collectBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UIImageView *shopImg;
+@property (strong, nonatomic) AMapNaviRideManager *rideManager;
 @end
 
 @implementation FEShopDetailViewController
@@ -95,6 +99,52 @@
 }
 
 
+- (IBAction)naviTo:(id)sender {
+//    [[FENaviManager manager] routePlanWithEndPoint:(CLLocationCoordinate2D){_shopInfo.latitude,_shopInfo.longitude} name:_shopInfo.merchantsName];
+    [self routePlanAction];
+}
+
+//路径规划
+- (void)routePlanAction
+{
+    if (_shopInfo == nil)
+    {
+        NSLog(@"暂无信息");
+        return;
+    }
+    
+    AMapNaviPoint *endPoint = [AMapNaviPoint locationWithLatitude:_shopInfo.latitude
+                                                          longitude:_shopInfo.longitude];
+    
+    [self.rideManager calculateRideRouteWithEndPoint:endPoint];
+}
+
+- (AMapNaviRideManager *)rideManager {
+    if (!_rideManager) {
+        _rideManager = [[AMapNaviRideManager alloc] init];
+        _rideManager.delegate = self;
+    }
+    return _rideManager;
+}
+
+
+//naviRideManager Delegete
+- (void)rideManagerOnCalculateRouteSuccess:(AMapNaviRideManager *)rideManager {
+    FEMapNaviViewController *rideVC = [[FEMapNaviViewController alloc] init];
+    [rideVC setDelegate:self];
+    
+    //将driveView添加为导航数据的Representative，使其可以接收到导航诱导数据
+    [self.rideManager addDataRepresentative:rideVC.rideView];
+    
+    [self.navigationController pushViewController:rideVC animated:NO];
+    [self.rideManager startGPSNavi];
+}
+
+- (void)rideNaviViewCloseButtonClicked {
+    //导航关闭
+    [self.rideManager stopNavi];
+    _rideManager = nil;
+}
 
 /*
 #pragma mark - Navigation

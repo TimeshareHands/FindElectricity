@@ -232,7 +232,7 @@
     bgView.layer.borderWidth = 1;
     [self.view addSubview:bgView];
     
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(49, 0, bgView.bounds.size.width - 60, 44)];
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(49, 0, bgView.bounds.size.width - 60-49, 44)];
     textView.delegate = self;
     textView.tag = 101;
     textView.textColor = UIColorFromHex(0x404040);

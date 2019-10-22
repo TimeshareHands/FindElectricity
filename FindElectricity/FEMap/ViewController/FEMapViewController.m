@@ -22,6 +22,7 @@
 #import "FEShopPopView.h"
 #import "FEShopDetailViewController.h"
 #import "FECorrectionViewController.h"
+#import "FEWorkTurnTableVC.h"
 #import "FindTabBarController.h"
 #import "FECycleMap.h"
 #import "FEMapsModel.h"
@@ -190,7 +191,8 @@
 
 #pragma 抽奖
 - (void)goChouJiang {
-    
+    FEWorkTurnTableVC *vc = [[FEWorkTurnTableVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (UIButton *)shaiXuanBtn {
