@@ -114,8 +114,8 @@
 //更新数据
 - (void)updateData{
     self.currentTime.text = timeFormt(_sec);
-    self.currentKM.text = [NSString stringWithFormat:@"%.2f",_kmNum];
-    self.speed.text = [NSString stringWithFormat:@"%.2f",_kmNum/_sec];
+    self.currentKM.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0];
+    self.speed.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0/_sec];
     NSInteger changNum = [[NSUserDefaults standardUserDefaults] integerForKey:kFEKMToElecNum];
     self.currentElec.text = [NSString stringWithFormat:@"%.0f",_kmNum/changNum];
     if (_delegete&&[_delegete respondsToSelector:@selector(updateUIDataWithTime:km:elec:speed:)]) {

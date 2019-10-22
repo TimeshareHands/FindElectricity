@@ -29,10 +29,20 @@ static FETimeManager *shareManager = nil;
 
 - (void)congfig {
     _didStartTime = 0;
-    WEAKSELF
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [weakSelf timeRun];
-    }];
+    WEAKSELF;
+    [[[NSThread alloc] initWithTarget:weakSelf selector:@selector(timerStart) object:nil] start];
+}
+
+- (void)timerStart{
+    WEAKSELF;
+    @autoreleasepool {
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [weakSelf timeRun];
+        }];
+        [runLoop run];
+    }
+    
 }
 
 - (void)timeRun {
