@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetPrizeContentCell : UITableViewCell
-
+-(void)setUnitText:(NSString *)unitText num:(NSString *)num title:(NSString *)title winNum:(NSString *)winNum pic:(NSString *)pic ;
 @end
 
 NS_ASSUME_NONNULL_END

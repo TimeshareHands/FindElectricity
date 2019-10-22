@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FEWorkGetGiftAlertViewDelegate <NSObject>
+
+-(void)continueChouJiang;
+
+@end
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetGiftAlertView : UIView
-
+@property (nonatomic, weak)id <FEWorkGetGiftAlertViewDelegate>localDelegate;
 @property (copy, nonatomic) void(^didClick)(FEWorkGetGiftAlertView *,NSInteger);
 - (void)show;
 - (void)hidden;

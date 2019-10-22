@@ -202,4 +202,9 @@
  *  @return 随机字符
  */
 + (NSString *)randomStrWithLength:(NSInteger)length;
+
+//手机号格式验证
+- (BOOL)checkPhoneNumInput;
+//是否包含对应字符
+- (BOOL)containStr:(NSString *)subString;
 @end

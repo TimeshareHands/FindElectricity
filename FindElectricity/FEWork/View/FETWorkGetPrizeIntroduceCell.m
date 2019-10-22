@@ -147,6 +147,11 @@
         [_leftBtn.titleLabel setFont:Demon_15_Font];
         [_leftBtn setBackgroundColor:UIColorFromHex(0xD34E46)];
         [_leftBtn.layer setCornerRadius:5];
+        [_leftBtn bk_addEventHandler:^(id sender) {
+            if ([self.localDelegate respondsToSelector:@selector(getChoujiangchange)]) {
+                [self.localDelegate getChoujiangchange];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftBtn;
 }
@@ -157,7 +162,16 @@
         [_rightBtn.titleLabel setFont:Demon_15_Font];
         [_rightBtn setBackgroundColor:UIColorFromHex(0xD34E46)];
         [_rightBtn.layer setCornerRadius:5];
+        [_rightBtn bk_addEventHandler:^(id sender) {
+            if ([self.localDelegate respondsToSelector:@selector(duihuanEvalue)]) {
+                [self.localDelegate duihuanEvalue];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
+}
+-(void)setChoujiangCount:(NSString *)choujiangCount myEvalue:(NSString *)myEvalue{
+    [self.leftLabel2 setText:[NSString stringWithFormat:@"%@次",choujiangCount]];
+    [self.rightLabel2 setText:[NSString stringWithFormat:@"%@",myEvalue]];
 }
 @end

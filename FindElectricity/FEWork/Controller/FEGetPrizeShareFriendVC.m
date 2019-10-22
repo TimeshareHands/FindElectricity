@@ -14,6 +14,7 @@
 #import "FEWorkInviteRecordVC.h"
 #import "FEWorkShareBottomView.h"
 #import "FEWorkInviteStandStardVC.h"
+#import <UShareUI/UShareUI.h>
 @interface FEGetPrizeShareFriendVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkGetPrizeShareWxCellDelegate,FEWorkGetPrizeShareCellDelegate,FEWorkGetPrizeShareAccordCellDelegate,FEWorkShareBottomViewDelegate,FEWorkInviteAlertViewDelegate>
 @property(nonatomic,strong)UITableView *myTableView;
 @property(nonatomic,strong)UIView *bottomView;
@@ -136,6 +137,10 @@
     if (!_friendLineBtn) {
         _friendLineBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_friendLineBtn setImage:[UIImage imageNamed:@"wkc_FriendLine"] forState:UIControlStateNormal];
+        WEAKSELF;
+        [_friendLineBtn bk_addEventHandler:^(id sender) {
+            [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _friendLineBtn;
 }
@@ -143,7 +148,10 @@
     if (!_wxBtn) {
         _wxBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_wxBtn setImage:[UIImage imageNamed:@"wkc_weixin"] forState:UIControlStateNormal];
-        
+        WEAKSELF;
+        [_wxBtn bk_addEventHandler:^(id sender) {
+            [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _wxBtn;
 }
@@ -237,11 +245,7 @@
 }
 #pragma mark -
 -(void)shareToIntroduceAction{
-    if (![self.view.subviews containsObject:self.shareBottomView]) {
-        [self.view addSubview:self.shareBottomView];
-        [self.shareBottomView setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 200)];
-    }
-    [self.shareBottomView show];
+    [self shareAction];
 }
 -(void)readStandard{
     FEWorkInviteStandStardVC *standardVC =[[FEWorkInviteStandStardVC alloc]init];
@@ -258,10 +262,10 @@
 }
 #pragma mark -
 -(void)shareWx{
-    
+    [self shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
 }
 -(void)shareLineQ{
-    
+    [self shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
 }
 
 #pragma mark -查询记录
@@ -318,10 +322,38 @@
 }
 #pragma mark -FEWorkInviteAlertViewDelegate
 -(void)goGiftAction{
-    if (![self.view.subviews containsObject:self.shareBottomView]) {
-        [self.view addSubview:self.shareBottomView];
-        [self.shareBottomView setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 200)];
-    }
-    [self.shareBottomView show];
+    [self shareAction];
 }
+- (void)shareAction {
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_WechatSession)]];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        // 根据获取的platformType确定所选平台进行下一步操作
+        [self shareWebPageToPlatformType:platformType];
+    }];
+    
+}
+
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    //创建网页内容对象
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"找电" descr:@"找电新版福利来啦！天天抽大奖礼品免费邮寄到家！下载注册填写邀请码，免费赠送10次抽奖机会，赶快一起来玩吧！" thumImage:[UIImage imageNamed:@"AppIcon"]];
+    //设置网页地址
+    shareObject.webpageUrl =@"http://apk.csjiayu.com/zhaodian/index.html?invitation=2222&from=singlemessage&isappinstalled=0";
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            NSLog(@"************Share fail with error %@*********",error);
+        }else{
+            NSLog(@"response data is %@",data);
+        }
+    }];
+}
+
 @end

@@ -165,6 +165,11 @@
 		4E783D0B23535BD6003872F2 /* FEWorkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0A23535BD6003872F2 /* FEWorkModel.m */; };
 		4EF155E1235C40200037D8D4 /* FESignInActAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155E0235C40200037D8D4 /* FESignInActAlert.m */; };
 		4EF155E4235C6D340037D8D4 /* FEWorkShareBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */; };
+		4EF155E7235D9EA30037D8D4 /* FEWxBindPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155E5235D9EA30037D8D4 /* FEWxBindPhoneVC.m */; };
+		4EF155F5235D9FCA0037D8D4 /* UIButton+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155F3235D9FCA0037D8D4 /* UIButton+Extend.m */; };
+		4EF155F6235D9FCA0037D8D4 /* UIView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155F4235D9FCA0037D8D4 /* UIView+Extend.m */; };
+		4EF155FE235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155FB235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m */; };
+		4EF155FF235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155FC235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
 		CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E94234F1DCB00632F7B /* SZTextView.m */; };
 		CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E95234F1DCB00632F7B /* KLCoverView.m */; };
@@ -570,6 +575,16 @@
 		4EF155E0235C40200037D8D4 /* FESignInActAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESignInActAlert.m; sourceTree = "<group>"; };
 		4EF155E2235C6D340037D8D4 /* FEWorkShareBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkShareBottomView.h; sourceTree = "<group>"; };
 		4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkShareBottomView.m; sourceTree = "<group>"; };
+		4EF155E5235D9EA30037D8D4 /* FEWxBindPhoneVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWxBindPhoneVC.m; sourceTree = "<group>"; };
+		4EF155E6235D9EA30037D8D4 /* FEWxBindPhoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWxBindPhoneVC.h; sourceTree = "<group>"; };
+		4EF155F1235D9FCA0037D8D4 /* UIView+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extend.h"; sourceTree = "<group>"; };
+		4EF155F2235D9FCA0037D8D4 /* UIButton+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extend.h"; sourceTree = "<group>"; };
+		4EF155F3235D9FCA0037D8D4 /* UIButton+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extend.m"; sourceTree = "<group>"; };
+		4EF155F4235D9FCA0037D8D4 /* UIView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extend.m"; sourceTree = "<group>"; };
+		4EF155FA235EB28D0037D8D4 /* FEWorkGiftCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGiftCollectionViewCell.h; sourceTree = "<group>"; };
+		4EF155FB235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGiftCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		4EF155FC235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGiftCollectionViewCell.m; sourceTree = "<group>"; };
+		4EF155FD235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGiftCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.release.xcconfig"; sourceTree = "<group>"; };
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -958,6 +973,8 @@
 		4E02F27E234EFAFB00308D99 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4EF155E6235D9EA30037D8D4 /* FEWxBindPhoneVC.h */,
+				4EF155E5235D9EA30037D8D4 /* FEWxBindPhoneVC.m */,
 				4E02F281234EFAFB00308D99 /* FEFindPasswordVC.h */,
 				4E02F284234EFAFB00308D99 /* FEFindPasswordVC.m */,
 				4E02F282234EFAFB00308D99 /* FELoginViewController.h */,
@@ -1044,6 +1061,10 @@
 		4E02F2A3234EFB4300308D99 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EF155FA235EB28D0037D8D4 /* FEWorkGiftCollectionViewCell.h */,
+				4EF155FC235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m */,
+				4EF155FD235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.h */,
+				4EF155FB235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m */,
 				4E02F2A9234EFB4300308D99 /* FETWorkMainTableViewCell.h */,
 				4E02F2B6234EFB4300308D99 /* FETWorkMainTableViewCell.m */,
 				4E02F2AE234EFB4300308D99 /* FEWorkEvalueCell.h */,
@@ -1335,6 +1356,10 @@
 		4E063D3E233A122900D6756A /* category */ = {
 			isa = PBXGroup;
 			children = (
+				4EF155F2235D9FCA0037D8D4 /* UIButton+Extend.h */,
+				4EF155F3235D9FCA0037D8D4 /* UIButton+Extend.m */,
+				4EF155F1235D9FCA0037D8D4 /* UIView+Extend.h */,
+				4EF155F4235D9FCA0037D8D4 /* UIView+Extend.m */,
 				4E02F2D0234F150F00308D99 /* UIViewController+HUD.h */,
 				4E02F2D1234F150F00308D99 /* UIViewController+HUD.m */,
 				4E063D3F233A122900D6756A /* NSString+Extend.h */,
@@ -1886,6 +1911,7 @@
 				CBED22EA23556A8F0009B75D /* EmojiView.m in Sources */,
 				CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */,
 				4E02F46D234F228600308D99 /* SDImageAssetManager.m in Sources */,
+				4EF155F5235D9FCA0037D8D4 /* UIButton+Extend.m in Sources */,
 				4E02F46C234F228600308D99 /* SDImageCachesManagerOperation.m in Sources */,
 				4E783CF023520D76003872F2 /* FEWorkInviteStandStardVC.m in Sources */,
 				4E02F44E234F228600308D99 /* SDWebImageError.m in Sources */,
@@ -1971,6 +1997,7 @@
 				20916A602348D4760045C7C8 /* FEViewXib.m in Sources */,
 				CBED22BE2350592B0009B75D /* FESharePopView.m in Sources */,
 				CBEDBD80234F0B2C00A923A3 /* FEAddShopViewController.m in Sources */,
+				4EF155E7235D9EA30037D8D4 /* FEWxBindPhoneVC.m in Sources */,
 				4E02F461234F228600308D99 /* SDImageCacheDefine.m in Sources */,
 				4E063D1B233A104F00D6756A /* main.m in Sources */,
 				CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */,
@@ -1987,6 +2014,7 @@
 				20916A8B234B56060045C7C8 /* FEShopPopView.m in Sources */,
 				2035300F2352FADE0070A2F0 /* FEMapInfoModel.m in Sources */,
 				4E02F2BD234EFB4300308D99 /* FEWorkStrategyVC.m in Sources */,
+				4EF155F6235D9FCA0037D8D4 /* UIView+Extend.m in Sources */,
 				4E02F462234F228600308D99 /* UIImage+MemoryCacheCost.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,
 				CBED22EB23556A8F0009B75D /* CSRecord.m in Sources */,
@@ -2002,6 +2030,7 @@
 				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
 				CB4FAC6C234F51EC0094D3E9 /* FEMyShopListCell.m in Sources */,
 				CBEDBD76234F0A8100A923A3 /* FEFeedbackViewController.m in Sources */,
+				4EF155FF235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m in Sources */,
 				20916AA3234F85A90045C7C8 /* FEChangePhoneViewController.m in Sources */,
 				4E02F468234F228600308D99 /* UIView+WebCache.m in Sources */,
 				CBED22B0235049AA0009B75D /* FENewsViewController.m in Sources */,
@@ -2030,6 +2059,7 @@
 				4E02F2C1234EFB4300308D99 /* FEWorkGetGiftCell.m in Sources */,
 				4EF155E1235C40200037D8D4 /* FESignInActAlert.m in Sources */,
 				4E02F472234F228600308D99 /* UIColor+HexString.m in Sources */,
+				4EF155FE235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m in Sources */,
 				CBED22E923556A8F0009B75D /* CSEmojiCollectionViewCell.m in Sources */,
 				4E02F43B234F228600308D99 /* NSImage+Compatibility.m in Sources */,
 				4E02F454234F228600308D99 /* SDAnimatedImageRep.m in Sources */,

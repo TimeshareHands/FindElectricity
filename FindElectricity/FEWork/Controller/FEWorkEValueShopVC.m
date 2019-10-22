@@ -10,11 +10,13 @@
 #import "FEWorkGiftCardCell.h"
 #import "FEWorkEvalueGetPrizeChanceCell.h"
 #import "FEWorkGetGiftVC.h"
-@interface FEWorkEValueShopVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface FEWorkEValueShopVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkEvalueGetPrizeChanceCellDelegate>
 @property (nonatomic ,strong)UITableView *myTableView;
 @property (nonatomic, strong)UIView *horizonView;
 @property (nonatomic, strong)UILabel *eValueLbl;
 @property (nonatomic, strong)UILabel *getPrizeLbl;
+@property (nonatomic, strong)FEWorkEvalueGetPrizeChanceCell *changeCell;
+@property (nonatomic, strong)NSArray *exChange_goodList;
 @end
 
 @implementation FEWorkEValueShopVC
@@ -92,7 +94,7 @@
     if(section ==0){
         return 1;
     }else{
-        return 6;
+        return self.exChange_goodList.count;
     }
 }
 
@@ -102,22 +104,13 @@
    
     if (cell ==nil) {
         if (indexPath.section ==0) {
-             cell =[[FEWorkEvalueGetPrizeChanceCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+             self.changeCell =[[FEWorkEvalueGetPrizeChanceCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            [self.changeCell setLocalDelegate:self];
+            cell =self.changeCell;
         }else{
            FEWorkGiftCardCell *giftCell =[[FEWorkGiftCardCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
-            if (indexPath.row ==0) {
-                [giftCell settLeftImg:@"wkm_tolietPaperCard" topText:@"卫生纸卡1张" bottomText:@"5000电量值"];
-            }else if(indexPath.row ==1){
-                [giftCell settLeftImg:@"wkm_Edibleoil" topText:@"食用油卡1张" bottomText:@"6000电量值"];
-            }else if(indexPath.row ==2){
-                  [giftCell settLeftImg:@"wkm_DetergentCard" topText:@"洗洁精卡1张" bottomText:@"6000电量值"];
-            }else if(indexPath.row ==3){
-                  [giftCell settLeftImg:@"wkm_MobileCard" topText:@"手机卡1张" bottomText:@"175000电量值"];
-            }else if(indexPath.row ==4){
-                  [giftCell settLeftImg:@"wkm_moto" topText:@"电动车卡1张" bottomText:@"250000电量值"];
-            }else if(indexPath.row ==5){
-                   [giftCell settLeftImg:@"wkm_giftCard" topText:@"神秘礼物卡1张" bottomText:@"5000电量值"];
-            }
+            NSDictionary *goodDic =self.exChange_goodList[indexPath.row];
+            [giftCell settLeftImg:[NSString stringWithFormat:@"%@",goodDic[@"pic"]] topText:[NSString stringWithFormat:@"%@",goodDic[@"name"]] bottomText:[NSString stringWithFormat:@"%@电量值",goodDic[@"integral"]]];
             cell =giftCell;
         }
     }
@@ -131,6 +124,10 @@
     }
      [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *goodDic =self.exChange_goodList[indexPath.row];
+    [self duifuRequest:goodDic[@"id"]];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headView =[[UIView alloc]init];
@@ -200,10 +197,34 @@
        if ([data[@"code"] intValue] == KSuccessCode) {
           MTSVPDismiss;
         [weakSelf.eValueLbl setText:[NSString stringWithFormat:@"电量值 %@",data[@"data"][@"myElectrictyVal"]]];
-//        [weakSelf.myTableView reloadData];
+        weakSelf.exChange_goodList =data[@"data"][@"exchange_goods_list"];
+           
+        [weakSelf.myTableView reloadData];
       }else {
           MTSVPShowInfoText(data[@"msg"]);
       }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+#pragma mark- FEWorkEvalueGetPrizeChanceCellDelegate
+-(void)goDuiAction:(NSString *)goodId{
+ 
+    [self duifuRequest:goodId];
+}
+#pragma mark -兑付
+-(void)duifuRequest:(NSString *)goodId{
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    [parameter setObject:goodId forKey:@"goodId"];
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(ExhcangegoodHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+                  MTSVPDismiss;
+            MTSVPShowInfoText(@"兑换成功");
+        //        [weakSelf.myTableView reloadData];
+              }else {
+                  MTSVPShowInfoText(data[@"msg"]);
+              }
     } failure:^(NSError * _Nonnull error) {
         
     }];

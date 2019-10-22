@@ -106,6 +106,10 @@
         [_leftBtn setTitle:@"知道了" forState:UIControlStateNormal];
         [_leftBtn.titleLabel setFont:Demon_15_Font];
          [_leftBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
+        WEAKSELF;
+        [_leftBtn bk_addEventHandler:^(id sender) {
+             [weakSelf hidden];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftBtn;
 }
@@ -115,6 +119,12 @@
         [_rightBtn setTitle:@"继续抽奖" forState:UIControlStateNormal];
         [_rightBtn.titleLabel setFont:Demon_15_Font];
         [_rightBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
+        WEAKSELF;
+        [_rightBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegate respondsToSelector:@selector(continueChouJiang)]) {
+                [weakSelf.localDelegate continueChouJiang];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
 }
@@ -123,8 +133,9 @@
     if (!_cancelBtn) {
         _cancelBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_cancelBtn setImage:[UIImage imageNamed:@"wkc_Close"] forState:UIControlStateNormal];
+        WEAKSELF
         [_cancelBtn bk_addEventHandler:^(id sender) {
-            [self hidden];
+            [weakSelf hidden];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelBtn;

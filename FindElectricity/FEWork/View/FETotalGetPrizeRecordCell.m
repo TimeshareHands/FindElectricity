@@ -73,12 +73,14 @@
 }
 #pragma mark -tableViewdelegate &&tableViewdatasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.listArr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell =[[UITableViewCell alloc]init];
+    NSDictionary *arrDic =self.listArr[indexPath.row];
     UILabel *label =[[UILabel alloc]init];
-    [label setText:@"2018年10月16日    领取 卫生纸1提    领取人：xxx    未发货 "];
+    [label setText:[NSString stringWithFormat:@"%@  领取 %@ 领取人：%@ %@",arrDic[@"ctime"],arrDic[@"goodname"],arrDic[@"nickName"],arrDic[@"status"]]];
+//    [label setText:@"2018年10月16日    领取 卫生纸1提    领取人：xxx    未发货 "];
     [label setFont:Demon_10_Font];
     [label setTextAlignment:NSTextAlignmentCenter];
     [cell addSubview:label];

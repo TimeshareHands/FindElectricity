@@ -341,11 +341,7 @@
         _topMenuBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_topMenuBtn.layer setCornerRadius:5];
         [_topMenuBtn setBackgroundColor:[UIColor whiteColor]];
-        WEAKSELF;
-//        [_topMenuBtn addTarget:self action:@selector(findElect) forControlEvents:UIControlEventTouchUpInside];
-        [_topMenuBtn bk_addEventHandler:^(id sender) {
-            [weakSelf findElect];
-        } forControlEvents:UIControlEventTouchUpInside];
+        [_topMenuBtn addTarget:self action:@selector(findElect) forControlEvents:UIControlEventTouchUpInside];
     }
     return _topMenuBtn;
 }

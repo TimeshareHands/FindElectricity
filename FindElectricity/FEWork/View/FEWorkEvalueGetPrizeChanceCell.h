@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FEWorkEvalueGetPrizeChanceCellDelegate <NSObject>
+
+-(void)goDuiAction:(NSString *_Nullable)goodId;
+
+@end
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkEvalueGetPrizeChanceCell : UITableViewCell
+@property(nonatomic, weak)id<FEWorkEvalueGetPrizeChanceCellDelegate>localDelegate;
 
 @end
 

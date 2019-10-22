@@ -62,5 +62,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy)NSString  *uid;
 @end
 
+@interface FEWXBindReuestModel : NSObject
+
+@property(nonatomic, copy)NSString  *mobile;
+@property(nonatomic, copy)NSString  *openid;
+@property(nonatomic, copy)NSString  *verifyCode;
+@property(nonatomic, copy)NSString  *pwd;
+@property(nonatomic, assign)BOOL notNeedCode;
+@property(nonatomic, copy)NSString  *invCode;
+
+@end
+
 
 NS_ASSUME_NONNULL_END

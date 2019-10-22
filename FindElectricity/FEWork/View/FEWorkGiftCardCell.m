@@ -57,7 +57,7 @@
     }];
 }
 -(void)settLeftImg:(NSString *)leftImg topText:(NSString *)topText bottomText:(NSString *)bottomText{
-    [self.leftImg setImage:[UIImage imageNamed:leftImg]];
+    [self.leftImg setImageWithURL:[NSURL URLWithString:leftImg]];
     [self.topLbl setText:topText];
     [self.bottomLbl setText:bottomText];
 }
