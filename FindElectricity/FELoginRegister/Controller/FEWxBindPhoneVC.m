@@ -10,6 +10,7 @@
 #import "UIButton+Extend.h"
 #import "UIView+Extend.h"
 #import "FELoginRegisterModel.h"
+#import "FEInputCell.h"
 @interface FEWxBindPhoneVC ()
 
 @property (nonatomic, strong) UITextField *phnoeField;
@@ -18,8 +19,7 @@
 @property (nonatomic, strong) UIButton *yanZMBtn;
 @property (nonatomic, strong) UILabel *lab3;
 @property (nonatomic, strong) UIButton *finishBtn;
-@property (nonatomic, strong) NSString *pwd;
-
+@property (nonatomic, strong) FEInputCell *passwordCell;
 @end
 
 @implementation FEWxBindPhoneVC
@@ -28,7 +28,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"绑定手机号";
-    self.pwd = @"123456";
     [self addView];
 }
 
@@ -40,7 +39,7 @@
     [self.view addSubview:self.yanZMBtn];
     [self.view addSubview:self.lab3];
     [self.view addSubview:self.finishBtn];
-    
+    [self.view addSubview:self.passwordCell];
     
     [self makeUpconstraint];
     
@@ -50,7 +49,14 @@
 #pragma mark -
 #pragma mark getter
 
+-(FEInputCell *)passwordCell{
+    if (!_passwordCell) {
+        _passwordCell =[[FEInputCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@""];
+        [_passwordCell.inputTextField setPlaceholder:@"请输入找电登录密码"];
 
+    }
+    return _passwordCell;
+}
 
 - (UITextField *)phnoeField
 {
@@ -149,7 +155,12 @@
         make.top.mas_equalTo(self.phnoeField.mas_bottom).offset(6);
         make.height.mas_equalTo(0.5);
     }];
-    
+    [self.passwordCell mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(self.phnoeField.mas_bottom).offset(15);
+        make.height.mas_equalTo(30);
+        make.right.mas_equalTo(0);
+    }];
     
     [self.yanZMField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
@@ -161,7 +172,7 @@
     
     [self.yanZMBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-15);
-        make.top.mas_equalTo(self.lab2.mas_bottom).offset(15);
+        make.top.mas_equalTo(self.passwordCell.mas_bottom).offset(15);
         make.height.mas_equalTo(30);
         make.width.mas_equalTo(90);
     }];
@@ -220,7 +231,7 @@
         requestModel.mobile =self.phnoeField.text;
         requestModel.openid =self.openid;
         requestModel.verifyCode =self.yanZMField.text;
-        requestModel.pwd =self.pwd;
+        requestModel.pwd =self.passwordCell.inputTextField.text;
         requestModel.notNeedCode =YES;
         requestModel.invCode =@"";
         [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(WxBindMobileHttp) parameters:[requestModel mj_keyValues] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {

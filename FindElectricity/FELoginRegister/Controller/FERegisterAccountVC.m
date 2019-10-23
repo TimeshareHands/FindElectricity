@@ -86,6 +86,7 @@
        if (cell ==nil) {
            if (indexPath.row ==0) {
                self.smsCodeCell =[[FESmsCodeCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+               [self.smsCodeCell.inputTextField setPlaceholder:@"请输入手机号"];
                WEAKSELF;
                 [_smsCodeCell.smsBtn bk_addEventHandler:^(id sender) {
                     [weakSelf yanZMBtnAction];
