@@ -341,7 +341,7 @@
     //创建网页内容对象
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"找电" descr:@"找电新版福利来啦！天天抽大奖礼品免费邮寄到家！下载注册填写邀请码，免费赠送10次抽奖机会，赶快一起来玩吧！" thumImage:[UIImage imageNamed:@"AppIcon"]];
     //设置网页地址
-    shareObject.webpageUrl =@"http://apk.csjiayu.com/zhaodian/index.html?invitation=2222&from=singlemessage&isappinstalled=0";
+    shareObject.webpageUrl =[NSString stringWithFormat:@"http://apk.csjiayu.com/zhaodian/index.html?invitation=%@&from=singlemessage&isappinstalled=0",[FEUserOperation manager].userModel.invCode];
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;

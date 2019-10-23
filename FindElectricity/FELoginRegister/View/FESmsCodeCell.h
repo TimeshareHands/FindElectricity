@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FESmsCodeCell : UITableViewCell
-
+@property(nonatomic, strong)UITextField *inputTextField;
+@property(nonatomic, strong)UIView *lineView;
+@property(nonatomic, strong)UIButton *smsBtn;
 @end
 
 NS_ASSUME_NONNULL_END

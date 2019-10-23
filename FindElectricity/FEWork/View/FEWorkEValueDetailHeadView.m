@@ -64,7 +64,10 @@
         make.height.mas_equalTo(30);
     }];
 }
-
+-(void)setlotterNum:(NSString *)lotterNum  myEvalue:(NSString *)myEvalue{
+     [_leftBottomLbl setText:myEvalue];
+      [_bottomLbl setText:[NSString stringWithFormat:@"可换取%@次抽奖机会",lotterNum]];
+}
 #pragma  mark getter
 -(UIImageView *)bgImg{
     if (!_bgImg) {
@@ -86,7 +89,7 @@
     if (!_leftBottomLbl) {
         _leftBottomLbl =[[UILabel alloc]init];
         [_leftBottomLbl setFont:Demon_28_MediumFont];
-        [_leftBottomLbl setText:self.myEvalue];
+       
     }
     return _leftBottomLbl;
 }
@@ -94,7 +97,7 @@
     if (!_bottomLbl) {
         _bottomLbl =[[UILabel alloc]init];
         [_bottomLbl setFont:Demon_13_Font];
-        [_bottomLbl setText:[NSString stringWithFormat:@"可换取%@次抽奖机会",self.lotterNum]];
+      
     }
     return _bottomLbl;
 }

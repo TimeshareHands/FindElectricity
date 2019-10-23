@@ -9,9 +9,14 @@
 #import "FERegisterAccountVC.h"
 #import "FESmsCodeCell.h"
 #import "FEInputCell.h"
+#import "UIButton+Extend.h"
 @interface FERegisterAccountVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong)UITableView *myTableView;
 @property(nonatomic, strong)UIButton *confirmBtn;
+@property(nonatomic, strong)FESmsCodeCell *smsCodeCell;
+@property(nonatomic, strong)FEInputCell *smsInputCell;
+@property(nonatomic, strong)FEInputCell *passwordCell;
+@property(nonatomic, strong)FEInputCell *invCodeCell;
 @end
 
 @implementation FERegisterAccountVC
@@ -57,8 +62,12 @@
     if (!_confirmBtn) {
         _confirmBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_confirmBtn setTitle:@"立即注册" forState:UIControlStateNormal];
-        [_confirmBtn setBackgroundColor:UIColorFromHex(0x61EB9E)];
+        [_confirmBtn setBackgroundColor:UIColorFromHex(0x03bf30)];
         [_confirmBtn.layer setCornerRadius:10];
+        WEAKSELF;
+        [_confirmBtn bk_addEventHandler:^(id sender) {
+            [weakSelf registerAction];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
 }
@@ -73,12 +82,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *kCellIndetify =@"cellIndentify";
-       UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:kCellIndetify];
+       UITableViewCell *cell =[tableView cellForRowAtIndexPath:indexPath];
        if (cell ==nil) {
            if (indexPath.row ==0) {
-               cell =[[FESmsCodeCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+               self.smsCodeCell =[[FESmsCodeCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+               WEAKSELF;
+                [_smsCodeCell.smsBtn bk_addEventHandler:^(id sender) {
+                    [weakSelf yanZMBtnAction];
+                } forControlEvents:UIControlEventTouchUpInside];
+               cell =self.smsCodeCell;
+           }else if(indexPath.row ==1){
+                self.smsInputCell =[[FEInputCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+               [self.smsInputCell.inputTextField setPlaceholder:@"请输入验证码"];
+               cell =self.smsInputCell;
+           }else if(indexPath.row ==2){
+               self.passwordCell =[[FEInputCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+               [self.passwordCell.inputTextField setPlaceholder:@"请输入新密码"];
+               cell =self.passwordCell;
            }else{
-                cell =[[FEInputCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+               self.invCodeCell =[[FEInputCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+               [self.invCodeCell.inputTextField setPlaceholder:@"邀请码（选填）"];
+               cell =self.invCodeCell;
            }
             
        }
@@ -101,16 +125,76 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 100;
 }
-
+#pragma mark -
+#pragma mark 点击事件
+- (void)yanZMBtnAction {
+    
+    if ([self.smsCodeCell.inputTextField.text checkPhoneNumInput]) {
+        [self.smsCodeCell.smsBtn startWithSecondTime:59 title:@"获取验证码"  countDownTitle:@"s" mainColor:UIColorFromHex(0xC9C9C9) countColor:[UIColor lightGrayColor]];
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setObject:self.smsCodeCell.inputTextField.text forKey:@"mobile"];
+        [parameters setObject:@"BIND" forKey:@"type"];
+        [parameters setObject:@"MEM" forKey:@"appType"];
+        [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(SendCodeHttp) parameters:parameters needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
+            
+        } failure:^(NSError * _Nonnull error) {
+        
+        }];
+       
+        
+    } else {
+        [self showHint:@"手机号码不正确"];
+    }
+    
+}
+- (BOOL)checkContent {
+    
+    if (![self.smsCodeCell.inputTextField.text checkPhoneNumInput]) {
+        
+        [self showHint:@"手机号码不正确"];
+        return NO;
+    }
+    
+    
+      if (self.smsInputCell.inputTextField.text.length<3) {
+           
+           [self showHint:@"请输入正确的验证码"];
+           return NO;
+       }
+       if ([self.passwordCell.inputTextField.text containStr:@" "]) {
+            [self showHint:@"密码不能包含空格" ];
+       }
+       
+       if ([self.smsInputCell.inputTextField.text containStr:@" "]) {
+           
+           [self showHint:@"验证码不能包含空格" ];
+           return NO;
+       }
+    
+    
+    return YES;
+}
 #pragma mark 注册
 - (void)registerAction{
-    FERegisterRequestModel *requestModel =[[FERegisterRequestModel alloc]init];
-  
-    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MobileRegisterHttp)  parameters:[requestModel mj_JSONObject] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
-        [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
-        [FEUserOperation manager].token =responseObject[@"data"][@"token"];
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
+    if ([self checkContent]) {
+        FERegisterRequestModel *requestModel =[[FERegisterRequestModel alloc]init];
+        requestModel.verifyCode =self.smsInputCell.inputTextField.text;
+        requestModel.invCode =self.invCodeCell.inputTextField.text;
+        requestModel.pwd =self.passwordCell.inputTextField.text;
+        requestModel.mobile =self.smsCodeCell.inputTextField.text;
+        [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MobileRegisterHttp)  parameters:[requestModel mj_JSONObject] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
+            NSDictionary *data = (NSDictionary *)responseObject;
+             if ([data[@"code"] intValue] == KSuccessCode) {
+             MTSVPDismiss;
+                 [self.navigationController popViewControllerAnimated:YES];
+             }else {
+                  MTSVPShowInfoText(data[@"msg"]);
+             }
+          
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+  }
 }
 @end

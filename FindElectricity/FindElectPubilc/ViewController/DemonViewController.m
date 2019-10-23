@@ -101,7 +101,11 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+- (void)actionBack /**<返回方法*/
+{
+    [self.navigationController setCanGestureBack:NO];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

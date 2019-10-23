@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkEValueDetailHeadView : UIView
 @property(nonatomic,weak)id <FEWorkEValueDetailHeadViewDelegate>localDelegate;
-@property(nonatomic ,copy)NSString *myEvalue;
-@property(nonatomic ,copy)NSString *lotterNum;
+-(void)setlotterNum:(NSString *)lotterNum  myEvalue:(NSString *)myEvalue;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,7 +8,6 @@
 
 #import "FEInputCell.h"
 @interface FEInputCell()
-@property(nonatomic, strong)UITextField *inputTextField;
 @property(nonatomic, strong)UIView *lineView;
 @end
 
@@ -50,7 +49,7 @@
     if (!_inputTextField) {
         _inputTextField =[[UITextField alloc]init];
         [_inputTextField setFont:Demon_15_Font];
-        [_inputTextField setPlaceholder:@"请输入账号"];
+       
     }
     return _inputTextField;
 }

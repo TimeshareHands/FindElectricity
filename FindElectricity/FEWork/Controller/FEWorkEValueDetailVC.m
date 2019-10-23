@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addView];
+    [self.headView setlotterNum:self.lotterNum myEvalue:self.myEvalue];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -62,8 +63,6 @@
     if (!_headView) {
         _headView =[[FEWorkEValueDetailHeadView alloc]init];
         [_headView setLocalDelegate:self];
-        _headView.lotterNum =self.lotterNum;
-        _headView.myEvalue =self.myEvalue;
     }
     return _headView;
 }
