@@ -103,6 +103,13 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
         [_bottomRightBtn setBackgroundColor:UIColorFromHex(0xD34E46)];
         [_bottomRightBtn.titleLabel setFont:Demon_15_Font];
         [_bottomRightBtn.layer setCornerRadius:12.5];
+      
+        WEAKSELF;
+        [_bottomRightBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegate respondsToSelector:@selector(confirmToLinqu)]) {
+                [weakSelf.localDelegate confirmToLinqu];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _bottomRightBtn;
 }
@@ -120,7 +127,13 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
     self.num =num.integerValue;
     self.winNum =winNum.integerValue;
     [self.bottomLeftLabel setText:[NSString stringWithFormat:@"再抽%zd张%@,就可领%@",self.winNum-self.num,title,unitText]];
-  
+    if (self.num != self.winNum) {
+        [self.bottomRightBtn setBackgroundColor:CS_Color_MidGray];
+        [self.bottomRightBtn setUserInteractionEnabled:NO];
+    }else{
+        [self.bottomRightBtn setBackgroundColor:UIColorFromHex(0xD34E46)];
+        [self.bottomRightBtn setUserInteractionEnabled:YES];
+    }
     [self.myCollectionView reloadData];
 }
 #pragma mark - UICollectionView DataSource & Delegate methods

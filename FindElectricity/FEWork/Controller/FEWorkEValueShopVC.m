@@ -10,7 +10,7 @@
 #import "FEWorkGiftCardCell.h"
 #import "FEWorkEvalueGetPrizeChanceCell.h"
 #import "FEWorkGetGiftVC.h"
-@interface FEWorkEValueShopVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkEvalueGetPrizeChanceCellDelegate>
+@interface FEWorkEValueShopVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkEvalueGetPrizeChanceCellDelegate,FEWorkGiftCardCellDelegate>
 @property (nonatomic ,strong)UITableView *myTableView;
 @property (nonatomic, strong)UIView *horizonView;
 @property (nonatomic, strong)UILabel *eValueLbl;
@@ -110,7 +110,8 @@
         }else{
            FEWorkGiftCardCell *giftCell =[[FEWorkGiftCardCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
             NSDictionary *goodDic =self.exChange_goodList[indexPath.row];
-            [giftCell settLeftImg:[NSString stringWithFormat:@"%@",goodDic[@"pic"]] topText:[NSString stringWithFormat:@"%@",goodDic[@"name"]] bottomText:[NSString stringWithFormat:@"%@电量值",goodDic[@"integral"]]];
+            [giftCell settLeftImg:[NSString stringWithFormat:@"%@",goodDic[@"pic"]] topText:[NSString stringWithFormat:@"%@",goodDic[@"name"]] bottomText:[NSString stringWithFormat:@"%@电量值",goodDic[@"integral"]]goodId:[NSString stringWithFormat:@"%@",goodDic[@"id"]]];
+            [giftCell setLocalDelegete:self];
             cell =giftCell;
         }
     }
@@ -212,15 +213,22 @@
  
     [self duifuRequest:goodId];
 }
+
+#pragma mark -FEWorkGiftCardCellDelegate
+-(void)cellGoDuiAction:(NSString *)goodId{
+    [self duifuRequest:goodId];
+}
 #pragma mark -兑付
 -(void)duifuRequest:(NSString *)goodId{
     NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
     [parameter setObject:goodId forKey:@"goodId"];
+    WEAKSELF;
     [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(ExhcangegoodHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
         NSDictionary *data = (NSDictionary *)responseObject;
         if ([data[@"code"] intValue] == KSuccessCode) {
                   MTSVPDismiss;
             MTSVPShowInfoText(@"兑换成功");
+            [weakSelf rquestEvalueShop];
         //        [weakSelf.myTableView reloadData];
               }else {
                   MTSVPShowInfoText(data[@"msg"]);

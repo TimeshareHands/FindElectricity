@@ -35,6 +35,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestPanelData) name:@"loginSuccessNotification" object:nil];
+    [self getUserData];
     [self requestPanelData];
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -185,5 +186,26 @@
        } failure:^(NSError * _Nonnull error) {
           
        }];
+}
+- (void)getUserData {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(UserNewInfoHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf setUserInfo:[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]]];
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+-(void)setUserInfo:(FELoginResponseUserInfoModel*)model{
+    [FEUserOperation manager].userModel =model;
 }
 @end

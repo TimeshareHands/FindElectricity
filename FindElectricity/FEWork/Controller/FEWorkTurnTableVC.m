@@ -11,7 +11,13 @@
 #import "FETWorkGetPrizeIntroduceCell.h"
 #import "FEGetPrizeRosterCell.h"
 #import "FETotalGetPrizeRecordCell.h"
-@interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate>
+#import "FEWorkGetGiftAlertView.h"
+#import "FEWorkGetGiftShareAlertView.h"
+#import "FEGetPrizeShareFriendVC.h"
+#import "FEWorkEValueShopVC.h"
+#import "FEWorkReceiveAddressAlert.h"
+#import "FEAddressViewController.h"
+@interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate>
 @property(nonatomic, strong)UIImageView *bgImageView;
 @property(nonatomic, strong)UIImageView *btnImageView;
 @property(nonatomic, assign)NSInteger circleAngle;
@@ -126,6 +132,7 @@
         _bgImageView =[[UIImageView alloc]init];
         [_bgImageView setImage:[UIImage imageNamed:@"wkc_bigRotaryTable"]];
         _bgImageView.transform = CGAffineTransformMakeRotation(M_PI*3/8);
+        [_bgImageView setUserInteractionEnabled:YES];
     }
     return _bgImageView;
 }
@@ -135,7 +142,7 @@
         _btnImageView =[[UIImageView alloc]init];
         [_btnImageView setImage:[UIImage imageNamed:@"wkc_choujiangAction"]];
         _btnImageView.userInteractionEnabled = YES;
-       UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(btnClick)];
+       UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(requestChouJiang)];
        [_btnImageView addGestureRecognizer:tap];
     }
     return _btnImageView;
@@ -168,6 +175,7 @@
         FEWorkGetPrizeContentCell *contentCell =[[FEWorkGetPrizeContentCell alloc]init];
         NSDictionary *contentDic =self.prize_arr_winlist[indexPath.section];
         [contentCell setUnitText:contentDic[@"unit"] num:contentDic[@"num"] title:contentDic[@"title"] winNum:contentDic[@"winningnum"] pic:contentDic[@"pic"]];
+        [contentCell setLocalDelegate:self];
         [contentCell.layer setCornerRadius:10];
         return contentCell;
         
@@ -297,25 +305,48 @@
     _isAnimation =NO;
     NSLog(@"动画停止");
     NSString *title;
+    UIImage  *topImage =[UIImage imageNamed:@"wkc_ChoujiangGet"];
     if (_circleAngle == 0) {
-        title = @"卫生纸";
+        title = @"抽中卫生纸卡一张";
     }else if (_circleAngle == 45){
-        title = @"积分奖励";
+        title = [NSString stringWithFormat:@"积分奖励%@",self.numInteger];
     }else if (_circleAngle == 90){
+        topImage =[UIImage imageNamed:@"wkc_smile"];
         title = @"谢谢参与!";
     }else if (_circleAngle == 135){
-        title = @"神秘礼物";
+        title = @"抽中神秘礼物卡一张";
     }else if (_circleAngle == 180){
-        title = @"电动车";
+        title = @"抽中电动车卡一张";
     }else if (_circleAngle == 225){
-        title = @"手机";
+        title = @"抽中手机卡一张";
     }else if (_circleAngle == 270){
-        title = @"洗洁精卡";
+        title = @"抽中洗洁精卡一张";
     }else if (_circleAngle == 315){
-        title = @"食用油卡";
+        title = @"抽中食用油卡一张";
     }
-
+    FEWorkGetGiftAlertView *gitAlertVIew =[[FEWorkGetGiftAlertView alloc]init];
+    [gitAlertVIew setImage:topImage andTopText:title];
+    [gitAlertVIew setLocalDelegate:self];
+    [gitAlertVIew show];
 }
+#pragma mark -FEWorkGetGiftAlertViewDelegate
+-(void)continueChouJiang{
+    [self requestChouJiang];
+}
+
+#pragma mark -FETWorkGetPrizeIntroduceCellDelegate
+
+-(void)getChoujiangchange{
+    FEGetPrizeShareFriendVC *shareVC =[[FEGetPrizeShareFriendVC alloc]init];
+    [self.navigationController pushViewController:shareVC animated:YES];
+}
+
+-(void)duihuanEvalue{
+    FEWorkEValueShopVC *shopVC =[[FEWorkEValueShopVC alloc]init];
+    [self.navigationController pushViewController:shopVC animated:YES];
+}
+
+
 #pragma mark -抽奖页面当前数据
 -(void)requestCurretData{
     NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
@@ -345,8 +376,8 @@
            NSDictionary *data = (NSDictionary *)responseObject;
           if ([data[@"code"] intValue] == KSuccessCode) {
                     MTSVPDismiss;
-              self.goodId =[NSString stringWithFormat:@"%@",data[@"yes"]];
-              self.numInteger =[NSString stringWithFormat:@"%@",data[@"num"]];
+              self.goodId =[NSString stringWithFormat:@"%@",data[@"data"][@"yes"]];
+              self.numInteger =[NSString stringWithFormat:@"%@",data[@"data"][@"num"]];
               [self btnClick];
             }else {
                 MTSVPShowInfoText(data[@"msg"]);
@@ -385,5 +416,19 @@
        } failure:^(NSError * _Nonnull error) {
            
        }];
+}
+#pragma mark -FEWorkGetPrizeContentCellDelegate
+-(void)confirmToLinqu{
+    FEWorkReceiveAddressAlert *gitAlertVIew =[[FEWorkReceiveAddressAlert alloc]init];
+    [gitAlertVIew setLocalDelegate:self];
+    [gitAlertVIew show];
+}
+#pragma mark -FEWorkReceiveAddressAlertDelegate
+-(void)confirmlinqu{
+    [self requestlingqu];
+}
+-(void)gotoAddress{
+    FEAddressViewController *addressVC =[[FEAddressViewController alloc]init];
+    [self.navigationController pushViewController:addressVC animated:YES];
 }
 @end

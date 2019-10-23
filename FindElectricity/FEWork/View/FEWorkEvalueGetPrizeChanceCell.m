@@ -34,6 +34,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self =[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self addView];
+         self.goodId =@"1";
     }
     return self;
 }
@@ -299,13 +300,14 @@
         [_confirmBtn setBackgroundColor:UIColorFromHex(0x4EC324)];
         [_confirmBtn.layer setCornerRadius:21];
         [_confirmBtn.titleLabel setFont:Demon_16_Font];
-        WEAKSELF;
-        [_confirmBtn bk_addEventHandler:^(id sender) {
-            if ([weakSelf.localDelegate respondsToSelector:@selector(goDuiAction:)]) {
-                [weakSelf.localDelegate goDuiAction:self.goodId];
-            }
-        } forControlEvents:UIControlEventTouchUpInside];
+       WEAKSELF;
+       [_confirmBtn bk_addEventHandler:^(id sender) {
+           if ([weakSelf.localDelegate respondsToSelector:@selector(goDuiAction:)]) {
+               [weakSelf.localDelegate goDuiAction:self.goodId];
+           }
+       } forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
 }
+
 @end

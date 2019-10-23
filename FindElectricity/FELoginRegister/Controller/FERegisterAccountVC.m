@@ -135,7 +135,7 @@
         
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setObject:self.smsCodeCell.inputTextField.text forKey:@"mobile"];
-        [parameters setObject:@"BIND" forKey:@"type"];
+        [parameters setObject:@"REGISTER" forKey:@"type"];
         [parameters setObject:@"MEM" forKey:@"appType"];
         [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(SendCodeHttp) parameters:parameters needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
             

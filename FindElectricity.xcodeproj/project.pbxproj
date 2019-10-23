@@ -170,6 +170,7 @@
 		4EF155F6235D9FCA0037D8D4 /* UIView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155F4235D9FCA0037D8D4 /* UIView+Extend.m */; };
 		4EF155FE235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155FB235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m */; };
 		4EF155FF235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155FC235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m */; };
+		4EF156742360A9980037D8D4 /* FEWorkReceiveAddressAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF156732360A9980037D8D4 /* FEWorkReceiveAddressAlert.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
 		CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E94234F1DCB00632F7B /* SZTextView.m */; };
 		CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E95234F1DCB00632F7B /* KLCoverView.m */; };
@@ -586,6 +587,8 @@
 		4EF155FB235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGiftCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		4EF155FC235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGiftCollectionViewCell.m; sourceTree = "<group>"; };
 		4EF155FD235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGiftCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		4EF156722360A9980037D8D4 /* FEWorkReceiveAddressAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkReceiveAddressAlert.h; sourceTree = "<group>"; };
+		4EF156732360A9980037D8D4 /* FEWorkReceiveAddressAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkReceiveAddressAlert.m; sourceTree = "<group>"; };
 		69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.release.xcconfig"; sourceTree = "<group>"; };
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1112,6 +1115,8 @@
 				4EF155E0235C40200037D8D4 /* FESignInActAlert.m */,
 				4EF155E2235C6D340037D8D4 /* FEWorkShareBottomView.h */,
 				4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */,
+				4EF156722360A9980037D8D4 /* FEWorkReceiveAddressAlert.h */,
+				4EF156732360A9980037D8D4 /* FEWorkReceiveAddressAlert.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1995,6 +2000,7 @@
 				4E02F457234F228600308D99 /* SDImageGIFCoder.m in Sources */,
 				CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */,
 				2035300C2352CED50070A2F0 /* FEMapsModel.m in Sources */,
+				4EF156742360A9980037D8D4 /* FEWorkReceiveAddressAlert.m in Sources */,
 				4E02F43C234F228600308D99 /* SDAnimatedImageView+WebCache.m in Sources */,
 				4E02F44B234F228600308D99 /* SDMemoryCache.m in Sources */,
 				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,

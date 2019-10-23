@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FEWorkGetGiftAlertView : UIView
 @property (nonatomic, weak)id <FEWorkGetGiftAlertViewDelegate>localDelegate;
 @property (copy, nonatomic) void(^didClick)(FEWorkGetGiftAlertView *,NSInteger);
+-(void)setImage:(UIImage *)centerImage andTopText:(NSString *)topText;
 - (void)show;
 - (void)hidden;
 @end

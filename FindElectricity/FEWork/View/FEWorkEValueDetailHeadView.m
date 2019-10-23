@@ -73,6 +73,7 @@
     if (!_bgImg) {
         _bgImg =[[UIImageView alloc]init];
         [_bgImg setImage:[UIImage imageNamed:@"wkm_electricityValue"]];
+        [_bgImg setUserInteractionEnabled:YES];
     }
     return _bgImg;
 }
