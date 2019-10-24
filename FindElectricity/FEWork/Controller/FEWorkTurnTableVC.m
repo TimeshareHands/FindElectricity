@@ -17,6 +17,7 @@
 #import "FEWorkEValueShopVC.h"
 #import "FEWorkReceiveAddressAlert.h"
 #import "FEAddressViewController.h"
+#import "FELauchShow.h"
 @interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate>
 @property(nonatomic, strong)UIImageView *bgImageView;
 @property(nonatomic, strong)UIImageView *btnImageView;
@@ -34,6 +35,7 @@
 @property(nonatomic, strong)NSArray *self_receive_good_list;//我的获奖名单
 @property(nonatomic, copy)NSString *goodId;//商品号
 @property(nonatomic, copy)NSString *numInteger;//积分
+@property(nonatomic, strong)FELauchShow *lauchShow;
 @end
 
 @implementation FEWorkTurnTableVC
@@ -240,6 +242,21 @@
     }
     return 0.1;
 }
+- (FELauchShow *)lauchShow {
+    if (!_lauchShow) {
+        _lauchShow = [FELauchShow createView];
+        _lauchShow.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        WEAKSELF;
+        _lauchShow.didClick = ^(FELauchShow * _Nonnull lau, NSInteger tag) {
+            [weakSelf.lauchShow hidden];
+            if (tag==1) {
+                //去抽奖
+                [weakSelf requestChouJiang];
+            }
+        };
+    }
+    return _lauchShow;
+}
 #pragma mark 点击Go按钮
 -(void)btnClick{
     
@@ -361,6 +378,7 @@
            self.prize_arr_winlist =data[@"data"][@"prize_arr_win"];
            self.self_receive_good_list =data[@"data"][@"self_receive_good_list"];
            [self.myTableView reloadData];
+           [self requestDayDaySong];
          }else {
              MTSVPShowInfoText(data[@"msg"]);
          }
@@ -409,7 +427,7 @@
            NSDictionary *data = (NSDictionary *)responseObject;
           if ([data[@"code"] intValue] == KSuccessCode) {
                     MTSVPDismiss;
-             
+              [self.lauchShow show];
             }else {
                 MTSVPShowInfoText(data[@"msg"]);
             }
