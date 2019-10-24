@@ -28,9 +28,9 @@ target 'FindElectricity' do
    pod 'IQKeyboardManager'
    
    # Mantle 增强 https://github.com/hilen/MantleExtension
-   pod 'Mantle'
-   pod 'MTLManagedObjectAdapter', '~> 1.0.3'
-   pod "MagicalRecord"
+#   pod 'Mantle'
+#   pod 'MTLManagedObjectAdapter', '~> 1.0.3'
+#   pod "MagicalRecord"
    
    pod "Qiniu", "~> 7.1"
    pod 'BlocksKit'
