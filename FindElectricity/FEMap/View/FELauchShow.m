@@ -7,7 +7,10 @@
 //
 
 #import "FELauchShow.h"
+@interface FELauchShow()
+@property (weak, nonatomic) IBOutlet UILabel *tip;
 
+@end
 @implementation FELauchShow
 
 - (void)show {
@@ -16,7 +19,29 @@
 }
 
 - (void)hidden {
-    [self setHidden:YES];
+    [self removeFromSuperview];
+}
+
+- (void)getShowData {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(WelFare)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSDictionary *data = (NSDictionary *)responseObject;
+            MYLog(@"%@",data);
+            if ([data[@"code"] intValue] == KSuccessCode) {
+                MTSVPDismiss;
+                weakSelf.tip.text = data[@"msg"];
+                [weakSelf show];
+            }else {
+                MTSVPShowInfoText(data[@"msg"]);
+            }
+            
+        });
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 /*

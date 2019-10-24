@@ -14,13 +14,13 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - AMap3DMap-NO-IDFA (6.9.0):
+  - AMap3DMap-NO-IDFA (7.0.0):
     - AMapFoundation-NO-IDFA (~> 1.5)
   - AMapFoundation-NO-IDFA (1.5.7)
   - AMapLocation-NO-IDFA (2.6.3):
     - AMapFoundation-NO-IDFA (~> 1.4)
-  - AMapNavi-NO-IDFA (6.9.1):
-    - AMap3DMap-NO-IDFA (~> 6.7)
+  - AMapNavi-NO-IDFA (7.0.0):
+    - AMap3DMap-NO-IDFA (~> 7.0)
     - AMapFoundation-NO-IDFA (~> 1.5)
   - AMapSearch-NO-IDFA (6.9.0):
     - AMapFoundation-NO-IDFA (~> 1.4)
@@ -40,20 +40,9 @@ PODS:
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - IQKeyboardManager (6.5.0)
-  - MagicalRecord (2.3.2):
-    - MagicalRecord/Core (= 2.3.2)
-  - MagicalRecord/Core (2.3.2)
-  - Mantle (2.1.0):
-    - Mantle/extobjc (= 2.1.0)
-  - Mantle/extobjc (2.1.0)
   - Masonry (1.1.0)
   - MJExtension (3.2.1)
   - MJRefresh (3.2.0)
-  - MTLManagedObjectAdapter (1.0.3):
-    - Mantle (~> 2.0)
-    - MTLManagedObjectAdapter/extobjc (= 1.0.3)
-  - MTLManagedObjectAdapter/extobjc (1.0.3):
-    - Mantle (~> 2.0)
   - Qiniu (7.2.6)
   - SVProgressHUD (2.2.5)
 
@@ -65,17 +54,14 @@ DEPENDENCIES:
   - AMapSearch-NO-IDFA
   - BlocksKit
   - IQKeyboardManager
-  - MagicalRecord
-  - Mantle
   - Masonry
   - MJExtension
   - MJRefresh
-  - MTLManagedObjectAdapter (~> 1.0.3)
   - Qiniu (~> 7.1)
   - SVProgressHUD
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
     - AMap3DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
@@ -84,33 +70,27 @@ SPEC REPOS:
     - AMapSearch-NO-IDFA
     - BlocksKit
     - IQKeyboardManager
-    - MagicalRecord
-    - Mantle
     - Masonry
     - MJExtension
     - MJRefresh
-    - MTLManagedObjectAdapter
     - Qiniu
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  AMap3DMap-NO-IDFA: ffb000a25913efcdc5d979faa54a78655965bc23
+  AMap3DMap-NO-IDFA: e8a2bd7759f04c9650c3cfc9c4731ad23f14b2e3
   AMapFoundation-NO-IDFA: 9088085827c831811bb0fd3afd96b99963a7cf71
   AMapLocation-NO-IDFA: f22a480573aa18c521946f13d49521f042a7dca6
-  AMapNavi-NO-IDFA: e31341c7af48f751b41a0579e7a5aed8ff19836f
+  AMapNavi-NO-IDFA: ca5e12484c6c3284a9e4161c2ff771efcfcf5741
   AMapSearch-NO-IDFA: 264999e6c149383a8f164c2fe49b51513e93d674
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
-  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
-  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
-  MTLManagedObjectAdapter: 631a53432675dcf03a9d90624afb3cececf54631
   Qiniu: 9d1f20dcc348919972b4ee1b1272f9b9d4a7e69e
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: a4799cd6cc0e0ae53a55d008651f1bbcfdcc339c
+PODFILE CHECKSUM: 22e0bad97e641fe1c66ce7c2293a846f228b377b
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

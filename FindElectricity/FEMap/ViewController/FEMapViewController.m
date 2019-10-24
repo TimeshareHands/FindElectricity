@@ -32,7 +32,7 @@
 @property (nonatomic, strong) FECycleMap *mapView;
 @property (nonatomic, strong) UIButton *chouJBtn;
 @property (nonatomic, strong) UIButton *shaiXuanBtn;
-@property (weak, nonatomic) FELauchShow *lauchShow;
+@property (strong, nonatomic) FELauchShow *lauchShow;
 @property (strong, nonatomic) FEMapCategView *categView;
 @property (strong, nonatomic) FEMapWeather *weatherView;
 @property (strong, nonatomic) FEMapNavigiItem *naviRightItem;
@@ -211,8 +211,9 @@
     [super viewWillAppear:animated];
     if (!_didShow) {
         _didShow = YES;
-        [[self lauchShow] show];
+        [[self lauchShow] getShowData];
     }
+    
     [self getIndexData];
 }
 
@@ -607,9 +608,9 @@
             NSDictionary *data = (NSDictionary *)responseObject;
             if ([data[@"code"] intValue] == KSuccessCode) {
                 MTSVPDismiss;
-                [self.chouJBtn setHidden:![data[@"data"][@"is_show_redWallet"] boolValue]];
+                [weakSelf.chouJBtn setHidden:![data[@"data"][@"is_show_redWallet"] boolValue]];
                 NSInteger num = [data[@"data"][@"notRead"] integerValue];
-                [self.naviRightItem notReadNum:num];
+                [weakSelf.naviRightItem notReadNum:num];
             }else {
                 MTSVPShowInfoText(data[@"msg"]);
             }
@@ -620,6 +621,8 @@
         
     }];
 }
+
+
 
 - (void)dealloc
 {
