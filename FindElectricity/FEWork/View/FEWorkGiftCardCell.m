@@ -12,7 +12,7 @@
 @property(nonatomic, strong)UILabel *topLbl;
 @property(nonatomic, strong)UILabel *bottomLbl;
 @property(nonatomic, strong)UIButton *rightBtn;
-
+@property(nonatomic, copy)NSString *goodId;
 @end
 
 @implementation FEWorkGiftCardCell
@@ -56,10 +56,11 @@
         make.height.mas_equalTo(30);
     }];
 }
--(void)settLeftImg:(NSString *)leftImg topText:(NSString *)topText bottomText:(NSString *)bottomText{
-    [self.leftImg setImage:[UIImage imageNamed:leftImg]];
+-(void)settLeftImg:(NSString *)leftImg topText:(NSString *)topText bottomText:(NSString *)bottomText goodId:(NSString *)goodId{
+    [self.leftImg setImageWithURL:[NSURL URLWithString:leftImg]];
     [self.topLbl setText:topText];
     [self.bottomLbl setText:bottomText];
+    self.goodId =goodId;
 }
 #pragma mark getter
 - (UIImageView *)leftImg{
@@ -93,6 +94,12 @@
         [_rightBtn.titleLabel setFont:Demon_14_Font];
         [_rightBtn setBackgroundColor:UIColorFromHex(0x4ec324)];
         [_rightBtn.layer setCornerRadius:15];
+        WEAKSELF;
+        [_rightBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegete respondsToSelector:@selector(cellGoDuiAction:)]) {
+                [self.localDelegete cellGoDuiAction:self.goodId];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
 }

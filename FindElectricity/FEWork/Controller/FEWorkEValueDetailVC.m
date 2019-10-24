@@ -9,6 +9,7 @@
 #import "FEWorkEValueDetailVC.h"
 #import "FEWorkEValueDetailHeadView.h"
 #import "FEWorkEvalueCell.h"
+#import "FEWorkEValueShopVC.h"
 @interface FEWorkEValueDetailVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkEValueDetailHeadViewDelegate>
 @property (nonatomic, strong) FEWorkEValueDetailHeadView *headView;
 @property (nonatomic, strong) UITableView *myTableView;
@@ -20,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addView];
+    [self.headView setlotterNum:self.lotterNum myEvalue:self.myEvalue];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -61,8 +63,6 @@
     if (!_headView) {
         _headView =[[FEWorkEValueDetailHeadView alloc]init];
         [_headView setLocalDelegate:self];
-        _headView.lotterNum =self.lotterNum;
-        _headView.myEvalue =self.myEvalue;
     }
     return _headView;
 }
@@ -85,7 +85,7 @@
          
             NSArray *indexArr =self.titleArr.firstObject;
             NSDictionary *dic =[NSDictionary dictionaryWithDictionary:indexArr[indexPath.row-1]];
-            [evalueCell setleftTopText:[NSString stringWithFormat:@"%@",dic[@"type"]] leftBottomText:[NSString stringWithFormat:@"%@",dic[@"desc"]] rightTopText:[NSString stringWithFormat:@"%@",dic[@"num"]] rightBottomText: [NSString stringWithFormat:@"%@",dic[@"ctime"]]];
+            [evalueCell setleftTopText:[NSString stringWithFormat:@"%@",dic[@"type"]] leftBottomText:[NSString stringWithFormat:@"%@",dic[@"desc"]] rightTopText:[NSString stringWithFormat:@"+%@",dic[@"num"]] rightBottomText: [NSString stringWithFormat:@"%@",dic[@"ctime"]]];
         }
          cell =evalueCell;
     }
@@ -153,6 +153,7 @@
 }
 #pragma mark -FEWorkEValueDetailHeadViewDelegate
 -(void)goDuiFUAction{
-    
+    FEWorkEValueShopVC *shopVC =[[FEWorkEValueShopVC alloc]init];
+    [self.navigationController pushViewController:shopVC animated:YES];
 }
 @end

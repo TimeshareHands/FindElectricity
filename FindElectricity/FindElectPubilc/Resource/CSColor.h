@@ -19,6 +19,8 @@
 
 #define UIColorFromRGB(rgbValue) ([UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0])
 
+//主题色
+#define CS_Color_BackZhuti       UIColorFromHex(0xfa6f65)
 //背景灰
 #define CS_Color_BackGroundGray  UIColorFromHex(0xEFEFEF)
 

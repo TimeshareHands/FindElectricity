@@ -7,10 +7,9 @@
 //
 
 #import "FESmsCodeCell.h"
+#import "UIButton+Extend.h"
 @interface FESmsCodeCell()
-@property(nonatomic, strong)UITextField *inputTextField;
-@property(nonatomic, strong)UIView *lineView;
-@property(nonatomic, strong)UIButton *smsBtn;
+
 @end
 @implementation FESmsCodeCell
 

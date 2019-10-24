@@ -77,12 +77,8 @@
         [_confirmBtn setTitle:@"点击查看" forState:UIControlStateNormal];
         [_confirmBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
         [_confirmBtn.titleLabel setFont:Demon_15_Font];
-        WEAKSELF
-        [_confirmBtn bk_addEventHandler:^(id sender) {
-            if ([weakSelf.localDelegate respondsToSelector:@selector(findRecord)]) {
-                [weakSelf.localDelegate findRecord];
-            }
-        } forControlEvents:UIControlEventTouchUpInside];
+     
+        [_confirmBtn addTarget:self action:@selector(findRecorde) forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
 }
@@ -110,5 +106,9 @@
     }
     return _lb3;
 }
-
+-(void)findRecorde{
+    if ([self.localDelegate respondsToSelector:@selector(findRecord)]) {
+        [self.localDelegate findRecord];
+    }
+}
 @end

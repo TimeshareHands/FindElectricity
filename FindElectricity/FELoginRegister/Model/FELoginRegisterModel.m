@@ -34,3 +34,9 @@
 
 
 @end
+
+@implementation FEWXBindReuestModel
+
+
+
+@end

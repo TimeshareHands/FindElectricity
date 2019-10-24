@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEInputCell : UITableViewCell
-
+@property(nonatomic, strong)UITextField *inputTextField;
 @end
 
 NS_ASSUME_NONNULL_END

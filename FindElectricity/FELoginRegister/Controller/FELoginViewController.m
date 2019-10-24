@@ -10,7 +10,7 @@
 #import "FERegisterAccountVC.h"
 #import "FEFindPasswordVC.h"
 #import <UMShare/UMShare.h>
-
+#import "FEWxBindPhoneVC.h"
 @interface FELoginViewController ()
 @property(nonatomic, strong)UIImageView *topImgLogo;
 @property(nonatomic, strong)UILabel *topLbl;
@@ -318,10 +318,17 @@
      }
      WEAKSELF;
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MobileLoginHttp)  parameters:[requestModel mj_JSONObject] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
-        [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
-        [FEUserOperation manager].token =responseObject[@"data"][@"token"];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
+        NSDictionary *data = (NSDictionary *)responseObject;
+              if ([data[@"code"] intValue] == KSuccessCode) {
+                        MTSVPDismiss;
+                 [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
+                 [FEUserOperation manager].token =responseObject[@"data"][@"token"];
+                 [weakSelf.navigationController popViewControllerAnimated:YES];
+                 [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
+                }else {
+                    MTSVPShowInfoText(data[@"msg"]);
+                }
+        
     } failure:^(NSError * _Nonnull error) {
         if ([weakSelf.localDelegate respondsToSelector:@selector(loginFailed:)]) {
             [weakSelf.localDelegate loginFailed:error];
@@ -359,10 +366,20 @@
      [parameter setValue:openid forKey:@"openid"];
     WEAKSELF;
     [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(WXLoginHttp) parameters:parameter needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
+         NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+        MTSVPDismiss;
         [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
-           [FEUserOperation manager].token =responseObject[@"data"][@"token"];
-           [weakSelf.navigationController popViewControllerAnimated:YES];
+        [FEUserOperation manager].token =responseObject[@"data"][@"token"];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
+        }else {
+            FEWxBindPhoneVC *bindPhoneVC =[[FEWxBindPhoneVC alloc]init];
+            bindPhoneVC.openid = openid;
+            [weakSelf.navigationController pushViewController:bindPhoneVC animated:YES];
+        }
+     
+      
     } failure:^(NSError * _Nonnull error) {
        
     }];

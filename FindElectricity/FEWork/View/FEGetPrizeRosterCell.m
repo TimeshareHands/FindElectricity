@@ -72,12 +72,13 @@
 }
 #pragma mark -tableViewdelegate &&tableViewdatasource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.listArr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell =[[UITableViewCell alloc]init];
     UILabel *label =[[UILabel alloc]init];
-    [label setText:@"江苏 李** ，手机号 186****2543  领取 卫生纸一提"];
+    NSDictionary *arrDic =self.listArr[indexPath.row];
+    [label setText:[NSString stringWithFormat:@"%@,手机号：%@,领取：%@",arrDic[@"nickName"],arrDic[@"mobile"],arrDic[@"goodname"]]];
     [label setFont:Demon_10_Font];
     [label setTextAlignment:NSTextAlignmentCenter];
     [cell addSubview:label];
