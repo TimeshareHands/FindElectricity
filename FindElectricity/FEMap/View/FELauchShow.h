@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) void(^didClick)(FELauchShow *,NSInteger);
 - (void)show;
 - (void)hidden;
+- (void)getShowData;
 @end
 
 NS_ASSUME_NONNULL_END
