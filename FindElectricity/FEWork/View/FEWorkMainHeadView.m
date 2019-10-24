@@ -352,6 +352,10 @@
         [_tm_ShowHaveEvalueLbl setText:@"520"];
         [_tm_ShowHaveEvalueLbl setFont:Demon_15_Font];
         [_tm_ShowHaveEvalueLbl setUserInteractionEnabled:YES];
+        WEAKSELF;
+        [_tm_ShowHaveEvalueLbl bk_whenTapped:^{
+            [weakSelf findElect];
+        }];
         [_tm_ShowHaveEvalueLbl setTextAlignment:NSTextAlignmentCenter];
     }
     return _tm_ShowHaveEvalueLbl;
@@ -362,6 +366,10 @@
         [_tm_HaveEvalueLbl setText:@"我的电量值"];
         [_tm_HaveEvalueLbl setFont:Demon_14_Font];
         [_tm_HaveEvalueLbl setUserInteractionEnabled:YES];
+        WEAKSELF;
+       [_tm_HaveEvalueLbl bk_whenTapped:^{
+           [weakSelf findElect];
+       }];
         [_tm_HaveEvalueLbl setTextAlignment:NSTextAlignmentCenter];
     }
     return _tm_HaveEvalueLbl;
@@ -372,6 +380,10 @@
         [_tm_ShowGiveLbl setText:@"0"];
         [_tm_ShowGiveLbl setFont:Demon_15_Font];
           [_tm_ShowGiveLbl setUserInteractionEnabled:YES];
+        WEAKSELF;
+          [_tm_ShowGiveLbl bk_whenTapped:^{
+              [weakSelf findElect];
+          }];
          [_tm_ShowGiveLbl setTextAlignment:NSTextAlignmentCenter];
     }
     return _tm_ShowGiveLbl;
@@ -382,6 +394,10 @@
         [_tm_GiveLbl setFont:Demon_14_Font];
          [_tm_GiveLbl setTextAlignment:NSTextAlignmentCenter];
          [_tm_GiveLbl setUserInteractionEnabled:YES];
+        WEAKSELF;
+         [_tm_GiveLbl bk_whenTapped:^{
+             [weakSelf findElect];
+         }];
         [_tm_GiveLbl setText:@"今天获得电量值"];
     }
     return _tm_GiveLbl;
@@ -393,7 +409,10 @@
         [_tm_ShowChouCountLbl setTextAlignment:NSTextAlignmentCenter];
         [_tm_ShowChouCountLbl setUserInteractionEnabled:YES];
         [_tm_ShowChouCountLbl setFont:Demon_15_Font];
-        
+        WEAKSELF;
+        [_tm_ShowChouCountLbl bk_whenTapped:^{
+            [weakSelf findElect];
+        }];
     }
     return _tm_ShowChouCountLbl;
 }
@@ -404,6 +423,10 @@
         [_tm_chouCountLbl setFont:Demon_15_Font];
          [_tm_chouCountLbl setUserInteractionEnabled:YES];
         [_tm_chouCountLbl setTextAlignment:NSTextAlignmentCenter];
+        WEAKSELF;
+        [_tm_chouCountLbl bk_whenTapped:^{
+            [weakSelf findElect];
+        }];
     }
     return _tm_chouCountLbl;
 }

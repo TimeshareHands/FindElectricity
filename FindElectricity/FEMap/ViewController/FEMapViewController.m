@@ -226,7 +226,7 @@
             [weakSelf.lauchShow hidden];
             if (tag==1) {
                 //去抽奖
-                [self goChouJiang];
+                [weakSelf goChouJiang];
             }
         };
     }

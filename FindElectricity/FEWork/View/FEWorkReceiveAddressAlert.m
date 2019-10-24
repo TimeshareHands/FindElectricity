@@ -151,6 +151,8 @@
 -(UIView *)shadowView{
     if (!_shadowView) {
         _shadowView =[[UIView alloc]init];
+        _shadowView.backgroundColor =[UIColor blackColor];
+        [_shadowView setAlpha:0.1];
     }
     return _shadowView;
 }

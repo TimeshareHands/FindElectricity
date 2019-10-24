@@ -88,8 +88,8 @@
 -(UIView *)shadowView{
     if (!_shadowView) {
         _shadowView =[[UIView alloc]init];
-        _shadowView.backgroundColor =UIColorFromHex(0x8E8E8E);
-        [_shadowView setAlpha:0.6];
+        _shadowView.backgroundColor =[UIColor blackColor];
+        [_shadowView setAlpha:0.1];
     }
     return _shadowView;
 }

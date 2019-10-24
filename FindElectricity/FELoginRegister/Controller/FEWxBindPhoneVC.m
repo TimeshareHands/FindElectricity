@@ -145,7 +145,7 @@
     
     [self.phnoeField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15);
-        make.top.mas_equalTo(SafeAreaBottomHeight +30);
+        make.top.mas_equalTo(SafeAreaBottomHeight +10);
         make.height.mas_equalTo(30);
         make.right.mas_equalTo(-15);
     }];
