@@ -134,6 +134,10 @@
     [self getDataOfPage:(++_pageNo) pageSize:20];
 }
 
+- (void)dealloc {
+    MYLog(@"ddd");
+}
+
 /*
 #pragma mark - Navigation
 
