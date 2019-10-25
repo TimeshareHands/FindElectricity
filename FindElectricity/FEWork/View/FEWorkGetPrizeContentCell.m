@@ -41,31 +41,31 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
 #pragma mark -约束适配
 -(void)makeUpConstraint{
     [self.whiteView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
-        make.right.mas_equalTo(-10);
+        make.left.mas_equalTo(WIDTH_LY(10));
+        make.right.mas_equalTo(WIDTH_LY(-10));
         make.top.mas_equalTo(self);
-        make.bottom.mas_equalTo(-5);
+        make.bottom.mas_equalTo(WIDTH_LY(-5));
     }];
     [self.myCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(10);
+        make.left.mas_equalTo(WIDTH_LY(10));
         make.width.mas_equalTo(200);
-        make.top.mas_equalTo(20);
+        make.top.mas_equalTo(WIDTH_LY(20));
         make.height.mas_equalTo(200);
     }];
     [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(WIDTH_LY(130));
-        make.right.mas_equalTo(-10);
+        make.right.mas_equalTo(WIDTH_LY(-10));
         make.centerY.mas_equalTo(self.myCollectionView);
-        make.height.mas_equalTo(160);
+        make.height.mas_equalTo(WIDTH_LY(160));
     }];
     [self.bottomLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(5);
-        make.top.mas_equalTo(self.myCollectionView.mas_bottom).offset(20);
+        make.left.mas_equalTo(WIDTH_LY(5));
+        make.top.mas_equalTo(self.myCollectionView.mas_bottom).offset((20));
     }];
     [self.bottomRightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.rightImageView);
-        make.width.mas_equalTo(60);
-        make.height.mas_equalTo(25);
+        make.width.mas_equalTo(WIDTH_LY(60));
+        make.height.mas_equalTo(WIDTH_LY(25));
         make.centerY.mas_equalTo(self.bottomLeftLabel);
     }];
     
@@ -126,8 +126,12 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
     [self.rightImageView setImageWithURL:[NSURL URLWithString:pic]];
     self.num =num.integerValue;
     self.winNum =winNum.integerValue;
-    [self.bottomLeftLabel setText:[NSString stringWithFormat:@"再抽%zd张%@,就可领%@",self.winNum-self.num,title,unitText]];
-    if (self.num != self.winNum) {
+     [self.bottomLeftLabel setText:[NSString stringWithFormat:@"再抽%zd张%@,就可领%@",self.num,title,unitText]];
+    if (self.num>=self.winNum) {
+         [self.bottomLeftLabel setText:[NSString stringWithFormat:@"再抽%@张%@,就可领%@",@"0",title,unitText]];
+    }
+   
+    if (self.num <self.winNum) {
         [self.bottomRightBtn setBackgroundColor:CS_Color_MidGray];
         [self.bottomRightBtn setUserInteractionEnabled:NO];
     }else{
@@ -146,9 +150,7 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FEWorkGiftCollectionViewCell *cell = (FEWorkGiftCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:ItemIdentifier forIndexPath:indexPath];
-    if (self.num == self.winNum ) {
-       [cell setImage:[UIImage imageNamed:@"wkc_giftCard"]];
-    }else if(indexPath.row<self.num){
+     if(indexPath.row<self.num){
         [cell setImage:[UIImage imageNamed:@"wkc_giftCard"]];
     }
     return cell;

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DemonViewController : UIViewController
+
 - (void)back;
 - (void)setNavgaTitle:(NSString *)title;
 - (void)leftBtnWithIcon:(NSString *)icon target:(id)target action:(SEL)action;

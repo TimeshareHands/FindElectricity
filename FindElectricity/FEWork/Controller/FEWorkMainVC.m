@@ -154,14 +154,15 @@
 
 }
 -(void)signInAction:(NSInteger)num{//签到
-   
+    WEAKSELF;
     NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(SignHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
          NSDictionary *data = (NSDictionary *)responseObject;
          if ([data[@"code"] intValue] == KSuccessCode) {
             MTSVPDismiss;
-           [self.signInAlertV setEvalue:[NSString stringWithFormat:@"%zd",num]];
-           [self.signInAlertV show];
+           [weakSelf.signInAlertV setEvalue:[NSString stringWithFormat:@"%zd",num]];
+           [weakSelf.signInAlertV show];
+            [weakSelf requestPanelData];
         }else {
             MTSVPShowInfoText(data[@"msg"]);
         }

@@ -386,4 +386,7 @@
    
     
 }
+-(void)back{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 @end

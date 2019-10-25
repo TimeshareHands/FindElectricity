@@ -150,6 +150,6 @@
 - (void)copyClick {
     UIPasteboard *pab = [UIPasteboard generalPasteboard];
     pab.string = self.lb3.text;
-   
+    MTSVPShowInfoText(@"复制成功");
 }
 @end

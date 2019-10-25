@@ -389,14 +389,16 @@
 
 #pragma mark -抽奖
 -(void)requestChouJiang{
+    WEAKSELF;
     NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
        [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(LuckyDrawHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
            NSDictionary *data = (NSDictionary *)responseObject;
           if ([data[@"code"] intValue] == KSuccessCode) {
                     MTSVPDismiss;
-              self.goodId =[NSString stringWithFormat:@"%@",data[@"data"][@"yes"]];
-              self.numInteger =[NSString stringWithFormat:@"%@",data[@"data"][@"num"]];
-              [self btnClick];
+              weakSelf.goodId =[NSString stringWithFormat:@"%@",data[@"data"][@"yes"]];
+              weakSelf.numInteger =[NSString stringWithFormat:@"%@",data[@"data"][@"num"]];
+              [weakSelf btnClick];
+              [weakSelf requestCurretData];
             }else {
                 MTSVPShowInfoText(data[@"msg"]);
             }

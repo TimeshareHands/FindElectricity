@@ -65,7 +65,9 @@ static AFHTTPSessionManager *afnManager = nil;
             NSDictionary *dic = [self dictionaryWithJsonString:decodeStr];
             //判断登录是否失效
             if ([dic[@"code"] intValue] == 4010) {
-                [self goLogin];
+                
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"doLoginNotification" object:nil];
+//                [self goLogin];
             }
             success(dic);
         }else {
