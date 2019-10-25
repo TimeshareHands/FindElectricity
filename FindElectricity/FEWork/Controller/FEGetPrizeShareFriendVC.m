@@ -10,7 +10,12 @@
 #import "FEWorkGetPrizeShareCell.h"
 #import "FEWorkGetPrizeShareWxCell.h"
 #import "FEWorkGetPrizeShareAccordCell.h"
-@interface FEGetPrizeShareFriendVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "FEWorkInviteAlertView.h"
+#import "FEWorkInviteRecordVC.h"
+#import "FEWorkShareBottomView.h"
+#import "FEWorkInviteStandStardVC.h"
+#import <UShareUI/UShareUI.h>
+@interface FEGetPrizeShareFriendVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkGetPrizeShareWxCellDelegate,FEWorkGetPrizeShareCellDelegate,FEWorkGetPrizeShareAccordCellDelegate,FEWorkShareBottomViewDelegate,FEWorkInviteAlertViewDelegate>
 @property(nonatomic,strong)UITableView *myTableView;
 @property(nonatomic,strong)UIView *bottomView;
 @property(nonatomic,strong)UIButton *friendLineBtn;
@@ -19,6 +24,9 @@
 @property(nonatomic,strong)UILabel *friendLineLbl;
 @property(nonatomic,strong)UILabel *wxLbl;
 @property(nonatomic,strong)UILabel *faceTofaceLbl;
+@property(nonatomic,strong)FEWorkInviteAlertView *inviteView;
+@property(nonatomic,strong)FEWorkShareBottomView *shareBottomView;
+@property(nonatomic,strong) FEWorkGetPrizeShareAccordCell *cell3;
 @end
 
 @implementation FEGetPrizeShareFriendVC
@@ -30,6 +38,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self requestRecord];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -96,6 +105,19 @@
 }
 
 #pragma mark -getter
+-(FEWorkInviteAlertView *)inviteView{
+    if (!_inviteView) {
+        _inviteView =[[FEWorkInviteAlertView alloc]init];
+        [_inviteView setLocalDelegate:self];
+    }
+    return _inviteView;
+}
+-(FEWorkShareBottomView *)shareBottomView{
+    if (!_shareBottomView) {
+        _shareBottomView =[[FEWorkShareBottomView alloc]init];
+    }
+    return _shareBottomView;
+}
 -(UITableView *)myTableView{
     if (!_myTableView) {
         _myTableView =[[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -115,6 +137,10 @@
     if (!_friendLineBtn) {
         _friendLineBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_friendLineBtn setImage:[UIImage imageNamed:@"wkc_FriendLine"] forState:UIControlStateNormal];
+        WEAKSELF;
+        [_friendLineBtn bk_addEventHandler:^(id sender) {
+            [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _friendLineBtn;
 }
@@ -122,7 +148,10 @@
     if (!_wxBtn) {
         _wxBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_wxBtn setImage:[UIImage imageNamed:@"wkc_weixin"] forState:UIControlStateNormal];
-        
+        WEAKSELF;
+        [_wxBtn bk_addEventHandler:^(id sender) {
+            [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _wxBtn;
 }
@@ -130,7 +159,10 @@
     if (!_faceTofaceBtn) {
         _faceTofaceBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_faceTofaceBtn setImage:[UIImage imageNamed:@"wkc_FaceToFace"] forState:UIControlStateNormal];
-        
+        WEAKSELF;
+        [_faceTofaceBtn bk_addEventHandler:^(id sender) {
+            [weakSelf.inviteView show];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _faceTofaceBtn;
 }
@@ -168,14 +200,21 @@
     UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:kCellIndetify];
     if (cell ==nil) {
         if (indexPath.row ==0) {
-             cell = [[FEWorkGetPrizeShareCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            FEWorkGetPrizeShareCell* cell1 = [[FEWorkGetPrizeShareCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            cell1.localDelegate =self;
+            cell =cell1;
         }else if(indexPath.row ==1){
-             cell = [[FEWorkGetPrizeShareWxCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+           FEWorkGetPrizeShareWxCell  *cell2 = [[FEWorkGetPrizeShareWxCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            cell2.localDelegate =self;
+            cell =cell2;
         }else{
-             cell = [[FEWorkGetPrizeShareAccordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+           self.cell3 = [[FEWorkGetPrizeShareAccordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            self.cell3.localDelegate =self;
+            cell =self.cell3;
         }
+        
     }
-  
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -204,4 +243,117 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 201;
 }
+#pragma mark -
+-(void)shareToIntroduceAction{
+    [self shareAction];
+}
+-(void)readStandard{
+    FEWorkInviteStandStardVC *standardVC =[[FEWorkInviteStandStardVC alloc]init];
+    [self.navigationController pushViewController:standardVC animated:YES];
+}
+#pragma mark -
+-(void)generateShareImgAction{
+    [self.inviteView show];
+}
+#pragma mark -
+-(void)findRecord{
+    FEWorkInviteRecordVC *recordVC =[[FEWorkInviteRecordVC alloc]init];
+    [self.navigationController pushViewController:recordVC animated:YES];
+}
+#pragma mark -
+-(void)shareWx{
+    [self shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
+}
+-(void)shareLineQ{
+    [self shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
+}
+
+#pragma mark -查询记录
+-(void)requestRecord{
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    WEAKSELF;
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(InvFriendLogHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+         if ([data[@"code"] intValue] == KSuccessCode) {
+            MTSVPDismiss;
+            
+             NSString *lotterNum =data[@"data"][@"shareFriend"][@"lotteryNumber"];
+             NSString *shareNum =data[@"data"][@"shareFriend"][@"shareNum"];
+             NSString *regitserLotterNum =data[@"data"][@"register"][@"lotteryNumber"];
+             NSString *regitserNum =data[@"data"][@"register"][@"registerNum"];
+             [weakSelf.cell3.lb2 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"分享给微信好友%@次，赠送%@次抽奖机会",shareNum,lotterNum] Color:[UIColor redColor]]];
+             [weakSelf.cell3.lb3 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"邀请好友下载登录%@个，赠送%@次抽奖机会",regitserNum,regitserLotterNum] Color:[UIColor redColor]]];
+
+             [weakSelf.myTableView reloadData];
+        }else {
+            MTSVPShowInfoText(data[@"msg"]);
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+/**
+ *改变字符串中所有数字的颜色
+ */
+- (NSMutableAttributedString *)setRichNumberWithLabel:(NSString*)lbltext Color:(UIColor *)color {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:lbltext];
+    NSString *temp = nil;
+    for(int i =0; i < [attributedString length]; i++) {
+        temp = [lbltext substringWithRange:NSMakeRange(i, 1)];
+        if ([self isPureInt:temp]) {
+            [attributedString setAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             color, NSForegroundColorAttributeName,
+                                            nil]
+                                      range:NSMakeRange(i, 1)];
+        }
+    }
+   return attributedString;
+}
+ 
+ 
+/**
+ *此方法是用来判断一个字符串是不是整型.
+ *如果传进的字符串是一个字符,可以用来判断它是不是数字
+ */
+- (BOOL)isPureInt:(NSString *)string {
+    NSScanner *scan = [NSScanner scannerWithString:string];
+    int value;
+    return [scan scanInt:&value] && [scan isAtEnd];
+}
+#pragma mark -FEWorkInviteAlertViewDelegate
+-(void)goGiftAction{
+    [self shareAction];
+}
+- (void)shareAction {
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_WechatSession)]];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        // 根据获取的platformType确定所选平台进行下一步操作
+        [self shareWebPageToPlatformType:platformType];
+    }];
+    
+}
+
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    //创建网页内容对象
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"找电" descr:@"找电新版福利来啦！天天抽大奖礼品免费邮寄到家！下载注册填写邀请码，免费赠送10次抽奖机会，赶快一起来玩吧！" thumImage:[UIImage imageNamed:@"AppIcon"]];
+    //设置网页地址
+    shareObject.webpageUrl =[NSString stringWithFormat:@"http://apk.csjiayu.com/zhaodian/index.html?invitation=%@&from=singlemessage&isappinstalled=0",[FEUserOperation manager].userModel.invCode];
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            NSLog(@"************Share fail with error %@*********",error);
+        }else{
+            NSLog(@"response data is %@",data);
+        }
+    }];
+}
+
 @end

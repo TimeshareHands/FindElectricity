@@ -9,11 +9,14 @@
 #import "FEWorkEValueShopVC.h"
 #import "FEWorkGiftCardCell.h"
 #import "FEWorkEvalueGetPrizeChanceCell.h"
-@interface FEWorkEValueShopVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic ,strong) UITableView *myTableView;
+#import "FEWorkGetGiftVC.h"
+@interface FEWorkEValueShopVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkEvalueGetPrizeChanceCellDelegate,FEWorkGiftCardCellDelegate>
+@property (nonatomic ,strong)UITableView *myTableView;
 @property (nonatomic, strong)UIView *horizonView;
 @property (nonatomic, strong)UILabel *eValueLbl;
 @property (nonatomic, strong)UILabel *getPrizeLbl;
+@property (nonatomic, strong)FEWorkEvalueGetPrizeChanceCell *changeCell;
+@property (nonatomic, strong)NSArray *exChange_goodList;
 @end
 
 @implementation FEWorkEValueShopVC
@@ -25,6 +28,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self rquestEvalueShop];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -90,18 +94,25 @@
     if(section ==0){
         return 1;
     }else{
-        return 6;
+        return self.exChange_goodList.count;
     }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *kCellIndetify =@"cellIndentify";
     UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:kCellIndetify];
+   
     if (cell ==nil) {
         if (indexPath.section ==0) {
-             cell =[[FEWorkEvalueGetPrizeChanceCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+             self.changeCell =[[FEWorkEvalueGetPrizeChanceCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            [self.changeCell setLocalDelegate:self];
+            cell =self.changeCell;
         }else{
-             cell =[[FEWorkGiftCardCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+           FEWorkGiftCardCell *giftCell =[[FEWorkGiftCardCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+            NSDictionary *goodDic =self.exChange_goodList[indexPath.row];
+            [giftCell settLeftImg:[NSString stringWithFormat:@"%@",goodDic[@"pic"]] topText:[NSString stringWithFormat:@"%@",goodDic[@"name"]] bottomText:[NSString stringWithFormat:@"%@电量值",goodDic[@"integral"]]goodId:[NSString stringWithFormat:@"%@",goodDic[@"id"]]];
+            [giftCell setLocalDelegete:self];
+            cell =giftCell;
         }
     }
     if (indexPath.section ==1) {
@@ -112,7 +123,12 @@
             [cell.textLabel setTextColor:UIColorFromHex(0xA7A7A7)];
         }
     }
+     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *goodDic =self.exChange_goodList[indexPath.row];
+    [self duifuRequest:goodDic[@"id"]];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headView =[[UIView alloc]init];
@@ -146,7 +162,10 @@
                make.centerY.mas_equalTo(headView);
                make.width.mas_equalTo(SCREEN_WIDTH/2-11);
            }];
-         
+        [headView bk_whenTapped:^{
+            FEWorkGetGiftVC *giftVC =[[FEWorkGetGiftVC alloc]init];
+            [self.navigationController pushViewController:giftVC animated:YES];
+        }];
           
     }
    
@@ -170,5 +189,52 @@
         return 330;
     }
     
+}
+-(void)rquestEvalueShop{
+    WEAKSELF;
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(ShopInfoHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+       if ([data[@"code"] intValue] == KSuccessCode) {
+          MTSVPDismiss;
+        [weakSelf.eValueLbl setText:[NSString stringWithFormat:@"电量值 %@",data[@"data"][@"myElectrictyVal"]]];
+        weakSelf.exChange_goodList =data[@"data"][@"exchange_goods_list"];
+           
+        [weakSelf.myTableView reloadData];
+      }else {
+          MTSVPShowInfoText(data[@"msg"]);
+      }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+#pragma mark- FEWorkEvalueGetPrizeChanceCellDelegate
+-(void)goDuiAction:(NSString *)goodId{
+ 
+    [self duifuRequest:goodId];
+}
+
+#pragma mark -FEWorkGiftCardCellDelegate
+-(void)cellGoDuiAction:(NSString *)goodId{
+    [self duifuRequest:goodId];
+}
+#pragma mark -兑付
+-(void)duifuRequest:(NSString *)goodId{
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    [parameter setObject:goodId forKey:@"goodId"];
+    WEAKSELF;
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(ExhcangegoodHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+                  MTSVPDismiss;
+            MTSVPShowInfoText(@"兑换成功");
+            [weakSelf rquestEvalueShop];
+        //        [weakSelf.myTableView reloadData];
+              }else {
+                  MTSVPShowInfoText(data[@"msg"]);
+              }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 @end

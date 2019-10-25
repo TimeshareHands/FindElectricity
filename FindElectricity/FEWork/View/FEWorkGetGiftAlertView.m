@@ -106,6 +106,10 @@
         [_leftBtn setTitle:@"知道了" forState:UIControlStateNormal];
         [_leftBtn.titleLabel setFont:Demon_15_Font];
          [_leftBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
+        WEAKSELF;
+        [_leftBtn bk_addEventHandler:^(id sender) {
+             [weakSelf hidden];
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftBtn;
 }
@@ -115,6 +119,13 @@
         [_rightBtn setTitle:@"继续抽奖" forState:UIControlStateNormal];
         [_rightBtn.titleLabel setFont:Demon_15_Font];
         [_rightBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
+        WEAKSELF;
+        [_rightBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegate respondsToSelector:@selector(continueChouJiang)]) {
+                [weakSelf hidden];
+                [weakSelf.localDelegate continueChouJiang];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
 }
@@ -123,8 +134,9 @@
     if (!_cancelBtn) {
         _cancelBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_cancelBtn setImage:[UIImage imageNamed:@"wkc_Close"] forState:UIControlStateNormal];
+        WEAKSELF
         [_cancelBtn bk_addEventHandler:^(id sender) {
-            [self hidden];
+            [weakSelf hidden];
         } forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelBtn;
@@ -132,14 +144,16 @@
 -(UIView *)shadowView{
     if (!_shadowView) {
         _shadowView =[[UIView alloc]init];
+        _shadowView.backgroundColor =[UIColor blackColor];
+        [_shadowView setAlpha:0.1];
     }
     return _shadowView;
 }
 
 - (void)show {
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    [keyWindow addSubview:self];
     [keyWindow addSubview:self.shadowView];
+    [keyWindow addSubview:self];
     [self.shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
          make.left.mas_equalTo(keyWindow);
          make.right.mas_equalTo(keyWindow);
@@ -155,6 +169,11 @@
 }
 
 - (void)hidden {
+    [self.shadowView removeFromSuperview];
     [self removeFromSuperview];
+}
+-(void)setImage:(UIImage *)centerImage andTopText:(NSString *)topText{
+    [self.centerImageView setImage:centerImage];
+    [self.topLbl setText:[NSString stringWithFormat:@"%@",topText]];
 }
 @end

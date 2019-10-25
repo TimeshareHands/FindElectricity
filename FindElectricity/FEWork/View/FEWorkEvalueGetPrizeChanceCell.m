@@ -25,6 +25,8 @@
 @property(nonatomic, strong)UILabel *tapBottomLbl4;
 @property(nonatomic, strong)UIButton *confirmBtn;
 @property(nonatomic, strong)UILabel *bottomLbl;
+@property(nonatomic, strong)UIImageView *selectTapView;
+@property(nonatomic, strong)NSString *goodId;
 @end
 
 @implementation FEWorkEvalueGetPrizeChanceCell
@@ -32,6 +34,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self =[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self addView];
+         self.goodId =@"1";
     }
     return self;
 }
@@ -157,6 +160,15 @@
     if (!_tapView1) {
         _tapView1 =[[UIImageView alloc]init];
         [_tapView1 setImage:[UIImage imageNamed:@"wkm_unselected"]];
+        [_tapView1 setUserInteractionEnabled:YES];
+        [_tapView1 bk_whenTapped:^{
+            self.selectTapView =_tapView1;
+            self.goodId =@"1";
+            [_tapView2 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [_tapView3 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [_tapView4 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [self.selectTapView setImage:[UIImage imageNamed:@"wkm_unselected"]];
+        }];
     }
     return _tapView1;
 }
@@ -180,6 +192,15 @@
     if (!_tapView2) {
         _tapView2 =[[UIImageView alloc]init];
          [_tapView2 setImage:[UIImage imageNamed:@"wkm_rect"]];
+          [_tapView2 setUserInteractionEnabled:YES];
+         [_tapView2 bk_whenTapped:^{
+            self.selectTapView =_tapView2;
+             self.goodId =@"2";
+            [_tapView1 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [_tapView3 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [_tapView4 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [self.selectTapView setImage:[UIImage imageNamed:@"wkm_unselected"]];
+        }];
     }
     return _tapView2;
 }
@@ -203,6 +224,15 @@
     if (!_tapView3) {
         _tapView3 =[[UIImageView alloc]init];
         [_tapView3 setImage:[UIImage imageNamed:@"wkm_rect"]];
+        [_tapView3 setUserInteractionEnabled:YES];
+        [_tapView3 bk_whenTapped:^{
+            self.goodId =@"3";
+            [_tapView1 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [_tapView2 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [_tapView4 setImage:[UIImage imageNamed:@"wkm_rect"]];
+             self.selectTapView =_tapView3;
+             [self.selectTapView setImage:[UIImage imageNamed:@"wkm_unselected"]];
+               }];
     }
     return _tapView3;
 }
@@ -226,6 +256,15 @@
     if (!_tapView4) {
         _tapView4 =[[UIImageView alloc]init];
          [_tapView4 setImage:[UIImage imageNamed:@"wkm_rect"]];
+        [_tapView4 setUserInteractionEnabled:YES];
+        [_tapView4 bk_whenTapped:^{
+            self.goodId =@"4";
+            self.selectTapView =_tapView4;
+            [_tapView1 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [_tapView3 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [_tapView2 setImage:[UIImage imageNamed:@"wkm_rect"]];
+            [self.selectTapView setImage:[UIImage imageNamed:@"wkm_unselected"]];
+        }];
     }
     return _tapView4;
 }
@@ -261,7 +300,14 @@
         [_confirmBtn setBackgroundColor:UIColorFromHex(0x4EC324)];
         [_confirmBtn.layer setCornerRadius:21];
         [_confirmBtn.titleLabel setFont:Demon_16_Font];
+       WEAKSELF;
+       [_confirmBtn bk_addEventHandler:^(id sender) {
+           if ([weakSelf.localDelegate respondsToSelector:@selector(goDuiAction:)]) {
+               [weakSelf.localDelegate goDuiAction:self.goodId];
+           }
+       } forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
 }
+
 @end

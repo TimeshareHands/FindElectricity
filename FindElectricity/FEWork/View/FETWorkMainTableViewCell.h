@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FETWorkMainTableViewCell : UITableViewCell
-
+-(void)setLeftImg:(NSString *)imageLogo topText:(NSString *)topText topCenterText:(NSString *)tpcenterText centerText:(NSString *)centerText bottomText:(NSString *)bottomText buttonColor:(UIColor *)color buttonTitle:(NSString *)buttonTitle;
 @end
 
 NS_ASSUME_NONNULL_END

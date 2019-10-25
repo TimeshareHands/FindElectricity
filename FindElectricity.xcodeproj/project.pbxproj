@@ -162,6 +162,15 @@
 		4E783D022352FB49003872F2 /* FEWorkGetPrizeContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D012352FB49003872F2 /* FEWorkGetPrizeContentCell.m */; };
 		4E783D0523530F1E003872F2 /* FEGetPrizeRosterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0423530F1E003872F2 /* FEGetPrizeRosterCell.m */; };
 		4E783D0823530F43003872F2 /* FETotalGetPrizeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0723530F43003872F2 /* FETotalGetPrizeRecordCell.m */; };
+		4E783D0B23535BD6003872F2 /* FEWorkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783D0A23535BD6003872F2 /* FEWorkModel.m */; };
+		4EF155E1235C40200037D8D4 /* FESignInActAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155E0235C40200037D8D4 /* FESignInActAlert.m */; };
+		4EF155E4235C6D340037D8D4 /* FEWorkShareBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */; };
+		4EF155E7235D9EA30037D8D4 /* FEWxBindPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155E5235D9EA30037D8D4 /* FEWxBindPhoneVC.m */; };
+		4EF155F5235D9FCA0037D8D4 /* UIButton+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155F3235D9FCA0037D8D4 /* UIButton+Extend.m */; };
+		4EF155F6235D9FCA0037D8D4 /* UIView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155F4235D9FCA0037D8D4 /* UIView+Extend.m */; };
+		4EF155FE235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155FB235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m */; };
+		4EF155FF235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF155FC235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m */; };
+		4EF156742360A9980037D8D4 /* FEWorkReceiveAddressAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF156732360A9980037D8D4 /* FEWorkReceiveAddressAlert.m */; };
 		BAC11A9D29BBA4C1F7E67946 /* Pods_FindElectricity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40DDC4C92CE815656C8F794 /* Pods_FindElectricity.framework */; };
 		CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E94234F1DCB00632F7B /* SZTextView.m */; };
 		CB0D0E99234F1DCC00632F7B /* KLCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0D0E95234F1DCB00632F7B /* KLCoverView.m */; };
@@ -173,6 +182,7 @@
 		CB1567C1234F38DA00F2485F /* FEShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1567BF234F38DA00F2485F /* FEShopListCell.xib */; };
 		CB1567C5234F495100F2485F /* FEMineMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB1567C3234F495100F2485F /* FEMineMsgCell.m */; };
 		CB1567C6234F495100F2485F /* FEMineMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB1567C4234F495100F2485F /* FEMineMsgCell.xib */; };
+		CB25AB67235E999F00D768DF /* FENaviManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB25AB66235E999F00D768DF /* FENaviManager.m */; };
 		CB4FAC6C234F51EC0094D3E9 /* FEMyShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FAC6A234F51EC0094D3E9 /* FEMyShopListCell.m */; };
 		CB4FAC6D234F51EC0094D3E9 /* FEMyShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB4FAC6B234F51EC0094D3E9 /* FEMyShopListCell.xib */; };
 		CB4FAC71235026DB0094D3E9 /* FESelectCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4FAC6F235026DB0094D3E9 /* FESelectCityViewController.m */; };
@@ -561,6 +571,24 @@
 		4E783D0423530F1E003872F2 /* FEGetPrizeRosterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEGetPrizeRosterCell.m; sourceTree = "<group>"; };
 		4E783D0623530F43003872F2 /* FETotalGetPrizeRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FETotalGetPrizeRecordCell.h; sourceTree = "<group>"; };
 		4E783D0723530F43003872F2 /* FETotalGetPrizeRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FETotalGetPrizeRecordCell.m; sourceTree = "<group>"; };
+		4E783D0923535BD6003872F2 /* FEWorkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkModel.h; sourceTree = "<group>"; };
+		4E783D0A23535BD6003872F2 /* FEWorkModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkModel.m; sourceTree = "<group>"; };
+		4EF155DF235C40200037D8D4 /* FESignInActAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESignInActAlert.h; sourceTree = "<group>"; };
+		4EF155E0235C40200037D8D4 /* FESignInActAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESignInActAlert.m; sourceTree = "<group>"; };
+		4EF155E2235C6D340037D8D4 /* FEWorkShareBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkShareBottomView.h; sourceTree = "<group>"; };
+		4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkShareBottomView.m; sourceTree = "<group>"; };
+		4EF155E5235D9EA30037D8D4 /* FEWxBindPhoneVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWxBindPhoneVC.m; sourceTree = "<group>"; };
+		4EF155E6235D9EA30037D8D4 /* FEWxBindPhoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWxBindPhoneVC.h; sourceTree = "<group>"; };
+		4EF155F1235D9FCA0037D8D4 /* UIView+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extend.h"; sourceTree = "<group>"; };
+		4EF155F2235D9FCA0037D8D4 /* UIButton+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extend.h"; sourceTree = "<group>"; };
+		4EF155F3235D9FCA0037D8D4 /* UIButton+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extend.m"; sourceTree = "<group>"; };
+		4EF155F4235D9FCA0037D8D4 /* UIView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extend.m"; sourceTree = "<group>"; };
+		4EF155FA235EB28D0037D8D4 /* FEWorkGiftCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGiftCollectionViewCell.h; sourceTree = "<group>"; };
+		4EF155FB235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGiftCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		4EF155FC235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWorkGiftCollectionViewCell.m; sourceTree = "<group>"; };
+		4EF155FD235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWorkGiftCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		4EF156722360A9980037D8D4 /* FEWorkReceiveAddressAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkReceiveAddressAlert.h; sourceTree = "<group>"; };
+		4EF156732360A9980037D8D4 /* FEWorkReceiveAddressAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkReceiveAddressAlert.m; sourceTree = "<group>"; };
 		69A202D668C987FDA1107FEB /* Pods-FindElectricityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70C4E7E9487295240F034306 /* Pods-FindElectricityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityTests.release.xcconfig"; path = "Target Support Files/Pods-FindElectricityTests/Pods-FindElectricityTests.release.xcconfig"; sourceTree = "<group>"; };
 		822D6842570F67CD47FF6345 /* Pods_FindElectricityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindElectricityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -582,6 +610,8 @@
 		CB1567C2234F495100F2485F /* FEMineMsgCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMineMsgCell.h; sourceTree = "<group>"; };
 		CB1567C3234F495100F2485F /* FEMineMsgCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMineMsgCell.m; sourceTree = "<group>"; };
 		CB1567C4234F495100F2485F /* FEMineMsgCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMineMsgCell.xib; sourceTree = "<group>"; };
+		CB25AB65235E999F00D768DF /* FENaviManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FENaviManager.h; sourceTree = "<group>"; };
+		CB25AB66235E999F00D768DF /* FENaviManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FENaviManager.m; sourceTree = "<group>"; };
 		CB4FAC69234F51EC0094D3E9 /* FEMyShopListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEMyShopListCell.h; sourceTree = "<group>"; };
 		CB4FAC6A234F51EC0094D3E9 /* FEMyShopListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEMyShopListCell.m; sourceTree = "<group>"; };
 		CB4FAC6B234F51EC0094D3E9 /* FEMyShopListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEMyShopListCell.xib; sourceTree = "<group>"; };
@@ -754,6 +784,8 @@
 				20353016235339C40070A2F0 /* FEMapManager.m */,
 				CBED22DD23556A640009B75D /* CSMessageModel.h */,
 				CBED22DC23556A640009B75D /* CSMessageModel.m */,
+				CB25AB65235E999F00D768DF /* FENaviManager.h */,
+				CB25AB66235E999F00D768DF /* FENaviManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -801,15 +833,15 @@
 				20916A4B234789530045C7C8 /* FEMapViewController.h */,
 				20916A48234789530045C7C8 /* FEMapViewController.m */,
 				20916A4A234789530045C7C8 /* FEMapViewController.xib */,
-				20916A47234789530045C7C8 /* FEMapNaviViewController.h */,
-				20916A4C234789530045C7C8 /* FEMapNaviViewController.m */,
-				20916A49234789530045C7C8 /* FEMapNaviViewController.xib */,
 				20916A64234AD3020045C7C8 /* FEMessageViewController.h */,
 				20916A65234AD3020045C7C8 /* FEMessageViewController.m */,
 				20916A66234AD3020045C7C8 /* FEMessageViewController.xib */,
 				20916A7C234AF19A0045C7C8 /* FEShopDetailViewController.h */,
 				20916A7D234AF19A0045C7C8 /* FEShopDetailViewController.m */,
 				20916A7E234AF19A0045C7C8 /* FEShopDetailViewController.xib */,
+				20916A47234789530045C7C8 /* FEMapNaviViewController.h */,
+				20916A4C234789530045C7C8 /* FEMapNaviViewController.m */,
+				20916A49234789530045C7C8 /* FEMapNaviViewController.xib */,
 				203530102352FE270070A2F0 /* FECorrectionViewController.h */,
 				203530112352FE270070A2F0 /* FECorrectionViewController.m */,
 				203530122352FE270070A2F0 /* FECorrectionViewController.xib */,
@@ -949,6 +981,8 @@
 		4E02F27E234EFAFB00308D99 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4EF155E6235D9EA30037D8D4 /* FEWxBindPhoneVC.h */,
+				4EF155E5235D9EA30037D8D4 /* FEWxBindPhoneVC.m */,
 				4E02F281234EFAFB00308D99 /* FEFindPasswordVC.h */,
 				4E02F284234EFAFB00308D99 /* FEFindPasswordVC.m */,
 				4E02F282234EFAFB00308D99 /* FELoginViewController.h */,
@@ -1026,6 +1060,8 @@
 		4E02F2A2234EFB4300308D99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E783D0923535BD6003872F2 /* FEWorkModel.h */,
+				4E783D0A23535BD6003872F2 /* FEWorkModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1033,6 +1069,10 @@
 		4E02F2A3234EFB4300308D99 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EF155FA235EB28D0037D8D4 /* FEWorkGiftCollectionViewCell.h */,
+				4EF155FC235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m */,
+				4EF155FD235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.h */,
+				4EF155FB235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m */,
 				4E02F2A9234EFB4300308D99 /* FETWorkMainTableViewCell.h */,
 				4E02F2B6234EFB4300308D99 /* FETWorkMainTableViewCell.m */,
 				4E02F2AE234EFB4300308D99 /* FEWorkEvalueCell.h */,
@@ -1071,6 +1111,12 @@
 				4E783D0423530F1E003872F2 /* FEGetPrizeRosterCell.m */,
 				4E783D0623530F43003872F2 /* FETotalGetPrizeRecordCell.h */,
 				4E783D0723530F43003872F2 /* FETotalGetPrizeRecordCell.m */,
+				4EF155DF235C40200037D8D4 /* FESignInActAlert.h */,
+				4EF155E0235C40200037D8D4 /* FESignInActAlert.m */,
+				4EF155E2235C6D340037D8D4 /* FEWorkShareBottomView.h */,
+				4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */,
+				4EF156722360A9980037D8D4 /* FEWorkReceiveAddressAlert.h */,
+				4EF156732360A9980037D8D4 /* FEWorkReceiveAddressAlert.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1320,6 +1366,10 @@
 		4E063D3E233A122900D6756A /* category */ = {
 			isa = PBXGroup;
 			children = (
+				4EF155F2235D9FCA0037D8D4 /* UIButton+Extend.h */,
+				4EF155F3235D9FCA0037D8D4 /* UIButton+Extend.m */,
+				4EF155F1235D9FCA0037D8D4 /* UIView+Extend.h */,
+				4EF155F4235D9FCA0037D8D4 /* UIView+Extend.m */,
 				4E02F2D0234F150F00308D99 /* UIViewController+HUD.h */,
 				4E02F2D1234F150F00308D99 /* UIViewController+HUD.m */,
 				4E063D3F233A122900D6756A /* NSString+Extend.h */,
@@ -1841,6 +1891,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB25AB67235E999F00D768DF /* FENaviManager.m in Sources */,
 				4E783CF623529CDA003872F2 /* FEWorkInviteRecordVC.m in Sources */,
 				CB1567C0234F38DA00F2485F /* FEShopListCell.m in Sources */,
 				4E063D54233A122900D6756A /* UIColor+Extend.m in Sources */,
@@ -1871,6 +1922,7 @@
 				CBED22EA23556A8F0009B75D /* EmojiView.m in Sources */,
 				CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */,
 				4E02F46D234F228600308D99 /* SDImageAssetManager.m in Sources */,
+				4EF155F5235D9FCA0037D8D4 /* UIButton+Extend.m in Sources */,
 				4E02F46C234F228600308D99 /* SDImageCachesManagerOperation.m in Sources */,
 				4E783CF023520D76003872F2 /* FEWorkInviteStandStardVC.m in Sources */,
 				4E02F44E234F228600308D99 /* SDWebImageError.m in Sources */,
@@ -1948,6 +2000,7 @@
 				4E02F457234F228600308D99 /* SDImageGIFCoder.m in Sources */,
 				CBED22C92351E2BE0009B75D /* FEMessageModel.m in Sources */,
 				2035300C2352CED50070A2F0 /* FEMapsModel.m in Sources */,
+				4EF156742360A9980037D8D4 /* FEWorkReceiveAddressAlert.m in Sources */,
 				4E02F43C234F228600308D99 /* SDAnimatedImageView+WebCache.m in Sources */,
 				4E02F44B234F228600308D99 /* SDMemoryCache.m in Sources */,
 				4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */,
@@ -1956,6 +2009,7 @@
 				20916A602348D4760045C7C8 /* FEViewXib.m in Sources */,
 				CBED22BE2350592B0009B75D /* FESharePopView.m in Sources */,
 				CBEDBD80234F0B2C00A923A3 /* FEAddShopViewController.m in Sources */,
+				4EF155E7235D9EA30037D8D4 /* FEWxBindPhoneVC.m in Sources */,
 				4E02F461234F228600308D99 /* SDImageCacheDefine.m in Sources */,
 				4E063D1B233A104F00D6756A /* main.m in Sources */,
 				CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */,
@@ -1972,6 +2026,7 @@
 				20916A8B234B56060045C7C8 /* FEShopPopView.m in Sources */,
 				2035300F2352FADE0070A2F0 /* FEMapInfoModel.m in Sources */,
 				4E02F2BD234EFB4300308D99 /* FEWorkStrategyVC.m in Sources */,
+				4EF155F6235D9FCA0037D8D4 /* UIView+Extend.m in Sources */,
 				4E02F462234F228600308D99 /* UIImage+MemoryCacheCost.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,
 				CBED22EB23556A8F0009B75D /* CSRecord.m in Sources */,
@@ -1983,9 +2038,11 @@
 				CBEDBD4B234DE2AC00A923A3 /* FECycleDetailViewController.m in Sources */,
 				4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */,
 				CB0D0E9D234F20FC00632F7B /* FESettingsCell.m in Sources */,
+				4E783D0B23535BD6003872F2 /* FEWorkModel.m in Sources */,
 				4E063D59233A122900D6756A /* DemonViewController.m in Sources */,
 				CB4FAC6C234F51EC0094D3E9 /* FEMyShopListCell.m in Sources */,
 				CBEDBD76234F0A8100A923A3 /* FEFeedbackViewController.m in Sources */,
+				4EF155FF235EB28E0037D8D4 /* FEWorkGiftCollectionViewCell.m in Sources */,
 				20916AA3234F85A90045C7C8 /* FEChangePhoneViewController.m in Sources */,
 				4E02F468234F228600308D99 /* UIView+WebCache.m in Sources */,
 				CBED22B0235049AA0009B75D /* FENewsViewController.m in Sources */,
@@ -1993,6 +2050,7 @@
 				4E783CFF2352F396003872F2 /* FETWorkGetPrizeIntroduceCell.m in Sources */,
 				4E02F452234F228600308D99 /* SDImageIOCoder.m in Sources */,
 				4E02F46A234F228600308D99 /* UIButton+WebCache.m in Sources */,
+				4EF155E4235C6D340037D8D4 /* FEWorkShareBottomView.m in Sources */,
 				20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */,
 				CBED22DB23556A4E0009B75D /* UIImage+Han.m in Sources */,
 				CB0D0E98234F1DCC00632F7B /* SZTextView.m in Sources */,
@@ -2011,7 +2069,9 @@
 				CBA72A70234DD0CA00C7070E /* FECycleMapViewController.m in Sources */,
 				4E02F290234EFAFB00308D99 /* FEFindPasswordVC.m in Sources */,
 				4E02F2C1234EFB4300308D99 /* FEWorkGetGiftCell.m in Sources */,
+				4EF155E1235C40200037D8D4 /* FESignInActAlert.m in Sources */,
 				4E02F472234F228600308D99 /* UIColor+HexString.m in Sources */,
+				4EF155FE235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m in Sources */,
 				CBED22E923556A8F0009B75D /* CSEmojiCollectionViewCell.m in Sources */,
 				4E02F43B234F228600308D99 /* NSImage+Compatibility.m in Sources */,
 				4E02F454234F228600308D99 /* SDAnimatedImageRep.m in Sources */,
@@ -2183,8 +2243,9 @@
 			baseConfigurationReference = 481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J677Q28PH8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2206,7 +2267,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
 				PRODUCT_NAME = "找电";
-				PROVISIONING_PROFILE_SPECIFIER = FindElectricity;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2216,6 +2277,7 @@
 			baseConfigurationReference = 36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J677Q28PH8;

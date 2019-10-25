@@ -129,7 +129,7 @@
             _maxElec.text = [NSString stringWithFormat:@"%d电量值",maxE];
             _todayElec.text = [NSString stringWithFormat:@"%d",todayE];
             _allElec.text = [NSString stringWithFormat:@"%d",allE];
-            _currentKM.text = [NSString stringWithFormat:@"%d",currentKM];
+            _currentKM.text = [NSString stringWithFormat:@"%.2f",currentKM/1000.0];
             if (currentTime>0) {
                 _mapView.hidden = YES;
             }else{

@@ -65,7 +65,9 @@ static AFHTTPSessionManager *afnManager = nil;
             NSDictionary *dic = [self dictionaryWithJsonString:decodeStr];
             //判断登录是否失效
             if ([dic[@"code"] intValue] == 4010) {
-                [self goLogin];
+                
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"doLoginNotification" object:nil];
+//                [self goLogin];
             }
             success(dic);
         }else {
@@ -155,9 +157,8 @@ static AFHTTPSessionManager *afnManager = nil;
 
 - (void)goLogin {
     dispatch_async(dispatch_get_main_queue(), ^{
-        FELoginViewController *loginVC =[[FELoginViewController alloc]init];
-        AppDelegate *appdele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appdele.tabBarController presentViewController:loginVC animated:YES completion:nil];
+//        [NSNotificationCenter defaultCenter]
+       
     });
 }
 @end

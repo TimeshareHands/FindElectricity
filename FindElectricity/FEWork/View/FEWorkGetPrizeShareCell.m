@@ -82,6 +82,12 @@
         [_confirmBtn setTitle:@"推荐好友" forState:UIControlStateNormal];
         [_confirmBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
         [_confirmBtn.titleLabel setFont:Demon_15_Font];
+        WEAKSELF;
+        [_confirmBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegate respondsToSelector:@selector(shareToIntroduceAction)]) {
+                [weakSelf.localDelegate shareToIntroduceAction];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
 }
@@ -104,17 +110,46 @@
 - (UILabel *)lb3{
     if (!_lb3) {
         _lb3 =[[UILabel alloc]init];
-        [_lb3 setText:@"我的邀请码：943E (点击复制)"];
+        NSString *invcode =[NSString stringWithFormat:@"%@",[FEUserOperation manager].userModel.invCode];
+        [_lb3 setAttributedText:[self setupAttributeString:[NSString stringWithFormat:@"我的邀请码：%@(点击复制)",invcode.length>0?invcode:@""] highlightText:invcode]];
         [_lb3 setFont:Demon_16_Font];
+        [_lb3 setUserInteractionEnabled:YES];
+        [_lb3 bk_whenTapped:^{
+            [self copyClick];
+        }];
     }
     return _lb3;
+}
+#pragma mark - 富文本部分字体飘灰
+- (NSMutableAttributedString *)setupAttributeString:(NSString *)text highlightText:(NSString *)highlightText {
+    NSRange hightlightTextRange = [text rangeOfString:highlightText];
+    NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc] initWithString:text];
+    [attributeStr addAttribute:NSForegroundColorAttributeName
+                             value:UIColorFromHex(0xE26A41)
+                             range:hightlightTextRange];
+    [attributeStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:13.0f] range:hightlightTextRange];
+    return attributeStr;
 }
 - (UILabel *)lb4{
     if (!_lb4) {
         _lb4 =[[UILabel alloc]init];
         [_lb4 setText:@"请赠送抽奖规则"];
         [_lb4 setFont:Demon_12_Font];
+        [_lb4 setUserInteractionEnabled:YES];
+        [_lb4 setTextColor:UIColorFromHex(0xE26A41)];
+        WEAKSELF;
+        [_lb4 bk_whenTapped:^{
+            if ([weakSelf.localDelegate respondsToSelector:@selector(readStandard)]) {
+                [weakSelf.localDelegate readStandard];
+            }
+        }];
     }
     return _lb4;
+}
+
+- (void)copyClick {
+    UIPasteboard *pab = [UIPasteboard generalPasteboard];
+    pab.string = self.lb3.text;
+    MTSVPShowInfoText(@"复制成功");
 }
 @end

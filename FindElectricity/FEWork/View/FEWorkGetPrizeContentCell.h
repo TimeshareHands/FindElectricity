@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol FEWorkGetPrizeContentCellDelegate <NSObject>
 
+-(void)confirmToLinqu;
+
+@end
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetPrizeContentCell : UITableViewCell
-
+@property(nonatomic,weak)id<FEWorkGetPrizeContentCellDelegate>localDelegate;
+-(void)setUnitText:(NSString *)unitText num:(NSString *)num title:(NSString *)title winNum:(NSString *)winNum pic:(NSString *)pic ;
 @end
 
 NS_ASSUME_NONNULL_END

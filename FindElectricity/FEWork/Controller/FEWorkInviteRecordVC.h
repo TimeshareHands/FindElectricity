@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkInviteRecordVC : DemonViewController
-
+@property(nonatomic, strong)NSArray *listArr;
 @end
 
 NS_ASSUME_NONNULL_END

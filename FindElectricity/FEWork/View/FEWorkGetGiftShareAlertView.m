@@ -118,6 +118,12 @@
     if (!_leftBtn) {
         _leftBtn =[UIButton buttonWithType:UIButtonTypeCustom];
          [_leftBtn setImage:[UIImage imageNamed:@"wkc_alertShareWX"] forState:UIControlStateNormal];
+        WEAKSELF;
+        [_leftBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegate respondsToSelector:@selector(shareWx)]) {
+                [weakSelf.localDelegate shareWx];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftBtn;
 }
@@ -125,6 +131,12 @@
     if (!_rightBtn) {
         _rightBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_rightBtn setImage:[UIImage imageNamed:@"wkc_alertShareLine"] forState:UIControlStateNormal];
+        WEAKSELF;
+        [_rightBtn bk_addEventHandler:^(id sender) {
+            if ([weakSelf.localDelegate respondsToSelector:@selector(shareFriendLine)]) {
+                [weakSelf.localDelegate shareFriendLine];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
 }
@@ -159,6 +171,8 @@
 -(UIView *)shadowView{
     if (!_shadowView) {
         _shadowView =[[UIView alloc]init];
+        _shadowView.backgroundColor =[UIColor blackColor];
+        [_shadowView setAlpha:0.1];
     }
     return _shadowView;
 }

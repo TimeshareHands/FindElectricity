@@ -109,7 +109,7 @@
     {
         return nil;
     }
-    UIImage *backImage = [UIImage imageNamed:@"backImage"];
+    UIImage *backImage = [UIImage imageNamed:@"map_back"];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.frame = CGRectMake(0, 0, 44, 44);
     [backButton setImage:backImage forState:UIControlStateNormal];
@@ -129,7 +129,11 @@
     NSDictionary *textAttr = @{NSForegroundColorAttributeName : [UIColor blackColor]};
     [[UINavigationBar appearance] setTitleTextAttributes:textAttr];
 }
-
+- (void)actionBack /**<返回方法*/
+{
+    [self.navigationController setCanGestureBack:NO];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 #pragma mark -
 #pragma mark 父类方法重载
 

@@ -9,6 +9,12 @@
 #import "DemonViewController.h"
 #import "UIBarButtonItem+MTAdditions.h"
 #import "MTResourceManager.h"
+#import "FELoginViewController.h"
+@interface DemonViewController()
+
+@property(nonatomic, strong)FELoginViewController *loginVC;
+
+@end
 @implementation DemonViewController
 
 #pragma mark -
@@ -20,6 +26,11 @@
     self.view.backgroundColor = UIColorFromHex(0xf3f6f9);
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"map_back.png" highlightIcon:nil imageScale:1 target:self action:@selector(back)];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(doLogin) name:@"doLoginNotification" object:nil];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 - (void)viewDidLayoutSubviews
 {
@@ -31,7 +42,15 @@
         // Fallback on earlier versions
     }
 }
-
+-(void)doLogin{
+    for (UIViewController *sender in self.navigationController.viewControllers ) {
+        if ([sender isKindOfClass:[FELoginViewController class]]) {
+            return ;
+        }
+     }
+        self.loginVC =[[FELoginViewController alloc]init];
+        [self.navigationController pushViewController:self.loginVC animated:YES];
+}
 //item字体颜色
 - (void)setNavgaBarItemColor:(UIColor *)color
 {
@@ -101,7 +120,11 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+- (void)actionBack /**<返回方法*/
+{
+    [self.navigationController setCanGestureBack:NO];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

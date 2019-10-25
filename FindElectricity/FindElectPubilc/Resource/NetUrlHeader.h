@@ -13,6 +13,7 @@
 #define BASE_URLWith(str) [NSString stringWithFormat:@"%@%@",BASE_URL,str]
 #define KImg_URLWith(str)  [NSURL URLWithString:str]
 #define BASE_URL @"http://zhaodianapi.csjiayu.com/zhaodian/v2"
+
 #define KSuccessCode 2000
 
 //骑行
@@ -54,7 +55,7 @@
 #define WxBindMobileHttp     @"/wxBindMobile"        //微信手机捆绑*********
 #define MobileRegisterHttp     @"/mobileRegister"         //手机号注册*********
 #define FindPwdHttp     @"/findPwd"       //找回密码*********
-
+#define  SendCodeHttp    @"/sendCode" //发送短信
 //公告
 #define AnouncementHttp  @"/announcement"  //公告
 #define InvInfoHttp @"/invInfo"  //推荐界面接口

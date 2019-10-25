@@ -24,6 +24,7 @@ typedef void(^Failure)(NSError *error);
  */
 + (NetWorkManger *)manager;
 
+@property(nonatomic, strong)id senderVC;
 /**
  GET请求
 

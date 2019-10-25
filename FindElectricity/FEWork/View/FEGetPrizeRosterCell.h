@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEGetPrizeRosterCell : UITableViewCell
-
+@property(nonatomic,copy)NSArray *listArr;
 @end
 
 NS_ASSUME_NONNULL_END

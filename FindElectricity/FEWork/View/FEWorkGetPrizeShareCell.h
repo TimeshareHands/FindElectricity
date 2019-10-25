@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FEWorkGetPrizeShareCellDelegate <NSObject>
+
+-(void)shareToIntroduceAction;
+
+-(void)readStandard;
+@end
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetPrizeShareCell : UITableViewCell
-
+@property(nonatomic,weak)id<FEWorkGetPrizeShareCellDelegate>localDelegate;
 @end
 
 NS_ASSUME_NONNULL_END

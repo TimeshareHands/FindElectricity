@@ -8,10 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol FEWorkGetGiftShareAlertViewDelegate <NSObject>
+
+-(void)shareWx;
+
+-(void)shareFriendLine;
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetGiftShareAlertView : UIView
-@property (copy, nonatomic) void(^didClick)(FEWorkGetGiftShareAlertView *,NSInteger);
+@property(nonatomic, weak)id<FEWorkGetGiftShareAlertViewDelegate>localDelegate;
 - (void)show;
 - (void)hidden;
 @end

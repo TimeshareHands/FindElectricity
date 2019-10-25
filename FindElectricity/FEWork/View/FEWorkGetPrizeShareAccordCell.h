@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FEWorkGetPrizeShareAccordCellDelegate <NSObject>
+
+-(void)findRecord;
+
+@end
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetPrizeShareAccordCell : UITableViewCell
-
+@property(nonatomic, weak)id<FEWorkGetPrizeShareAccordCellDelegate>localDelegate;
+@property(nonatomic, strong)UILabel *lb2;
+@property(nonatomic, strong)UILabel *lb3;
 @end
 
 NS_ASSUME_NONNULL_END

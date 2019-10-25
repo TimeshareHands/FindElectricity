@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol FEWorkGiftCardCellDelegate <NSObject>
 
+-(void)cellGoDuiAction:(NSString *_Nullable)goodId;
+
+@end
 @interface FEWorkGiftCardCell : UITableViewCell
-
+@property(nonatomic, weak)id<FEWorkGiftCardCellDelegate>localDelegete;
+-(void)settLeftImg:(NSString *)leftImg topText:(NSString *)topText bottomText:(NSString *)bottomText goodId:(NSString *)goodId;
 @end
 
 NS_ASSUME_NONNULL_END

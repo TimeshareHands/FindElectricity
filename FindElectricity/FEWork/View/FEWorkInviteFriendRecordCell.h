@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkInviteFriendRecordCell : UITableViewCell
-
+-(void)fillLeftImage:(NSString*)imgUrl num:(NSString *)num nickName:(NSString *)nickName type:(NSString *)type  ctime:(NSString *)ctime;
 @end
 
 NS_ASSUME_NONNULL_END

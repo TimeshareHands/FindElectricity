@@ -10,8 +10,7 @@
 @interface FEWorkGetPrizeShareAccordCell()
 @property(nonatomic, strong)UIView *bgView;
 @property(nonatomic, strong)UILabel *lb1;
-@property(nonatomic, strong)UILabel *lb2;
-@property(nonatomic, strong)UILabel *lb3;
+
 @property(nonatomic, strong)UIButton *confirmBtn;
 @end
 
@@ -78,6 +77,8 @@
         [_confirmBtn setTitle:@"点击查看" forState:UIControlStateNormal];
         [_confirmBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
         [_confirmBtn.titleLabel setFont:Demon_15_Font];
+     
+        [_confirmBtn addTarget:self action:@selector(findRecorde) forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
 }
@@ -105,5 +106,9 @@
     }
     return _lb3;
 }
-
+-(void)findRecorde{
+    if ([self.localDelegate respondsToSelector:@selector(findRecord)]) {
+        [self.localDelegate findRecord];
+    }
+}
 @end
