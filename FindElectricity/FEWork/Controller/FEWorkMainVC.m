@@ -99,11 +99,23 @@
     }
     if (indexPath.row ==0) {
         [cell setLeftImg:@"wkm_addMember" topText:@"邀请好友" topCenterText:@"+10次抽奖" centerText:@"邀请好友下载注册找电" bottomText:@"获得抽奖机会" buttonColor:UIColorFromHex(0xff954b) buttonTitle:@"去邀请"];
+        cell.didClick = ^{
+            FEGetPrizeShareFriendVC *shareVC =[[FEGetPrizeShareFriendVC alloc]init];
+            [self.navigationController pushViewController:shareVC animated:YES];
+        };
     }
     else if (indexPath.row ==1) {
         [cell setLeftImg:@"wkm_bike" topText:@"骑行" topCenterText:@"每骑行1km得100电量值" centerText:@"通过骑行" bottomText:@"每天最高可获得5000电量值" buttonColor:UIColorFromHex(0xf16867) buttonTitle:@"去骑行"];
+        cell.didClick = ^{
+            FECycleViewController *rideVC =[[FECycleViewController alloc]init];
+            [self.navigationController pushViewController:rideVC animated:YES];
+        };
     }else if(indexPath.row ==2){
          [cell setLeftImg:@"wkm_read" topText:@"阅读电量值攻略" topCenterText:@"+500电量值" centerText:@"阅读电量攻略" bottomText:@"获得电量值奖励" buttonColor:UIColorFromHex(0x03bf30) buttonTitle:@"去阅读"];
+        cell.didClick = ^{
+            FEWorkStrategyVC *stategyVC =[[FEWorkStrategyVC alloc]init];
+            [self.navigationController pushViewController:stategyVC animated:YES];
+        };
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;

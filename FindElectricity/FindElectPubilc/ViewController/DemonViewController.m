@@ -13,7 +13,7 @@
 @interface DemonViewController()
 
 @property(nonatomic, strong)FELoginViewController *loginVC;
-
+@property(nonatomic, assign)BOOL isEnterLogin;
 @end
 @implementation DemonViewController
 
@@ -43,13 +43,18 @@
     }
 }
 -(void)doLogin{
+    WEAKSELF;
     for (UIViewController *sender in self.navigationController.viewControllers ) {
         if ([sender isKindOfClass:[FELoginViewController class]]) {
+            weakSelf.isEnterLogin =YES;
             return ;
         }
      }
-        self.loginVC =[[FELoginViewController alloc]init];
-        [self.navigationController pushViewController:self.loginVC animated:YES];
+    if (weakSelf.isEnterLogin) {
+        return ;
+    }
+    self.loginVC =[[FELoginViewController alloc]init];
+    [self.navigationController pushViewController:self.loginVC animated:YES];
 }
 //item字体颜色
 - (void)setNavgaBarItemColor:(UIColor *)color

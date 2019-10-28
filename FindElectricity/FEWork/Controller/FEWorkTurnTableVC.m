@@ -43,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addView];
+    [self requestDayDaySong];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -175,7 +176,7 @@
         return rosterCell;
     }else{
         FEWorkGetPrizeContentCell *contentCell =[[FEWorkGetPrizeContentCell alloc]init];
-        NSDictionary *contentDic =self.prize_arr_winlist[indexPath.section];
+        NSDictionary *contentDic =self.prize_arr_winlist[indexPath.section-1];
         [contentCell setUnitText:contentDic[@"unit"] num:contentDic[@"num"] title:contentDic[@"title"] winNum:contentDic[@"winningnum"] pic:contentDic[@"pic"]];
         [contentCell setLocalDelegate:self];
         [contentCell.layer setCornerRadius:10];
@@ -378,7 +379,7 @@
            self.prize_arr_winlist =data[@"data"][@"prize_arr_win"];
            self.self_receive_good_list =data[@"data"][@"self_receive_good_list"];
            [self.myTableView reloadData];
-           [self requestDayDaySong];
+          
          }else {
              MTSVPShowInfoText(data[@"msg"]);
          }
@@ -424,18 +425,7 @@
 }
 #pragma mark -天天送
 -(void)requestDayDaySong{
-    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
-       [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(WelFare) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
-           NSDictionary *data = (NSDictionary *)responseObject;
-          if ([data[@"code"] intValue] == KSuccessCode) {
-                    MTSVPDismiss;
-              [self.lauchShow show];
-            }else {
-                MTSVPShowInfoText(data[@"msg"]);
-            }
-       } failure:^(NSError * _Nonnull error) {
-           
-       }];
+    [[self lauchShow] getShowData];
 }
 #pragma mark -FEWorkGetPrizeContentCellDelegate
 -(void)confirmToLinqu{

@@ -11,6 +11,7 @@
 #import "UIView+Extend.h"
 #import "FELoginRegisterModel.h"
 #import "FEInputCell.h"
+#import <UMShare/UMShare.h>
 @interface FEWxBindPhoneVC ()
 
 @property (nonatomic, strong) UITextField *phnoeField;
@@ -224,7 +225,7 @@
 }
 
 - (void)finishBtnAction {
-    
+    WEAKSELF;
     if ([self checkContent]) {
         
         FEWXBindReuestModel *requestModel =[[FEWXBindReuestModel alloc]init];
@@ -238,7 +239,7 @@
                  NSDictionary *data = (NSDictionary *)responseObject;
                 if ([data[@"code"] intValue] == KSuccessCode) {
                 MTSVPDismiss;
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [weakSelf getAuthWithUserInfoFromWechat];
                 }else {
                      MTSVPShowInfoText(data[@"msg"]);
                 }
@@ -280,5 +281,40 @@
     
     return YES;
 }
+- (void)getAuthWithUserInfoFromWechat
+{
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+            
+        } else {
+            UMSocialUserInfoResponse *resp = result;
+            [self wxLoginRequestWith:resp.openid];
+          
+        }
+    }];
+}
 
+- (void)wxLoginRequestWith:(NSString *)openid {
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+     [parameter setValue:openid forKey:@"openid"];
+    WEAKSELF;
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(WXLoginHttp) parameters:parameter needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
+         NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+        MTSVPDismiss;
+        [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
+        [FEUserOperation manager].token =responseObject[@"data"][@"token"];
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
+        }else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+     
+      
+    } failure:^(NSError * _Nonnull error) {
+       
+    }];
+   
+    
+}
 @end

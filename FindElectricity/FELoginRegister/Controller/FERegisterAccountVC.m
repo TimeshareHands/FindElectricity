@@ -178,6 +178,7 @@
 }
 #pragma mark 注册
 - (void)registerAction{
+    WEAKSELF;
     if ([self checkContent]) {
         FERegisterRequestModel *requestModel =[[FERegisterRequestModel alloc]init];
         requestModel.verifyCode =self.smsInputCell.inputTextField.text;
@@ -186,12 +187,15 @@
         requestModel.mobile =self.smsCodeCell.inputTextField.text;
         [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MobileRegisterHttp)  parameters:[requestModel mj_JSONObject] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
             NSDictionary *data = (NSDictionary *)responseObject;
-             if ([data[@"code"] intValue] == KSuccessCode) {
-             MTSVPDismiss;
-                 [self.navigationController popViewControllerAnimated:YES];
-             }else {
-                  MTSVPShowInfoText(data[@"msg"]);
-             }
+              if ([data[@"code"] intValue] == KSuccessCode) {
+                  MTSVPDismiss;
+                  [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
+                  [FEUserOperation manager].token =responseObject[@"data"][@"token"];
+                  [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                  [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
+                  }else {
+                     MTSVPShowInfoText(data[@"msg"]);
+                  }
           
         } failure:^(NSError * _Nonnull error) {
             

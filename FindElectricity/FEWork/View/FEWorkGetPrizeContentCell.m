@@ -126,7 +126,7 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
     [self.rightImageView setImageWithURL:[NSURL URLWithString:pic]];
     self.num =num.integerValue;
     self.winNum =winNum.integerValue;
-     [self.bottomLeftLabel setText:[NSString stringWithFormat:@"再抽%zd张%@,就可领%@",self.num,title,unitText]];
+     [self.bottomLeftLabel setText:[NSString stringWithFormat:@"再抽%zd张%@,就可领%@",self.winNum- self.num,title,unitText]];
     if (self.num>=self.winNum) {
          [self.bottomLeftLabel setText:[NSString stringWithFormat:@"再抽%@张%@,就可领%@",@"0",title,unitText]];
     }

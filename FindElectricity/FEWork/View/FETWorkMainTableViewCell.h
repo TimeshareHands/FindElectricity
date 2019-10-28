@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FETWorkMainTableViewCell : UITableViewCell
+@property (copy, nonatomic) void(^didClick)(void);
 -(void)setLeftImg:(NSString *)imageLogo topText:(NSString *)topText topCenterText:(NSString *)tpcenterText centerText:(NSString *)centerText bottomText:(NSString *)bottomText buttonColor:(UIColor *)color buttonTitle:(NSString *)buttonTitle;
 @end
 
