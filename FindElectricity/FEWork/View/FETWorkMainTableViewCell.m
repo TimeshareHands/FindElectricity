@@ -120,6 +120,10 @@
         [_confirmBtn setTitle:@"去邀请" forState:UIControlStateNormal];
         [_confirmBtn.titleLabel setFont:Demon_13_Font];
         [_confirmBtn.layer setCornerRadius:14];
+        WEAKSELF;
+        [_confirmBtn bk_addEventHandler:^(id sender) {
+            weakSelf.didClick();
+        } forControlEvents:UIControlEventTouchUpInside];
     }
     return _confirmBtn;
 }

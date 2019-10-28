@@ -126,6 +126,6 @@ static FEMapManager *manager = nil;
     _weatherBlock = nil;
     _regBlock = nil;
     _poiBlock = nil;
-    MYLog(@"--FEMapManager dealloc--")
+//    MYLog(@"--FEMapManager dealloc--")
 }
 @end

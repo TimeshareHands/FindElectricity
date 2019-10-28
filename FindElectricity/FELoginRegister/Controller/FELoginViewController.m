@@ -306,15 +306,15 @@
 - (void)loginAction{
     FELoginRequestModel *requestModel =[[FELoginRequestModel alloc]init];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"account"]) {
-        requestModel.mobile =[defaults objectForKey:@"account"];
+    if (self.accountTxt.text.length>0) {
+         requestModel.mobile =self.accountTxt.text;
     }else{
-        requestModel.mobile =self.accountTxt.text;
+         requestModel.mobile = [defaults objectForKey:@"account"];
     }
-    if ([defaults objectForKey:@"password"]) {
-         requestModel.pwd =[defaults objectForKey:@"password"];
-     }else{
+    if (self.passwordTxt.text.length>0) {
          requestModel.pwd =self.passwordTxt.text;
+     }else{
+        requestModel.pwd =[defaults objectForKey:@"password"];
      }
      WEAKSELF;
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MobileLoginHttp)  parameters:[requestModel mj_JSONObject] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
