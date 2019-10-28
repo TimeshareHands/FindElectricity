@@ -86,7 +86,7 @@
         make.left.right.top.bottom.mas_equalTo(self.view);
     }];
     [self.chouJBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(60);
+        make.height.mas_equalTo(110);
         make.width.mas_equalTo(50);
         make.top.equalTo(self.mapView).offset(25);
         make.right.equalTo(self.mapView).offset(-10);
@@ -240,6 +240,7 @@
         WEAKSELF;
         _categView.comfirm = ^(FEMapCategView * _Nonnull view, NSString *status) {
             MYLog(@"%@",status);
+            [weakSelf cleanUpAction];
             [weakSelf getMapDataOfoordinate:weakSelf.mapView.centerCoordinate type:status];
         };
     }

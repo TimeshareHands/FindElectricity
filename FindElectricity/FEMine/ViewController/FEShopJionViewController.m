@@ -179,8 +179,16 @@
     [parameter setValue:model.mapId forKey:@"mapId"];
     WEAKSELF;
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(DelTenantsHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        MYLog(@"%@",data);
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self refreshData];
+            
+            if ([data[@"code"] intValue] == KSuccessCode) {
+                [self refreshData];
+            }else {
+                MTSVPShowInfoText(data[@"msg"]);
+            }
+            
         });
         
     } failure:^(NSError * _Nonnull error) {

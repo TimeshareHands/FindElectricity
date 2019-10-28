@@ -22,11 +22,14 @@
 + (UIBarButtonItem *)itemWithIcon:(NSString *)icon highlightIcon:(NSString *)highlightIcon imageScale:(CGFloat)imageScale target:(id)target action:(SEL)action
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:highlightIcon] forState:UIControlStateHighlighted];
     CGSize btnSize = CGSizeMake(button.currentBackgroundImage.size.width * imageScale, button.currentBackgroundImage.size.height * imageScale);
-    button.frame = (CGRect){CGPointZero,btnSize};
+//    button.frame = (CGRect){CGPointZero,btnSize};
+    button.frame = CGRectMake(0, 0, btnSize.width+140, btnSize.height+20);
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    button.contentHorizontalAlignment =UIControlContentHorizontalAlignmentLeft;
+    button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     return [[UIBarButtonItem alloc]initWithCustomView:button];
 }
 

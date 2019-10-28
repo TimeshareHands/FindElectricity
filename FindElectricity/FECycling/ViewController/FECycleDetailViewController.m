@@ -141,8 +141,10 @@
         if (arr.count) {
             AMapDistanceResult *distance = [arr firstObject];
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.kmNum = distance.distance;
-                [weakSelf updateData];
+                if(distance.distance>100){
+                    weakSelf.kmNum = distance.distance;
+                    [weakSelf updateData];
+                }
             });
         }
     }];
