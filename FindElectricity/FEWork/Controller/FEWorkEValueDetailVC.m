@@ -10,6 +10,7 @@
 #import "FEWorkEValueDetailHeadView.h"
 #import "FEWorkEvalueCell.h"
 #import "FEWorkEValueShopVC.h"
+#import "FECycleViewController.h"
 @interface FEWorkEValueDetailVC ()<UITableViewDelegate,UITableViewDataSource,FEWorkEValueDetailHeadViewDelegate>
 @property (nonatomic, strong) FEWorkEValueDetailHeadView *headView;
 @property (nonatomic, strong) UITableView *myTableView;
@@ -114,6 +115,10 @@
     UIView *footView =[[UIView alloc]init];
     UIButton *tapBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     [tapBtn setImage:[UIImage imageNamed:@"wkm_Tap"] forState:UIControlStateNormal];
+    [tapBtn bk_addEventHandler:^(id sender) {
+        FECycleViewController *rideVC =[[FECycleViewController alloc]init];
+        [self.navigationController pushViewController:rideVC animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:tapBtn];
     [tapBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(footView);
