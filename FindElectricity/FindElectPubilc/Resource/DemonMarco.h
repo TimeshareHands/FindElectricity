@@ -127,6 +127,14 @@ typedef NS_ENUM(NSInteger,FEPointAnnotType){
     
 };
 
+#ifndef DQLOCK
+#define DQLOCK(lock) dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+#endif
+
+#ifndef DQUNLOCK
+#define DQUNLOCK(lock) dispatch_semaphore_signal(lock);
+#endif
+
 //主题颜色、副主题颜色
 #define kThemeColor UIColorFromHex(0x000000)
 #define kSubTopicColor UIColorFromHex(0xf23030)
