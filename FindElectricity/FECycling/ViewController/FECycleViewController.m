@@ -83,6 +83,7 @@
         [self.mapView startUpdatingLocation];
         _mapView.showsUserLocation = YES;
         _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        [_mapView setZoomLevel:15.1 animated:NO];
     }
     return _mapView;
 }

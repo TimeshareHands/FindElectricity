@@ -14,6 +14,7 @@ typedef void (^FEMapLocatUpdateBlock)(CLLocation *location, AMapLocationReGeocod
 @interface FECycleMap : MAMapView
 @property (copy, nonatomic) FEMapLocatUpdateBlock locationUpdateBlock;
 @property (assign, nonatomic) BOOL isShowMapCenter;
+@property (assign, nonatomic) BOOL isShowLocBtn;
 
 //进行单次带逆地理定位请求
 - (void) reGeocodeAction;

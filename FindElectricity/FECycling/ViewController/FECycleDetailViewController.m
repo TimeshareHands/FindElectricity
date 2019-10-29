@@ -168,6 +168,7 @@
         //展开地图
         FECycleMapViewController *vc = [[FECycleMapViewController alloc] init];
         self.delegete = vc;
+        vc.startCoord = _startCoord;
         [self.navigationController pushViewController:vc animated:YES];
     }else if (sender.tag == 1) {
         //stop

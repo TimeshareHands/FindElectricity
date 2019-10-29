@@ -40,6 +40,13 @@
 - (void)addView{
     [self.view addSubview:self.mapView];
     [self.mapView addSubview:_topView];
+    
+    self.pointAnnotaiton = [[FEPointAnnotation alloc] init];
+    self.pointAnnotaiton.type = FEPointAnnotRideStart;
+    [self.pointAnnotaiton setCoordinate:_startCoord];
+
+    [self.mapView addAnnotation:self.pointAnnotaiton];
+    
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [closeBtn setImage:[UIImage imageNamed:@"cyc_close"] forState:UIControlStateNormal];
     WEAKSELF;
@@ -74,27 +81,28 @@
     if (!_mapView) {
         _mapView = [[FECycleMap alloc] init];
         _mapView.delegate = self;
+//        _mapView.isShowLocBtn = NO;
         WEAKSELF;
         _mapView.locationUpdateBlock = ^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull reGeocode, CGFloat locationAngle, NSError * _Nonnull error) {
                 MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 //获取到定位信息，更新annotation
-                if (weakSelf.pointAnnotaiton == nil)
-                {
-                    weakSelf.pointAnnotaiton = [[FEPointAnnotation alloc] init];
-                    weakSelf.pointAnnotaiton.type = FEPointAnnotLoc;
-                    [weakSelf.pointAnnotaiton setCoordinate:location.coordinate];
-            
-                    [weakSelf.mapView addAnnotation:weakSelf.pointAnnotaiton];
-                }
+//                if (weakSelf.pointAnnotaiton == nil)
+//                {
+//                    weakSelf.pointAnnotaiton = [[FEPointAnnotation alloc] init];
+//                    weakSelf.pointAnnotaiton.type = FEPointAnnotLoc;
+//                    [weakSelf.pointAnnotaiton setCoordinate:location.coordinate];
+//
+//                    [weakSelf.mapView addAnnotation:weakSelf.pointAnnotaiton];
+//                }
                 [weakSelf setCurrentCoord:location.coordinate];
             });
         };
         _mapView.allowsAnnotationViewSorting = NO;
         [_mapView setIsShowMapCenter:NO];
         [self.mapView startHeadingLocation];
-//        _mapView.showsUserLocation = YES;
+        _mapView.showsUserLocation = YES;
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
@@ -102,7 +110,7 @@
 
 - (void)setCurrentCoord:(CLLocationCoordinate2D)currentCoord {
     _currentCoord = currentCoord;
-    [self.pointAnnotaiton setCoordinate:currentCoord];
+//    [self.pointAnnotaiton setCoordinate:currentCoord];
     [self.mapView setCenterCoordinate:currentCoord];
 }
 
@@ -117,7 +125,15 @@
         if(!annotationView) {
             annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndetifier];
         }
-        annotationView.image = [UIImage imageNamed:@"cyc_bianz.png"];
+        FEPointAnnotType type = ((FEPointAnnotation *)annotation).type;
+        switch (type) {
+            case FEPointAnnotRideStart:
+                annotationView.image = [UIImage imageNamed:@"cyc_bianz.png"];
+                break;
+            default:
+                break;
+        }
+//        annotationView.image = [UIImage imageNamed:@"cyc_bianz.png"];
         annotationView.canShowCallout = YES;
         return annotationView;
     }

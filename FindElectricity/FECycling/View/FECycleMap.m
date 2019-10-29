@@ -76,6 +76,11 @@
        }];
 }
 
+- (void)setIsShowLocBtn:(BOOL)isShowLocBtn {
+    _isShowLocBtn = isShowLocBtn;
+    _positionBtn.hidden = !_isShowLocBtn;
+}
+
 #pragma mark - AMapLocationManager Delegate
 
 - (void)amapLocationManager:(AMapLocationManager *)manager doRequireLocationAuth:(CLLocationManager *)locationManager

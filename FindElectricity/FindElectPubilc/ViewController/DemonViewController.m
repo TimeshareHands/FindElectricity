@@ -25,7 +25,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromHex(0xf3f6f9);
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"map_back.png" highlightIcon:nil imageScale:2.0 target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"map_back.png" highlightIcon:nil imageScale:1.0 target:self action:@selector(back)];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(doLogin) name:@"doLoginNotification" object:nil];
 }
 

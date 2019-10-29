@@ -195,6 +195,7 @@
 		CBA72A71234DD0CA00C7070E /* FECycleMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */; };
 		CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A73234DD42B00C7070E /* FECycleMap.m */; };
 		CBBD9A442356FABC005D6728 /* NSDictionary+FEExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBD9A432356FABC005D6728 /* NSDictionary+FEExtend.m */; };
+		CBC5E32023683B0F008083F1 /* UIButton+FEHitRect.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC5E31F23683B0F008083F1 /* UIButton+FEHitRect.m */; };
 		CBED22AB235048840009B75D /* FENewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22A9235048840009B75D /* FENewsCell.m */; };
 		CBED22AC235048840009B75D /* FENewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBED22AA235048840009B75D /* FENewsCell.xib */; };
 		CBED22B0235049AA0009B75D /* FENewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBED22AE235049AA0009B75D /* FENewsViewController.m */; };
@@ -633,6 +634,8 @@
 		CBA72A73234DD42B00C7070E /* FECycleMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleMap.m; sourceTree = "<group>"; };
 		CBBD9A422356FABC005D6728 /* NSDictionary+FEExtend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FEExtend.h"; sourceTree = "<group>"; };
 		CBBD9A432356FABC005D6728 /* NSDictionary+FEExtend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FEExtend.m"; sourceTree = "<group>"; };
+		CBC5E31E23683B0F008083F1 /* UIButton+FEHitRect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+FEHitRect.h"; sourceTree = "<group>"; };
+		CBC5E31F23683B0F008083F1 /* UIButton+FEHitRect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+FEHitRect.m"; sourceTree = "<group>"; };
 		CBED22A8235048840009B75D /* FENewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FENewsCell.h; sourceTree = "<group>"; };
 		CBED22A9235048840009B75D /* FENewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FENewsCell.m; sourceTree = "<group>"; };
 		CBED22AA235048840009B75D /* FENewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FENewsCell.xib; sourceTree = "<group>"; };
@@ -866,6 +869,8 @@
 				CBED22D823556A4E0009B75D /* UIImage+Han.m */,
 				CBED22D623556A4E0009B75D /* UILabel+Han.h */,
 				CBED22D723556A4E0009B75D /* UILabel+Han.m */,
+				CBC5E31E23683B0F008083F1 /* UIButton+FEHitRect.h */,
+				CBC5E31F23683B0F008083F1 /* UIButton+FEHitRect.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2049,6 +2054,7 @@
 				20916A92234CBE770045C7C8 /* FEMapCategView.m in Sources */,
 				4E783CFF2352F396003872F2 /* FETWorkGetPrizeIntroduceCell.m in Sources */,
 				4E02F452234F228600308D99 /* SDImageIOCoder.m in Sources */,
+				CBC5E32023683B0F008083F1 /* UIButton+FEHitRect.m in Sources */,
 				4E02F46A234F228600308D99 /* UIButton+WebCache.m in Sources */,
 				4EF155E4235C6D340037D8D4 /* FEWorkShareBottomView.m in Sources */,
 				20916A95234CD90E0045C7C8 /* UIViewController+FEDealloc.m in Sources */,

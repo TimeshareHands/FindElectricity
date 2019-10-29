@@ -7,7 +7,7 @@
 //
 
 #import "UIBarButtonItem+MTAdditions.h"
-
+#import "UIButton+FEHitRect.h"
 @implementation UIBarButtonItem(MTAdditions)
 + (UIBarButtonItem *)itemWithIcon:(NSString *)icon highlightIcon:(NSString *)highlightIcon target:(id)target action:(SEL)action
 {
@@ -26,10 +26,14 @@
     [button setBackgroundImage:[UIImage imageNamed:highlightIcon] forState:UIControlStateHighlighted];
     CGSize btnSize = CGSizeMake(button.currentBackgroundImage.size.width * imageScale, button.currentBackgroundImage.size.height * imageScale);
 //    button.frame = (CGRect){CGPointZero,btnSize};
-    button.frame = CGRectMake(0, 0, btnSize.width+140, btnSize.height+20);
+    button.frame = CGRectMake(0, 0, btnSize.width+140, btnSize.height+40);
+//    button.backgroundColor = [UIColor redColor];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     button.contentHorizontalAlignment =UIControlContentHorizontalAlignmentLeft;
     button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+//    button.imageEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
+    button.hitEdgeInsets = UIEdgeInsetsMake(0, -36, 0, 0);
+    button.hitScale = 2;
     return [[UIBarButtonItem alloc]initWithCustomView:button];
 }
 

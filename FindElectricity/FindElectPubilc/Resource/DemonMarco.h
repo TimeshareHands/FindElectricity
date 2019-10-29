@@ -111,16 +111,20 @@ const static NSString *FEAMapKey = @"b38728b38131c13a24e8454f6a5dc233";
 
 typedef NS_ENUM(NSInteger,FEPointAnnotType){
     FEPointAnnotLoc = 0,
-    FEPointAnnotSlowlyChong = 1,
-    FEPointAnnotQuickChong = 2,
+    FEPointAnnotSlowlyChong = 2,
+    FEPointAnnotQuickChong = 1,
     FEPointAnnotFix = 3,
-    
     FEPointAnnotAll = 4,
+    
+    FEPointAnnotRideStart = 6,
+    
     FEPointAnnotRiding = 10,
     FEPointAnnotDrive = 11,
     FEPointAnnotWalking = 12,
     FEPointAnnotBus = 13,
     FEPointAnnotRailway = 14,
+    
+    
 };
 
 //主题颜色、副主题颜色
