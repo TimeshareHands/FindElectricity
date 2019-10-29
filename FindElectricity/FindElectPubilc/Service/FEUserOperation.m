@@ -32,6 +32,7 @@ static dispatch_once_t onceToken;
 - (void)logoutUser
 {
     self.token = @"";
+    [self setToken:@""];
     dispatch_async(dispatch_get_main_queue(), ^{
         AppDelegate *appdele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appdele.tabBarController.navigationController popToRootViewControllerAnimated:YES];
