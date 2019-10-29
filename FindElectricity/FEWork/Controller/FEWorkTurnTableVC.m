@@ -152,7 +152,7 @@
 }
 #pragma mark -tableViewdegate &&tableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 9;
+    return self.prize_arr_winlist.count+2;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
