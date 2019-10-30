@@ -144,7 +144,7 @@
                     [[NSUserDefaults standardUserDefaults] setObject:reGeocode.city forKey:kCurrentCity];
                 }
                 //获取到定位信息，更新annotation
-                if (weakSelf.pointAnnotaiton == nil)
+                if (weakSelf.pointAnnotaiton == nil &&location&&reGeocode.formattedAddress.length&&[reGeocode.country isEqualToString:@"中国"])
                 {
                     weakSelf.pointAnnotaiton = [[FEPointAnnotation alloc] init];
                     weakSelf.pointAnnotaiton.type = FEPointAnnotLoc;

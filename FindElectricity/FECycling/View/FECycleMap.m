@@ -36,6 +36,7 @@
 //        self.showsUserLocation = YES;
         [self addView];
         [self configLocationManager];
+        [self setZoomLevel:15.1 animated:NO];
     }
     return self;
 }

@@ -12,18 +12,30 @@
 @interface FECycleMapViewController ()<MAMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) FECycleMap *mapView;
-@property (assign, nonatomic) CLLocationCoordinate2D currentCoord;
+@property (assign, nonatomic) CLLocation *currentLocat;
+@property (strong, nonatomic) NSMutableArray *points;
 @property (weak, nonatomic) IBOutlet UILabel *currentElec;
 @property (weak, nonatomic) IBOutlet UILabel *speed;
 @property (weak, nonatomic) IBOutlet UILabel *currentKM;
 @property (weak, nonatomic) IBOutlet UILabel *currentTime;
 @property (nonatomic, strong) FEPointAnnotation *pointAnnotaiton;
+@property (nonatomic, strong) dispatch_semaphore_t lock;
 @end
 
 @implementation FECycleMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _lock = dispatch_semaphore_create(1);
+    CLLocation *start = [[CLLocation alloc] initWithLatitude:_startCoord.latitude longitude:_startCoord.longitude];
+//    _points = [NSMutableArray arrayWithObject:start];
+    if (CLLocationCoordinate2DIsValid(_startCoord)) {
+        _points = [NSMutableArray arrayWithObject:start];
+    }else {
+        _points = [NSMutableArray array];
+    }
+    
     [self addView];
 }
 
@@ -70,11 +82,22 @@
     }];
 }
 
+int count = 0;
 - (void)updateUIDataWithTime:(NSString *)time km:(NSString *)km elec:(NSString *)elec speed:(NSString *)spend {
     self.currentTime.text = time;
     self.currentKM.text = km;
     self.speed.text = spend;
     self.currentElec.text = elec;
+    
+    //把当前位置记录下来 5s更新
+    count++;
+    if (_currentLocat&&CLLocationCoordinate2DIsValid(_currentLocat.coordinate)&&count>=5) {
+        count = 0;
+        DQLOCK(_lock);
+        [_points addObject:[_currentLocat copy]];
+        DQUNLOCK(_lock);
+        [self drawLine];
+    }
 }
 
 - (FECycleMap *)mapView {
@@ -84,7 +107,7 @@
 //        _mapView.isShowLocBtn = NO;
         WEAKSELF;
         _mapView.locationUpdateBlock = ^(CLLocation * _Nonnull location, AMapLocationReGeocode * _Nonnull reGeocode, CGFloat locationAngle, NSError * _Nonnull error) {
-                MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
+//                MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 //获取到定位信息，更新annotation
@@ -96,7 +119,9 @@
 //
 //                    [weakSelf.mapView addAnnotation:weakSelf.pointAnnotaiton];
 //                }
-                [weakSelf setCurrentCoord:location.coordinate];
+                if (location&&reGeocode.formattedAddress.length&&[reGeocode.country isEqualToString:@"中国"]) {
+                    [weakSelf setCurrentLocat:location];
+                }
             });
         };
         _mapView.allowsAnnotationViewSorting = NO;
@@ -108,10 +133,12 @@
     return _mapView;
 }
 
-- (void)setCurrentCoord:(CLLocationCoordinate2D)currentCoord {
-    _currentCoord = currentCoord;
-//    [self.pointAnnotaiton setCoordinate:currentCoord];
-    [self.mapView setCenterCoordinate:currentCoord];
+- (void)setCurrentLocat:(CLLocation *)currentLocat {
+    if (currentLocat&&CLLocationCoordinate2DIsValid(_currentLocat.coordinate)) {
+        _currentLocat = currentLocat;
+        //    [self.pointAnnotaiton setCoordinate:currentCoord];
+            [self.mapView setCenterCoordinate:_currentLocat.coordinate];
+    }
 }
 
 //AmapDelegete
@@ -139,6 +166,59 @@
     }
     
     return nil;
+}
+
+- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MAPolyline class]])
+    {
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
+        
+        polylineRenderer.lineWidth    = 6.f;
+        polylineRenderer.strokeColor  = [UIColor colorWithRed:73.0f/255.0f green:189.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
+        polylineRenderer.lineJoinType = kMALineJoinRound;
+        polylineRenderer.lineCapType  = kMALineCapRound;
+        
+        return polylineRenderer;
+    }
+    return nil;
+}
+
+//划线
+- (void)drawLine {
+    if (_points.count<3) {
+        return;
+    }
+    CLLocationCoordinate2D commonPolylineCoords[_points.count];
+//    commonPolylineCoords[0].latitude = 28.284373;
+//    commonPolylineCoords[0].longitude = 112.929788;
+//
+//    commonPolylineCoords[1].latitude = 28.283363;
+//    commonPolylineCoords[1].longitude = 112.929788;
+//
+//    commonPolylineCoords[2].latitude = 28.283333;
+//    commonPolylineCoords[2].longitude = 112.929788;
+//
+//    commonPolylineCoords[3].latitude = 28.286343;
+//    commonPolylineCoords[3].longitude = 112.939788;
+    for (int i=0; i<_points.count; i++) {
+        CLLocation *loc = _points[i];
+        commonPolylineCoords[i].latitude = loc.coordinate.latitude;
+        commonPolylineCoords[i].longitude = loc.coordinate.longitude;
+    }
+    
+    //清楚之前的轨迹
+    [_mapView removeOverlays:_mapView.overlays];
+    
+    //构造折线对象
+    MAPolyline *commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:4];
+
+    //在地图上添加折线对象
+    [_mapView addOverlay: commonPolyline];
+}
+
+- (void)dealloc {
+    
 }
 
 /*

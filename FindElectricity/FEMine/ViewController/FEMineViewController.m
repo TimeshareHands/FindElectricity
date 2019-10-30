@@ -14,7 +14,7 @@
 #import "FECollectViewController.h"
 #import "FEPositionErrorViewController.h"
 #import "FESharePopView.h"
-
+#import <UMShare/UMShare.h>
 @interface FEMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (copy, nonatomic) NSArray *dataSource;
 @property (weak, nonatomic) IBOutlet UIView *headView;
@@ -93,10 +93,10 @@
             
             if (tag==1) {
                 //朋友圈
-                
+                [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
             }else{
                 //微信好友
-                
+                [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
             }
         };
     }
@@ -213,6 +213,29 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    //创建网页内容对象
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"找电" descr:@"找电新版福利来啦！天天抽大奖礼品免费邮寄到家！下载注册填写邀请码，免费赠送10次抽奖机会，赶快一起来玩吧！" thumImage:[UIImage imageNamed:@"AppIcon"]];
+    //设置网页地址
+    shareObject.webpageUrl =[NSString stringWithFormat:@"http://apk.csjiayu.com/zhaodian/index.html?invitation=%@&from=singlemessage&isappinstalled=0",[FEUserOperation manager].userModel.invCode];
+    
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            NSLog(@"************Share fail with error %@*********",error);
+        }else{
+            NSLog(@"response data is %@",data);
+        }
+    }];
 }
 
 /*
