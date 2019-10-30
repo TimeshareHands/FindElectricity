@@ -64,7 +64,7 @@
 
 - (void)initData {
     _mapDatas = [NSMutableArray array];
-    _type = @"1|2|3";
+    _type = @"1,2|1,3|2,3|1,2,3|1|2|3";
 }
 
 - (void)addView {
@@ -586,7 +586,8 @@
 }
 
 - (FEPointAnnotType)serviceToType:(NSString *)serverId {
-    if ([serverId containsString:@","]||[serverId containsString:@"，"]) {
+//    MYLog(@"--seId:%@",serverId);
+    if (serverId.length>1||[serverId containsString:@","]||[serverId containsString:@"，"]) {
         return FEPointAnnotAll;
     }
     return [serverId integerValue];

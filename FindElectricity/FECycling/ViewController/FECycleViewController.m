@@ -133,6 +133,8 @@
             _currentKM.text = [NSString stringWithFormat:@"%.2f",currentKM/1000.0];
             if (currentTime>0) {
                 _mapView.hidden = YES;
+                [userDefault removeObjectForKey:kFECycleTime];
+                [userDefault removeObjectForKey:kFECycleKM];
             }else{
                 _mapView.hidden = NO;
             }

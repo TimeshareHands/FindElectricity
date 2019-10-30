@@ -141,7 +141,7 @@
         if (arr.count) {
             AMapDistanceResult *distance = [arr firstObject];
             dispatch_async(dispatch_get_main_queue(), ^{
-                if(distance.distance>100){
+                if(distance.distance>50){
                     weakSelf.kmNum = distance.distance;
                     [weakSelf updateData];
                 }

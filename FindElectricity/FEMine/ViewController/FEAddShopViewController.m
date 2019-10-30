@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *telephone;
 @property (weak, nonatomic) IBOutlet UITextField *contact;
 @property (weak, nonatomic) IBOutlet UITextField *imgName;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UITextField *pcq;
 @property (weak, nonatomic) IBOutlet UITextField *address;
 @property (weak, nonatomic) IBOutlet UITextField *other;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *upLoadBtn;
 @property (weak, nonatomic) IBOutlet FECycleMap *mapView;
+@property (weak, nonatomic) IBOutlet UIImageView *shopImg;
 
 @property (strong, nonatomic) NSString *iconPath;
 @property (strong, nonatomic) NSData *icon;
@@ -85,6 +87,9 @@
     _mapView.allowsAnnotationViewSorting = NO;
     [_mapView startUpdatingLocation];
 //    [_mapView startHeadingLocation];
+    
+    UITapGestureRecognizer *tag = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenImg:)];
+    [_shopImg addGestureRecognizer:tag];
 }
 
 //获取地址信息
@@ -163,7 +168,7 @@
 {
     UIImage *_selectedImage = [[UIImage alloc] init];
     _selectedImage = info[@"UIImagePickerControllerEditedImage"];
-//    _avtCell.img.image = _selectedImage;
+    
     _icon = UIImageJPEGRepresentation(_selectedImage, 0.3);
     // 这里base64Encoding 要修改
 //    _iconString = [data base64Encoding];
@@ -265,9 +270,30 @@
             [actionSheet showInView:self.view];
             break;
         }
+        case 7:
+        {
+            //删除图片
+            _deleteBtn.hidden = YES;
+            _imgName.text = @"";
+            [_upLoadBtn setTitle:@"上传图片" forState:UIControlStateNormal];
+            _iconPath = nil;
+            break;
+        }
+        case 8:
+        {
+            //显示图片
+            
+            _shopImg.image = [[UIImage alloc] initWithData:_icon];
+            _shopImg.hidden = NO;
+            break;
+        }
         default:
             break;
     }
+}
+
+- (void)hiddenImg:(UITapGestureRecognizer *)sender {
+    _shopImg.hidden = YES;
 }
 
 - (IBAction)save:(id)sender {
@@ -333,11 +359,14 @@
 }
 
 - (void)upLoadIcon{
+    WEAKSELF;
     [[NetWorkManger manager] uploadImageToQNFileData:_icon success:^(id  _Nonnull responseObject) {
         NSString *data = (NSString *)responseObject;
         if ([data containsString:@"http"]) {
-            _iconPath = data;
-            [_upLoadBtn setTitle:@"上传成功" forState:UIControlStateNormal];
+            weakSelf.iconPath = data;
+            [weakSelf.upLoadBtn setTitle:@"上传成功" forState:UIControlStateNormal];
+            weakSelf.imgName.text = [data lastPathComponent];
+            weakSelf.deleteBtn.hidden = NO;
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 MTSVPShowInfoText(data);

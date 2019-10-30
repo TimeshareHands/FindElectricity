@@ -52,23 +52,32 @@
     if (sender.tag==4){
         [self hidden];
         if (_comfirm) {
-            NSString *status = [NSString stringWithFormat:@"%@",[_serverIds componentsJoinedByString:@"|"]];
+            NSString *status = [self getType];
             _comfirm(self,status);
         }
     }else if (sender.tag == 3){
         sender.selected = !sender.selected;
         _select3.hidden = !_select3.hidden;
         [self serverID:[NSString stringWithFormat:@"%d",sender.tag] isAdd:sender.selected];
-    }else if (sender.tag == 2){
+    }else if (sender.tag == 1){
         sender.selected = !sender.selected;
         _select1.hidden = !_select1.hidden;
         [self serverID:[NSString stringWithFormat:@"%d",sender.tag] isAdd:sender.selected];
-    }else if (sender.tag == 1){
+    }else if (sender.tag == 2){
         sender.selected = !sender.selected;
         _select2.hidden = !_select2.hidden;
         [self serverID:[NSString stringWithFormat:@"%d",sender.tag] isAdd:sender.selected];
     }else {
         [self hidden];
+    }
+}
+
+- (NSString *)getType
+{
+    if (_serverIds.count!=3) {
+        return [NSString stringWithFormat:@"%@|%@",[_serverIds componentsJoinedByString:@"|"],[_serverIds componentsJoinedByString:@","]];
+    }else {
+        return @"1,2|1,3|2,3|1,2,3|1|2|3";
     }
 }
 
