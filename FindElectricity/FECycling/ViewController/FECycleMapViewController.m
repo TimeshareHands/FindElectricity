@@ -9,6 +9,7 @@
 #import "FECycleMapViewController.h"
 #import "FECycleMap.h"
 #import "FEPointAnnotation.h"
+#import "FEMapManager.h"
 @interface FECycleMapViewController ()<MAMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) FECycleMap *mapView;
@@ -93,12 +94,27 @@ int count = 0;
     count++;
     if (_currentLocat&&CLLocationCoordinate2DIsValid(_currentLocat.coordinate)&&count>=5) {
         count = 0;
-        DQLOCK(_lock);
-        [_points addObject:[_currentLocat copy]];
-        DQUNLOCK(_lock);
-        [self drawLine];
+        CLLocationCoordinate2D des = _currentLocat.coordinate;
+        CLLocationCoordinate2D start = ((CLLocation *)[_points lastObject]).coordinate;
+        WEAKSELF;
+        [[FEMapManager manager] getDistanceFromCoord:start toCoord:des finishBlock:^(id  _Nonnull response, FEAMapSearchType type, NSError * _Nonnull error) {
+            NSArray *arr = ((AMapDistanceSearchResponse *)response).results;
+            if (arr.count) {
+                AMapDistanceResult *distance = [arr firstObject];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if(distance.distance<200){
+                        DQLOCK(weakSelf.lock);
+                        [weakSelf.points addObject:[[CLLocation alloc] initWithLatitude:des.latitude longitude:des.longitude]];
+                        DQUNLOCK(weakSelf.lock);
+                        [weakSelf drawLine];
+                    }
+                });
+            }
+        }];
+        
     }
 }
+
 
 - (FECycleMap *)mapView {
     if (!_mapView) {
@@ -126,7 +142,9 @@ int count = 0;
         };
         _mapView.allowsAnnotationViewSorting = NO;
         [_mapView setIsShowMapCenter:NO];
-        [self.mapView startHeadingLocation];
+        
+        [_mapView startHeadingLocation];
+        _mapView.showsCompass = NO;
         _mapView.showsUserLocation = YES;
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
@@ -211,7 +229,7 @@ int count = 0;
     [_mapView removeOverlays:_mapView.overlays];
     
     //构造折线对象
-    MAPolyline *commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:4];
+    MAPolyline *commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:_points.count];
 
     //在地图上添加折线对象
     [_mapView addOverlay: commonPolyline];

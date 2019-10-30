@@ -87,7 +87,7 @@
     _mapView.allowsAnnotationViewSorting = NO;
     [_mapView startUpdatingLocation];
 //    [_mapView startHeadingLocation];
-    
+    [_mapView setZoomLevel:15.1 animated:NO];
     UITapGestureRecognizer *tag = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenImg:)];
     [_shopImg addGestureRecognizer:tag];
 }
