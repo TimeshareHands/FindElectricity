@@ -37,7 +37,7 @@ typedef  void (^AMapSearchFinishBlock)(id response,FEAMapSearchType type,NSError
 /**
 获取POI信息
  */
-- (void)poiSearchKeywords:(NSString *)keywords finishBlock:(AMapSearchFinishBlock)block;
+- (void)poiSearchKeywords:(NSString *)keywords location:(AMapGeoPoint *)location finishBlock:(AMapSearchFinishBlock)block;
 
 @end
 

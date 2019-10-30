@@ -45,6 +45,8 @@
 		20916A9F234F85770045C7C8 /* FESignChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916A9D234F85770045C7C8 /* FESignChangeViewController.xib */; };
 		20916AA3234F85A90045C7C8 /* FEChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20916AA1234F85A90045C7C8 /* FEChangePhoneViewController.m */; };
 		20916AA4234F85A90045C7C8 /* FEChangePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20916AA2234F85A90045C7C8 /* FEChangePhoneViewController.xib */; };
+		20BCF7242369CB7A0059F47B /* FESearchAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BCF7222369CB7A0059F47B /* FESearchAreaViewController.m */; };
+		20BCF7252369CB7A0059F47B /* FESearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20BCF7232369CB7A0059F47B /* FESearchAreaViewController.xib */; };
 		4E02F1F02348C55900308D99 /* NetWorkManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1EF2348C55900308D99 /* NetWorkManger.m */; };
 		4E02F1F32348DF1000308D99 /* FEUserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F1F22348DF1000308D99 /* FEUserOperation.m */; };
 		4E02F20B2349798F00308D99 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E02F1FE2349798F00308D99 /* UMSocialSDKResources.bundle */; };
@@ -330,6 +332,9 @@
 		20916AA0234F85A90045C7C8 /* FEChangePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEChangePhoneViewController.h; sourceTree = "<group>"; };
 		20916AA1234F85A90045C7C8 /* FEChangePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEChangePhoneViewController.m; sourceTree = "<group>"; };
 		20916AA2234F85A90045C7C8 /* FEChangePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEChangePhoneViewController.xib; sourceTree = "<group>"; };
+		20BCF7212369CB7A0059F47B /* FESearchAreaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FESearchAreaViewController.h; sourceTree = "<group>"; };
+		20BCF7222369CB7A0059F47B /* FESearchAreaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FESearchAreaViewController.m; sourceTree = "<group>"; };
+		20BCF7232369CB7A0059F47B /* FESearchAreaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FESearchAreaViewController.xib; sourceTree = "<group>"; };
 		36385EB010327762298116CD /* Pods-FindElectricity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.release.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.release.xcconfig"; sourceTree = "<group>"; };
 		481F388034AC60960456C653 /* Pods-FindElectricity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricity.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricity/Pods-FindElectricity.debug.xcconfig"; sourceTree = "<group>"; };
 		4CDC05AABEACE169069B9C51 /* Pods-FindElectricityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindElectricityUITests.debug.xcconfig"; path = "Target Support Files/Pods-FindElectricityUITests/Pods-FindElectricityUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1552,6 +1557,9 @@
 				CBEDBD7D234F0B2B00A923A3 /* FEAddShopViewController.h */,
 				CBEDBD7E234F0B2C00A923A3 /* FEAddShopViewController.m */,
 				CBEDBD7F234F0B2C00A923A3 /* FEAddShopViewController.xib */,
+				20BCF7212369CB7A0059F47B /* FESearchAreaViewController.h */,
+				20BCF7222369CB7A0059F47B /* FESearchAreaViewController.m */,
+				20BCF7232369CB7A0059F47B /* FESearchAreaViewController.xib */,
 				CB155D562358518B0060A3AD /* FESeleLocViewController.h */,
 				CB155D572358518B0060A3AD /* FESeleLocViewController.m */,
 				CB155D582358518B0060A3AD /* FESeleLocViewController.xib */,
@@ -1730,6 +1738,7 @@
 				20916A4E234789530045C7C8 /* FEMapNaviViewController.xib in Resources */,
 				20916A9A234F7FD60045C7C8 /* FEMsgChangeViewController.xib in Resources */,
 				CBED22D423556A340009B75D /* other.png in Resources */,
+				20BCF7252369CB7A0059F47B /* FESearchAreaViewController.xib in Resources */,
 				CB155D5A2358518B0060A3AD /* FESeleLocViewController.xib in Resources */,
 				CBED22D323556A340009B75D /* ll.png in Resources */,
 				CBEDBD5E234F007000A923A3 /* FEMineCell.xib in Resources */,
@@ -2074,6 +2083,7 @@
 				4E02F445234F228600308D99 /* SDImageLoader.m in Sources */,
 				CBA72A70234DD0CA00C7070E /* FECycleMapViewController.m in Sources */,
 				4E02F290234EFAFB00308D99 /* FEFindPasswordVC.m in Sources */,
+				20BCF7242369CB7A0059F47B /* FESearchAreaViewController.m in Sources */,
 				4E02F2C1234EFB4300308D99 /* FEWorkGetGiftCell.m in Sources */,
 				4EF155E1235C40200037D8D4 /* FESignInActAlert.m in Sources */,
 				4E02F472234F228600308D99 /* UIColor+HexString.m in Sources */,

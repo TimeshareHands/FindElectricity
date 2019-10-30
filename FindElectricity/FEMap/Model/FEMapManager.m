@@ -65,10 +65,10 @@ static FEMapManager *manager = nil;
 }
 
 //获取POI信息
-- (void)poiSearchKeywords:(NSString *)keywords finishBlock:(AMapSearchFinishBlock)block{
+- (void)poiSearchKeywords:(NSString *)keywords location:(AMapGeoPoint *)location finishBlock:(AMapSearchFinishBlock)block{
     _poiBlock = block;
     AMapPOIKeywordsSearchRequest *regReq = [[AMapPOIKeywordsSearchRequest alloc] init];
-
+    regReq.location = location;
     regReq.keywords = keywords;
     [self.search AMapPOIKeywordsSearch:regReq];
 }

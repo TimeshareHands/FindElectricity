@@ -9,6 +9,7 @@
 #import "FEAddShopViewController.h"
 #import "FECycleMap.h"
 #import "FEMapManager.h"
+#import "FESearchAreaViewController.h"
 @interface FEAddShopViewController ()<UIPickerViewDelegate,UIPickerViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,MAMapViewDelegate,AMapSearchDelegate>
 @property (assign, nonatomic) NSInteger flag;
 @property (weak, nonatomic) IBOutlet UILabel *zaoTime;
@@ -113,11 +114,15 @@
 }
 
 #pragma mark AMapdelegete
-- (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    MYLog(@"--lati:%f;longt:%f",mapView.centerCoordinate.latitude,mapView.centerCoordinate.longitude);
+- (void)mapView:(MAMapView *)mapView mapDidMoveByUser:(BOOL)wasUserAction {
     CLLocationCoordinate2D coord = _mapView.centerCoordinate;
     _geoPoint = [AMapGeoPoint locationWithLatitude:coord.latitude longitude:coord.longitude];
     [self regSearchFromCoord:_geoPoint];
+}
+
+- (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+//    MYLog(@"--lati:%f;longt:%f",mapView.centerCoordinate.latitude,mapView.centerCoordinate.longitude);
+    
 }
 
 
@@ -287,9 +292,31 @@
             _shopImg.hidden = NO;
             break;
         }
+        case 9:
+        {
+            //搜索地址
+            FESearchAreaViewController *vc = [[FESearchAreaViewController alloc] init];
+            if (_reGeocode) {
+                vc.loc = [_geoPoint copy];
+            }
+            WEAKSELF;
+            vc.selectArea = ^(AMapPOI * _Nonnull poi) {
+                [weakSelf changePosition:poi];
+            };
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
         default:
             break;
     }
+}
+
+//选择完地址回来
+- (void)changePosition:(AMapPOI *)poi {
+    _geoPoint = poi.location;
+    
+    _pcq.text = [NSString stringWithFormat:@"%@ %@ %@",poi.province,poi.city,poi.district];
+    _address.text = [NSString stringWithFormat:@"%@",poi.name];
 }
 
 - (void)hiddenImg:(UITapGestureRecognizer *)sender {
