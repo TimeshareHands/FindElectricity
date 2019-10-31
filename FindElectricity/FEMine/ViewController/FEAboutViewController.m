@@ -25,6 +25,13 @@
     _version.text = [NSString stringWithFormat:@"版本号v%@",PCReleaseVersionString];
 }
 
+- (IBAction)updateAct:(id)sender {
+    NSString * url = [NSString stringWithFormat:@"itms://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@",@""];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:nil completionHandler:^(BOOL success) {
+        
+    }];
+}
+
 /*
 #pragma mark - Navigation
 
