@@ -70,9 +70,6 @@
             MYLog(@"map-location:{lat:%f; lon:%f; accuracy:%f; reGeocode:%@;agnle:%f;error:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress,locationAngle,error);
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (reGeocode.city) {
-                
-            }
             
             if (!weakSelf.geoPoint&&!location)
             {
@@ -86,7 +83,7 @@
     };
     _mapView.delegate = self;
     _mapView.allowsAnnotationViewSorting = NO;
-    [_mapView startUpdatingLocation];
+//    [_mapView startUpdatingLocation];
 //    [_mapView startHeadingLocation];
     [_mapView setZoomLevel:15.1 animated:NO];
     UITapGestureRecognizer *tag = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenImg:)];
@@ -110,14 +107,18 @@
     _reGeocode = reGeocode;
     AMapAddressComponent *addCom = reGeocode.regeocode.addressComponent;
     _pcq.text = [NSString stringWithFormat:@"%@ %@ %@",addCom.province,addCom.city,addCom.district];
-    _address.text = [NSString stringWithFormat:@"%@%@%@",addCom.township,addCom.neighborhood,addCom.building];
+    NSString *formattedAdd =  _reGeocode.regeocode.formattedAddress;
+    formattedAdd = [[formattedAdd componentsSeparatedByString:addCom.township] lastObject];
+    _address.text = [NSString stringWithFormat:@"%@%@",addCom.township,formattedAdd];
 }
 
 #pragma mark AMapdelegete
 - (void)mapView:(MAMapView *)mapView mapDidMoveByUser:(BOOL)wasUserAction {
-    CLLocationCoordinate2D coord = _mapView.centerCoordinate;
-    _geoPoint = [AMapGeoPoint locationWithLatitude:coord.latitude longitude:coord.longitude];
-    [self regSearchFromCoord:_geoPoint];
+    if (wasUserAction||!_geoPoint) {
+        CLLocationCoordinate2D coord = _mapView.centerCoordinate;
+        _geoPoint = [AMapGeoPoint locationWithLatitude:coord.latitude longitude:coord.longitude];
+        [self regSearchFromCoord:_geoPoint];
+    }
 }
 
 - (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
@@ -314,7 +315,7 @@
 //选择完地址回来
 - (void)changePosition:(AMapPOI *)poi {
     _geoPoint = poi.location;
-    
+    [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(_geoPoint.latitude, _geoPoint.longitude)];
     _pcq.text = [NSString stringWithFormat:@"%@ %@ %@",poi.province,poi.city,poi.district];
     _address.text = [NSString stringWithFormat:@"%@",poi.name];
 }
@@ -363,7 +364,7 @@
     [parameter setValue:addressCom.province forKey:@"province"];
     [parameter setValue:addressCom.city forKey:@"city"];
     [parameter setValue:addressCom.district forKey:@"county"];
-    [parameter setValue:addressCom.township forKey:@"street"];
+    [parameter setValue:_address.text forKey:@"street"];
     [parameter setValue:@(_geoPoint.longitude) forKey:@"longitude"];
     [parameter setValue:@(_geoPoint.latitude) forKey:@"latitude"];
     [parameter setValue:_other.text forKey:@"note"];

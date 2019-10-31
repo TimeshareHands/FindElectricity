@@ -55,17 +55,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "092C9730-E5EC-4461-9979-2742B1FDD621"
-            shouldBeEnabled = "Yes"
+            uuid = "5DA4B3B7-DBD9-40E1-91D2-DE4F9AFE7C6A"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindElectricity/FEMine/ViewController/FEAddShopViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
-            landmarkName = "-save:"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "-regSearchFromCoord:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F687ECF-6E05-4759-A52A-CE3BE3CBFF73"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FindElectricity/FEMine/ViewController/FEAddShopViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-addView"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5F687ECF-6E05-4759-A52A-CE3BE3CBFF73 - cc278cdf743d2893"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[FEAddShopViewController addView]_block_invoke"
+                  moduleName = "&#x627e;&#x7535;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/FindElec/FindElectricity/FindElectricity/FEMine/ViewController/FEAddShopViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "652">
+               </Location>
+               <Location
+                  uuid = "5F687ECF-6E05-4759-A52A-CE3BE3CBFF73 - 1f3e5b87ffdd706"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[FEAddShopViewController addView]_block_invoke_2"
+                  moduleName = "&#x627e;&#x7535;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/FindElec/FindElectricity/FindElectricity/FEMine/ViewController/FEAddShopViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

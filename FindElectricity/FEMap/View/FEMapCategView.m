@@ -74,11 +74,7 @@
 
 - (NSString *)getType
 {
-    if (_serverIds.count!=3) {
-        return [NSString stringWithFormat:@"%@|%@",[_serverIds componentsJoinedByString:@"|"],[_serverIds componentsJoinedByString:@","]];
-    }else {
-        return @"1,2|1,3|2,3|1,2,3|1|2|3";
-    }
+    return [_serverIds componentsJoinedByString:@"|"];
 }
 
 @end

@@ -64,7 +64,7 @@
 
 - (void)initData {
     _mapDatas = [NSMutableArray array];
-    _type = @"1,2|1,3|2,3|1,2,3|1|2|3";
+    _type = @"1|2|3";
 }
 
 - (void)addView {
