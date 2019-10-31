@@ -11,6 +11,7 @@
 #import <IQKeyboardManager.h>
 #import <UMShare/UMShare.h>
 #import <UMCommon/UMCommon.h>
+#import <Bugly/Bugly.h>
 @interface AppDelegate ()
 @property(nonatomic,strong) DemonNavigationController *tabNavigationVC;
 
@@ -28,6 +29,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self configureAPIKey];
         [self keyboardSet];
+        [Bugly startWithAppId:@"0b8a0b2ebf"];
         [UMConfigure setLogEnabled:YES];
         [UMConfigure initWithAppkey:@"5d1aca124ca3576af50011a7" channel:@"App Store"];
           // U-Share 平台设置

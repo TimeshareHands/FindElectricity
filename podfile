@@ -26,7 +26,7 @@ target 'FindElectricity' do
    pod 'AMapSearch-NO-IDFA'
    pod 'SVProgressHUD'
    pod 'IQKeyboardManager'
-#   pod 'MJPhotoBrowser'
+   pod 'Bugly'
    
    # Mantle 增强 https://github.com/hilen/MantleExtension
 #   pod 'Mantle'
