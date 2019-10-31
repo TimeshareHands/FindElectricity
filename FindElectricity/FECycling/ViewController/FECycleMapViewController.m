@@ -94,23 +94,28 @@ int count = 0;
     count++;
     if (_currentLocat&&CLLocationCoordinate2DIsValid(_currentLocat.coordinate)&&count>=5) {
         count = 0;
-        CLLocationCoordinate2D des = _currentLocat.coordinate;
-        CLLocationCoordinate2D start = ((CLLocation *)[_points lastObject]).coordinate;
-        WEAKSELF;
-        [[FEMapManager manager] getDistanceFromCoord:start toCoord:des finishBlock:^(id  _Nonnull response, FEAMapSearchType type, NSError * _Nonnull error) {
-            NSArray *arr = ((AMapDistanceSearchResponse *)response).results;
-            if (arr.count) {
-                AMapDistanceResult *distance = [arr firstObject];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if(distance.distance<200){
-                        DQLOCK(weakSelf.lock);
-                        [weakSelf.points addObject:[[CLLocation alloc] initWithLatitude:des.latitude longitude:des.longitude]];
-                        DQUNLOCK(weakSelf.lock);
-                        [weakSelf drawLine];
-                    }
-                });
-            }
-        }];
+        DQLOCK(self.lock);
+        [self.points addObject:_currentLocat];
+        DQUNLOCK(self.lock);
+        [self drawLine];
+//        CLLocationCoordinate2D des = _currentLocat.coordinate;
+//        CLLocationCoordinate2D start = ((CLLocation *)[_points lastObject]).coordinate;
+//        WEAKSELF;
+//        [[FEMapManager manager] getDistanceFromCoord:start toCoord:des finishBlock:^(id  _Nonnull response, FEAMapSearchType type, NSError * _Nonnull error) {
+//            NSArray *arr = ((AMapDistanceSearchResponse *)response).results;
+//            if (arr.count) {
+//                AMapDistanceResult *distance = [arr firstObject];
+//                dispatch_async(dispatch_get_main_queue(), ^{
+////                    if(distance.distance<500)
+//                    {
+//                        DQLOCK(weakSelf.lock);
+//                        [weakSelf.points addObject:[[CLLocation alloc] initWithLatitude:des.latitude longitude:des.longitude]];
+//                        DQUNLOCK(weakSelf.lock);
+//                        [weakSelf drawLine];
+//                    }
+//                });
+//            }
+//        }];
         
     }
 }
