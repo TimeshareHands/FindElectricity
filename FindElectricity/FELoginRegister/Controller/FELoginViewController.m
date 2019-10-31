@@ -198,6 +198,10 @@
         [_passwordTxt setPlaceholder:@"请输入密码"];
         [_passwordTxt setFont:Demon_15_Font];
         _passwordTxt.secureTextEntry =YES;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+       if ([defaults objectForKey:@"password"]) {
+           [_passwordTxt setText:[defaults objectForKey:@"password"]];
+       }
        
     }
     return _passwordTxt;
