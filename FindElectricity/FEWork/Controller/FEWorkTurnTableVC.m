@@ -18,7 +18,9 @@
 #import "FEWorkReceiveAddressAlert.h"
 #import "FEAddressViewController.h"
 #import "FELauchShow.h"
-@interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate>
+#import "FEWorkTurnTableGoBikeAlert.h"
+#import "FECycleViewController.h"
+@interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate,FEWorkTurnTableGoBikeAlertDelegate>
 @property(nonatomic, strong)UIImageView *bgImageView;
 @property(nonatomic, strong)UIImageView *btnImageView;
 @property(nonatomic, assign)NSInteger circleAngle;
@@ -401,13 +403,20 @@
               [weakSelf btnClick];
             
             }else {
-                MTSVPShowInfoText(data[@"msg"]);
+                FEWorkTurnTableGoBikeAlert *alertView=[[FEWorkTurnTableGoBikeAlert alloc]init];
+                [alertView setLocalDelegate:self];
+                  [alertView show];
+//                MTSVPShowInfoText(data[@"msg"]);
             }
        } failure:^(NSError * _Nonnull error) {
            
        }];
 }
-
+#pragma mark -FEWorkTurnTableGoBikeAlertDelegate
+-(void)goBike{
+    FECycleViewController *rideVC =[[FECycleViewController alloc]init];
+    [self.navigationController pushViewController:rideVC animated:YES];
+}
 #pragma mark -领取
 -(void)requestlingqu{
     NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
