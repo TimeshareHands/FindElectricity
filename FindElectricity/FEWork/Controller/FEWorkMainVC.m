@@ -161,8 +161,8 @@
 }
 
 -(void)choujiangAction {//点击抽奖
-    FEWorkTurnTableVC *chouVC =[[FEWorkTurnTableVC alloc]init];
-    [self.navigationController pushViewController:chouVC animated:YES];
+    [self requestCurretData];
+   
 
 }
 -(void)signInAction:(NSInteger)num{//签到
@@ -220,5 +220,27 @@
 }
 -(void)setUserInfo:(FELoginResponseUserInfoModel*)model{
     [FEUserOperation manager].userModel =model;
+}
+#pragma mark -抽奖页面当前数据
+-(void)requestCurretData{
+    NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(LuckydrawdateHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+       if ([data[@"code"] intValue] == KSuccessCode) {
+                 MTSVPDismiss;
+           NSString *lotterNum =[NSString stringWithFormat:@"%@",data[@"data"][@"lottery_number"]];
+          if([lotterNum isEqualToString:@"0"]){
+               FECycleViewController *rideVC =[[FECycleViewController alloc]init];
+               [self.navigationController pushViewController:rideVC animated:YES];
+          }else{
+              FEWorkTurnTableVC *chouVC =[[FEWorkTurnTableVC alloc]init];
+            [self.navigationController pushViewController:chouVC animated:YES];
+          }
+         }else {
+             MTSVPShowInfoText(data[@"msg"]);
+         }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 @end

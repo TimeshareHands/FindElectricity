@@ -18,7 +18,9 @@
 #import "FEWorkReceiveAddressAlert.h"
 #import "FEAddressViewController.h"
 #import "FELauchShow.h"
-@interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate>
+#import "FEWorkTurnTableGoBikeAlert.h"
+#import "FECycleViewController.h"
+@interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate,FEWorkTurnTableGoBikeAlertDelegate>
 @property(nonatomic, strong)UIImageView *bgImageView;
 @property(nonatomic, strong)UIImageView *btnImageView;
 @property(nonatomic, assign)NSInteger circleAngle;
@@ -401,13 +403,20 @@
               [weakSelf btnClick];
             
             }else {
-                MTSVPShowInfoText(data[@"msg"]);
+                FEWorkTurnTableGoBikeAlert *gobikeAlert =[[FEWorkTurnTableGoBikeAlert alloc]init];
+                [gobikeAlert setLocalDelegate:self];
+                [gobikeAlert show];
+//                MTSVPShowInfoText(data[@"msg"]);
             }
        } failure:^(NSError * _Nonnull error) {
            
        }];
 }
-
+#pragma mark -FEWorkTurnTableGoBikeAlertDelegate
+-(void)goBike{
+    FECycleViewController *rideVC =[[FECycleViewController alloc]init];
+    [self.navigationController pushViewController:rideVC animated:YES];
+}
 #pragma mark -领取
 -(void)requestlingqu:(NSString *)goodsId{
     NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
@@ -415,11 +424,13 @@
     [parameter setValue:[FEUserOperation manager].userModel.contacts forKey:@"contacts"];
     [parameter setValue:[FEUserOperation manager].userModel.telephone forKey:@"telephone"];
     [parameter setValue:goodsId forKey:@"id"];
+    WEAKSELF;
        [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(ReceiveGoodHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
            NSDictionary *data = (NSDictionary *)responseObject;
           if ([data[@"code"] intValue] == KSuccessCode) {
                     MTSVPDismiss;
                MTSVPShowInfoText(@"领取成功");
+              [weakSelf requestCurretData];
             }else {
                 MTSVPShowInfoText(data[@"msg"]);
             }
