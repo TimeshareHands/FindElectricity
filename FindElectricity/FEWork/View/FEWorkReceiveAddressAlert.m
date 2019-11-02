@@ -16,6 +16,7 @@
 @property(nonatomic, strong)UIButton *rightBtn;
 @property(nonatomic, strong)UIButton *cancelBtn;
 @property(nonatomic, strong)UIImageView *arrowLeft;
+@property(nonatomic, copy)NSString *goodsId;
 @end
 @implementation FEWorkReceiveAddressAlert
 
@@ -25,7 +26,9 @@
     }
     return self;
 }
-
+- (void)setId:(NSString *)goodsId{
+    self.goodsId =goodsId;
+}
 #pragma mark 添加视图
 - (void)addView{
     [self setBackgroundColor:[UIColor whiteColor]];
@@ -129,8 +132,9 @@
         [_rightBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
         WEAKSELF;
         [_rightBtn bk_addEventHandler:^(id sender) {
-            if ([weakSelf.localDelegate respondsToSelector:@selector(confirmlinqu)]) {
-                [weakSelf.localDelegate confirmlinqu];
+            if ([weakSelf.localDelegate respondsToSelector:@selector(confirmlinqu:)]) {
+                [weakSelf hidden];
+                [weakSelf.localDelegate confirmlinqu:self.goodsId];
             }
         } forControlEvents:UIControlEventTouchUpInside];
     }

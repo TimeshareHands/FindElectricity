@@ -151,6 +151,7 @@
 		4E063D57233A122900D6756A /* FindTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D50233A122900D6756A /* FindTabBarController.m */; };
 		4E063D58233A122900D6756A /* DemonNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D51233A122900D6756A /* DemonNavigationController.m */; };
 		4E063D59233A122900D6756A /* DemonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D52233A122900D6756A /* DemonViewController.m */; };
+		4E1E55A2236C6E860093D2EC /* FEWorkTurnTableGoBikeAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E55A1236C6E850093D2EC /* FEWorkTurnTableGoBikeAlert.m */; };
 		4E783CE12350A763003872F2 /* FEGetPrizeShareFriendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE02350A763003872F2 /* FEGetPrizeShareFriendVC.m */; };
 		4E783CE42350AA83003872F2 /* FEWorkGetPrizeShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE32350AA83003872F2 /* FEWorkGetPrizeShareCell.m */; };
 		4E783CE723515133003872F2 /* FEWorkGetPrizeShareWxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E783CE623515133003872F2 /* FEWorkGetPrizeShareWxCell.m */; };
@@ -552,6 +553,8 @@
 		4E063D52233A122900D6756A /* DemonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemonViewController.m; sourceTree = "<group>"; };
 		4E063D53233A122900D6756A /* FindTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindTabBarController.h; sourceTree = "<group>"; };
 		4E063D5D233A16F200D6756A /* FindElect-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FindElect-Prefix.pch"; sourceTree = "<group>"; };
+		4E1E55A0236C6E850093D2EC /* FEWorkTurnTableGoBikeAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkTurnTableGoBikeAlert.h; sourceTree = "<group>"; };
+		4E1E55A1236C6E850093D2EC /* FEWorkTurnTableGoBikeAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEWorkTurnTableGoBikeAlert.m; sourceTree = "<group>"; };
 		4E783CDF2350A763003872F2 /* FEGetPrizeShareFriendVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEGetPrizeShareFriendVC.h; sourceTree = "<group>"; };
 		4E783CE02350A763003872F2 /* FEGetPrizeShareFriendVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEGetPrizeShareFriendVC.m; sourceTree = "<group>"; };
 		4E783CE22350AA83003872F2 /* FEWorkGetPrizeShareCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEWorkGetPrizeShareCell.h; sourceTree = "<group>"; };
@@ -1132,6 +1135,8 @@
 				4EF155E3235C6D340037D8D4 /* FEWorkShareBottomView.m */,
 				4EF156722360A9980037D8D4 /* FEWorkReceiveAddressAlert.h */,
 				4EF156732360A9980037D8D4 /* FEWorkReceiveAddressAlert.m */,
+				4E1E55A0236C6E850093D2EC /* FEWorkTurnTableGoBikeAlert.h */,
+				4E1E55A1236C6E850093D2EC /* FEWorkTurnTableGoBikeAlert.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2049,6 +2054,7 @@
 				4E02F462234F228600308D99 /* UIImage+MemoryCacheCost.m in Sources */,
 				4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */,
 				CBED22EB23556A8F0009B75D /* CSRecord.m in Sources */,
+				4E1E55A2236C6E860093D2EC /* FEWorkTurnTableGoBikeAlert.m in Sources */,
 				CBEDBD71234F0A4500A923A3 /* FEAboutViewController.m in Sources */,
 				4E02F46F234F228600308D99 /* SDInternalMacros.m in Sources */,
 				4E783D0523530F1E003872F2 /* FEGetPrizeRosterCell.m in Sources */,
@@ -2277,7 +2283,7 @@
 				);
 				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
 				INFOPLIST_FILE = FindElectricity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2311,7 +2317,7 @@
 				);
 				GCC_PREFIX_HEADER = "FindElectricity/FindElectPubilc/FindElect-Prefix.pch";
 				INFOPLIST_FILE = FindElectricity/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

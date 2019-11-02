@@ -18,6 +18,7 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
 @property(nonatomic, strong)UIButton *bottomRightBtn;
 @property(nonatomic, assign)NSInteger winNum;
 @property(nonatomic, assign)NSInteger num;
+@property(nonatomic, copy)NSString *goodsId;
 @end
 
 @implementation FEWorkGetPrizeContentCell
@@ -106,8 +107,8 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
       
         WEAKSELF;
         [_bottomRightBtn bk_addEventHandler:^(id sender) {
-            if ([weakSelf.localDelegate respondsToSelector:@selector(confirmToLinqu)]) {
-                [weakSelf.localDelegate confirmToLinqu];
+            if ([weakSelf.localDelegate respondsToSelector:@selector(confirmToLinqu:)]) {
+                [weakSelf.localDelegate confirmToLinqu:self.goodsId];
             }
         } forControlEvents:UIControlEventTouchUpInside];
     }
@@ -121,8 +122,8 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
     }
     return _bottomLeftLabel;
 }
--(void)setUnitText:(NSString *)unitText num:(NSString *)num title:(NSString *)title winNum:(NSString *)winNum pic:(NSString *)pic{
-  
+-(void)setUnitText:(NSString *)unitText num:(NSString *)num title:(NSString *)title winNum:(NSString *)winNum pic:(NSString *)pic goodsId:(NSString *)goodsid{
+    self.goodsId =goodsid;
     [self.rightImageView setImageWithURL:[NSURL URLWithString:pic]];
     self.num =num.integerValue;
     self.winNum =winNum.integerValue;

@@ -198,7 +198,10 @@
         [_passwordTxt setPlaceholder:@"请输入密码"];
         [_passwordTxt setFont:Demon_15_Font];
         _passwordTxt.secureTextEntry =YES;
-       
+       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      if ([defaults objectForKey:@"password"]) {
+          [_passwordTxt setText:[defaults objectForKey:@"password"]];
+      }
     }
     return _passwordTxt;
 }
@@ -225,14 +228,24 @@
         _checkBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_checkBtn setImage:[UIImage imageNamed:@"felogin_uncheck"] forState:UIControlStateNormal];
         [_checkBtn setImage:[UIImage imageNamed:@"felogin_check"] forState:UIControlStateSelected];
+         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([[defaults objectForKey:@"selected"] isEqualToString:@"yes"]) {
+            _checkBtn.selected =YES;
+        }else{
+            _checkBtn.selected =NO;
+        }
         WEAKSELF;
         [_checkBtn bk_addEventHandler:^(UIButton *sender) {
             sender.selected =!sender.selected;
             if (sender.selected) {
-               NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setObject:weakSelf.accountTxt.text forKey:@"account"];
                 [defaults setObject:weakSelf.passwordTxt.text forKey:@"password"];
+                [defaults setObject:@"yes" forKey:@"selected"];
                 NSLog(@"%@",self.passwordTxt.text);
+            }else{
+               [defaults setObject:@"" forKey:@"account"];
+               [defaults setObject:@"" forKey:@"password"];
+               [defaults setObject:@"NO" forKey:@"selected"];
             }
         } forControlEvents:UIControlEventTouchUpInside];
     }

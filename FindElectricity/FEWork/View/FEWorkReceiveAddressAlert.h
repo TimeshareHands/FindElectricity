@@ -11,7 +11,7 @@
 
 -(void)gotoAddress;
 
--(void)confirmlinqu;
+-(void)confirmlinqu:(NSString *_Nullable)goodsId;
 
 @end
 NS_ASSUME_NONNULL_BEGIN
@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,weak)id<FEWorkReceiveAddressAlertDelegate>localDelegate;
 - (void)show;
 - (void)hidden;
+- (void)setId:(NSString *)goodsId;
 @end
 
 NS_ASSUME_NONNULL_END

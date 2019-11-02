@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 @protocol FEWorkGetPrizeContentCellDelegate <NSObject>
 
--(void)confirmToLinqu;
+-(void)confirmToLinqu:(NSString *_Nullable)goodsId;
 
 @end
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkGetPrizeContentCell : UITableViewCell
 @property(nonatomic,weak)id<FEWorkGetPrizeContentCellDelegate>localDelegate;
--(void)setUnitText:(NSString *)unitText num:(NSString *)num title:(NSString *)title winNum:(NSString *)winNum pic:(NSString *)pic ;
+-(void)setUnitText:(NSString *)unitText num:(NSString *)num title:(NSString *)title winNum:(NSString *)winNum pic:(NSString *)pic goodsId:(NSString *)goodsid;
 @end
 
 NS_ASSUME_NONNULL_END
