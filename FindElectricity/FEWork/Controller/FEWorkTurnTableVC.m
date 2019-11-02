@@ -18,9 +18,7 @@
 #import "FEWorkReceiveAddressAlert.h"
 #import "FEAddressViewController.h"
 #import "FELauchShow.h"
-#import "FEWorkTurnTableGoBikeAlert.h"
-#import "FECycleViewController.h"
-@interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate,FEWorkTurnTableGoBikeAlertDelegate>
+@interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate>
 @property(nonatomic, strong)UIImageView *bgImageView;
 @property(nonatomic, strong)UIImageView *btnImageView;
 @property(nonatomic, assign)NSInteger circleAngle;
@@ -178,7 +176,7 @@
     }else{
         FEWorkGetPrizeContentCell *contentCell =[[FEWorkGetPrizeContentCell alloc]init];
         NSDictionary *contentDic =self.prize_arr_winlist[indexPath.section-1];
-        [contentCell setUnitText:contentDic[@"unit"] num:contentDic[@"num"] title:contentDic[@"title"] winNum:contentDic[@"winningnum"] pic:contentDic[@"pic"]];
+        [contentCell setUnitText:contentDic[@"unit"] num:contentDic[@"num"] title:contentDic[@"title"] winNum:contentDic[@"winningnum"] pic:contentDic[@"pic"] goodsId:contentDic[@"id"]];
         [contentCell setLocalDelegate:self];
         [contentCell.layer setCornerRadius:10];
         return contentCell;
@@ -403,28 +401,25 @@
               [weakSelf btnClick];
             
             }else {
-                FEWorkTurnTableGoBikeAlert *alertView=[[FEWorkTurnTableGoBikeAlert alloc]init];
-                [alertView setLocalDelegate:self];
-                  [alertView show];
-//                MTSVPShowInfoText(data[@"msg"]);
+                MTSVPShowInfoText(data[@"msg"]);
             }
        } failure:^(NSError * _Nonnull error) {
            
        }];
 }
-#pragma mark -FEWorkTurnTableGoBikeAlertDelegate
--(void)goBike{
-    FECycleViewController *rideVC =[[FECycleViewController alloc]init];
-    [self.navigationController pushViewController:rideVC animated:YES];
-}
+
 #pragma mark -领取
--(void)requestlingqu{
+-(void)requestlingqu:(NSString *)goodsId{
     NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
+    [parameter setValue:[FEUserOperation manager].userModel.address forKey:@"address"];
+    [parameter setValue:[FEUserOperation manager].userModel.contacts forKey:@"contacts"];
+    [parameter setValue:[FEUserOperation manager].userModel.telephone forKey:@"telephone"];
+    [parameter setValue:goodsId forKey:@"id"];
        [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(ReceiveGoodHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
            NSDictionary *data = (NSDictionary *)responseObject;
           if ([data[@"code"] intValue] == KSuccessCode) {
                     MTSVPDismiss;
-             
+               MTSVPShowInfoText(@"领取成功");
             }else {
                 MTSVPShowInfoText(data[@"msg"]);
             }
@@ -437,14 +432,15 @@
     [[self lauchShow] getShowData];
 }
 #pragma mark -FEWorkGetPrizeContentCellDelegate
--(void)confirmToLinqu{
+-(void)confirmToLinqu:(NSString *)goodsId{
     FEWorkReceiveAddressAlert *gitAlertVIew =[[FEWorkReceiveAddressAlert alloc]init];
+    [gitAlertVIew setId:goodsId];
     [gitAlertVIew setLocalDelegate:self];
     [gitAlertVIew show];
 }
 #pragma mark -FEWorkReceiveAddressAlertDelegate
--(void)confirmlinqu{
-    [self requestlingqu];
+-(void)confirmlinqu:(NSString *)goodsId{
+    [self requestlingqu:goodsId];
 }
 -(void)gotoAddress{
     FEAddressViewController *addressVC =[[FEAddressViewController alloc]init];

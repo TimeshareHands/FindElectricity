@@ -16,6 +16,7 @@
 @property(nonatomic, strong)UIButton *rightBtn;
 @property(nonatomic, strong)UIButton *cancelBtn;
 @property(nonatomic, strong)UIImageView *arrowLeft;
+@property(nonatomic, copy)NSString *goodsId;
 @end
 @implementation FEWorkReceiveAddressAlert
 
@@ -25,10 +26,11 @@
     }
     return self;
 }
-
+- (void)setId:(NSString *)goodsId{
+    self.goodsId =goodsId;
+}
 #pragma mark 添加视图
 - (void)addView{
-  
     [self setBackgroundColor:[UIColor whiteColor]];
     [self addSubview:self.topImgLogo];
     [self addSubview:self.cancelBtn];
@@ -102,16 +104,11 @@
     if (!_centerLabel) {
         _centerLabel =[[UILabel alloc]init];
         NSString *address =[NSString stringWithFormat:@"%@",[FEUserOperation manager].userModel.address];
-        if (address.length>0) {
-              [_centerLabel setText:address];
-        }else{
-              [_centerLabel setText:@"请补充收货地址"];
-        }
+        [_centerLabel setText:address];
         [_centerLabel setUserInteractionEnabled:YES];
-       WEAKSELF;
+        WEAKSELF;
         [_centerLabel bk_whenTapped:^{
             if ([weakSelf.localDelegate respondsToSelector:@selector(gotoAddress)]) {
-                [weakSelf hidden];
                 [weakSelf.localDelegate gotoAddress];
             }
         }];
@@ -121,26 +118,9 @@
 - (UILabel *)bottomLabel{
     if (!_bottomLabel) {
         _bottomLabel =[[UILabel alloc]init];
-        NSString *name;
-        if ([FEUserOperation manager].userModel.contacts.length>0) {
-             name =[NSString stringWithFormat:@"%@",[FEUserOperation manager].userModel.contacts];
-        }else{
-             name =@"";
-        }
-        NSString *mobile ;
-        if ([FEUserOperation manager].userModel.mobile.length>0) {
-            mobile =[NSString stringWithFormat:@"%@",[FEUserOperation manager].userModel.mobile];
-        }else{
-            mobile =@"";
-        }
+        NSString *name =[NSString stringWithFormat:@"%@",[FEUserOperation manager].userModel.contacts];
+        NSString *mobile =[NSString stringWithFormat:@"%@",[FEUserOperation manager].userModel.mobile];
         [_bottomLabel setText:[NSString stringWithFormat:@"%@ %@",name,mobile]];
-        WEAKSELF;
-       [_bottomLabel bk_whenTapped:^{
-           if ([weakSelf.localDelegate respondsToSelector:@selector(gotoAddress)]) {
-               [weakSelf hidden];
-               [weakSelf.localDelegate gotoAddress];
-           }
-       }];
     }
     return _bottomLabel;
 }
@@ -152,8 +132,9 @@
         [_rightBtn setBackgroundColor:UIColorFromHex(0xE26A41)];
         WEAKSELF;
         [_rightBtn bk_addEventHandler:^(id sender) {
-            if ([weakSelf.localDelegate respondsToSelector:@selector(confirmlinqu)]) {
-                [weakSelf.localDelegate confirmlinqu];
+            if ([weakSelf.localDelegate respondsToSelector:@selector(confirmlinqu:)]) {
+                [weakSelf hidden];
+                [weakSelf.localDelegate confirmlinqu:self.goodsId];
             }
         } forControlEvents:UIControlEventTouchUpInside];
     }
