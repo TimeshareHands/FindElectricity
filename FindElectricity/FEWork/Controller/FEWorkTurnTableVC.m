@@ -45,6 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addView];
+    [self requestDayDaySong];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
