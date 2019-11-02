@@ -28,6 +28,7 @@
 #import "FEMapsModel.h"
 #import "FEMapInfoModel.h"
 #import "FEMapManager.h"
+#import "FERouterManager.h"
 @interface FEMapViewController ()<MAMapViewDelegate,AMapLocationManagerDelegate,AMapSearchDelegate>
 @property (nonatomic, strong) FECycleMap *mapView;
 @property (nonatomic, strong) UIButton *chouJBtn;
@@ -262,6 +263,9 @@
                 FECorrectionViewController *vc = [[FECorrectionViewController alloc] init];
                 vc.mapId = mapId;
                 [weakSelf.navigationController pushViewController:vc animated:YES];
+            }else if (tag == 3) {
+                //路线
+                [FERouterManager presentRouteNaviMenuOnController:self withCoordate:CLLocationCoordinate2DMake(_currentMapInfo.latitude, _currentMapInfo.longitude) destination:_currentMapInfo.merchantsName];
             }
         };
     }
@@ -485,7 +489,7 @@
     MAAnnotationView *annoView = (MAAnnotationView*) gesture.view;
     FEPointAnnotation *annotation = (FEPointAnnotation *)annoView.annotation;
     //对店家的做导航
-    if (annotation.type>0&&annotation.type<4) {
+    if (annotation.type>0&&annotation.type<5) {
         if(annoView.annotation == self.mapView.selectedAnnotations.firstObject) {
             if(annoView.selected == NO) {
                 [annoView setSelected:YES animated:YES];

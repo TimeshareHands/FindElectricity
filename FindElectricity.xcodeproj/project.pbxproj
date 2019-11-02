@@ -193,6 +193,7 @@
 		CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826164234C714200DA6D21 /* MANaviPolyline.m */; };
 		CB82616C234C714300DA6D21 /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826166234C714200DA6D21 /* LineDashPolyline.m */; };
 		CB82616D234C714300DA6D21 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826168234C714200DA6D21 /* MANaviRoute.m */; };
+		CB976F43236D1EBE008F6CDC /* FERouterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB976F42236D1EBE008F6CDC /* FERouterManager.m */; };
 		CBA72A70234DD0CA00C7070E /* FECycleMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A6E234DD0CA00C7070E /* FECycleMapViewController.m */; };
 		CBA72A71234DD0CA00C7070E /* FECycleMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */; };
 		CBA72A74234DD42B00C7070E /* FECycleMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A73234DD42B00C7070E /* FECycleMap.m */; };
@@ -632,6 +633,8 @@
 		CB826167234C714200DA6D21 /* MANaviPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviPolyline.h; sourceTree = "<group>"; };
 		CB826168234C714200DA6D21 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
 		CB826169234C714300DA6D21 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
+		CB976F41236D1EBE008F6CDC /* FERouterManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FERouterManager.h; sourceTree = "<group>"; };
+		CB976F42236D1EBE008F6CDC /* FERouterManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FERouterManager.m; sourceTree = "<group>"; };
 		CBA72A6D234DD0CA00C7070E /* FECycleMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleMapViewController.h; sourceTree = "<group>"; };
 		CBA72A6E234DD0CA00C7070E /* FECycleMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FECycleMapViewController.m; sourceTree = "<group>"; };
 		CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FECycleMapViewController.xib; sourceTree = "<group>"; };
@@ -794,6 +797,8 @@
 				CBED22DC23556A640009B75D /* CSMessageModel.m */,
 				CB25AB65235E999F00D768DF /* FENaviManager.h */,
 				CB25AB66235E999F00D768DF /* FENaviManager.m */,
+				CB976F41236D1EBE008F6CDC /* FERouterManager.h */,
+				CB976F42236D1EBE008F6CDC /* FERouterManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2088,6 +2093,7 @@
 				4EF155E1235C40200037D8D4 /* FESignInActAlert.m in Sources */,
 				4E02F472234F228600308D99 /* UIColor+HexString.m in Sources */,
 				4EF155FE235EB28E0037D8D4 /* FEWorkGiftCollectionViewFlowLayout.m in Sources */,
+				CB976F43236D1EBE008F6CDC /* FERouterManager.m in Sources */,
 				CBED22E923556A8F0009B75D /* CSEmojiCollectionViewCell.m in Sources */,
 				4E02F43B234F228600308D99 /* NSImage+Compatibility.m in Sources */,
 				4E02F454234F228600308D99 /* SDAnimatedImageRep.m in Sources */,

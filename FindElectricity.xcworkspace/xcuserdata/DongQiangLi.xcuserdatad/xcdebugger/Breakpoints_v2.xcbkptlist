@@ -46,8 +46,8 @@
             filePath = "FindElectricity/FEMap/ViewController/FEMapViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "530"
-            endingLineNumber = "530"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "FEMapViewController"
             landmarkType = "3">
          </BreakpointContent>
