@@ -12,6 +12,7 @@
 #import "FENaviManager.h"
 #import <AMapNaviKit/AMapNaviKit.h>
 #import "FEMapNaviViewController.h"
+#import "FERouterManager.h"
 @interface FEShopDetailViewController ()<AMapNaviRideManagerDelegate,RideNaviViewControllerDelegate>
 @property (strong, nonatomic) FEMapInfoModel *shopInfo;
 @property (weak, nonatomic) IBOutlet UILabel *name;
@@ -78,9 +79,9 @@
         FECorrectionViewController *vc = [[FECorrectionViewController alloc] init];
         vc.mapId = _shopInfo.mapId;
         [self.navigationController pushViewController:vc animated:YES];
-    }else {
+    }else if (sender.tag == 3) {
         //路线
-        
+        [FERouterManager presentRouteNaviMenuOnController:self withCoordate:CLLocationCoordinate2DMake(_shopInfo.latitude, _shopInfo.longitude) destination:_shopInfo.merchantsName];
     }
 }
 

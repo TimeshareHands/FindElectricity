@@ -41,12 +41,15 @@
     [parameter setValue:phone forKey:@"mobile"];
     [parameter setValue:@"CHANGEMOBILE" forKey:@"type"];
     WEAKSELF;
-    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(ChangeMobileHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(SendCodeHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
         NSDictionary *data = (NSDictionary *)responseObject;
         if ([data[@"code"] intValue] == KSuccessCode) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 MTSVPShowSuccessWithText(@"发送成功");
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    sender.enabled = YES;
+                });
             });
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{

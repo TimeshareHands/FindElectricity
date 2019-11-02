@@ -93,6 +93,8 @@
 		<string>timopensdkdataline</string>
 		<string>wtlogintimV1</string>
 		<string>timapiV1</string>
+		<string>iosamap</string>
+		<string>baidumap</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
