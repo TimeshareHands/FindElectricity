@@ -140,7 +140,7 @@ int count = 0;
 //
 //                    [weakSelf.mapView addAnnotation:weakSelf.pointAnnotaiton];
 //                }
-                if (location&&reGeocode.formattedAddress.length&&[reGeocode.country isEqualToString:@"中国"]) {
+                if (location) {
                     [weakSelf setCurrentLocat:location];
                 }
             });
