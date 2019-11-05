@@ -94,7 +94,7 @@
     if(section ==0){
         return 1;
     }else{
-        return self.exChange_goodList.count;
+        return self.exChange_goodList.count+1;
     }
 }
 
@@ -108,21 +108,24 @@
             [self.changeCell setLocalDelegate:self];
             cell =self.changeCell;
         }else{
-           FEWorkGiftCardCell *giftCell =[[FEWorkGiftCardCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
-            NSDictionary *goodDic =self.exChange_goodList[indexPath.row];
-            [giftCell settLeftImg:[NSString stringWithFormat:@"%@",goodDic[@"pic"]] topText:[NSString stringWithFormat:@"%@",goodDic[@"name"]] bottomText:[NSString stringWithFormat:@"%@电量值",goodDic[@"integral"]]goodId:[NSString stringWithFormat:@"%@",goodDic[@"id"]]];
-            [giftCell setLocalDelegete:self];
-            cell =giftCell;
+            if (indexPath.section ==1) {
+                if (indexPath.row ==0) {
+                    cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+                    [cell.textLabel setText:@"兑换礼品卡"];
+                    [cell.textLabel setFont:Demon_15_Font];
+                    [cell.textLabel setTextColor:UIColorFromHex(0xA7A7A7)];
+                }else{
+                    FEWorkGiftCardCell *giftCell =[[FEWorkGiftCardCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
+                    NSDictionary *goodDic =self.exChange_goodList[indexPath.row-1];
+                    [giftCell settLeftImg:[NSString stringWithFormat:@"%@",goodDic[@"pic"]] topText:[NSString stringWithFormat:@"%@",goodDic[@"name"]] bottomText:[NSString stringWithFormat:@"%@电量值",goodDic[@"integral"]]goodId:[NSString stringWithFormat:@"%@",goodDic[@"id"]]];
+                    [giftCell setLocalDelegete:self];
+                    cell =giftCell;
+                }
+            }
+           
         }
     }
-    if (indexPath.section ==1) {
-        if (indexPath.row ==0) {
-            cell =[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
-            [cell.textLabel setText:@"兑换礼品卡"];
-            [cell.textLabel setFont:Demon_15_Font];
-            [cell.textLabel setTextColor:UIColorFromHex(0xA7A7A7)];
-        }
-    }
+    
      [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }

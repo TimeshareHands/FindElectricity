@@ -336,6 +336,12 @@
                         MTSVPDismiss;
                  [FEUserOperation manager].userModel =[FELoginResponseUserInfoModel mj_objectWithKeyValues:responseObject[@"data"][@"userInfo"]];
                  [FEUserOperation manager].token =responseObject[@"data"][@"token"];
+                  if (weakSelf.checkBtn.selected ==YES) {
+                       NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                      [defaults setObject:weakSelf.accountTxt.text forKey:@"account"];
+                      [defaults setObject:weakSelf.passwordTxt.text forKey:@"password"];
+                  }
+                  
                  [weakSelf.navigationController popViewControllerAnimated:YES];
                  [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
                 }else {

@@ -161,7 +161,7 @@
 }
 
 -(void)choujiangAction {//点击抽奖
-    FEWorkTurnTableVC *chouVC =[[FEWorkTurnTableVC alloc]init];
+     FEWorkTurnTableVC *chouVC =[[FEWorkTurnTableVC alloc]init];
     [self.navigationController pushViewController:chouVC animated:YES];
 
 }
@@ -221,4 +221,5 @@
 -(void)setUserInfo:(FELoginResponseUserInfoModel*)model{
     [FEUserOperation manager].userModel =model;
 }
+
 @end
