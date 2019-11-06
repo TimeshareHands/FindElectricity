@@ -128,8 +128,7 @@
 //照相，选图片的delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *_selectedImage = [[UIImage alloc] init];
-    _selectedImage = info[@"UIImagePickerControllerEditedImage"];
+    UIImage *_selectedImage = info[@"UIImagePickerControllerEditedImage"];
     _avtCell.img.image = _selectedImage;
     _icon = UIImageJPEGRepresentation(_selectedImage, 0.3);
     // 这里base64Encoding 要修改

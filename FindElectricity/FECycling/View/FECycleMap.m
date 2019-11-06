@@ -127,8 +127,8 @@
 
 - (void)amapLocationManager:(AMapLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
 {
-    CGFloat angle = newHeading.trueHeading*M_PI/180.0f + M_PI - _annotationViewAngle;
-    NSLog(@"################### heading : %f - %f", newHeading.trueHeading, newHeading.magneticHeading);
+//    CGFloat angle = newHeading.trueHeading*M_PI/180.0f + M_PI - _annotationViewAngle;
+//    NSLog(@"################### heading : %f - %f", newHeading.trueHeading, newHeading.magneticHeading);
     _annotationViewAngle = newHeading.trueHeading*M_PI/180.0f + M_PI;
     //        _annotationView.transform =  CGAffineTransformRotate(_annotationView.transform ,angle);
     [self updateLoctionBlock];

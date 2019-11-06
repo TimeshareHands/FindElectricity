@@ -11,7 +11,7 @@
 #import "FEDocmDetailViewController.h"
 @interface FENewsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (copy, nonatomic) NSMutableArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *dataSource;
 
 @end
 

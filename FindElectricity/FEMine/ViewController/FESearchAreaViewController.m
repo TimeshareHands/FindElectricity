@@ -11,7 +11,7 @@
 @interface FESearchAreaViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (copy, nonatomic) NSMutableArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) dispatch_queue_t queue;
 @end
 
@@ -44,7 +44,7 @@
 #pragma mark --- UITextDelegate
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     NSString *key = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    [self  searchAreaWithText:textField.text];
+    [self  searchAreaWithText:key];
     return YES;
 }
 

@@ -12,7 +12,7 @@
 #import "FECorrectionViewController.h"
 @interface FEPositionErrorViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (copy, nonatomic) NSMutableArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *dataSource;
 @property (nonatomic, assign) int pageNo;
 @end
 

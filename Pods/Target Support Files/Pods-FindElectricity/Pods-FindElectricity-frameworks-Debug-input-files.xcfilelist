@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-FindElectricity/Pods-FindElectricity-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
 ${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework
+${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework
 ${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework
 ${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework

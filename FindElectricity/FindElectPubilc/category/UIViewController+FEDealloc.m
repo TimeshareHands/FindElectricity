@@ -7,22 +7,30 @@
 //
 
 #import "UIViewController+FEDealloc.h"
-
+#import <FBRetainCycleDetector.h>
+#import "FEFunction.h"
 
 @implementation UIViewController (FEDealloc)
 + (void)load
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Method method1 = class_getInstanceMethod([self class], NSSelectorFromString(@"dealloc"));
-        Method method2 = class_getInstanceMethod([self class], @selector(my_dealloc));
-        method_exchangeImplementations(method1, method2);
+        sky_swizzleSelector([self class], @selector(viewWillDisappear:), @selector(sky_viewWillDisappear:));
+        sky_swizzleSelector([self class], NSSelectorFromString(@"dealloc"), @selector(sky_dealloc));
     });
 }
 
-- (void)my_dealloc
-{
+- (void)sky_dealloc {
     MYLog(@"%@被销毁了", self);
-    [self my_dealloc];
+    [self sky_dealloc];
+}
+
+- (void)sky_viewWillDisappear:(BOOL)animated {
+    FBRetainCycleDetector *detector = [FBRetainCycleDetector new];
+    [detector addCandidate:self];
+    NSSet *retainCycles = [detector findRetainCycles];
+    if(retainCycles.count){
+        MYLog(@"--引用循环-%@:%@--",self, retainCycles);
+    }
 }
 @end
