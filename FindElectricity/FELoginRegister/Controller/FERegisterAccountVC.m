@@ -89,7 +89,6 @@
                [self.smsCodeCell.inputTextField setPlaceholder:@"请输入手机号"];
                WEAKSELF;
                 [_smsCodeCell.smsBtn bk_addEventHandler:^(id sender) {
-                    [sender setUserInteractionEnabled:NO];
                     [weakSelf yanZMBtnAction];
                 } forControlEvents:UIControlEventTouchUpInside];
                cell =self.smsCodeCell;
@@ -133,13 +132,12 @@
     
     if ([self.smsCodeCell.inputTextField.text checkPhoneNumInput]) {
         [self.smsCodeCell.smsBtn startWithSecondTime:59 title:@"获取验证码"  countDownTitle:@"s" mainColor:UIColorFromHex(0xC9C9C9) countColor:[UIColor lightGrayColor]];
-        
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setObject:self.smsCodeCell.inputTextField.text forKey:@"mobile"];
         [parameters setObject:@"REGISTER" forKey:@"type"];
         [parameters setObject:@"MEM" forKey:@"appType"];
         [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(SendCodeHttp) parameters:parameters needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
-              [self.smsCodeCell.smsBtn setUserInteractionEnabled:YES];
+
         } failure:^(NSError * _Nonnull error) {
         
         }];
