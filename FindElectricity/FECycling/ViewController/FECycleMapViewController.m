@@ -95,7 +95,7 @@ int count = 0;
     if (_currentLocat&&CLLocationCoordinate2DIsValid(_currentLocat.coordinate)&&count>=5) {
         count = 0;
         DQLOCK(self.lock);
-        [self.points addObject:_currentLocat];
+        [self.points addObject:[_currentLocat copy]];
         DQUNLOCK(self.lock);
         [self drawLine];
 //        CLLocationCoordinate2D des = _currentLocat.coordinate;
@@ -140,7 +140,7 @@ int count = 0;
 //
 //                    [weakSelf.mapView addAnnotation:weakSelf.pointAnnotaiton];
 //                }
-                if (location&&reGeocode.formattedAddress.length&&[reGeocode.country isEqualToString:@"中国"]) {
+                if (location) {
                     [weakSelf setCurrentLocat:location];
                 }
             });
@@ -157,7 +157,7 @@ int count = 0;
 }
 
 - (void)setCurrentLocat:(CLLocation *)currentLocat {
-    if (currentLocat&&CLLocationCoordinate2DIsValid(_currentLocat.coordinate)) {
+    if (currentLocat&&CLLocationCoordinate2DIsValid(currentLocat.coordinate)) {
         _currentLocat = currentLocat;
         //    [self.pointAnnotaiton setCoordinate:currentCoord];
             [self.mapView setCenterCoordinate:_currentLocat.coordinate];

@@ -13,7 +13,7 @@
 #import "FEShopDetailViewController.h"
 @interface FECollectViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (copy, nonatomic) NSMutableArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *dataSource;
 @property (nonatomic, assign) int pageNo;
 @property (nonatomic, assign) NSInteger index;
 @end

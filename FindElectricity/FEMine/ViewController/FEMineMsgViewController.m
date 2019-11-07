@@ -128,8 +128,7 @@
 //照相，选图片的delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *_selectedImage = [[UIImage alloc] init];
-    _selectedImage = info[@"UIImagePickerControllerEditedImage"];
+    UIImage *_selectedImage = info[@"UIImagePickerControllerEditedImage"];
     _avtCell.img.image = _selectedImage;
     _icon = UIImageJPEGRepresentation(_selectedImage, 0.3);
     // 这里base64Encoding 要修改
@@ -336,6 +335,7 @@
         NSString *data = (NSString *)responseObject;
         if ([data containsString:@"http"]) {
             [self editInfoFieldName:@"faceImg" fieldValue:data];
+            [_avtCell.img sd_setImageWithURL:[NSURL URLWithString:data] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 MTSVPShowInfoText(data);

@@ -35,7 +35,7 @@
 @property (nonatomic, strong) UIButton *shaiXuanBtn;
 @property (strong, nonatomic) FELauchShow *lauchShow;
 @property (strong, nonatomic) FEMapCategView *categView;
-@property (strong, nonatomic) FEMapWeather *weatherView;
+@property (weak, nonatomic) FEMapWeather *weatherView;
 @property (strong, nonatomic) FEMapNavigiItem *naviRightItem;
 @property (nonatomic, weak) FEShopPopView *shopPopView;
 @property (assign, nonatomic) BOOL didShow;
@@ -71,7 +71,7 @@
 
 - (void)addView {
     //导航栏
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.weatherView];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.weatherViewC];
     UIView *rightItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
     [rightItem addSubview:self.naviRightItem];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItem];
@@ -106,12 +106,12 @@
     }];
 }
 
-- (FEMapWeather *)weatherView {
-    if (!_weatherView) {
-        _weatherView = [[FEMapWeather alloc] initWithFrame:CGRectMake(0, 0,50, 30)];
-        _weatherView.backgroundColor = [UIColor redColor];
-    }
-    return _weatherView;
+- (FEMapWeather *)weatherViewC {
+    FEMapWeather *weatherView;
+    weatherView = [[FEMapWeather alloc] initWithFrame:CGRectMake(0, 0,50, 30)];
+    weatherView.backgroundColor = [UIColor redColor];
+    _weatherView = weatherView;
+    return weatherView;
 }
 
 - (FEMapNavigiItem *)naviRightItem {
@@ -163,7 +163,7 @@
                         AMapWeatherSearchResponse *resp = (AMapWeatherSearchResponse *)response;
                         if (resp.lives.count) {
                             AMapLocalWeatherLive *live = (AMapLocalWeatherLive *)[resp.lives lastObject];
-                            [weakSelf.weatherView setLive:live];
+                            [weakSelf.weatherView setLive:[live copy]];
                         }
                     }
                 }];
@@ -215,7 +215,7 @@
         _didShow = YES;
         [[self lauchShow] getShowData];
     }
-    
+
     [self getIndexData];
 }
 
@@ -266,7 +266,7 @@
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             }else if (tag == 3) {
                 //路线
-                [FERouterManager presentRouteNaviMenuOnController:self withCoordate:CLLocationCoordinate2DMake(_currentMapInfo.latitude, _currentMapInfo.longitude) destination:_currentMapInfo.merchantsName];
+                [FERouterManager presentRouteNaviMenuOnController:weakSelf withCoordate:CLLocationCoordinate2DMake(weakSelf.currentMapInfo.latitude, weakSelf.currentMapInfo.longitude) destination:weakSelf.currentMapInfo.merchantsName];
             }
         };
     }
