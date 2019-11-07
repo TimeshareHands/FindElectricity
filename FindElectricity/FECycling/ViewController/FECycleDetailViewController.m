@@ -117,7 +117,7 @@
     self.currentKM.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0];
     self.speed.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0/_sec];
     NSInteger changNum = [[NSUserDefaults standardUserDefaults] integerForKey:kFEKMToElecNum];
-    self.currentElec.text = [NSString stringWithFormat:@"%.0f",_kmNum/changNum];
+    self.currentElec.text = [NSString stringWithFormat:@"%.0f",_kmNum/1000*changNum];
     if (_delegete&&[_delegete respondsToSelector:@selector(updateUIDataWithTime:km:elec:speed:)]) {
         [_delegete updateUIDataWithTime:self.currentTime.text km:self.currentKM.text elec:self.currentElec.text speed:self.speed.text];
     }
@@ -211,7 +211,7 @@
 }
 
 - (NSString *)getRawSignStringL{
-    NSDictionary *rowDic = @{@"mileage":[NSString stringWithFormat:@"%.2f",_kmNum/1000],@"usetime":[NSString stringWithFormat:@"%d",(int)_sec]};
+    NSDictionary *rowDic = @{@"mileage":[NSString stringWithFormat:@"%.2f",_kmNum],@"usetime":[NSString stringWithFormat:@"%d",(int)_sec]};
     NSString *json = [rowDic convertToJsonString];
     json = [json stringWithBase64];
     json = [NSString stringWithFormat:@"%@%@",[NSString randomStrWithLength:6],json];
