@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+       [NetWorkManger manager].senderVC =self;
     [self initData];
     [self addView];
 }

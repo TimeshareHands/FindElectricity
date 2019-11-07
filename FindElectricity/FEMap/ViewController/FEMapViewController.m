@@ -58,6 +58,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [NetWorkManger manager].senderVC =self;
     // Do any additional setup after loading the view, typically from a nib.
     [self initData];
     [self addView];

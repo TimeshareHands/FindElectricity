@@ -7,11 +7,11 @@
 //
 
 #import "DemonViewController.h"
-
+#import "FEWorkModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEWorkStrategyVC : DemonViewController
-
+@property (nonatomic, strong)FEWorkPanelDataResponseModel *responseModel;
 @end
 
 NS_ASSUME_NONNULL_END

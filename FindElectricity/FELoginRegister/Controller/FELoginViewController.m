@@ -11,6 +11,7 @@
 #import "FEFindPasswordVC.h"
 #import <UMShare/UMShare.h>
 #import "FEWxBindPhoneVC.h"
+#import "FEUserProtocalVC.h"
 @interface FELoginViewController ()
 @property(nonatomic, strong)UIImageView *topImgLogo;
 @property(nonatomic, strong)UILabel *topLbl;
@@ -219,6 +220,26 @@
         _protocalBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         [_protocalBtn setTitle:@"《找电用户隐私协议》" forState:UIControlStateNormal];
         [_protocalBtn setTitleColor:UIColorFromHex(0x61EB9E) forState:UIControlStateNormal];
+        WEAKSELF
+        [_protocalBtn bk_addEventHandler:^(id sender) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请查看相关协议" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"找电用户协议" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                FEUserProtocalVC *protocalVC =[[FEUserProtocalVC alloc]init];
+                protocalVC.urlStr =@"http://zhaodianapi.csjiayu.com/yonghuxieyi";
+                protocalVC.title =@"找电用户协议";
+                [weakSelf.navigationController pushViewController:protocalVC animated:YES pushType:NavigationPushNormal];
+                }];
+            UIAlertAction *skipAction = [UIAlertAction actionWithTitle:@"找电隐私协议" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                FEUserProtocalVC *protocalVC =[[FEUserProtocalVC alloc]init];
+                protocalVC.urlStr =@"http://zhaodianapi.csjiayu.com/yinsixieyi";
+                protocalVC.title =@"找电隐私协议";
+                [weakSelf.navigationController pushViewController:protocalVC animated:YES pushType:NavigationPushNormal];
+                }];
+            [alertController addAction:cancelAction];
+            [alertController addAction:skipAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+          
+        } forControlEvents:UIControlEventTouchUpInside];
         [_protocalBtn.titleLabel setFont:Demon_15_Font];
     }
     return _protocalBtn;
@@ -408,4 +429,5 @@
 -(void)back{
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
 @end

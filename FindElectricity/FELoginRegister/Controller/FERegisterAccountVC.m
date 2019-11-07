@@ -89,6 +89,7 @@
                [self.smsCodeCell.inputTextField setPlaceholder:@"请输入手机号"];
                WEAKSELF;
                 [_smsCodeCell.smsBtn bk_addEventHandler:^(id sender) {
+                    [sender setUserInteractionEnabled:NO];
                     [weakSelf yanZMBtnAction];
                 } forControlEvents:UIControlEventTouchUpInside];
                cell =self.smsCodeCell;
@@ -138,7 +139,7 @@
         [parameters setObject:@"REGISTER" forKey:@"type"];
         [parameters setObject:@"MEM" forKey:@"appType"];
         [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(SendCodeHttp) parameters:parameters needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
-            
+              [self.smsCodeCell.smsBtn setUserInteractionEnabled:YES];
         } failure:^(NSError * _Nonnull error) {
         
         }];

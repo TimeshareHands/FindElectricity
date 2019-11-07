@@ -50,6 +50,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [NetWorkManger manager].senderVC =self;
     [self requestCurretData];
     [self.navigationController setNavigationBarHidden:YES];
 }
