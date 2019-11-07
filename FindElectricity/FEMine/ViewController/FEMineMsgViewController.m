@@ -335,6 +335,7 @@
         NSString *data = (NSString *)responseObject;
         if ([data containsString:@"http"]) {
             [self editInfoFieldName:@"faceImg" fieldValue:data];
+            [_avtCell.img sd_setImageWithURL:[NSURL URLWithString:data] placeholderImage:[UIImage imageNamed:kFEDefaultImg]];
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 MTSVPShowInfoText(data);

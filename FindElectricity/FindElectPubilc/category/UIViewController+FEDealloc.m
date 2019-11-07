@@ -32,5 +32,6 @@
     if(retainCycles.count){
         MYLog(@"--引用循环-%@:%@--",self, retainCycles);
     }
+    [self sky_viewWillDisappear:animated];
 }
 @end

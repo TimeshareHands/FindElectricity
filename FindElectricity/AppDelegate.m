@@ -34,6 +34,7 @@
         [UMConfigure initWithAppkey:@"5d1aca124ca3576af50011a7" channel:@"App Store"];
           // U-Share 平台设置
           [self configUSharePlatforms];
+        [SVProgressHUD setMinimumDismissTimeInterval:3];
     });
     return YES;
     

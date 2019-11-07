@@ -214,7 +214,7 @@
         _didShow = YES;
         [[self lauchShow] getShowData];
     }
-    
+
     [self getIndexData];
 }
 
