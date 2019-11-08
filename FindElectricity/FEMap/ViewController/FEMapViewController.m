@@ -613,7 +613,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSDictionary *data = (NSDictionary *)responseObject;
             if ([data[@"code"] intValue] == KSuccessCode) {
-                MTSVPDismiss;
+//                MTSVPDismiss;
                 [weakSelf.chouJBtn setHidden:![data[@"data"][@"is_show_redWallet"] boolValue]];
                 NSInteger num = [data[@"data"][@"notRead"] integerValue];
                 [weakSelf.naviRightItem notReadNum:num];
