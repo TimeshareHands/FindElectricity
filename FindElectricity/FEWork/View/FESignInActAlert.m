@@ -31,6 +31,8 @@
     [self addSubview:self.topLbl];
     [self addSubview:self.centerImgLogo];
     [self addSubview:self.bottomLabel];
+    self.clipsToBounds = YES;
+    self.layer.cornerRadius = 4;
     [self makeUpConstriant];
 }
 

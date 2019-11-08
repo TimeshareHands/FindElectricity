@@ -33,8 +33,9 @@
                 MTSVPDismiss;
                 weakSelf.tip.text = data[@"msg"];
                 [weakSelf show];
-            }else {
+            } else if ([data[@"code"] intValue] != 4010) {
                 MTSVPShowInfoText(data[@"msg"]);
+                [SVProgressHUD dismissWithDelay:3];
             }
             
         });

@@ -566,7 +566,7 @@
         }
         [self addAnnotationsToMap:[FEMapsModel mj_objectArrayWithKeyValuesArray:array]];
     }else {
-        MTSVPShowInfoText(data[@"msg"]);
+//        MTSVPShowInfoText(data[@"msg"]);
     }
 }
 
@@ -618,7 +618,7 @@
                 NSInteger num = [data[@"data"][@"notRead"] integerValue];
                 [weakSelf.naviRightItem notReadNum:num];
             }else {
-                MTSVPShowInfoText(data[@"msg"]);
+//                MTSVPShowInfoText(data[@"msg"]);
             }
             
         });
