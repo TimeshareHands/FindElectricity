@@ -34,6 +34,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [NetWorkManger manager].senderVC =self;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(requestPanelData) name:@"loginSuccessNotification" object:nil];
     [self getUserData];
     [self requestPanelData];
@@ -41,7 +42,6 @@
 }
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"loginSuccessNotification" object:nil];
@@ -114,6 +114,7 @@
          [cell setLeftImg:@"wkm_read" topText:@"阅读电量值攻略" topCenterText:@"+500电量值" centerText:@"阅读电量攻略" bottomText:@"获得电量值奖励" buttonColor:UIColorFromHex(0x03bf30) buttonTitle:@"去阅读"];
         cell.didClick = ^{
             FEWorkStrategyVC *stategyVC =[[FEWorkStrategyVC alloc]init];
+            stategyVC.responseModel =self.responseModel;
             [self.navigationController pushViewController:stategyVC animated:YES];
         };
     }
@@ -148,7 +149,8 @@
         FECycleViewController *rideVC =[[FECycleViewController alloc]init];
         [self.navigationController pushViewController:rideVC animated:YES];
     }else{
-        FEWorkStrategyVC *stategyVC =[[FEWorkStrategyVC alloc]init];
+       FEWorkStrategyVC *stategyVC =[[FEWorkStrategyVC alloc]init];
+        stategyVC.responseModel =self.responseModel;
         [self.navigationController pushViewController:stategyVC animated:YES];
     }
 }
@@ -170,8 +172,7 @@
     NSMutableDictionary *parameter =[NSMutableDictionary dictionary];
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(SignHttp) parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
          NSDictionary *data = (NSDictionary *)responseObject;
-         if ([data[@"code"] intValue] == KSuccessCode)
-         {
+         if ([data[@"code"] intValue] == KSuccessCode) {
             MTSVPDismiss;
            [weakSelf.signInAlertV setEvalue:[NSString stringWithFormat:@"%zd",num]];
            [weakSelf.signInAlertV show];
@@ -196,6 +197,7 @@
        [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(TaskPanelDataHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
            NSLog(@"responseObject=%@",responseObject);
            weakSelf.responseModel =[FEWorkPanelDataResponseModel mj_objectWithKeyValues:responseObject[@"data"]];
+          
            [weakSelf.headView fillData:self.responseModel];
        } failure:^(NSError * _Nonnull error) {
           

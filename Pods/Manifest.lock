@@ -65,7 +65,7 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - AMap3DMap-NO-IDFA
     - AMapFoundation-NO-IDFA
@@ -101,4 +101,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ae9502f4742da2c341ae2f53775ca4b3c29face3
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.7.5

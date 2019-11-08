@@ -199,7 +199,7 @@
                     [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)weakSelf.kmNum forKey:kFECycleKM];
                     [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)weakSelf.sec forKey:kFECycleTime];
                     [weakSelf.navigationController popViewControllerAnimated:YES];
-                }else if ([data[@"code"] intValue] != 4010) {
+                }else {
                     MTSVPShowInfoText(data[@"msg"]);
                 }
         });

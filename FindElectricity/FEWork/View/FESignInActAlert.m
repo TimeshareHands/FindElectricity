@@ -31,8 +31,6 @@
     [self addSubview:self.topLbl];
     [self addSubview:self.centerImgLogo];
     [self addSubview:self.bottomLabel];
-    self.clipsToBounds = YES;
-    self.layer.cornerRadius = 4;
     [self makeUpConstriant];
 }
 
@@ -40,9 +38,9 @@
 - (void)makeUpConstriant{
     [self.topLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self);
-        make.left.mas_equalTo(WIDTH_LY(28));
-        make.right.mas_equalTo(WIDTH_LY(-28));
-        make.top.mas_equalTo(HEIGHT_LY(28));
+        make.left.mas_equalTo(WIDTH_LY(2));
+        make.right.mas_equalTo(WIDTH_LY(-2));
+        make.top.mas_equalTo(WIDTH_LY(18));
     }];
   
     [self.centerImgLogo mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -107,9 +105,9 @@
          make.bottom.mas_equalTo(keyWindow);
     }];
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(120);
+        make.width.mas_equalTo(WIDTH_LY(120));
         make.center.mas_equalTo(keyWindow);
-        make.height.mas_equalTo(120);
+        make.height.mas_equalTo(WIDTH_LY(120));
     }];
 }
 

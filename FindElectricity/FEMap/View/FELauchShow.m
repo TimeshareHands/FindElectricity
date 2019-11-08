@@ -32,8 +32,10 @@
             if ([data[@"code"] intValue] == KSuccessCode) {
                 MTSVPDismiss;
                 weakSelf.tip.text = data[@"msg"];
-                [weakSelf show];
-            } else if ([data[@"code"] intValue] != 4010) {
+                if ([[FEUserOperation manager] didLogin]) {
+                     [weakSelf show];
+                }
+            }else if ([data[@"code"] intValue] != 4010) {
                 MTSVPShowInfoText(data[@"msg"]);
                 [SVProgressHUD dismissWithDelay:3];
             }

@@ -57,6 +57,7 @@ static AFHTTPSessionManager *afnManager = nil;
     if (needToken == YES) {
          [afnManager.requestSerializer setValue:[FEUserOperation manager].token forHTTPHeaderField:@"token"];
     }
+    WEAKSELF
     [afnManager POST:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject) {
            NSString *str =  [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -65,9 +66,7 @@ static AFHTTPSessionManager *afnManager = nil;
             NSDictionary *dic = [self dictionaryWithJsonString:decodeStr];
             //判断登录是否失效
             if ([dic[@"code"] intValue] == 4010) {
-                
-                [[NSNotificationCenter defaultCenter]postNotificationName:@"doLoginNotification" object:nil];
-//                [self goLogin];
+                [weakSelf doLogin];
             }
             success(dic);
         }else {
@@ -155,10 +154,19 @@ static AFHTTPSessionManager *afnManager = nil;
  
 }
 
-- (void)goLogin {
-    dispatch_async(dispatch_get_main_queue(), ^{
-//        [NSNotificationCenter defaultCenter]
-       
-    });
+
+-(void)doLogin{
+    WEAKSELF;
+    for (UIViewController *sender in self.senderVC. navigationController.viewControllers ) {
+        if ([sender isKindOfClass:[FELoginViewController class]]) {
+            weakSelf.isPushLogin =YES;
+            return ;
+        }
+     }
+    if (weakSelf.isPushLogin) {
+        return ;
+    }
+    FELoginViewController *loginVC =[[FELoginViewController alloc]init];
+    [self.senderVC.navigationController pushViewController:loginVC animated:YES];
 }
 @end

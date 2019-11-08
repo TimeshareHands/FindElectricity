@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+       [NetWorkManger manager].senderVC =self;
     [self initData];
     [self addView];
 }
@@ -81,7 +81,7 @@
 }
 
 - (void)initData {
-    _dataSource = @[@[@{@"title":@"商家入住申请",@"icon":@"mine_checkIn"},@{@"title":@"商家收藏",@"icon":@"mine_collect"},@{@"title":@"商家位置纠正",@"icon":@"mine_modify"}],@[@{@"title":@"意见建议",@"icon":@"mine_advice"},@{@"title":@"推荐好友",@"icon":@"mine_introduce"}]];
+    _dataSource = @[@[@{@"title":@"商家入住申请",@"icon":@"mine_checkIn"},@{@"title":@"商家收藏",@"icon":@"mine_collect1"},@{@"title":@"商家位置纠正",@"icon":@"mine_modify"}],@[@{@"title":@"意见建议",@"icon":@"mine_advice"},@{@"title":@"推荐好友",@"icon":@"mine_introduce"}]];
 }
 
 - (FESharePopView *)sharePopView {

@@ -58,6 +58,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [NetWorkManger manager].senderVC =self;
     // Do any additional setup after loading the view, typically from a nib.
     [self initData];
     [self addView];
@@ -566,7 +567,7 @@
         }
         [self addAnnotationsToMap:[FEMapsModel mj_objectArrayWithKeyValuesArray:array]];
     }else {
-//        MTSVPShowInfoText(data[@"msg"]);
+        MTSVPShowInfoText(data[@"msg"]);
     }
 }
 
@@ -618,7 +619,7 @@
                 NSInteger num = [data[@"data"][@"notRead"] integerValue];
                 [weakSelf.naviRightItem notReadNum:num];
             }else {
-//                MTSVPShowInfoText(data[@"msg"]);
+                MTSVPShowInfoText(data[@"msg"]);
             }
             
         });

@@ -24,7 +24,8 @@ typedef void(^Failure)(NSError *error);
  */
 + (NetWorkManger *)manager;
 
-@property(nonatomic, strong)id senderVC;
+@property(nonatomic, strong)UIViewController *senderVC;
+@property(nonatomic, assign)BOOL isPushLogin;
 /**
  GET请求
 

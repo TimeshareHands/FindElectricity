@@ -739,8 +739,6 @@
     [self.tm_ShowHaveEvalueLbl setText:pannelModel.myElectrictyVal];
     [self.tm_ShowGiveLbl setText:pannelModel.todayElectricity];
     [self.tm_ShowChouCountLbl setText:pannelModel.lottery_number];
-    //ldq 重置状态
-    [self resetCoinState];
     if ([pannelModel.sign_num isEqualToString:@"1"]) {
         _tG_coinImg1.selected =YES;
         _tG_coinImg1.userInteractionEnabled =NO;
@@ -814,24 +812,6 @@
 -(NSString*)changeTelephone:(NSString*)teleStr{
      NSString *string = [teleStr stringByReplacingOccurrencesOfString:[teleStr substringWithRange:NSMakeRange(3,4)]withString:@"****"];
     return string;
-}
-
-//ldq fix bug1108-01
-- (void)resetCoinState {
-    _tG_coinImg1.selected =NO;
-    _tG_coinImg1.userInteractionEnabled =YES;
-    _tG_coinImg2.selected =NO;
-    _tG_coinImg2.userInteractionEnabled =YES;
-    _tG_coinImg3.selected =NO;
-    _tG_coinImg3.userInteractionEnabled =YES;
-    _tG_coinImg4.selected =NO;
-    _tG_coinImg4.userInteractionEnabled =YES;
-    _tG_coinImg5.selected =NO;
-    _tG_coinImg5.userInteractionEnabled =YES;
-    _tG_coinImg6.selected =NO;
-    _tG_coinImg6.userInteractionEnabled =YES;
-    _tG_coinImg7.selected =NO;
-    _tG_coinImg7.userInteractionEnabled =YES;
 }
 
 @end

@@ -41,7 +41,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.backgroundColor = color;
                 [self setTitle:[NSString stringWithFormat:@"%@%@", timeStr, subTitle] forState:UIControlStateNormal];
-                self.userInteractionEnabled = YES;
+                self.userInteractionEnabled = NO;
             });
             
             timeOut--;

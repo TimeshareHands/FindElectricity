@@ -138,6 +138,7 @@
 		4E02F470234F228600308D99 /* SDAsyncBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F436234F228600308D99 /* SDAsyncBlockOperation.m */; };
 		4E02F471234F228600308D99 /* NSBezierPath+RoundedCorners.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F437234F228600308D99 /* NSBezierPath+RoundedCorners.m */; };
 		4E02F472234F228600308D99 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E02F438234F228600308D99 /* UIColor+HexString.m */; };
+		4E04095D2373D66300D041F0 /* FEUserProtocalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E04095C2373D66300D041F0 /* FEUserProtocalVC.m */; };
 		4E063D0A233A104E00D6756A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D09233A104E00D6756A /* AppDelegate.m */; };
 		4E063D0D233A104E00D6756A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E063D0C233A104E00D6756A /* SceneDelegate.m */; };
 		4E063D15233A104F00D6756A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E063D14233A104F00D6756A /* Assets.xcassets */; };
@@ -521,6 +522,8 @@
 		4E02F436234F228600308D99 /* SDAsyncBlockOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAsyncBlockOperation.m; sourceTree = "<group>"; };
 		4E02F437234F228600308D99 /* NSBezierPath+RoundedCorners.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+RoundedCorners.m"; sourceTree = "<group>"; };
 		4E02F438234F228600308D99 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		4E04095B2373D66300D041F0 /* FEUserProtocalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEUserProtocalVC.h; sourceTree = "<group>"; };
+		4E04095C2373D66300D041F0 /* FEUserProtocalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEUserProtocalVC.m; sourceTree = "<group>"; };
 		4E063D05233A104E00D6756A /* 找电.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "找电.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E063D08233A104E00D6756A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4E063D09233A104E00D6756A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1000,6 +1003,8 @@
 			isa = PBXGroup;
 			children = (
 				4EF155E6235D9EA30037D8D4 /* FEWxBindPhoneVC.h */,
+				4E04095B2373D66300D041F0 /* FEUserProtocalVC.h */,
+				4E04095C2373D66300D041F0 /* FEUserProtocalVC.m */,
 				4EF155E5235D9EA30037D8D4 /* FEWxBindPhoneVC.m */,
 				4E02F281234EFAFB00308D99 /* FEFindPasswordVC.h */,
 				4E02F284234EFAFB00308D99 /* FEFindPasswordVC.m */,
@@ -2031,6 +2036,7 @@
 				4E02F28E234EFAFB00308D99 /* FELoginViewController.m in Sources */,
 				4E02F45C234F228600308D99 /* SDWebImageTransition.m in Sources */,
 				20916A602348D4760045C7C8 /* FEViewXib.m in Sources */,
+				4E04095D2373D66300D041F0 /* FEUserProtocalVC.m in Sources */,
 				CBED22BE2350592B0009B75D /* FESharePopView.m in Sources */,
 				CBEDBD80234F0B2C00A923A3 /* FEAddShopViewController.m in Sources */,
 				4EF155E7235D9EA30037D8D4 /* FEWxBindPhoneVC.m in Sources */,
@@ -2272,7 +2278,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J677Q28PH8;
@@ -2307,7 +2313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J677Q28PH8;

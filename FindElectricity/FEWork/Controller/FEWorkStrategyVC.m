@@ -16,8 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self initView];
+    if([self.responseModel.is_read isEqualToString:@"0"]){
+        [self requestReadStrategy];
+    }
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -164,7 +166,25 @@
         [self.navigationController pushViewController:friendVC animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
 }
+#pragma mark-获取电量值
+-(void)requestReadStrategy{
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
 
+    [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(ReadStrategyHttp)  parameters:parameter needToken:YES timeout:25 success:^(id  _Nonnull responseObject) {
+        NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+               
+            });
+        }else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
 
 /*
 #pragma mark - Navigation
