@@ -39,7 +39,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf.navigationController popViewControllerAnimated:YES];
             });
-        }else {
+        }else if ([data[@"code"] intValue] != KTokenFailCode){
             dispatch_async(dispatch_get_main_queue(), ^{
                 MTSVPShowInfoText(data[@"msg"]);
             });
@@ -58,7 +58,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf setData:data[@"data"]];
             });
-        }else {
+        }else if ([data[@"code"] intValue] != KTokenFailCode){
             dispatch_async(dispatch_get_main_queue(), ^{
                 MTSVPShowInfoText(data[@"msg"]);
             });

@@ -199,9 +199,11 @@
                     [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)weakSelf.kmNum forKey:kFECycleKM];
                     [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger)weakSelf.sec forKey:kFECycleTime];
                     [weakSelf.navigationController popViewControllerAnimated:YES];
-                }else {
-                    MTSVPShowInfoText(data[@"msg"]);
-                }
+                }else if ([data[@"code"] intValue] != KTokenFailCode){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
         });
         
     } failure:^(NSError * _Nonnull error) {

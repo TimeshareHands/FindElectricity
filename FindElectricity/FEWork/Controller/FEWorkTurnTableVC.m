@@ -433,9 +433,9 @@
                     MTSVPDismiss;
                MTSVPShowInfoText(@"领取成功");
               [weakSelf requestCurretData];
-            }else {
-                MTSVPShowInfoText(data[@"msg"]);
-            }
+            }else if ([data[@"code"] intValue] != KTokenFailCode){
+        MTSVPShowInfoText(data[@"msg"]);
+    }
        } failure:^(NSError * _Nonnull error) {
            
        }];

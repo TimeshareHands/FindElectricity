@@ -15,6 +15,7 @@
 #define BASE_URL @"http://zhaodianapi.csjiayu.com/zhaodian/v2"
 
 #define KSuccessCode 2000
+#define KTokenFailCode 4010
 
 //骑行
 #define CirclingSubHttp  @"/circlingSub" //骑行数据提交

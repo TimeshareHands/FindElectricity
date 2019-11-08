@@ -515,9 +515,9 @@
                 MTSVPDismiss;
                 FEMapInfoModel *model = [FEMapInfoModel mj_objectWithKeyValues:data[@"data"]];
                 [weakSelf setCurrentMapInfo:model];
-            }else {
-                MTSVPShowInfoText(data[@"msg"]);
-            }
+            }else if ([data[@"code"] intValue] != KTokenFailCode){
+        MTSVPShowInfoText(data[@"msg"]);
+    }
             
         });
         
@@ -561,12 +561,8 @@
         MTSVPDismiss;
         NSArray *array = data[@"data"][@"mapList"];
 //        MTSVPShowInfoText(data[@"data"][@"announcement"]);
-        if (array.count == 0)
-        {
-//            MTSVPShowInfoText(@"附近暂无数据");
-        }
         [self addAnnotationsToMap:[FEMapsModel mj_objectArrayWithKeyValuesArray:array]];
-    }else {
+    }else if ([data[@"code"] intValue] != KTokenFailCode){
         MTSVPShowInfoText(data[@"msg"]);
     }
 }
@@ -618,9 +614,9 @@
                 [weakSelf.chouJBtn setHidden:![data[@"data"][@"is_show_redWallet"] boolValue]];
                 NSInteger num = [data[@"data"][@"notRead"] integerValue];
                 [weakSelf.naviRightItem notReadNum:num];
-            }else {
-                MTSVPShowInfoText(data[@"msg"]);
-            }
+            }else if ([data[@"code"] intValue] != KTokenFailCode){
+        MTSVPShowInfoText(data[@"msg"]);
+    }
             
         });
         

@@ -44,9 +44,9 @@
                 MTSVPDismiss;
                 FEMapInfoModel *model = [FEMapInfoModel mj_objectWithKeyValues:data[@"data"]];
                 [weakSelf setShopInfo:model];
-            }else {
-                MTSVPShowInfoText(data[@"msg"]);
-            }
+            }else if ([data[@"code"] intValue] != KTokenFailCode){
+        MTSVPShowInfoText(data[@"msg"]);
+    }
             
         });
         

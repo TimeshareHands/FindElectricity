@@ -122,9 +122,11 @@
             MTSVPShowInfoText(@"暂无收藏");
         }
         [_tableView reloadData];
-    }else {
-        MTSVPShowInfoText(data[@"msg"]);
-    }
+    }else if ([data[@"code"] intValue] != KTokenFailCode){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
+        }
 }
 
 - (void)refreshData

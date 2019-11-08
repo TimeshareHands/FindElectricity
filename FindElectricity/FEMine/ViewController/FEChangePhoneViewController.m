@@ -51,7 +51,7 @@
                     sender.enabled = YES;
                 });
             });
-        }else {
+        }else if ([data[@"code"] intValue] != KTokenFailCode){
             dispatch_async(dispatch_get_main_queue(), ^{
                 MTSVPShowInfoText(data[@"msg"]);
             });
@@ -82,7 +82,7 @@
                 
                 [weakSelf.navigationController popViewControllerAnimated:YES];
             });
-        }else {
+        }else if ([data[@"code"] intValue] != KTokenFailCode){
             dispatch_async(dispatch_get_main_queue(), ^{
                 MTSVPShowInfoText(data[@"msg"]);
             });
