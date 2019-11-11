@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FECycleMapViewController : DemonViewController
+@property (strong, nonatomic) NSMutableArray *points;
 @property (assign,nonatomic) CLLocationCoordinate2D startCoord;
 @end
 

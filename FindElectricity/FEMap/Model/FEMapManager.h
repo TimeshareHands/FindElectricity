@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AMapSearchKit/AMapSearchKit.h>
+#import <MAMapKit/MAMapKit.h>
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger,FEAMapSearchType) {
     FEAMapSearchTypeReGeocode = 0,
@@ -30,6 +31,10 @@ typedef  void (^AMapSearchFinishBlock)(id response,FEAMapSearchType type,NSError
 获取2点直线距离
 */
 - (void)getDistanceFromCoord:(CLLocationCoordinate2D)from toCoord:(CLLocationCoordinate2D)toCoord finishBlock:(AMapSearchFinishBlock)block;
+/**
+获取2点直线距离同步
+*/
+- (CLLocationDistance)getDistanceSycnFromCoord:(CLLocationCoordinate2D)from toCoord:(CLLocationCoordinate2D)toCoord;
 /**
 获取天气信息
 */

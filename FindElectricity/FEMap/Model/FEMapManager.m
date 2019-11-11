@@ -55,6 +55,12 @@ static FEMapManager *manager = nil;
     [self.search AMapDistanceSearch:distanReq];
 }
 
+- (CLLocationDistance)getDistanceSycnFromCoord:(CLLocationCoordinate2D)from toCoord:(CLLocationCoordinate2D)toCoord {
+    MAMapPoint point1 = MAMapPointForCoordinate(from);
+    MAMapPoint point2 = MAMapPointForCoordinate(toCoord);
+    return MAMetersBetweenMapPoints(point1,point2);
+}
+
 //获取天气信息
 - (void)weatherSearchCity:(NSString *)city finishBlock:(AMapSearchFinishBlock)block{
     _weatherBlock = block;

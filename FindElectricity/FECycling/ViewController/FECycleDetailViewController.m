@@ -32,6 +32,8 @@
 @property (weak,nonatomic) id<FECycleDetailVCDelegete> delegete;
 
 @property (nonatomic, strong) AMapLocationManager *locationManager;
+@property (nonatomic, strong) dispatch_semaphore_t lock;
+@property (strong, nonatomic) NSMutableArray *points;
 @end
 
 @implementation FECycleDetailViewController
@@ -54,6 +56,15 @@
         });
     };
     [self configLocationManager];
+    
+    _lock = dispatch_semaphore_create(1);
+        CLLocation *start = [[CLLocation alloc] initWithLatitude:_startCoord.latitude longitude:_startCoord.longitude];
+    //    _points = [NSMutableArray arrayWithObject:start];
+        if (CLLocationCoordinate2DIsValid(_startCoord)) {
+            _points = [NSMutableArray arrayWithObject:start];
+        }else {
+            _points = [NSMutableArray array];
+        }
 }
 
 - (void)configLocationManager
@@ -108,11 +119,20 @@
 
 - (void)setCurrentCoord:(CLLocationCoordinate2D)currentCoord {
     _currentCoord = currentCoord;
-    [self getDistance:currentCoord];
+//    [self getDistance:currentCoord];
 }
 
 //更新数据
 - (void)updateData{
+    CLLocation *lastLoc = [_points lastObject];
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:_currentCoord.latitude longitude:_currentCoord.longitude];
+    CLLocationDistance distance = [[FEMapManager manager] getDistanceSycnFromCoord:lastLoc.coordinate toCoord:_currentCoord];
+    if (distance>20) {
+            DQLOCK(self.lock);
+            [self.points addObject:loc];
+            DQUNLOCK(self.lock);
+            _kmNum += distance;
+        }
     self.currentTime.text = timeFormt(_sec);
     self.currentKM.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0];
     self.speed.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0/_sec];
@@ -169,6 +189,7 @@
         FECycleMapViewController *vc = [[FECycleMapViewController alloc] init];
         self.delegete = vc;
         vc.startCoord = _startCoord;
+        vc.points = [_points mutableCopy];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (sender.tag == 1) {
         //stop
@@ -213,7 +234,7 @@
 }
 
 - (NSString *)getRawSignStringL{
-    NSDictionary *rowDic = @{@"mileage":[NSString stringWithFormat:@"%.2f",_kmNum],@"usetime":[NSString stringWithFormat:@"%d",(int)_sec]};
+    NSDictionary *rowDic = @{@"mileage":[NSString stringWithFormat:@"%.2f",_kmNum/1000.0],@"usetime":[NSString stringWithFormat:@"%d",(int)_sec]};
     NSString *json = [rowDic convertToJsonString];
     json = [json stringWithBase64];
     json = [NSString stringWithFormat:@"%@%@",[NSString randomStrWithLength:6],json];

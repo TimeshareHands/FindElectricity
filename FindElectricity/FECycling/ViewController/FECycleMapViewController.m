@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) FECycleMap *mapView;
 @property (assign, nonatomic) CLLocation *currentLocat;
-@property (strong, nonatomic) NSMutableArray *points;
+
 @property (weak, nonatomic) IBOutlet UILabel *currentElec;
 @property (weak, nonatomic) IBOutlet UILabel *speed;
 @property (weak, nonatomic) IBOutlet UILabel *currentKM;
@@ -29,15 +29,16 @@
     [super viewDidLoad];
     
     _lock = dispatch_semaphore_create(1);
-    CLLocation *start = [[CLLocation alloc] initWithLatitude:_startCoord.latitude longitude:_startCoord.longitude];
-//    _points = [NSMutableArray arrayWithObject:start];
-    if (CLLocationCoordinate2DIsValid(_startCoord)) {
-        _points = [NSMutableArray arrayWithObject:start];
-    }else {
-        _points = [NSMutableArray array];
-    }
+//    CLLocation *start = [[CLLocation alloc] initWithLatitude:_startCoord.latitude longitude:_startCoord.longitude];
+////    _points = [NSMutableArray arrayWithObject:start];
+//    if (CLLocationCoordinate2DIsValid(_startCoord)) {
+//        _points = [NSMutableArray arrayWithObject:start];
+//    }else {
+//        _points = [NSMutableArray array];
+//    }
     
     [self addView];
+    [self drawLineWithPoints:_points];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,33 +92,15 @@ int count = 0;
     self.currentElec.text = elec;
     
     //把当前位置记录下来 5s更新
-    count++;
-    if (_currentLocat&&CLLocationCoordinate2DIsValid(_currentLocat.coordinate)&&count>=5) {
-        count = 0;
-        DQLOCK(self.lock);
-        [self.points addObject:[_currentLocat copy]];
-        DQUNLOCK(self.lock);
-        [self drawLine];
-//        CLLocationCoordinate2D des = _currentLocat.coordinate;
-//        CLLocationCoordinate2D start = ((CLLocation *)[_points lastObject]).coordinate;
-//        WEAKSELF;
-//        [[FEMapManager manager] getDistanceFromCoord:start toCoord:des finishBlock:^(id  _Nonnull response, FEAMapSearchType type, NSError * _Nonnull error) {
-//            NSArray *arr = ((AMapDistanceSearchResponse *)response).results;
-//            if (arr.count) {
-//                AMapDistanceResult *distance = [arr firstObject];
-//                dispatch_async(dispatch_get_main_queue(), ^{
-////                    if(distance.distance<500)
-//                    {
-//                        DQLOCK(weakSelf.lock);
-//                        [weakSelf.points addObject:[[CLLocation alloc] initWithLatitude:des.latitude longitude:des.longitude]];
-//                        DQUNLOCK(weakSelf.lock);
-//                        [weakSelf drawLine];
-//                    }
-//                });
-//            }
-//        }];
-        
-    }
+//    count++;
+//    if (_currentLocat&&CLLocationCoordinate2DIsValid(_currentLocat.coordinate)&&count>=5) {
+//        count = 0;
+//        DQLOCK(self.lock);
+//        [self.points addObject:[_currentLocat copy]];
+//        DQUNLOCK(self.lock);
+//        [self drawLine];
+//
+//    }
 }
 
 
@@ -207,12 +190,24 @@ int count = 0;
     return nil;
 }
 
+-(void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation {
+    CLLocation *lastLoc = [_points lastObject];
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
+    CLLocationDistance distance = [[FEMapManager manager] getDistanceSycnFromCoord:lastLoc.coordinate toCoord:loc.coordinate];
+    if (distance>=2) {
+//        [_points addObject:loc];                                                          
+        [self drawLineWithPoints:@[lastLoc,loc]];
+
+        [_mapView setCenterCoordinate:loc.coordinate];
+    }
+}
+
 //划线
-- (void)drawLine {
-    if (_points.count<3) {
+- (void)drawLineWithPoints:(NSArray *)points {
+    if (points.count<2) {
         return;
     }
-    CLLocationCoordinate2D commonPolylineCoords[_points.count];
+    CLLocationCoordinate2D commonPolylineCoords[points.count];
 //    commonPolylineCoords[0].latitude = 28.284373;
 //    commonPolylineCoords[0].longitude = 112.929788;
 //
@@ -224,17 +219,17 @@ int count = 0;
 //
 //    commonPolylineCoords[3].latitude = 28.286343;
 //    commonPolylineCoords[3].longitude = 112.939788;
-    for (int i=0; i<_points.count; i++) {
-        CLLocation *loc = _points[i];
+    for (int i=0; i<points.count; i++) {
+        CLLocation *loc = points[i];
         commonPolylineCoords[i].latitude = loc.coordinate.latitude;
         commonPolylineCoords[i].longitude = loc.coordinate.longitude;
     }
     
     //清楚之前的轨迹
-    [_mapView removeOverlays:_mapView.overlays];
+//    [_mapView removeOverlays:_mapView.overlays];
     
     //构造折线对象
-    MAPolyline *commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:_points.count];
+    MAPolyline *commonPolyline = [MAPolyline polylineWithCoordinates:commonPolylineCoords count:points.count];
 
     //在地图上添加折线对象
     [_mapView addOverlay: commonPolyline];
