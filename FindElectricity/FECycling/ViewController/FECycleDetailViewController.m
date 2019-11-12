@@ -127,7 +127,7 @@
     CLLocation *lastLoc = [_points lastObject];
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:_currentCoord.latitude longitude:_currentCoord.longitude];
     CLLocationDistance distance = [[FEMapManager manager] getDistanceSycnFromCoord:lastLoc.coordinate toCoord:_currentCoord];
-    if (distance>20) {
+    if (distance>35) {
             DQLOCK(self.lock);
             [self.points addObject:loc];
             DQUNLOCK(self.lock);
