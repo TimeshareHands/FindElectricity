@@ -102,7 +102,8 @@
 
 - (IBAction)naviTo:(id)sender {
 //    [[FENaviManager manager] routePlanWithEndPoint:(CLLocationCoordinate2D){_shopInfo.latitude,_shopInfo.longitude} name:_shopInfo.merchantsName];
-    [self routePlanAction];
+//    [self routePlanAction];
+    [FERouterManager presentRouteNaviMenuOnController:self withCoordate:CLLocationCoordinate2DMake(_shopInfo.latitude, _shopInfo.longitude) destination:_shopInfo.merchantsName];
 }
 
 //路径规划
