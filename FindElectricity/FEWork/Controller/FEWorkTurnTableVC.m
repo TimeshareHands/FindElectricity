@@ -135,9 +135,10 @@
 
 -(UIImageView *)bgImageView{
     if (!_bgImageView) {
-        _bgImageView =[[UIImageView alloc]init];
-        [_bgImageView setImage:[UIImage imageNamed:@"wkc_bigRotaryTable"]];
-        _bgImageView.transform = CGAffineTransformMakeRotation(M_PI*3/8);
+        _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 20, 300,300)];
+//        [_bgImageView setImage:[UIImage imageNamed:@"wkc_bigRotaryTable"]];
+        _bgImageView.center =CGPointMake(self.view.center.x, 160);
+     
         [_bgImageView setUserInteractionEnabled:YES];
     }
     return _bgImageView;
@@ -145,9 +146,10 @@
 
 -(UIImageView *)btnImageView{
     if (!_btnImageView) {
-        _btnImageView =[[UIImageView alloc]init];
-        [_btnImageView setImage:[UIImage imageNamed:@"wkc_choujiangAction"]];
-        _btnImageView.userInteractionEnabled = YES;
+        _btnImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+        _btnImageView.image = [UIImage imageNamed:@"wkc_choujiangAction"];
+        _btnImageView.center =_bgImageView.center;
+         _btnImageView.userInteractionEnabled = YES;
        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(requestChouJiang)];
        [_btnImageView addGestureRecognizer:tap];
     }
@@ -192,18 +194,54 @@
     UIView *headView =[[UIView alloc]init];
     if (section ==0) {
         [headView addSubview:self.bgImageView];
-          [headView addSubview:self.btnImageView];
-          [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-              make.centerX.mas_equalTo(headView);
-              make.top.mas_equalTo(20);
-              make.width.mas_equalTo(300);
-              make.height.mas_equalTo(300);
-          }];
-          [self.btnImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-              make.center.mas_equalTo(self.bgImageView);
-              make.height.mas_equalTo(60);
-              make.width.mas_equalTo(60);
-          }];
+        //添加GO按钮图片
+        UIImageView *imageBg =[[UIImageView alloc]init];
+        [imageBg setImage:[UIImage imageNamed:@"wkc_bigRotaryTable"]];
+        imageBg.layer.transform =  CATransform3DMakeRotation(M_PI/8.0, 0, 0, 1);
+        [self.bgImageView addSubview:imageBg];
+        [imageBg mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.bgImageView);
+            make.right.mas_equalTo(self.bgImageView);
+            make.top.mas_equalTo(self.bgImageView);
+            make.bottom.mas_equalTo(self.bgImageView);
+        }];
+        [headView addSubview:self.btnImageView];
+        
+        //添加文字
+        for (int i = 0; i < 8; i ++) {
+            
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,M_PI * CGRectGetHeight(self.bgImageView.frame)/8,CGRectGetHeight(self.bgImageView.frame)*3/3.8)];
+            label.layer.anchorPoint = CGPointMake(0.5, 1.0);
+            label.center = CGPointMake(CGRectGetHeight(self.bgImageView.frame)/2, CGRectGetHeight(self.bgImageView.frame)/2);
+            [label setTextColor:UIColorFromHex(0xDB8F5F)];
+            label.textAlignment = NSTextAlignmentCenter;
+            label.font = [UIFont boldSystemFontOfSize:14];
+            CGFloat angle = M_PI*2/8 * i;
+            label.transform = CGAffineTransformMakeRotation(angle);
+            [self.bgImageView addSubview:label];
+            UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,M_PI/2 * CGRectGetHeight(self.bgImageView.frame)/8,CGRectGetHeight(self.bgImageView.frame)*3/9)];
+            UIImageView *centerImg =[[UIImageView alloc]init];
+            [imageView addSubview:centerImg];
+            if (self.prize_arr.count>0) {
+                NSDictionary *pizDic = self.prize_arr[i];
+                 label.text = [NSString stringWithFormat:@"%@", pizDic[@"prize"]];
+                 [centerImg sd_setImageWithURL:[NSURL URLWithString:pizDic[@"pic"]]];
+            }
+            [centerImg mas_makeConstraints:^(MASConstraintMaker *make) {
+              make.centerX.mas_equalTo(imageView);
+              make.width.mas_equalTo(45);
+              make.height.mas_equalTo(45);
+              make.top.mas_equalTo(10);
+            }];
+            imageView.layer.anchorPoint = CGPointMake(0.5, 1);
+            imageView.center = CGPointMake(CGRectGetHeight(self.bgImageView.frame)/2, CGRectGetHeight(self.bgImageView.frame)/2);
+            imageView.transform = CGAffineTransformMakeRotation(angle);
+            
+            [self.bgImageView addSubview:imageView];
+          
+//             [imageView setBackgroundColor:[UIColor redColor]];
+        
+        }
     }
     return headView;
 }
@@ -286,24 +324,24 @@
     //设置转圈的圈数
     NSInteger circleNum = 6;
     if (lotteryPro ==5) {//电动车
-       _circleAngle = 180;
-    }else if(lotteryPro ==6){//手机
-        _circleAngle = 225;
-    }else if (lotteryPro ==7){//神秘礼物
-        _circleAngle = 135;
-    }else if (lotteryPro ==8){//食用油卡
-        _circleAngle = 315;
-    }else if (lotteryPro ==9){//洗洁精卡
-        _circleAngle = 270;
-    }else if (lotteryPro ==10){//卫生纸
         _circleAngle = 0;
+    }else if(lotteryPro ==6){//手机卡
+        _circleAngle = 315;
+    }else if (lotteryPro ==7){//零食大礼包
+         _circleAngle = 270;
+    }else if (lotteryPro ==8){//卫生纸卡
+        _circleAngle = 135;
+    }else if (lotteryPro ==9){//垃圾袋
+        _circleAngle = 180;
+    }else if (lotteryPro ==10){//洗衣液
+        _circleAngle = 225;
     }else if (lotteryPro ==11){//积分奖励
-        _circleAngle = 45;
+        _circleAngle = 90;
     }else if (lotteryPro ==12){//谢谢参与
-         _circleAngle = 90;
+        _circleAngle = 45;
     }
     
-    CGFloat perAngle = M_PI/(180.0+M_PI/2);
+    CGFloat perAngle = M_PI/(180.0);
     
     NSLog(@"turnAngle = %ld",(long)_circleAngle);
     
@@ -325,26 +363,38 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     _isAnimation =NO;
     NSLog(@"动画停止");
-    NSString *title;
+    __block NSString *title;
     UIImage  *topImage =[UIImage imageNamed:@"wkc_ChoujiangGet"];
-    if (_circleAngle == 0) {
-        title = @"抽中卫生纸卡一张";
-    }else if (_circleAngle == 45){
-        title = [NSString stringWithFormat:@"积分奖励%@",self.numInteger];
-    }else if (_circleAngle == 90){
-        topImage =[UIImage imageNamed:@"wkc_smile"];
-        title = @"谢谢参与!";
-    }else if (_circleAngle == 135){
-        title = @"抽中神秘礼物卡一张";
-    }else if (_circleAngle == 180){
-        title = @"抽中电动车卡一张";
-    }else if (_circleAngle == 225){
-        title = @"抽中手机卡一张";
-    }else if (_circleAngle == 270){
-        title = @"抽中洗洁精卡一张";
-    }else if (_circleAngle == 315){
-        title = @"抽中食用油卡一张";
-    }
+    [self.prize_arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *prizeDic =obj;
+        NSString *prizeId =[NSString stringWithFormat:@"%@",prizeDic[@"id"]];
+        if(self.numInteger.length>0){
+            title = [NSString stringWithFormat:@"积分奖励%@",self.numInteger];
+        }
+        if ([prizeId isEqualToString:self.goodId]) {
+            title =[NSString stringWithFormat:@"抽中%@",prizeDic[@"prize"]];
+        }
+        
+    }];
+   
+//    if (_circleAngle == 0) {
+//        title = @"抽中电动车卡一张";
+//    }else if (_circleAngle == 45){
+//
+//    }else if (_circleAngle == 90){
+//        topImage =[UIImage imageNamed:@"wkc_smile"];
+//        title = @"谢谢参与!";
+//    }else if (_circleAngle == 135){
+//        title = @"抽中神秘礼物卡一张";
+//    }else if (_circleAngle == 180){
+//        title = @"抽中电动车卡一张";
+//    }else if (_circleAngle == 225){
+//        title = @"抽中手机卡一张";
+//    }else if (_circleAngle == 270){
+//        title = @"抽中洗洁精卡一张";
+//    }else if (_circleAngle == 315){
+//        title = @"抽中食用油卡一张";
+//    }
     [self requestCurretData];
     FEWorkGetGiftAlertView *gitAlertVIew =[[FEWorkGetGiftAlertView alloc]init];
     [gitAlertVIew setImage:topImage andTopText:title];
