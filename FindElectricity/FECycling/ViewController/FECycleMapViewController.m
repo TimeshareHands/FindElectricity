@@ -194,8 +194,9 @@ int count = 0;
     CLLocation *lastLoc = [_points lastObject];
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
     CLLocationDistance distance = [[FEMapManager manager] getDistanceSycnFromCoord:lastLoc.coordinate toCoord:loc.coordinate];
-    if (distance>=2) {
-//        [_points addObject:loc];                                                          
+
+    if (distance>=20&&distance<100000) {
+        [_points addObject:loc];                                                          
         [self drawLineWithPoints:@[lastLoc,loc]];
 
         [_mapView setCenterCoordinate:loc.coordinate];
