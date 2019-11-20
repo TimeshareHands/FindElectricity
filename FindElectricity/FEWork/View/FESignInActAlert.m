@@ -20,7 +20,6 @@
 - (id)init{
     if (self =[super init]) {
         [self addView];
-        [self performSelector:@selector(hidden) withObject:nil afterDelay:5];
     }
     return self;
 }
@@ -109,6 +108,7 @@
         make.center.mas_equalTo(keyWindow);
         make.height.mas_equalTo(WIDTH_LY(120));
     }];
+     [self performSelector:@selector(hidden) withObject:nil afterDelay:3];
 }
 
 - (void)hidden {
