@@ -368,7 +368,7 @@
     [self.prize_arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *prizeDic =obj;
         NSString *prizeId =[NSString stringWithFormat:@"%@",prizeDic[@"id"]];
-        if(self.numInteger.length>0){
+        if(self.numInteger.integerValue>0){
             title = [NSString stringWithFormat:@"积分奖励%@",self.numInteger];
         }
         if ([prizeId isEqualToString:self.goodId]) {
