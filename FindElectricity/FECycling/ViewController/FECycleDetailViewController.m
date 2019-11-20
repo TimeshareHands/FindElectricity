@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentTime;
 
 @property (assign, nonatomic) CGFloat kmNum;
+@property (assign, nonatomic) NSTimeInterval startInter;
 @property (assign, nonatomic) NSTimeInterval sec;
 @property (weak,nonatomic) id<FECycleDetailVCDelegete> delegete;
 
@@ -45,16 +46,17 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault removeObjectForKey:kFECycleTime];
     [userDefault removeObjectForKey:kFECycleKM];
-    _sec = 1;
-    FETimeManager *timeManager = [FETimeManager shareManager];
-    [timeManager startTiming];
-    WEAKSELF;
-    timeManager.timeRunBlock = ^(NSTimeInterval sec) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.sec = sec;
-            [weakSelf updateData];
-        });
-    };
+    
+    _startInter = [[NSDate date] timeIntervalSinceNow];
+//    FETimeManager *timeManager = [FETimeManager shareManager];
+//    [timeManager startTiming];
+//    WEAKSELF;
+//    timeManager.timeRunBlock = ^(NSTimeInterval sec) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            weakSelf.sec = sec;
+//            [weakSelf updateData];
+//        });
+//    };
     [self configLocationManager];
     
     _lock = dispatch_semaphore_create(1);
@@ -78,7 +80,7 @@
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
     //设置允许在后台定位
-//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
     
     //设置允许连续定位逆地理
     [self.locationManager setLocatingWithReGeocode:YES];
@@ -119,7 +121,7 @@
 
 - (void)setCurrentCoord:(CLLocationCoordinate2D)currentCoord {
     _currentCoord = currentCoord;
-//    [self getDistance:currentCoord];
+    [self updateData];
 }
 
 //更新数据
@@ -134,6 +136,7 @@
             DQUNLOCK(self.lock);
             _kmNum += distance;
         }
+    _sec = [[NSDate date] timeIntervalSince1970] -_startInter;
     self.currentTime.text = timeFormt(_sec);
     self.currentKM.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0];
     self.speed.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0/_sec];
@@ -180,7 +183,8 @@
 }
 
 - (void)endCycling {
-    [[FETimeManager shareManager] endTiming];
+//    [[FETimeManager shareManager] endTiming];
+    [self.locationManager stopUpdatingLocation];
     [self submitCyclingDataRequest];
 }
 
@@ -197,14 +201,15 @@
         sender.hidden = YES;
         _goonBtn.hidden = NO;
         _endBtn.hidden = NO;
-        [[FETimeManager shareManager] stopTiming];
-        
+//        [[FETimeManager shareManager] stopTiming];
+        [self.locationManager stopUpdatingLocation];
     }else if(sender.tag == 2) {
         //goon
         _stopBtn.hidden = NO;
         _goonBtn.hidden = YES;
         _endBtn.hidden = YES;
-        [[FETimeManager shareManager] goonTiming];
+//        [[FETimeManager shareManager] goonTiming];
+        [self.locationManager startUpdatingLocation];
     }
 }
 
@@ -243,7 +248,8 @@
 }
 
 - (void)dealloc{
-    [[FETimeManager shareManager] endTiming];
+//    [[FETimeManager shareManager] endTiming];
+    [self.locationManager stopUpdatingLocation];
 }
 
 /*
