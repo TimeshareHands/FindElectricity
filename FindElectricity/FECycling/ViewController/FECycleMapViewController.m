@@ -132,6 +132,7 @@ int count = 0;
         [_mapView setIsShowMapCenter:NO];
         
         [_mapView startHeadingLocation];
+        _mapView.distanceFilter = 10;
         _mapView.showsCompass = NO;
         _mapView.showsUserLocation = YES;
 //        _mapView.userTrackingMode = MAUserTrackingModeFollow;

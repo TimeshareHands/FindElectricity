@@ -47,7 +47,8 @@
     [userDefault removeObjectForKey:kFECycleTime];
     [userDefault removeObjectForKey:kFECycleKM];
     
-    _startInter = [[NSDate date] timeIntervalSinceNow];
+    _startInter = [[NSDate date] timeIntervalSince1970];
+    _sec = 1;
 //    FETimeManager *timeManager = [FETimeManager shareManager];
 //    [timeManager startTiming];
 //    WEAKSELF;
@@ -79,9 +80,12 @@
     //设置不允许系统暂停定位
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
-    //设置允许在后台定位
-    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+//    //设置允许在后台定位
+//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9) {
+        self.locationManager.allowsBackgroundLocationUpdates = YES;
+    }
     //设置允许连续定位逆地理
     [self.locationManager setLocatingWithReGeocode:YES];
     
@@ -89,6 +93,7 @@
     [self.locationManager setDetectRiskOfFakeLocation:NO];
     
     [self.locationManager startUpdatingLocation];
+//    self.locationManager.distanceFilter = 0;
 }
 
 #pragma mark - AMapLocationManager Delegate
@@ -194,7 +199,7 @@
         FECycleMapViewController *vc = [[FECycleMapViewController alloc] init];
         self.delegete = vc;
         vc.startCoord = _startCoord;
-        vc.points = [_points mutableCopy];
+        vc.points = [NSMutableArray arrayWithArray:[_points copy]];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (sender.tag == 1) {
         //stop
