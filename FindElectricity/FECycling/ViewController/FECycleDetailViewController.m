@@ -49,15 +49,14 @@
     
     _startInter = [[NSDate date] timeIntervalSince1970];
     _sec = 1;
-//    FETimeManager *timeManager = [FETimeManager shareManager];
-//    [timeManager startTiming];
-//    WEAKSELF;
-//    timeManager.timeRunBlock = ^(NSTimeInterval sec) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            weakSelf.sec = sec;
-//            [weakSelf updateData];
-//        });
-//    };
+    FETimeManager *timeManager = [FETimeManager shareManager];
+    [timeManager startTiming];
+    WEAKSELF;
+    timeManager.timeRunBlock = ^(NSTimeInterval sec) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf updateData];
+        });
+    };
     [self configLocationManager];
     
     _lock = dispatch_semaphore_create(1);
@@ -93,7 +92,7 @@
     [self.locationManager setDetectRiskOfFakeLocation:NO];
     
     [self.locationManager startUpdatingLocation];
-//    self.locationManager.distanceFilter = 0;
+    self.locationManager.distanceFilter = 10;
 }
 
 #pragma mark - AMapLocationManager Delegate
@@ -126,7 +125,7 @@
 
 - (void)setCurrentCoord:(CLLocationCoordinate2D)currentCoord {
     _currentCoord = currentCoord;
-    [self updateData];
+//    [self updateData];
 }
 
 //更新数据
