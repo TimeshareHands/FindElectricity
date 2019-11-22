@@ -125,11 +125,6 @@
 
 - (void)setCurrentCoord:(CLLocationCoordinate2D)currentCoord {
     _currentCoord = currentCoord;
-//    [self updateData];
-}
-
-//更新数据
-- (void)updateData{
     CLLocation *lastLoc = [_points lastObject];
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:_currentCoord.latitude longitude:_currentCoord.longitude];
     CLLocationDistance distance = [[FEMapManager manager] getDistanceSycnFromCoord:lastLoc.coordinate toCoord:_currentCoord];
@@ -140,6 +135,12 @@
             DQUNLOCK(self.lock);
             _kmNum += distance;
         }
+//    [self updateData];
+}
+
+//更新数据
+- (void)updateData{
+    
     _sec = [[NSDate date] timeIntervalSince1970] -_startInter;
     self.currentTime.text = timeFormt(_sec);
     self.currentKM.text = [NSString stringWithFormat:@"%.2f",_kmNum/1000.0];
