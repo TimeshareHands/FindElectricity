@@ -195,6 +195,8 @@
 		CB82616B234C714300DA6D21 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826164234C714200DA6D21 /* MANaviPolyline.m */; };
 		CB82616C234C714300DA6D21 /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826166234C714200DA6D21 /* LineDashPolyline.m */; };
 		CB82616D234C714300DA6D21 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = CB826168234C714200DA6D21 /* MANaviRoute.m */; };
+		CB8985E723878A4600EB8806 /* FEContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8985E523878A4600EB8806 /* FEContactViewController.m */; };
+		CB8985E823878A4600EB8806 /* FEContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8985E623878A4600EB8806 /* FEContactViewController.xib */; };
 		CB976F43236D1EBE008F6CDC /* FERouterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB976F42236D1EBE008F6CDC /* FERouterManager.m */; };
 		CBA72A70234DD0CA00C7070E /* FECycleMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA72A6E234DD0CA00C7070E /* FECycleMapViewController.m */; };
 		CBA72A71234DD0CA00C7070E /* FECycleMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA72A6F234DD0CA00C7070E /* FECycleMapViewController.xib */; };
@@ -639,6 +641,9 @@
 		CB826167234C714200DA6D21 /* MANaviPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviPolyline.h; sourceTree = "<group>"; };
 		CB826168234C714200DA6D21 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
 		CB826169234C714300DA6D21 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
+		CB8985E423878A4600EB8806 /* FEContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FEContactViewController.h; sourceTree = "<group>"; };
+		CB8985E523878A4600EB8806 /* FEContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FEContactViewController.m; sourceTree = "<group>"; };
+		CB8985E623878A4600EB8806 /* FEContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FEContactViewController.xib; sourceTree = "<group>"; };
 		CB976F41236D1EBE008F6CDC /* FERouterManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FERouterManager.h; sourceTree = "<group>"; };
 		CB976F42236D1EBE008F6CDC /* FERouterManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FERouterManager.m; sourceTree = "<group>"; };
 		CBA72A6D234DD0CA00C7070E /* FECycleMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FECycleMapViewController.h; sourceTree = "<group>"; };
@@ -1539,6 +1544,9 @@
 				CBEDBD55234EE11100A923A3 /* FEMineViewController.h */,
 				CBEDBD56234EE11100A923A3 /* FEMineViewController.m */,
 				CBEDBD57234EE11100A923A3 /* FEMineViewController.xib */,
+				CB8985E423878A4600EB8806 /* FEContactViewController.h */,
+				CB8985E523878A4600EB8806 /* FEContactViewController.m */,
+				CB8985E623878A4600EB8806 /* FEContactViewController.xib */,
 				CBEDBD5F234F099F00A923A3 /* FESettingsViewController.h */,
 				CBEDBD60234F099F00A923A3 /* FESettingsViewController.m */,
 				CBEDBD61234F099F00A923A3 /* FESettingsViewController.xib */,
@@ -1771,6 +1779,7 @@
 				4E02F43A234F228600308D99 /* README.md in Resources */,
 				CBED22AC235048840009B75D /* FENewsCell.xib in Resources */,
 				20916A4F234789530045C7C8 /* FEMapViewController.xib in Resources */,
+				CB8985E823878A4600EB8806 /* FEContactViewController.xib in Resources */,
 				CB4FAC72235026DB0094D3E9 /* FESelectCityViewController.xib in Resources */,
 				203530142352FE270070A2F0 /* FECorrectionViewController.xib in Resources */,
 				20916A9F234F85770045C7C8 /* FESignChangeViewController.xib in Resources */,
@@ -1955,6 +1964,7 @@
 				4E02F46C234F228600308D99 /* SDImageCachesManagerOperation.m in Sources */,
 				4E783CF023520D76003872F2 /* FEWorkInviteStandStardVC.m in Sources */,
 				4E02F44E234F228600308D99 /* SDWebImageError.m in Sources */,
+				CB8985E723878A4600EB8806 /* FEContactViewController.m in Sources */,
 				4E02F45D234F228600308D99 /* SDImageTransformer.m in Sources */,
 				4E02F448234F228600308D99 /* UIImage+GIF.m in Sources */,
 				4E02F2BE234EFB4300308D99 /* FEWorkGetGiftShareAlertView.m in Sources */,
