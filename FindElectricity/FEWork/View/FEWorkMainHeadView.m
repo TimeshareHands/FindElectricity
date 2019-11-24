@@ -739,11 +739,9 @@
     [self.tm_ShowHaveEvalueLbl setText:pannelModel.myElectrictyVal];
     [self.tm_ShowGiveLbl setText:pannelModel.todayElectricity];
     [self.tm_ShowChouCountLbl setText:pannelModel.lottery_number];
-    
     //ldq fix
-    [self resetSignCoinUI];
-    
-    if ([pannelModel.sign_num isEqualToString:@"1"]) {
+     [self resetSignCoinUI];
+    if ([pannelModel.sign_num isEqualToString:@"1"]||[pannelModel.sign_num isEqualToString:@"0"]) {
         _tG_coinImg1.selected =YES;
         _tG_coinImg1.userInteractionEnabled =NO;
     }else if([pannelModel.sign_num isEqualToString:@"2"]){

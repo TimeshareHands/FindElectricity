@@ -175,7 +175,11 @@
          NSDictionary *data = (NSDictionary *)responseObject;
          if ([data[@"code"] intValue] == KSuccessCode) {
             MTSVPDismiss;
-           [weakSelf.signInAlertV setEvalue:[NSString stringWithFormat:@"%zd",num]];
+             if ([self.responseModel.sign_num isEqualToString:@"0"]) {
+                 [weakSelf.signInAlertV setEvalue:[NSString stringWithFormat:@"%d",10]];
+             }else{
+                 [weakSelf.signInAlertV setEvalue:[NSString stringWithFormat:@"%zd",num]];
+             }
            [weakSelf.signInAlertV show];
             [weakSelf requestPanelData];
         }else {
