@@ -13,6 +13,7 @@
 #import "FEShopJionViewController.h"
 #import "FECollectViewController.h"
 #import "FEPositionErrorViewController.h"
+#import "FEContactViewController.h"
 #import "FESharePopView.h"
 #import <UMShare/UMShare.h>
 @interface FEMineViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -81,7 +82,7 @@
 }
 
 - (void)initData {
-    _dataSource = @[@[@{@"title":@"商家入住申请",@"icon":@"mine_checkIn"},@{@"title":@"商家收藏",@"icon":@"mine_collect1"},@{@"title":@"商家位置纠正",@"icon":@"mine_modify"}],@[@{@"title":@"意见建议",@"icon":@"mine_advice"},@{@"title":@"推荐好友",@"icon":@"mine_introduce"}]];
+    _dataSource = @[@[@{@"title":@"商家入住申请",@"icon":@"mine_checkIn"},@{@"title":@"商家收藏",@"icon":@"mine_collect1"},@{@"title":@"商家位置纠正",@"icon":@"mine_modify"}],@[@{@"title":@"意见建议",@"icon":@"mine_advice"},@{@"title":@"推荐好友",@"icon":@"mine_introduce"},@{@"title":@"联系客服",@"icon":@"mine_contact"}]];
 }
 
 - (FESharePopView *)sharePopView {
@@ -172,6 +173,13 @@
             {
                 //推荐
                 [MTKeyWindow addSubview:self.sharePopView];
+                break;
+            }
+            case 2:
+            {
+                //联系方式
+                FEContactViewController *vc = [[FEContactViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
                 break;
             }
             default:
