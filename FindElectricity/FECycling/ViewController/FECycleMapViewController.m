@@ -201,7 +201,7 @@ int count = 0;
         [_points addObject:loc];
         DQUNLOCK(_lock);
         [self drawLineWithPoints:@[lastLoc,loc]];
-        [_mapView setCenterCoordinate:loc.coordinate];
+//        [_mapView setCenterCoordinate:loc.coordinate];
     }
 }
 
