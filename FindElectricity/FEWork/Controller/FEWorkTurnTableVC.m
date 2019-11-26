@@ -329,12 +329,12 @@
         _circleAngle = 315;
     }else if (lotteryPro ==7){//零食大礼包
          _circleAngle = 270;
-    }else if (lotteryPro ==8){//卫生纸卡
-        _circleAngle = 135;
+    }else if (lotteryPro ==8){//洗衣液
+         _circleAngle = 225;
     }else if (lotteryPro ==9){//垃圾袋
         _circleAngle = 180;
-    }else if (lotteryPro ==10){//洗衣液
-        _circleAngle = 225;
+    }else if (lotteryPro ==10){//卫生纸卡
+        _circleAngle = 135;
     }else if (lotteryPro ==11){//积分奖励
         _circleAngle = 90;
     }else if (lotteryPro ==12){//谢谢参与
@@ -365,6 +365,7 @@
     NSLog(@"动画停止");
     __block NSString *title;
     UIImage  *topImage =[UIImage imageNamed:@"wkc_ChoujiangGet"];
+  
     [self.prize_arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *prizeDic =obj;
         NSString *prizeId =[NSString stringWithFormat:@"%@",prizeDic[@"id"]];
@@ -376,7 +377,11 @@
         }
         
     }];
-   
+    FEWorkGetGiftAlertView *gitAlertVIew =[[FEWorkGetGiftAlertView alloc]init];
+    [gitAlertVIew setImage:topImage andTopText:title];
+    [gitAlertVIew setLocalDelegate:self];
+    [gitAlertVIew show];
+    [self requestCurretData];
 //    if (_circleAngle == 0) {
 //        title = @"抽中电动车卡一张";
 //    }else if (_circleAngle == 45){
@@ -395,11 +400,8 @@
 //    }else if (_circleAngle == 315){
 //        title = @"抽中食用油卡一张";
 //    }
-    [self requestCurretData];
-    FEWorkGetGiftAlertView *gitAlertVIew =[[FEWorkGetGiftAlertView alloc]init];
-    [gitAlertVIew setImage:topImage andTopText:title];
-    [gitAlertVIew setLocalDelegate:self];
-    [gitAlertVIew show];
+    
+   
 }
 #pragma mark -FEWorkGetGiftAlertViewDelegate
 -(void)continueChouJiang{
