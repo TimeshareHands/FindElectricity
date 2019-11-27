@@ -741,7 +741,7 @@
     [self.tm_ShowChouCountLbl setText:pannelModel.lottery_number];
     //ldq fix
      [self resetSignCoinUI];
-    if ([pannelModel.sign_num isEqualToString:@"1"]||[pannelModel.sign_num isEqualToString:@"0"]) {
+    if ([pannelModel.sign_num isEqualToString:@"1"]) {
         _tG_coinImg1.selected =YES;
         _tG_coinImg1.userInteractionEnabled =NO;
     }else if([pannelModel.sign_num isEqualToString:@"2"]){
