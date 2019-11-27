@@ -144,7 +144,7 @@ int count = 0;
     if (currentLocat&&CLLocationCoordinate2DIsValid(currentLocat.coordinate)) {
         _currentLocat = currentLocat;
         //    [self.pointAnnotaiton setCoordinate:currentCoord];
-            [self.mapView setCenterCoordinate:_currentLocat.coordinate];
+//            [self.mapView setCenterCoordinate:_currentLocat.coordinate];
     }
 }
 

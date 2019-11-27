@@ -124,13 +124,13 @@
             NSInteger currentTime = (NSInteger)([userDefault integerForKey:kFECycleTime]);
             _currentElec.text = [NSString stringWithFormat:@"%.2f",currentKM/1000.0*kmToElec];
             _currentTime.text = timeFormt(currentTime);
-            NSInteger todayE = [elecInfo[@"todayElectricity"] integerValue];
+            NSInteger todayE = [elecInfo[@"todayElectricity"] floatValue];
             NSInteger maxE = [elecInfo[@"maxElectricity"] integerValue];
-            NSInteger allE = [elecInfo[@"allElectricity"] integerValue];
+            NSInteger allE = [elecInfo[@"allElectricity"] floatValue];
             _tipLab.text = [NSString stringWithFormat:@"每骑行1km得%d电量值",kmToElec];
             _maxElec.text = [NSString stringWithFormat:@"%d电量值",maxE];
-            _todayElec.text = [NSString stringWithFormat:@"%d",todayE];
-            _allElec.text = [NSString stringWithFormat:@"%d",allE];
+            _todayElec.text = [NSString stringWithFormat:@"%.2f",todayE];
+            _allElec.text = [NSString stringWithFormat:@"%.2f",allE];
             _currentKM.text = [NSString stringWithFormat:@"%.2f",currentKM/1000.0];
             if (currentTime>0) {
                 _mapView.hidden = YES;
