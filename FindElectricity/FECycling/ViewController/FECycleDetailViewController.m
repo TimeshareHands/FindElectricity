@@ -245,7 +245,7 @@
 }
 
 - (NSString *)getRawSignStringL{
-    NSDictionary *rowDic = @{@"mileage":[NSString stringWithFormat:@"%.2f",_kmNum/1000.0],@"usetime":[NSString stringWithFormat:@"%d",(int)_sec]};
+    NSDictionary *rowDic = @{@"mileage":[NSString stringWithFormat:@"%.2f",_kmNum],@"usetime":[NSString stringWithFormat:@"%d",(int)_sec]};
     NSString *json = [rowDic convertToJsonString];
     json = [json stringWithBase64];
     json = [NSString stringWithFormat:@"%@%@",[NSString randomStrWithLength:6],json];

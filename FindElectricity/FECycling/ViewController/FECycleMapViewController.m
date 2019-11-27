@@ -60,6 +60,7 @@
     [self.pointAnnotaiton setCoordinate:_startCoord];
 
     [self.mapView addAnnotation:self.pointAnnotaiton];
+    [self.mapView setCenterCoordinate:_startCoord];
     
     UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [closeBtn setImage:[UIImage imageNamed:@"cyc_close"] forState:UIControlStateNormal];
@@ -168,7 +169,7 @@ int count = 0;
                 break;
         }
 //        annotationView.image = [UIImage imageNamed:@"cyc_bianz.png"];
-        annotationView.canShowCallout = YES;
+//        annotationView.canShowCallout = YES;
         return annotationView;
     }
     
