@@ -133,10 +133,10 @@ int count = 0;
         [_mapView setIsShowMapCenter:NO];
         
         [_mapView startHeadingLocation];
-        _mapView.distanceFilter = 10;
+        _mapView.distanceFilter = 15;
         _mapView.showsCompass = NO;
         _mapView.showsUserLocation = YES;
-//        _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
 }
@@ -202,7 +202,6 @@ int count = 0;
         [_points addObject:loc];
         DQUNLOCK(_lock);
         [self drawLineWithPoints:@[lastLoc,loc]];
-//        [_mapView setCenterCoordinate:loc.coordinate];
     }
 }
 
@@ -237,6 +236,8 @@ int count = 0;
 
     //在地图上添加折线对象
     [_mapView addOverlay: commonPolyline];
+    CLLocation *currentLoc = [points lastObject];
+    [_mapView setCenterCoordinate:currentLoc.coordinate];
 }
 
 - (void)dealloc {
