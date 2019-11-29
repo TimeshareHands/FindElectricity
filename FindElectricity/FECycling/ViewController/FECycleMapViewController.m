@@ -135,6 +135,7 @@ int count = 0;
         [_mapView startHeadingLocation];
         _mapView.distanceFilter = 15;
         _mapView.showsCompass = NO;
+        [_mapView setAllowsBackgroundLocationUpdates:YES];
         _mapView.showsUserLocation = YES;
         _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
@@ -241,7 +242,8 @@ int count = 0;
 }
 
 - (void)dealloc {
-    
+    [_mapView setAllowsBackgroundLocationUpdates:NO];
+    _mapView = nil;
 }
 
 /*

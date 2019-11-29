@@ -80,7 +80,7 @@
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
 //    //设置允许在后台定位
-//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9) {
         self.locationManager.allowsBackgroundLocationUpdates = YES;
@@ -253,7 +253,7 @@
 }
 
 - (void)dealloc{
-//    [[FETimeManager shareManager] endTiming];
+    [[FETimeManager shareManager] endTiming];
     [self.locationManager stopUpdatingLocation];
 }
 

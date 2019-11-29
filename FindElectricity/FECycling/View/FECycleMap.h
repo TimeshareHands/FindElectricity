@@ -26,6 +26,8 @@ typedef void (^FEMapLocatUpdateBlock)(CLLocation *location, AMapLocationReGeocod
 - (void)stopUpdatingLocation;
 //角度定位
 - (void)startHeadingLocation;
+//后台定位
+- (void)setAllowsBackgroundLocationUpdates:(BOOL)allow;
 @end
 
 NS_ASSUME_NONNULL_END
