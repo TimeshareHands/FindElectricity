@@ -54,6 +54,7 @@
 - (void)addView{
     [self.view addSubview:self.mapView];
     [self.mapView addSubview:_topView];
+    [self.mapView removeOverlays:self.mapView.overlays];
     
     self.pointAnnotaiton = [[FEPointAnnotation alloc] init];
     self.pointAnnotaiton.type = FEPointAnnotRideStart;
@@ -242,6 +243,7 @@ int count = 0;
 }
 
 - (void)dealloc {
+    [_mapView removeOverlays:_mapView.overlays];
     [_mapView setAllowsBackgroundLocationUpdates:NO];
     _mapView = nil;
 }

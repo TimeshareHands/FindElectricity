@@ -174,7 +174,7 @@
         [_mapView startHeadingLocation];
         [self.mapView setZoomLevel:15.1 animated:NO];
 //        _mapView.showsUserLocation = YES;
-//        _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        _mapView.userTrackingMode = MAUserTrackingModeFollow;
     }
     return _mapView;
 }

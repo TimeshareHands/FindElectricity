@@ -60,13 +60,18 @@
     [self configLocationManager];
     
     _lock = dispatch_semaphore_create(1);
-        CLLocation *start = [[CLLocation alloc] initWithLatitude:_startCoord.latitude longitude:_startCoord.longitude];
-    //    _points = [NSMutableArray arrayWithObject:start];
-        if (CLLocationCoordinate2DIsValid(_startCoord)) {
-            _points = [NSMutableArray arrayWithObject:start];
-        }else {
-            _points = [NSMutableArray array];
-        }
+    CLLocation *start = [[CLLocation alloc] initWithLatitude:_startCoord.latitude longitude:_startCoord.longitude];
+//    _points = [NSMutableArray arrayWithObject:start];
+    if (CLLocationCoordinate2DIsValid(_startCoord)) {
+        _points = [NSMutableArray arrayWithObject:start];
+    }else {
+        _points = [NSMutableArray array];
+    }
+//    NSString *cout = [NSString stringWithFormat:@"long:%f-lat:%f",_startCoord.longitude,_startCoord.latitude];
+////    MTSVPShowInfoText(cout);
+//    [[[UIAlertView alloc] initWithTitle:cout message:nil delegate:nil cancelButtonTitle:@"1" otherButtonTitles:@"取消", nil] show];
+    //设置屏幕常亮
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
 }
 
 - (void)configLocationManager
@@ -188,7 +193,7 @@
 }
 
 - (void)endCycling {
-//    [[FETimeManager shareManager] endTiming];
+    [[FETimeManager shareManager] endTiming];
     [self.locationManager stopUpdatingLocation];
     [self submitCyclingDataRequest];
 }
@@ -206,14 +211,14 @@
         sender.hidden = YES;
         _goonBtn.hidden = NO;
         _endBtn.hidden = NO;
-//        [[FETimeManager shareManager] stopTiming];
+        [[FETimeManager shareManager] stopTiming];
         [self.locationManager stopUpdatingLocation];
     }else if(sender.tag == 2) {
         //goon
         _stopBtn.hidden = NO;
         _goonBtn.hidden = YES;
         _endBtn.hidden = YES;
-//        [[FETimeManager shareManager] goonTiming];
+        [[FETimeManager shareManager] goonTiming];
         [self.locationManager startUpdatingLocation];
     }
 }
@@ -255,6 +260,8 @@
 - (void)dealloc{
     [[FETimeManager shareManager] endTiming];
     [self.locationManager stopUpdatingLocation];
+    //取消常亮
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 /*

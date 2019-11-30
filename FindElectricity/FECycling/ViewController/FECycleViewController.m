@@ -39,6 +39,7 @@
     [super viewWillAppear:animated];
     [NetWorkManger manager].senderVC =self;
     [self getCyclingDataRequest];
+    [self.mapView locAction];
 }
 
 - (void)addView{
@@ -55,7 +56,7 @@
     [beginBtn bk_addEventHandler:^(id sender) {
         FECycleDetailViewController *detailVC = [[FECycleDetailViewController alloc] init];
         detailVC.startCoord = weakSelf.startCoord;
-        [self.navigationController pushViewController:detailVC animated:YES];
+        [weakSelf.navigationController pushViewController:detailVC animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     [self.mapView addSubview:beginBtn];
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
