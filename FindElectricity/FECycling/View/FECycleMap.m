@@ -113,7 +113,7 @@
     {
         self.reGeocode = reGeocode;
     }
-    else
+    if(location)
     {
         self.feUserLocation = location;
     }
@@ -202,8 +202,7 @@
         {
             weakSelf.reGeocode = regeocode;
         }
-        else
-        {
+        if (location) {
             weakSelf.feUserLocation = location;
         }
         [weakSelf updateLoctionBlock];
