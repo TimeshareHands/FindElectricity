@@ -119,7 +119,7 @@
         [_dataSource addObjectsFromArray:[FEMapCollectModel mj_objectArrayWithKeyValuesArray:array]];
         if (_dataSource.count == 0)
         {
-            MTSVPShowInfoText(@"暂无收藏");
+            MTSVPShowInfoText(@"暂无纠错");
         }
         [_tableView reloadData];
     }else if ([data[@"code"] intValue] != KTokenFailCode){
