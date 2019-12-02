@@ -182,8 +182,10 @@
              }
            [weakSelf.signInAlertV show];
             [weakSelf requestPanelData];
-        }else {
-            MTSVPShowInfoText(data[@"msg"]);
+        }else if ([data[@"code"] intValue] != KTokenFailCode){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
         }
        
     } failure:^(NSError * _Nonnull error) {

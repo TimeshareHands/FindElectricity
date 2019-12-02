@@ -155,8 +155,10 @@
              if ([data[@"code"] intValue] == KSuccessCode) {
                MTSVPDismiss;
                    [self.navigationController popViewControllerAnimated:YES];
-               }else {
-                    MTSVPShowInfoText(data[@"msg"]);
+               }else if ([data[@"code"] intValue] != KTokenFailCode){
+                   dispatch_async(dispatch_get_main_queue(), ^{
+                       MTSVPShowInfoText(data[@"msg"]);
+                   });
                }
         } failure:^(NSError * _Nonnull error) {
             

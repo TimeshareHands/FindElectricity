@@ -436,8 +436,10 @@
            self.self_receive_good_list =data[@"data"][@"self_receive_good_list"];
            [self.myTableView reloadData];
           
-         }else {
-             MTSVPShowInfoText(data[@"msg"]);
+         }else if ([data[@"code"] intValue] != KTokenFailCode){
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 MTSVPShowInfoText(data[@"msg"]);
+             });
          }
     } failure:^(NSError * _Nonnull error) {
         

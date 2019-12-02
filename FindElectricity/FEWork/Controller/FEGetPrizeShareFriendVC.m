@@ -285,8 +285,10 @@
              [weakSelf.cell3.lb3 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"邀请好友下载登录%@个，赠送%@次抽奖机会",regitserNum,regitserLotterNum] Color:[UIColor redColor]]];
 
              [weakSelf.myTableView reloadData];
-        }else {
-            MTSVPShowInfoText(data[@"msg"]);
+        }else if ([data[@"code"] intValue] != KTokenFailCode){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
         }
     } failure:^(NSError * _Nonnull error) {
         

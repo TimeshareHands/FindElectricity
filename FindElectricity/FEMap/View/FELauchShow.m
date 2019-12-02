@@ -35,7 +35,7 @@
                 if ([[FEUserOperation manager] didLogin]) {
                      [weakSelf show];
                 }
-            }else if ([data[@"code"] intValue] != 4010) {
+            }else if ([data[@"code"] intValue] != KTokenFailCode) {
                 MTSVPShowInfoText(data[@"msg"]);
                 [SVProgressHUD dismissWithDelay:3];
             }

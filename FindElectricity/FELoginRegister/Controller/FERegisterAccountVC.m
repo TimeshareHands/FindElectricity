@@ -192,8 +192,10 @@
                   [FEUserOperation manager].token =responseObject[@"data"][@"token"];
                   [weakSelf.navigationController popToRootViewControllerAnimated:YES];
                   [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccessNotification" object:nil];
-                  }else {
-                     MTSVPShowInfoText(data[@"msg"]);
+                  }else if ([data[@"code"] intValue] != KTokenFailCode){
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          MTSVPShowInfoText(data[@"msg"]);
+                      });
                   }
           
         } failure:^(NSError * _Nonnull error) {

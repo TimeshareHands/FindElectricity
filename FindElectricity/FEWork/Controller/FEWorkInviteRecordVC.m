@@ -174,8 +174,10 @@
              [weakSelf.headLbl2 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"分享给微信好友%@次，赠送%@次抽奖机会",shareNum,lotterNum] Color:[UIColor redColor]]];
              [weakSelf.headLbl3 setAttributedText:[self setRichNumberWithLabel:[NSString stringWithFormat:@"邀请好友下载登录%@个，赠送%@次抽奖机会",regitserNum,regitserLotterNum] Color:[UIColor redColor]]];
              [self.myTableView reloadData];
-        }else {
-            MTSVPShowInfoText(data[@"msg"]);
+        }else if ([data[@"code"] intValue] != KTokenFailCode){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MTSVPShowInfoText(data[@"msg"]);
+            });
         }
     } failure:^(NSError * _Nonnull error) {
         

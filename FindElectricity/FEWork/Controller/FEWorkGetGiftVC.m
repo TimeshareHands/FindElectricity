@@ -198,8 +198,10 @@
         
              weakSelf.list =data[@"data"][@"list"];
              [weakSelf.myTableView reloadData];
-              }else {
-                  MTSVPShowInfoText(data[@"msg"]);
+              }else if ([data[@"code"] intValue] != KTokenFailCode){
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      MTSVPShowInfoText(data[@"msg"]);
+                  });
               }
     } failure:^(NSError * _Nonnull error) {
         
