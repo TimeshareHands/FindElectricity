@@ -55,7 +55,12 @@ static AFHTTPSessionManager *afnManager = nil;
     afnManager.requestSerializer.timeoutInterval = timeoutInterval;
     afnManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     if (needToken == YES) {
-         [afnManager.requestSerializer setValue:[FEUserOperation manager].token forHTTPHeaderField:@"token"];
+        if([[FEUserOperation manager] didLogin]){
+            [afnManager.requestSerializer setValue:[FEUserOperation manager].token forHTTPHeaderField:@"token"];
+        }else{
+            [self doLogin];
+            return;
+        }
     }
     WEAKSELF
     [afnManager POST:url parameters:paramters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
