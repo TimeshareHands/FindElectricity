@@ -27,6 +27,10 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"map_back.png" highlightIcon:nil imageScale:1.0 target:self action:@selector(back)];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(doLogin) name:@"doLoginNotification" object:nil];
+    if (@available(iOS 13.0, *)) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+//        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+    }
 }
 
 -(void)dealloc{

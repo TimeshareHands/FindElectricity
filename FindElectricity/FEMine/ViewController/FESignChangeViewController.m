@@ -39,6 +39,10 @@
         MTSVPShowInfoText(@"请输入内容");
         return;
     }
+    if (str.length>30) {
+        MTSVPShowInfoText(@"签名字数不能大于30个");
+        return;
+    }
     
     [self editInfo];
 }

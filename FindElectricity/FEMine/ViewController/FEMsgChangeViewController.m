@@ -39,6 +39,11 @@
         return;
     }
     
+    if (str.length>8) {
+        MTSVPShowInfoText(@"签名字数不能大于8个");
+        return;
+    }
+    
     [self editInfo];
 }
 

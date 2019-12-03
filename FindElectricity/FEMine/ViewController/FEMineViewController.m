@@ -35,6 +35,7 @@
        [NetWorkManger manager].senderVC =self;
     [self initData];
     [self addView];
+    
 }
 
 - (void)getUserData {
