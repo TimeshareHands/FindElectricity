@@ -343,15 +343,19 @@
 - (void)loginAction{
     FELoginRequestModel *requestModel =[[FELoginRequestModel alloc]init];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (self.accountTxt.text.length>0) {
+    if (self.accountTxt.text.length==11) {
          requestModel.mobile =self.accountTxt.text;
     }else{
-         requestModel.mobile = [defaults objectForKey:@"account"];
+//         requestModel.mobile = [defaults objectForKey:@"account"];
+        MTSVPShowInfoText(@"请输入正确的手机号码");
+        return;
     }
     if (self.passwordTxt.text.length>0) {
          requestModel.pwd =self.passwordTxt.text;
      }else{
-        requestModel.pwd =[defaults objectForKey:@"password"];
+//         requestModel.pwd =[defaults objectForKey:@"password"];
+         MTSVPShowInfoText(@"请输入密码");
+         return;
      }
      WEAKSELF;
     [[NetWorkManger manager] postDataWithUrl:BASE_URLWith(MobileLoginHttp)  parameters:[requestModel mj_JSONObject] needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
