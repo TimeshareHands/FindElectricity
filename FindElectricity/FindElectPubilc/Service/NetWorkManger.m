@@ -162,15 +162,21 @@ static AFHTTPSessionManager *afnManager = nil;
 
 -(void)doLogin{
     WEAKSELF;
-    for (UIViewController *sender in self.senderVC. navigationController.viewControllers ) {
-        if ([sender isKindOfClass:[FELoginViewController class]]) {
-            weakSelf.isPushLogin =YES;
-            return ;
-        }
-     }
-    if (weakSelf.isPushLogin) {
-        return ;
+    //同时发送几次，请求就好调很多次
+//    for (UIViewController *sender in self.senderVC. navigationController.viewControllers ) {
+//        if ([sender isKindOfClass:[FELoginViewController class]]) {
+//            weakSelf.isPushLogin =YES;
+//            return ;
+//        }
+//     }
+//    if (weakSelf.isPushLogin) {
+//        return ;
+//    }
+    
+    if ([FEUserOperation manager].isEnterLogin) {
+        return;
     }
+    [FEUserOperation manager].isEnterLogin = YES;
     FELoginViewController *loginVC =[[FELoginViewController alloc]init];
     [self.senderVC.navigationController pushViewController:loginVC animated:YES];
 }

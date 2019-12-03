@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic,copy)NSString *token;
 
-
+@property(nonatomic, assign)BOOL isEnterLogin;
 /**
 是否登录
  
@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  退出登录
  */
 - (void)logoutUser;
+
 @end
 
 

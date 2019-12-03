@@ -34,16 +34,19 @@ static dispatch_once_t onceToken;
     self.token = @"";
     [self setToken:@""];
     dispatch_async(dispatch_get_main_queue(), ^{
-        AppDelegate *appdele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appdele.tabBarController.navigationController popToRootViewControllerAnimated:YES];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-        [appdele.tabBarController switchTab:indexPath];
+//        AppDelegate *appdele = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        [appdele.tabBarController.navigationController popToRootViewControllerAnimated:YES];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+//        [appdele.tabBarController switchTab:indexPath];
     });
 }
 
 -(void)setToken:(NSString *)token {
     //我先简单处理，缓存
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"FEToken"];
+    if (token.length) {
+        _isEnterLogin = NO;
+    }
 }
 
 -(NSString *)token {

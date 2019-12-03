@@ -11,6 +11,7 @@
 #import "FEMineMsgViewController.h"
 #import "FEAddressViewController.h"
 #import "FEAboutViewController.h"
+#import "FELoginViewController.h"
 @interface FESettingsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (copy, nonatomic) NSArray *dataSource;
 @end
@@ -89,6 +90,8 @@
         if ([data[@"code"] intValue] == KSuccessCode) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[FEUserOperation manager] logoutUser];
+                FELoginViewController *loginVC =[[FELoginViewController alloc]init];
+                [self.navigationController pushViewController:loginVC animated:YES];
             });
         }else if ([data[@"code"] intValue] != KTokenFailCode){
             dispatch_async(dispatch_get_main_queue(), ^{
