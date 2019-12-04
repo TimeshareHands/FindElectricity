@@ -27,7 +27,7 @@
 @property(nonatomic, assign)BOOL isAnimation;
 @property(nonatomic, strong)UITableView *myTableView;
 @property(nonatomic, strong)UIButton *backBtn;
-@property(nonatomic, strong)UIImageView *centerImage;
+@property(nonatomic, strong)UILabel *centerLabl;
 @property(nonatomic, strong)UIButton *wxBDBtn;
 @property(nonatomic, strong)NSString *lotterNum;
 @property(nonatomic, strong)NSString *elect_val;
@@ -63,7 +63,7 @@
     [self.view setBackgroundColor:UIColorFromHex(0x8542E5)];
     [self.view addSubview:self.myTableView];
     [self.view addSubview:self.backBtn];
-    [self.view addSubview:self.centerImage];
+    [self.view addSubview:self.centerLabl];
 //    [self.view addSubview:self.wxBDBtn];
     [self makeUpconstraint];
 }
@@ -73,7 +73,7 @@
     [self.myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10);
         make.right.mas_equalTo(-10);
-        make.top.mas_equalTo(self.centerImage.mas_bottom);
+        make.top.mas_equalTo(self.centerLabl.mas_bottom);
         make.bottom.mas_equalTo(self.view);
     }];
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,10 +82,9 @@
         make.height.mas_equalTo(46);
         make.top.mas_equalTo(49);
     }];
-    [self.centerImage mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.centerLabl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view);
         make.centerY.mas_equalTo(self.backBtn);
-        make.width.mas_equalTo(60);
         make.height.mas_equalTo(39);
     }];
 //    [self.wxBDBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -107,11 +106,16 @@
     }
     return _backBtn;
 }
--(UIImageView *)centerImage{
-    if (!_centerImage) {
-        _centerImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"wkc_everydayChoujiang"]];
+-(UILabel *)centerLabl{
+    if (!_centerLabl) {
+        _centerLabl =[[UILabel alloc]init];
+       
+         [_centerLabl setTextColor:UIColorFromHex(0xffd509)];
+         [_centerLabl setFont:[UIFont fontWithName:@"PingFang SC" size: 20]];
+        [_centerLabl setText:@"每日抽奖"];
+       
     }
-    return _centerImage;
+    return _centerLabl;
 }
 //-(UIButton *)wxBDBtn{
 //    if (!_wxBDBtn) {
@@ -137,7 +141,7 @@
     if (!_bgImageView) {
         _bgImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 20, 300,300)];
 //        [_bgImageView setImage:[UIImage imageNamed:@"wkc_bigRotaryTable"]];
-        _bgImageView.center =CGPointMake(self.view.center.x, 160);
+        _bgImageView.center =CGPointMake(self.view.center.x-10, 160);
      
         [_bgImageView setUserInteractionEnabled:YES];
     }
@@ -229,9 +233,9 @@
             }
             [centerImg mas_makeConstraints:^(MASConstraintMaker *make) {
               make.centerX.mas_equalTo(imageView);
-              make.width.mas_equalTo(45);
-              make.height.mas_equalTo(45);
-              make.top.mas_equalTo(10);
+              make.width.mas_equalTo(40);
+              make.height.mas_equalTo(40);
+              make.top.mas_equalTo(6);
             }];
             imageView.layer.anchorPoint = CGPointMake(0.5, 1);
             imageView.center = CGPointMake(CGRectGetHeight(self.bgImageView.frame)/2, CGRectGetHeight(self.bgImageView.frame)/2);
