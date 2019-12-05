@@ -54,10 +54,10 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
         make.height.mas_equalTo(200);
     }];
     [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(WIDTH_LY(130));
-        make.right.mas_equalTo(WIDTH_LY(-10));
+        make.width.mas_equalTo(WIDTH_LY(75));
+        make.right.mas_equalTo(WIDTH_LY(-25));
         make.centerY.mas_equalTo(self.myCollectionView);
-        make.height.mas_equalTo(WIDTH_LY(160));
+        make.height.mas_equalTo(WIDTH_LY(80));
     }];
     [self.bottomLeftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(WIDTH_LY(5));

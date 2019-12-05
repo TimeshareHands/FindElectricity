@@ -98,6 +98,7 @@
            }else{
                self.passwordCell =[[FEInputCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIndetify];
                [self.passwordCell.inputTextField setPlaceholder:@"请输入密码"];
+               [self.passwordCell.inputTextField setSecureTextEntry:YES];
                cell =self.passwordCell;
            }
        }
