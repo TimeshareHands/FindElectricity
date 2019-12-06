@@ -31,5 +31,5 @@
 - (void)pushWithControllerName:(NSString *)controllerName;
 
 /**webView图片自适应并返回内容高度*/
-- (CGFloat)webViewResizeImg:(UIWebView *)webView;
+//- (CGFloat)webViewResizeImg:(UIWebView *)webView;
 @end

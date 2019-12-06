@@ -125,60 +125,60 @@ static const void *HttpRequestHUDKey = &HttpRequestHUDKey;
     [self.navigationController pushViewController:[storyBoard instantiateViewControllerWithIdentifier:controllerName] animated:YES];
 }
 
-- (CGFloat)webViewResizeImg:(UIWebView *)webView {
-    //图片大小适应屏幕
-    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"", webView.frame.size.width];
-    [webView stringByEvaluatingJavaScriptFromString:meta];
-    [webView stringByEvaluatingJavaScriptFromString:
-     @"var tagHead =document.documentElement.firstChild;"
-     "var tagMeta = document.createElement(\"meta\");"
-     "tagMeta.setAttribute(\"http-equiv\", \"Content-Type\");"
-     "tagMeta.setAttribute(\"content\", \"text/html; charset=utf-8\");"
-     "var tagHeadAdd = tagHead.appendChild(tagMeta);"];
-    [webView stringByEvaluatingJavaScriptFromString:
-     @"var tagHead =document.documentElement.firstChild;"
-     "var tagStyle = document.createElement(\"style\");"
-     "tagStyle.setAttribute(\"type\", \"text/css\");"
-     //padding控制网页内容到WebView间距，左右间距相等则第二个参数设置为0
-     "tagStyle.appendChild(document.createTextNode(\"BODY{padding: 0pt 0pt}\"));"
-     "var tagHeadAdd = tagHead.appendChild(tagStyle);"];
-    [webView stringByEvaluatingJavaScriptFromString:
-     @"var script = document.createElement('script');"
-     "script.type = 'text/javascript';"
-     "script.text = \"function ResizeImages() { "
-     "var myimg,oldwidth;"
-     //通过遍历图片进行大小修改，修改宽度后高度会自适应
-     "var maxwidth=screen.width;" //缩放系数
-     "for(i=0;i <document.images.length;i++){"
-     "myimg = document.images[i];"
-     "if(myimg.width > maxwidth){"
-     "oldwidth = myimg.width;"
-     "myimg.width = maxwidth;"
-     //"myimg.height = myimg.height * (maxwidth/oldwidth);"
-     "}"
-     "}"
-     "}\";"
-     "document.getElementsByTagName('head')[0].appendChild(script);"];
-    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
-    
-    //获取页面高度（像素）
-    NSString * clientheight_str = [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
-    float clientheight = [clientheight_str floatValue];
-
-    //设置到WebView上
-    //    webView.frame = CGRectMake(0, 0, self.view.frame.size.width, clientheight);
-    //获取WebView最佳尺寸（点）
-    CGSize frame = [webView sizeThatFits:webView.frame.size];
-    NSLog(@"%f - %f", clientheight, frame.height);
-    
-    //获取内容实际高度（像素）
-    NSString * height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.getElementById('webview_content_wrapper').offsetHeight + parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0]).getPropertyValue('margin-top'))  + parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0]).getPropertyValue('margin-bottom'))"];
-    
-    CGFloat height = [height_str floatValue];
-    //内容实际高度（像素）* 点和像素的比
-    height = height * frame.height / clientheight;
-    
-    return clientheight;
-}
+//- (CGFloat)webViewResizeImg:(UIWebView *)webView {
+//    //图片大小适应屏幕
+//    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"", webView.frame.size.width];
+//    [webView stringByEvaluatingJavaScriptFromString:meta];
+//    [webView stringByEvaluatingJavaScriptFromString:
+//     @"var tagHead =document.documentElement.firstChild;"
+//     "var tagMeta = document.createElement(\"meta\");"
+//     "tagMeta.setAttribute(\"http-equiv\", \"Content-Type\");"
+//     "tagMeta.setAttribute(\"content\", \"text/html; charset=utf-8\");"
+//     "var tagHeadAdd = tagHead.appendChild(tagMeta);"];
+//    [webView stringByEvaluatingJavaScriptFromString:
+//     @"var tagHead =document.documentElement.firstChild;"
+//     "var tagStyle = document.createElement(\"style\");"
+//     "tagStyle.setAttribute(\"type\", \"text/css\");"
+//     //padding控制网页内容到WebView间距，左右间距相等则第二个参数设置为0
+//     "tagStyle.appendChild(document.createTextNode(\"BODY{padding: 0pt 0pt}\"));"
+//     "var tagHeadAdd = tagHead.appendChild(tagStyle);"];
+//    [webView stringByEvaluatingJavaScriptFromString:
+//     @"var script = document.createElement('script');"
+//     "script.type = 'text/javascript';"
+//     "script.text = \"function ResizeImages() { "
+//     "var myimg,oldwidth;"
+//     //通过遍历图片进行大小修改，修改宽度后高度会自适应
+//     "var maxwidth=screen.width;" //缩放系数
+//     "for(i=0;i <document.images.length;i++){"
+//     "myimg = document.images[i];"
+//     "if(myimg.width > maxwidth){"
+//     "oldwidth = myimg.width;"
+//     "myimg.width = maxwidth;"
+//     //"myimg.height = myimg.height * (maxwidth/oldwidth);"
+//     "}"
+//     "}"
+//     "}\";"
+//     "document.getElementsByTagName('head')[0].appendChild(script);"];
+//    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
+//    
+//    //获取页面高度（像素）
+//    NSString * clientheight_str = [webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"];
+//    float clientheight = [clientheight_str floatValue];
+//
+//    //设置到WebView上
+//    //    webView.frame = CGRectMake(0, 0, self.view.frame.size.width, clientheight);
+//    //获取WebView最佳尺寸（点）
+//    CGSize frame = [webView sizeThatFits:webView.frame.size];
+//    NSLog(@"%f - %f", clientheight, frame.height);
+//    
+//    //获取内容实际高度（像素）
+//    NSString * height_str= [webView stringByEvaluatingJavaScriptFromString: @"document.getElementById('webview_content_wrapper').offsetHeight + parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0]).getPropertyValue('margin-top'))  + parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0]).getPropertyValue('margin-bottom'))"];
+//    
+//    CGFloat height = [height_str floatValue];
+//    //内容实际高度（像素）* 点和像素的比
+//    height = height * frame.height / clientheight;
+//    
+//    return clientheight;
+//}
 @end
 

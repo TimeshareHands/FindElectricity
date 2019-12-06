@@ -2290,6 +2290,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J677Q28PH8;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2310,7 +2311,8 @@
 					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/SocialLibraries/QQ",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.findelectricity;
 				PRODUCT_NAME = "找电";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2325,6 +2327,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = J677Q28PH8;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2345,7 +2348,8 @@
 					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/FindElectricity/FindElectPubilc/FrameWork/share_ios_6.9.5/SocialLibraries/QQ",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Find.FindElectricity;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.findelectricity;
 				PRODUCT_NAME = "找电";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
