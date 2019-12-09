@@ -104,7 +104,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>此App上传个人头像拍照时访问相机权限，是否允许？</string>
+	<string>此App上传个人头像时需要使用相机，是否允许？</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>地图要使用的定位</string>
 	<key>NSLocationAlwaysUsageDescription</key>

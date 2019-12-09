@@ -20,6 +20,7 @@
 #import "FELauchShow.h"
 #import "FEWorkTurnTableGoBikeAlert.h"
 #import "FECycleViewController.h"
+#import "FEUserProtocalVC.h"
 @interface FEWorkTurnTableVC ()<CAAnimationDelegate,UITableViewDelegate,UITableViewDataSource,FETWorkGetPrizeIntroduceCellDelegate,FEWorkGetGiftAlertViewDelegate,FEWorkReceiveAddressAlertDelegate,FEWorkGetPrizeContentCellDelegate,FEWorkTurnTableGoBikeAlertDelegate>
 @property(nonatomic, strong)UIImageView *bgImageView;
 @property(nonatomic, strong)UIImageView *btnImageView;
@@ -38,6 +39,7 @@
 @property(nonatomic, copy)NSString *goodId;//商品号
 @property(nonatomic, copy)NSString *numInteger;//积分
 @property(nonatomic, strong)FELauchShow *lauchShow;
+@property(nonatomic, strong) UIButton *actMarkBtn;//活动规则
 @end
 
 @implementation FEWorkTurnTableVC
@@ -65,6 +67,7 @@
     [self.view addSubview:self.backBtn];
     [self.view addSubview:self.centerLabl];
 //    [self.view addSubview:self.wxBDBtn];
+    [self.view addSubview:self.actMarkBtn];
     [self makeUpconstraint];
 }
 
@@ -93,6 +96,12 @@
 //        make.height.mas_equalTo(30);
 //        make.centerY.mas_equalTo(self.backBtn);
 //    }];
+    [self.actMarkBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-2);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(30);
+        make.centerY.mas_equalTo(self.backBtn);
+    }];
 }
 
 #pragma mark getter
@@ -126,6 +135,23 @@
 //    }
 //    return _wxBDBtn;
 //}
+
+-(UIButton *)actMarkBtn{
+    if (!_actMarkBtn) {
+        _actMarkBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        [_actMarkBtn setTitle:@"活动规则" forState:UIControlStateNormal];
+        [_actMarkBtn.titleLabel setFont:Demon_15_Font];
+        [_actMarkBtn.layer setCornerRadius:12];
+        WEAKSELF;
+        [_actMarkBtn bk_addEventHandler:^(id sender) {
+            FEUserProtocalVC *protocalVC =[[FEUserProtocalVC alloc]init];
+            protocalVC.urlStr =@"http://apk.csjiayu.com/zhaodian/choujiangguize.html";
+            protocalVC.title =@"抽奖规则";
+            [weakSelf.navigationController pushViewController:protocalVC animated:YES pushType:NavigationPushNormal];
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _actMarkBtn;
+}
 -(UITableView *)myTableView{
     if (!_myTableView) {
         _myTableView =[[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];

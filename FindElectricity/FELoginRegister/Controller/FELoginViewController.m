@@ -70,8 +70,10 @@
     [self.view addSubview:self.comfirmBtn];
     [self.view addSubview:self.registerBtn];
     [self.view addSubview:self.forgetBtn];
-    [self.view addSubview:self.wxLoginBtn];
-    [self.view addSubview:self.wxLoginLbl];
+    
+    //被拒说要用苹果登录
+//    [self.view addSubview:self.wxLoginBtn];
+//    [self.view addSubview:self.wxLoginLbl];
     [self makeUpConstriant];
 }
 - (void)makeUpConstriant{
@@ -143,14 +145,14 @@
         make.width.mas_equalTo(WIDTH_LY(100));
         make.height.mas_equalTo(HEIGHT_LY(44));
     }];
-    [self.wxLoginLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.centerX.mas_equalTo(self.view);
-           make.bottom.mas_equalTo(self.view).offset(HEIGHT_LY(-50));
-       }];
-    [self.wxLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.wxLoginLbl.mas_top).offset(HEIGHT_LY(-10));
-    }];
+//    [self.wxLoginLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//           make.centerX.mas_equalTo(self.view);
+//           make.bottom.mas_equalTo(self.view).offset(HEIGHT_LY(-50));
+//       }];
+//    [self.wxLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.mas_equalTo(self.view);
+//        make.bottom.mas_equalTo(self.wxLoginLbl.mas_top).offset(HEIGHT_LY(-10));
+//    }];
    
 }
 #pragma mark -getter

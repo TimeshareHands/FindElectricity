@@ -15,7 +15,7 @@
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sky_swizzleSelector([self class], @selector(viewWillDisappear:), @selector(sky_viewWillDisappear:));
+//        sky_swizzleSelector([self class], @selector(viewWillDisappear:), @selector(sky_viewWillDisappear:));
         sky_swizzleSelector([self class], NSSelectorFromString(@"dealloc"), @selector(sky_dealloc));
     });
 }
