@@ -36,6 +36,8 @@
     [super viewDidLoad];
     
     [self addView];
+    //是否显示微信登录
+    [self wxLoginDisplay];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -70,10 +72,8 @@
     [self.view addSubview:self.comfirmBtn];
     [self.view addSubview:self.registerBtn];
     [self.view addSubview:self.forgetBtn];
-    
-    //被拒说要用苹果登录
-//    [self.view addSubview:self.wxLoginBtn];
-//    [self.view addSubview:self.wxLoginLbl];
+    [self.view addSubview:self.wxLoginBtn];
+    [self.view addSubview:self.wxLoginLbl];
     [self makeUpConstriant];
 }
 - (void)makeUpConstriant{
@@ -145,14 +145,14 @@
         make.width.mas_equalTo(WIDTH_LY(100));
         make.height.mas_equalTo(HEIGHT_LY(44));
     }];
-//    [self.wxLoginLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-//           make.centerX.mas_equalTo(self.view);
-//           make.bottom.mas_equalTo(self.view).offset(HEIGHT_LY(-50));
-//       }];
-//    [self.wxLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.mas_equalTo(self.view);
-//        make.bottom.mas_equalTo(self.wxLoginLbl.mas_top).offset(HEIGHT_LY(-10));
-//    }];
+    [self.wxLoginLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+           make.centerX.mas_equalTo(self.view);
+           make.bottom.mas_equalTo(self.view).offset(HEIGHT_LY(-50));
+       }];
+    [self.wxLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.wxLoginLbl.mas_top).offset(HEIGHT_LY(-10));
+    }];
    
 }
 #pragma mark -getter
@@ -324,6 +324,7 @@
 - (UIButton *)wxLoginBtn{
     if (!_wxLoginBtn) {
         _wxLoginBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        _wxLoginBtn.hidden = YES;
         [_wxLoginBtn setImage:[UIImage imageNamed:@"felogin_wxlogin"] forState:UIControlStateNormal];
         WEAKSELF;
         [_wxLoginBtn bk_addEventHandler:^(id sender) {
@@ -336,6 +337,7 @@
     if (!_wxLoginLbl) {
         _wxLoginLbl =[[UILabel alloc]init];
         [_wxLoginLbl setText:@"微信登录"];
+        _wxLoginLbl.hidden = YES;
         [_wxLoginLbl setTextColor:UIColorFromHex(0xC9C9C9)];
     }
     return _wxLoginLbl;
@@ -439,6 +441,28 @@
 }
 -(void)back{
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)wxLoginDisplay{
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:PCReleaseVersionString forKey:@"version"];
+    WEAKSELF;
+    [[NetWorkManger manager]postDataWithUrl:BASE_URLWith(WeChatDisplayHttp) parameters:parameter needToken:NO timeout:25 success:^(id  _Nonnull responseObject) {
+         NSDictionary *data = (NSDictionary *)responseObject;
+        if ([data[@"code"] intValue] == KSuccessCode) {
+            weakSelf.wxLoginBtn.hidden = NO;
+            weakSelf.wxLoginLbl.hidden = NO;
+        }else {
+            weakSelf.wxLoginBtn.hidden = YES;
+            weakSelf.wxLoginLbl.hidden = YES;
+        }
+     
+      
+    } failure:^(NSError * _Nonnull error) {
+       
+    }];
+   
+    
 }
 
 @end

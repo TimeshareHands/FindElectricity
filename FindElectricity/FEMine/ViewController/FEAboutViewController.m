@@ -26,7 +26,9 @@
 }
 
 - (IBAction)updateAct:(id)sender {
+//    itms-apps://itunes.apple.com/cn/app/id1329918420?mt=8
     NSString * url = [NSString stringWithFormat:@"itms://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@",@"1490529414"];
+    url = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",@"1490529414"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:nil completionHandler:^(BOOL success) {
         
     }];

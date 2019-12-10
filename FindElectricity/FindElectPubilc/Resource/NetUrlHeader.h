@@ -84,6 +84,7 @@
 #define UserNewInfoHttp  @"/userNewInfo"  //获取用户相关信息***********
 #define AddAdviceHttp  @"/addAdvice"  //平台建议提交***********
 #define ClearTokenHttp  @"/clearToken"  //退出登录***********
+#define WeChatDisplayHttp  @"/weChatDisplay"  //判断是否显示三方登录***********
 
 
 #endif /* NetUrlHeader_h */
